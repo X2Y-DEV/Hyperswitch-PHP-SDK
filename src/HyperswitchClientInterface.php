@@ -11,6 +11,7 @@ use X2Y\HyperswitchClient\Resource\MerchantAccountsResource;
 use X2Y\HyperswitchClient\Resource\PaymentLinksResource;
 use X2Y\HyperswitchClient\Resource\PaymentsResource;
 use X2Y\HyperswitchClient\Resource\RefundsResource;
+use X2Y\HyperswitchClient\Resource\SubscriptionsResource;
 
 /**
  * Top-level facade. Each Postman group exposes one resource accessor.
@@ -35,4 +36,6 @@ interface HyperswitchClientInterface
     public function merchantAccounts(): MerchantAccountsResource;
 
     public function connectors(): ConnectorsResource;
+
+    public function subscriptions(): SubscriptionsResource;
 }

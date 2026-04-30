@@ -140,7 +140,10 @@ final class ApiClient implements ApiClientInterface
      */
     private function extractMessage(array $payload, int $status): string
     {
-        // Hyperswitch error shape: { "error": { "message": "...", "code": "..." } }
+        // Hyperswitch uses three different error shapes depending on endpoint:
+        //   1) { "error": { "message": "...", "code": "..." } }
+        //   2) { "error_message": "..." }
+        //   3) { "type": "...", "code": "...", "message": "..." }   (flat — IR_xx errors)
         $error = $payload['error'] ?? null;
         if (is_array($error)) {
             $message = $error['message'] ?? null;
@@ -151,6 +154,14 @@ final class ApiClient implements ApiClientInterface
         $message = $payload['error_message'] ?? null;
         if (is_string($message) && $message !== '') {
             return $message;
+        }
+        // Flat-shape fallback. Include the IR code if present for context.
+        $message = $payload['message'] ?? null;
+        if (is_string($message) && $message !== '') {
+            $code = $payload['code'] ?? null;
+            return is_string($code) && $code !== ''
+                ? sprintf('%s [%s]', $message, $code)
+                : $message;
         }
         return sprintf('Hyperswitch API error (HTTP %d).', $status);
     }
