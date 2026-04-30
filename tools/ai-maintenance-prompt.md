@@ -1,8 +1,12 @@
 # AI maintenance prompt
 
-This is the canonical prompt used when an AI agent updates the SDK against a
-new Postman export or OpenAPI release. Paste it verbatim along with the
-output of `composer test:drift`.
+This is the canonical prompt used when an AI agent updates the SDK against
+a new Postman export. Paste it verbatim along with the output of
+`composer test:drift`.
+
+Note: Hyperswitch does not publish a public OpenAPI specification, so the
+Postman collection at `tests/Fixtures/postman.json` is the only mechanical
+source of truth.
 
 ---
 

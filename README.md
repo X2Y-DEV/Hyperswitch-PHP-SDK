@@ -53,8 +53,10 @@ dependencies and could be lifted into any PHP project.
 
 ### Source of truth
 
-`tests/Fixtures/postman.json` (the pinned Postman export). The Hyperswitch OpenAPI
-spec is incorporated as a secondary source when available.
+`tests/Fixtures/postman.json` (the pinned Postman export). Hyperswitch
+does not publish a public OpenAPI specification, so the Postman export is
+the only mechanical source of truth — drift detection and AI maintenance
+both pivot on it.
 
 ### Conventions
 
