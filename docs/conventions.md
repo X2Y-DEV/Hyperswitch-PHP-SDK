@@ -99,6 +99,48 @@ Do not call `new \DateTimeImmutable(...)` directly on response data — it will
 throw on Unix-timestamp fields. The parser handles null, ISO 8601 strings,
 integer Unix epochs, and numeric-string Unix epochs uniformly.
 
+### Request DTO `extras` passthrough
+
+Hyperswitch's larger bodies (Payments create / update / confirm in particular)
+have 60+ fields, many connector-specific or rarely used. Modelling every field
+with a typed accessor is high churn and provides little value for fields the
+SDK author won't recognise.
+
+**For Request DTOs with more than ~20 fields, accept an `extras` parameter:**
+
+```php
+public function __construct(
+    public readonly int $amount,
+    // ... typed fields ...
+    public readonly array $extras = [],
+) {}
+
+public function toArray(): array
+{
+    $typed = $this->filterNulls([ /* … */ ]);
+    return $this->mergeExtras($typed, $this->extras);
+}
+```
+
+`mergeExtras()` is provided by `AbstractRequestDto`; typed fields win on key
+collision so consumers can't accidentally mask a typed field via extras.
+
+For small bodies (Capture, Cancel, IncrementalAuthorization), include `extras`
+anyway for forward compatibility — the cost is one extra constructor argument.
+
+### Multiple Request DTOs sharing one Endpoint
+
+Sometimes the same `(method, path)` pair accepts multiple body shapes — e.g.
+`POST /payments/{id}/confirm` accepts both a rich confirm body and a thin
+confirm-with-token body. `POST /payments` itself is polymorphic across CIT,
+MIT, setup-mandate, saved-card, and payment-link variants.
+
+**One Endpoint factory, one Request DTO with all fields optional, one Resource
+method.** Consumers populate the DTO differently per intent. Don't introduce
+multiple Resource methods for the same Endpoint — it duplicates the dispatch
+code without giving callers anything they couldn't get from a different
+constructor invocation.
+
 ### List endpoints
 
 Every list-style endpoint (paths ending `/list`, or with `list` semantics)

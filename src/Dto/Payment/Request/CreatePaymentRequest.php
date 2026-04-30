@@ -12,10 +12,14 @@ use X2Y\HyperswitchClient\Enum\Currency;
 use X2Y\HyperswitchClient\Enum\SetupFutureUsage;
 
 /**
- * Create a new payment intent.
+ * Create a new payment intent. The `POST /payments` endpoint is polymorphic
+ * — the same path handles standard intents, customer-initiated transactions,
+ * merchant-initiated transactions (mandate / payment-method-id / network-tx-id),
+ * setup-mandate, saved-card, and payment-link flows. Field combinations are
+ * the consumer's responsibility.
  *
- * Stub set of fields — the full Postman body has 60+ optional fields. AI maintenance
- * extends this DTO to cover them all; the structure here is the template.
+ * `extras` accepts any field the SDK hasn't typed yet (e.g. connector-specific
+ * blobs, recurring_details, mandate_data). Typed fields win on key collision.
  *
  * @postman             Payments / Payments - Create
  * @endpoint            POST /payments
@@ -24,7 +28,21 @@ use X2Y\HyperswitchClient\Enum\SetupFutureUsage;
 final class CreatePaymentRequest extends AbstractRequestDto
 {
     /**
-     * @param array<string, mixed>|null $metadata
+     * @param list<array<string, mixed>>|null $orderDetails
+     * @param array<string, mixed>|null       $customer            Inline customer object
+     * @param array<string, mixed>|null       $paymentMethodData   Connector-specific payload
+     * @param array<string, mixed>|null       $browserInfo
+     * @param array<string, mixed>|null       $customerAcceptance
+     * @param array<string, mixed>|null       $connectorMetadata
+     * @param array<string, mixed>|null       $merchantConnectorDetails
+     * @param array<string, mixed>|null       $routing
+     * @param array<string, mixed>|null       $paymentLinkConfig
+     * @param array<string, mixed>|null       $mandateData
+     * @param array<string, mixed>|null       $recurringDetails
+     * @param array<string, mixed>|null       $splitPayments
+     * @param list<string>|null               $allowedPaymentMethodTypes
+     * @param array<string, mixed>|null       $metadata
+     * @param array<string, mixed>            $extras  passthrough for fields not typed above
      */
     public function __construct(
         public readonly int $amount,
@@ -32,35 +50,96 @@ final class CreatePaymentRequest extends AbstractRequestDto
         public readonly ?CaptureMethod $captureMethod = null,
         public readonly ?AuthenticationType $authenticationType = null,
         public readonly ?SetupFutureUsage $setupFutureUsage = null,
-        public readonly ?string $customerId = null,
-        public readonly ?string $description = null,
-        public readonly ?string $statementDescriptorName = null,
-        public readonly ?string $returnUrl = null,
         public readonly ?bool $confirm = null,
         public readonly ?bool $offSession = null,
+        public readonly ?int $amountToCapture = null,
+        public readonly ?int $orderTaxAmount = null,
+        public readonly ?int $shippingCost = null,
+        public readonly ?\DateTimeImmutable $captureOn = null,
+        public readonly ?string $customerId = null,
+        public readonly ?array $customer = null,
+        public readonly ?string $description = null,
+        public readonly ?string $statementDescriptorName = null,
+        public readonly ?string $statementDescriptorSuffix = null,
+        public readonly ?string $returnUrl = null,
+        public readonly ?string $profileId = null,
+        public readonly ?string $paymentMethod = null,
+        public readonly ?string $paymentMethodType = null,
+        public readonly ?array $paymentMethodData = null,
+        public readonly ?string $paymentToken = null,
         public readonly ?BillingDetails $billing = null,
         public readonly ?Address $shipping = null,
+        public readonly ?array $orderDetails = null,
+        public readonly ?array $browserInfo = null,
+        public readonly ?array $customerAcceptance = null,
+        public readonly ?array $connectorMetadata = null,
+        public readonly ?array $merchantConnectorDetails = null,
+        public readonly ?array $routing = null,
+        public readonly ?bool $paymentLink = null,
+        public readonly ?array $paymentLinkConfig = null,
+        public readonly ?array $mandateData = null,
+        public readonly ?array $recurringDetails = null,
+        public readonly ?array $splitPayments = null,
+        public readonly ?array $allowedPaymentMethodTypes = null,
+        public readonly ?int $sessionExpiry = null,
+        public readonly ?string $merchantOrderReferenceId = null,
+        public readonly ?string $paymentExperience = null,
+        public readonly ?string $paymentType = null,
+        public readonly ?bool $requestIncrementalAuthorization = null,
+        public readonly ?bool $requestExternalThreeDsAuthentication = null,
         public readonly ?array $metadata = null,
+        public readonly array $extras = [],
     ) {
     }
 
     public function toArray(): array
     {
-        return $this->filterNulls([
-            'amount'                    => $this->amount,
-            'currency'                  => $this->currency->value,
-            'capture_method'            => $this->captureMethod?->value,
-            'authentication_type'       => $this->authenticationType?->value,
-            'setup_future_usage'        => $this->setupFutureUsage?->value,
-            'customer_id'               => $this->customerId,
-            'description'               => $this->description,
-            'statement_descriptor_name' => $this->statementDescriptorName,
-            'return_url'                => $this->returnUrl,
-            'confirm'                   => $this->confirm,
-            'off_session'               => $this->offSession,
-            'billing'                   => $this->billing?->toArray(),
-            'shipping'                  => $this->shipping?->toArray(),
-            'metadata'                  => $this->metadata,
+        $typed = $this->filterNulls([
+            'amount'                                   => $this->amount,
+            'currency'                                 => $this->currency->value,
+            'capture_method'                           => $this->captureMethod?->value,
+            'authentication_type'                      => $this->authenticationType?->value,
+            'setup_future_usage'                       => $this->setupFutureUsage?->value,
+            'confirm'                                  => $this->confirm,
+            'off_session'                              => $this->offSession,
+            'amount_to_capture'                        => $this->amountToCapture,
+            'order_tax_amount'                         => $this->orderTaxAmount,
+            'shipping_cost'                            => $this->shippingCost,
+            'capture_on'                               => $this->captureOn?->format(\DateTimeInterface::ATOM),
+            'customer_id'                              => $this->customerId,
+            'customer'                                 => $this->customer,
+            'description'                              => $this->description,
+            'statement_descriptor_name'                => $this->statementDescriptorName,
+            'statement_descriptor_suffix'              => $this->statementDescriptorSuffix,
+            'return_url'                               => $this->returnUrl,
+            'profile_id'                               => $this->profileId,
+            'payment_method'                           => $this->paymentMethod,
+            'payment_method_type'                      => $this->paymentMethodType,
+            'payment_method_data'                      => $this->paymentMethodData,
+            'payment_token'                            => $this->paymentToken,
+            'billing'                                  => $this->billing?->toArray(),
+            'shipping'                                 => $this->shipping?->toArray(),
+            'order_details'                            => $this->orderDetails,
+            'browser_info'                             => $this->browserInfo,
+            'customer_acceptance'                      => $this->customerAcceptance,
+            'connector_metadata'                       => $this->connectorMetadata,
+            'merchant_connector_details'               => $this->merchantConnectorDetails,
+            'routing'                                  => $this->routing,
+            'payment_link'                             => $this->paymentLink,
+            'payment_link_config'                      => $this->paymentLinkConfig,
+            'mandate_data'                             => $this->mandateData,
+            'recurring_details'                        => $this->recurringDetails,
+            'split_payments'                           => $this->splitPayments,
+            'allowed_payment_method_types'             => $this->allowedPaymentMethodTypes,
+            'session_expiry'                           => $this->sessionExpiry,
+            'merchant_order_reference_id'              => $this->merchantOrderReferenceId,
+            'payment_experience'                       => $this->paymentExperience,
+            'payment_type'                             => $this->paymentType,
+            'request_incremental_authorization'        => $this->requestIncrementalAuthorization,
+            'request_external_three_ds_authentication' => $this->requestExternalThreeDsAuthentication,
+            'metadata'                                 => $this->metadata,
         ]);
+
+        return $this->mergeExtras($typed, $this->extras);
     }
 }

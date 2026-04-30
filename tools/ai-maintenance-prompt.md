@@ -70,6 +70,13 @@ dependencies.
       Never construct `\DateTimeImmutable` directly on response data —
       Hyperswitch returns Unix epoch ints on some endpoints (e.g.
       `/ephemeral_keys`) and ISO 8601 elsewhere.
+    - Request DTOs with >20 fields take a final `array $extras = []`
+      parameter and merge via `$this->mergeExtras($typed, $this->extras)`
+      so consumers can pass fields the SDK has not typed yet.
+    - When several Postman items share a (method, path) pair (e.g. the
+      polymorphic `POST /payments` create and `POST /payments/{id}/confirm`),
+      register ONE Endpoint factory and ONE Resource method. Use a single
+      Request DTO with optional fields covering every variant.
 
 ## Output format
 
