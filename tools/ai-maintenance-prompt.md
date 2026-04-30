@@ -60,6 +60,12 @@ dependencies.
 10. **Use existing enums and Common DTOs where they apply.** Don't create
     `Currency2` or duplicate `Address`. Search `src/Enum/` and
     `src/Dto/Common/` first.
+11. **Special-case fields — see `docs/conventions.md`:**
+    - `metadata` fields are always `?array<string, mixed>`. Don't wrap.
+    - Connector-specific blob fields (`split_refunds.<connector>`,
+      `merchant_connector_details`, etc.) stay `?array<string, mixed>`.
+    - List endpoints return `PaginatedList<T>` from the Resource (Endpoint
+      declares `responseClass: null` so the Resource can wrap manually).
 
 ## Output format
 

@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace X2Y\HyperswitchClient\Resource;
 
+use X2Y\HyperswitchClient\Dto\Common\PaginatedList;
 use X2Y\HyperswitchClient\Dto\Refund\Request\CreateRefundRequest;
 use X2Y\HyperswitchClient\Dto\Refund\Request\ListRefundsRequest;
 use X2Y\HyperswitchClient\Dto\Refund\Request\UpdateRefundRequest;
@@ -72,24 +73,22 @@ final class RefundsResource implements ResourceInterface
     /**
      * @postman   Refunds / Refunds - List
      *
-     * Returns the raw decoded list envelope (Hyperswitch wraps results in
-     * `{"data": [...], "size": N}` or similar). A dedicated PaginatedList DTO
-     * will replace this once cross-resource list shapes are unified.
-     *
-     * @return array<string, mixed>
+     * @return PaginatedList<RefundResponse>
      */
-    public function list(ListRefundsRequest $request): array
+    public function list(ListRefundsRequest $request): PaginatedList
     {
         $response = $this->client->execute(
             RefundsEndpoints::list(),
             request: $request,
         );
-        if ($response === null) {
-            return [];
-        }
-        if (!is_array($response)) {
+        if ($response !== null && !is_array($response)) {
             throw new HyperswitchApiException('Unexpected response type from Refunds::list.');
         }
-        return $response;
+        /** @var array<string, mixed> $raw */
+        $raw = $response ?? [];
+        return PaginatedList::fromArray(
+            $raw,
+            static fn (array $row): RefundResponse => RefundResponse::fromArray($row),
+        );
     }
 }

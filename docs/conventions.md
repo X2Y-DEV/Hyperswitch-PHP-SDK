@@ -47,10 +47,55 @@ Postman export. Reviewers check this when evaluating drift.
    `public static function fromArray(array $data): static`. Pass
    `array_diff_key($data, array_flip($known))` as the `extras` argument so
    unknown fields are preserved.
-5. **Use shared Common DTOs.** `Address`, `BillingDetails`, `Amount`, etc. live
-   in `src/Dto/Common/`. Don't duplicate them per group.
+5. **Use shared Common DTOs.** `Address`, `BillingDetails`, `Amount`,
+   `PaginatedList`, etc. live in `src/Dto/Common/`. Don't duplicate them
+   per group.
 6. **Use existing enums for closed-set fields.** Search `src/Enum/` first.
    Add a new enum only when the field set isn't represented yet.
+
+## Special-case fields
+
+These conventions cover field shapes that Hyperswitch deliberately leaves
+loose. Don't over-type them.
+
+### Metadata fields
+
+Hyperswitch lets merchants attach arbitrary key/value metadata to many
+resources (`payments`, `refunds`, `customers`, `mandates`, …). The shape
+is intentionally open.
+
+- **Always type as `?array<string, mixed>`.**
+- Property name: `$metadata`. JSON key: `metadata`.
+- Don't introduce a wrapper class (`Metadata` value object). It would add
+  one allocation per field for no type-safety gain over the typed array.
+- Don't try to constrain the array's value type beyond `mixed` — Hyperswitch
+  accepts strings, numbers, booleans, and nested objects.
+
+### Connector-specific blob fields
+
+When a Postman body shows a connector-keyed nested object — such as
+`split_refunds.stripe_split_refund`, `merchant_connector_details`,
+`payment_method_data.card.connector_specific`, etc. — leave the field as
+`?array<string, mixed>` rather than introducing a typed DTO.
+
+- These shapes branch per connector (Stripe / Adyen / Worldpay / …) and
+  Hyperswitch hasn't normalised them in the public API surface.
+- A typed DTO would lock us into one connector's shape and break others.
+- Add a docblock referencing the Postman example so reviewers know where
+  the loose typing came from.
+
+### List endpoints
+
+Every list-style endpoint (paths ending `/list`, or with `list` semantics)
+returns `PaginatedList<T>` from its Resource method.
+
+- The Endpoint declares `responseClass: null` because the list envelope is
+  decoded once by the Resource via `PaginatedList::fromArray`.
+- The Resource constructs `PaginatedList<ItemDto>` by passing
+  `ItemDto::fromArray(...)` as the item builder.
+- Pagination metadata (`size`, `total_count`) is read from the envelope by
+  `PaginatedList`; consumers access via `->size`, `->totalCount`, `->count()`,
+  or `->items()`.
 
 ## Endpoint rules
 
