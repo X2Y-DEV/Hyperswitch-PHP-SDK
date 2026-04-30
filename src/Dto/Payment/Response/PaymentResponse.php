@@ -7,6 +7,7 @@ use X2Y\HyperswitchClient\Dto\AbstractResponseDto;
 use X2Y\HyperswitchClient\Enum\CaptureMethod;
 use X2Y\HyperswitchClient\Enum\Currency;
 use X2Y\HyperswitchClient\Enum\IntentStatus;
+use X2Y\HyperswitchClient\Internal\DateTimeParser;
 
 /**
  * Response from /payments create / retrieve / confirm / capture / cancel.
@@ -63,7 +64,7 @@ final class PaymentResponse extends AbstractResponseDto
             amountCapturable: isset($data['amount_capturable']) ? (int)    $data['amount_capturable']: null,
             amountReceived:   isset($data['amount_received'])   ? (int)    $data['amount_received']  : null,
             captureMethod:    isset($data['capture_method'])    ? CaptureMethod::from((string) $data['capture_method']) : null,
-            created:          isset($data['created'])           ? new \DateTimeImmutable((string) $data['created']) : null,
+            created:          DateTimeParser::parse($data['created'] ?? null),
             description:      isset($data['description'])       ? (string) $data['description']      : null,
             returnUrl:        isset($data['return_url'])        ? (string) $data['return_url']       : null,
             extras:           array_diff_key($data, array_flip($known)),

@@ -80,15 +80,19 @@ final class ApiClient implements ApiClientInterface
         $response = $dispatch($psrRequest);
         $status   = $response->getStatusCode();
         $raw      = (string) $response->getBody();
-        $decoded  = $raw === '' ? [] : Json::decode($raw);
 
+        // Errors and typed responses must be JSON objects; only the
+        // "no responseClass" path (list endpoints) tolerates JSON arrays.
         if ($status >= 400) {
-            $this->throwForStatus($status, $decoded);
+            $this->throwForStatus($status, $raw === '' ? [] : Json::decode($raw));
         }
 
         if ($endpoint->responseClass === null) {
-            return $decoded === [] ? null : $decoded;
+            $any = $raw === '' ? [] : Json::decodeAny($raw);
+            return $any === [] ? null : $any;
         }
+
+        $decoded = $raw === '' ? [] : Json::decode($raw);
 
         /** @var class-string<AbstractResponseDto> $responseClass */
         $responseClass = $endpoint->responseClass;

@@ -21,7 +21,7 @@ interface ApiClientInterface
      * @param array<string, scalar|array<string, scalar>> $queryParams
      * @param array<string, string> $extraHeaders
      *
-     * @return AbstractResponseDto|array<string, mixed>|null
+     * @return AbstractResponseDto|array<int|string, mixed>|null
      *   Returns:
      *     - an instance of `Endpoint::$responseClass` when one is declared,
      *     - the raw decoded JSON array when no response DTO is declared,

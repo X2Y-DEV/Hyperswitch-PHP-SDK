@@ -84,6 +84,21 @@ When a Postman body shows a connector-keyed nested object — such as
 - Add a docblock referencing the Postman example so reviewers know where
   the loose typing came from.
 
+### Datetime fields
+
+Hyperswitch is inconsistent across endpoints: most timestamps come back as ISO
+8601 strings, but some endpoints — notably `POST /ephemeral_keys` — return
+Unix timestamps as integers. **Always parse datetime fields via
+`X2Y\HyperswitchClient\Internal\DateTimeParser::parse()`.**
+
+```php
+createdAt: DateTimeParser::parse($data['created_at'] ?? null),
+```
+
+Do not call `new \DateTimeImmutable(...)` directly on response data — it will
+throw on Unix-timestamp fields. The parser handles null, ISO 8601 strings,
+integer Unix epochs, and numeric-string Unix epochs uniformly.
+
 ### List endpoints
 
 Every list-style endpoint (paths ending `/list`, or with `list` semantics)

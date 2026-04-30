@@ -35,16 +35,40 @@ final class PaginatedList
     }
 
     /**
+     * Construct a paginated list from a Hyperswitch list response.
+     *
+     * Hyperswitch is inconsistent across endpoints:
+     *   - Some return an envelope: `{"data": [...], "size": N, "total_count": N}`
+     *     (e.g. `/refunds/list`)
+     *   - Some return a bare array: `[ {...}, {...} ]` (e.g. `/customers/list`)
+     *
+     * Both shapes are accepted. For bare-array responses, `size` and
+     * `totalCount` are null and `extras` is empty.
+     *
      * @template U
      *
-     * @param array<string, mixed> $raw                 the decoded list envelope
+     * @param array<int|string, mixed> $raw                  decoded JSON body — list or envelope
      * @param callable(array<string, mixed>): U $itemBuilder constructs one item from one row
      *
      * @return self<U>
      */
     public static function fromArray(array $raw, callable $itemBuilder): self
     {
-        $rows = $raw['data'] ?? [];
+        // Bare-array response: items at the top level, no envelope metadata.
+        if ($raw !== [] && array_is_list($raw)) {
+            $items = [];
+            foreach ($raw as $row) {
+                if (is_array($row)) {
+                    /** @var array<string, mixed> $row */
+                    $items[] = $itemBuilder($row);
+                }
+            }
+            return new self(data: $items);
+        }
+
+        // Envelope response.
+        /** @var array<string, mixed> $raw */
+        $rows  = $raw['data'] ?? [];
         $items = [];
         if (is_array($rows)) {
             foreach ($rows as $row) {

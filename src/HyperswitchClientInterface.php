@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace X2Y\HyperswitchClient;
 
+use X2Y\HyperswitchClient\Resource\CustomersResource;
 use X2Y\HyperswitchClient\Resource\PaymentsResource;
 use X2Y\HyperswitchClient\Resource\RefundsResource;
 
@@ -17,4 +18,6 @@ interface HyperswitchClientInterface
     public function payments(): PaymentsResource;
 
     public function refunds(): RefundsResource;
+
+    public function customers(): CustomersResource;
 }

@@ -30,9 +30,34 @@ final class Json
     }
 
     /**
+     * Decode an object-shaped JSON response. The vast majority of Hyperswitch
+     * endpoints return objects; this is the default path.
+     *
      * @return array<string, mixed>
+     *
+     * @throws HyperswitchApiException when the JSON is malformed, non-array,
+     *         or arrives as a JSON array instead of an object.
      */
     public static function decode(string $raw): array
+    {
+        $decoded = self::decodeAny($raw);
+        if (array_is_list($decoded) && $decoded !== []) {
+            throw new HyperswitchApiException(
+                'Hyperswitch returned a JSON array where an object was expected.'
+            );
+        }
+        /** @var array<string, mixed> $decoded */
+        return $decoded;
+    }
+
+    /**
+     * Decode any JSON-array-or-object body. Use this for endpoints that may
+     * return either shape (e.g. list endpoints — `/customers/list` returns a
+     * bare array, `/refunds/list` returns an envelope object).
+     *
+     * @return array<int|string, mixed>
+     */
+    public static function decodeAny(string $raw): array
     {
         if ($raw === '') {
             return [];
@@ -45,7 +70,6 @@ final class Json
         if (!is_array($decoded)) {
             throw new HyperswitchApiException('Hyperswitch returned a non-object JSON payload.');
         }
-        /** @var array<string, mixed> $decoded */
         return $decoded;
     }
 }

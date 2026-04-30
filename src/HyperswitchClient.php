@@ -7,6 +7,7 @@ use Psr\Http\Client\ClientInterface;
 use Psr\Http\Message\RequestFactoryInterface;
 use Psr\Http\Message\StreamFactoryInterface;
 use X2Y\HyperswitchClient\Auth\AuthContextResolverInterface;
+use X2Y\HyperswitchClient\Resource\CustomersResource;
 use X2Y\HyperswitchClient\Resource\PaymentsResource;
 use X2Y\HyperswitchClient\Resource\RefundsResource;
 use X2Y\HyperswitchClient\Transport\ApiClient;
@@ -26,6 +27,7 @@ final class HyperswitchClient implements HyperswitchClientInterface
 
     private ?PaymentsResource $payments = null;
     private ?RefundsResource $refunds = null;
+    private ?CustomersResource $customers = null;
 
     public function __construct(
         private readonly ApiClientInterface $apiClient,
@@ -97,5 +99,10 @@ final class HyperswitchClient implements HyperswitchClientInterface
     public function refunds(): RefundsResource
     {
         return $this->refunds ??= new RefundsResource($this->apiClient);
+    }
+
+    public function customers(): CustomersResource
+    {
+        return $this->customers ??= new CustomersResource($this->apiClient);
     }
 }

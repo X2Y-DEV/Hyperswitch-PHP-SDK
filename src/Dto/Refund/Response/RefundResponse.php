@@ -7,6 +7,7 @@ use X2Y\HyperswitchClient\Dto\AbstractResponseDto;
 use X2Y\HyperswitchClient\Enum\Currency;
 use X2Y\HyperswitchClient\Enum\RefundStatus;
 use X2Y\HyperswitchClient\Enum\RefundType;
+use X2Y\HyperswitchClient\Internal\DateTimeParser;
 
 /**
  * Response from /refunds create / retrieve / update.
@@ -71,8 +72,8 @@ final class RefundResponse extends AbstractResponseDto
             reason:              isset($data['reason'])        ? (string) $data['reason']        : null,
             errorMessage:        isset($data['error_message']) ? (string) $data['error_message'] : null,
             errorCode:           isset($data['error_code'])    ? (string) $data['error_code']    : null,
-            createdAt:           isset($data['created_at'])    ? new \DateTimeImmutable((string) $data['created_at']) : null,
-            updatedAt:           isset($data['updated_at'])    ? new \DateTimeImmutable((string) $data['updated_at']) : null,
+            createdAt:           DateTimeParser::parse($data['created_at'] ?? null),
+            updatedAt:           DateTimeParser::parse($data['updated_at'] ?? null),
             connector:           isset($data['connector'])     ? (string) $data['connector']     : null,
             profileId:           isset($data['profile_id'])    ? (string) $data['profile_id']    : null,
             merchantConnectorId: isset($data['merchant_connector_id']) ? (string) $data['merchant_connector_id'] : null,

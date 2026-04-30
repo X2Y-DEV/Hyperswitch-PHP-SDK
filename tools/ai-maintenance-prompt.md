@@ -66,6 +66,10 @@ dependencies.
       `merchant_connector_details`, etc.) stay `?array<string, mixed>`.
     - List endpoints return `PaginatedList<T>` from the Resource (Endpoint
       declares `responseClass: null` so the Resource can wrap manually).
+    - Datetime fields use `Internal\DateTimeParser::parse($data['x'] ?? null)`.
+      Never construct `\DateTimeImmutable` directly on response data —
+      Hyperswitch returns Unix epoch ints on some endpoints (e.g.
+      `/ephemeral_keys`) and ISO 8601 elsewhere.
 
 ## Output format
 
