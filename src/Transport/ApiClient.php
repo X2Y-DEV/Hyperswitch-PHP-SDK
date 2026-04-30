@@ -83,8 +83,19 @@ final class ApiClient implements ApiClientInterface
 
         // Errors and typed responses must be JSON objects; only the
         // "no responseClass" path (list endpoints) tolerates JSON arrays.
+        // Some Hyperswitch error responses arrive as plain text rather than
+        // JSON — fall back to raw-body extraction so the typed status
+        // exception still fires with a useful message.
         if ($status >= 400) {
-            $this->throwForStatus($status, $raw === '' ? [] : Json::decode($raw));
+            $errorPayload = [];
+            if ($raw !== '') {
+                try {
+                    $errorPayload = Json::decode($raw);
+                } catch (HyperswitchApiException) {
+                    $errorPayload = ['message' => $raw];
+                }
+            }
+            $this->throwForStatus($status, $errorPayload);
         }
 
         if ($endpoint->responseClass === null) {

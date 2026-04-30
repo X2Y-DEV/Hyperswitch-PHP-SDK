@@ -9,6 +9,8 @@ use X2Y\HyperswitchClient\Resource\ConnectorsResource;
 use X2Y\HyperswitchClient\Resource\CustomersResource;
 use X2Y\HyperswitchClient\Resource\MerchantAccountsResource;
 use X2Y\HyperswitchClient\Resource\PaymentLinksResource;
+use X2Y\HyperswitchClient\Resource\PaymentMethodSessionsResource;
+use X2Y\HyperswitchClient\Resource\PaymentMethodsResource;
 use X2Y\HyperswitchClient\Resource\PaymentsResource;
 use X2Y\HyperswitchClient\Resource\RefundsResource;
 use X2Y\HyperswitchClient\Resource\SubscriptionsResource;
@@ -38,4 +40,8 @@ interface HyperswitchClientInterface
     public function connectors(): ConnectorsResource;
 
     public function subscriptions(): SubscriptionsResource;
+
+    public function paymentMethods(): PaymentMethodsResource;
+
+    public function paymentMethodSessions(): PaymentMethodSessionsResource;
 }

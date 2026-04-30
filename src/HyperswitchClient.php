@@ -13,6 +13,8 @@ use X2Y\HyperswitchClient\Resource\ConnectorsResource;
 use X2Y\HyperswitchClient\Resource\CustomersResource;
 use X2Y\HyperswitchClient\Resource\MerchantAccountsResource;
 use X2Y\HyperswitchClient\Resource\PaymentLinksResource;
+use X2Y\HyperswitchClient\Resource\PaymentMethodSessionsResource;
+use X2Y\HyperswitchClient\Resource\PaymentMethodsResource;
 use X2Y\HyperswitchClient\Resource\PaymentsResource;
 use X2Y\HyperswitchClient\Resource\RefundsResource;
 use X2Y\HyperswitchClient\Resource\SubscriptionsResource;
@@ -40,6 +42,8 @@ final class HyperswitchClient implements HyperswitchClientInterface
     private ?MerchantAccountsResource $merchantAccounts = null;
     private ?ConnectorsResource $connectors = null;
     private ?SubscriptionsResource $subscriptions = null;
+    private ?PaymentMethodsResource $paymentMethods = null;
+    private ?PaymentMethodSessionsResource $paymentMethodSessions = null;
 
     public function __construct(
         private readonly ApiClientInterface $apiClient,
@@ -146,5 +150,15 @@ final class HyperswitchClient implements HyperswitchClientInterface
     public function subscriptions(): SubscriptionsResource
     {
         return $this->subscriptions ??= new SubscriptionsResource($this->apiClient);
+    }
+
+    public function paymentMethods(): PaymentMethodsResource
+    {
+        return $this->paymentMethods ??= new PaymentMethodsResource($this->apiClient);
+    }
+
+    public function paymentMethodSessions(): PaymentMethodSessionsResource
+    {
+        return $this->paymentMethodSessions ??= new PaymentMethodSessionsResource($this->apiClient);
     }
 }
