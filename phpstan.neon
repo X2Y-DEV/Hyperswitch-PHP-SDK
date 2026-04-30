@@ -1,0 +1,11 @@
+parameters:
+    # Level 8 keeps full type strictness without flagging unavoidable
+    # `(string) $data['x']` casts in DTO fromArray() methods (level max
+    # rejects those because array values from JSON decode are `mixed`).
+    level: 8
+    paths:
+        - src
+    tmpDir: var/phpstan
+
+includes:
+    - vendor/phpstan/phpstan-strict-rules/rules.neon

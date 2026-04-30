@@ -1,0 +1,10 @@
+/vendor/
+/var/
+/.phpunit.cache/
+/.phpunit.result.cache
+composer.lock
+.idea/
+.vscode/
+.phpstorm.meta.php
+*.swp
+.DS_Store
