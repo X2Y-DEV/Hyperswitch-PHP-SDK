@@ -11,12 +11,18 @@ use X2Y\HyperswitchClient\Resource\ApiKeysResource;
 use X2Y\HyperswitchClient\Resource\BusinessProfileResource;
 use X2Y\HyperswitchClient\Resource\ConnectorsResource;
 use X2Y\HyperswitchClient\Resource\CustomersResource;
+use X2Y\HyperswitchClient\Resource\DisputesResource;
+use X2Y\HyperswitchClient\Resource\MandatesResource;
 use X2Y\HyperswitchClient\Resource\MerchantAccountsResource;
 use X2Y\HyperswitchClient\Resource\PaymentLinksResource;
 use X2Y\HyperswitchClient\Resource\PaymentMethodSessionsResource;
 use X2Y\HyperswitchClient\Resource\PaymentMethodsResource;
 use X2Y\HyperswitchClient\Resource\PaymentsResource;
+use X2Y\HyperswitchClient\Resource\PayoutsResource;
+use X2Y\HyperswitchClient\Resource\PlatformResource;
+use X2Y\HyperswitchClient\Resource\ProxyResource;
 use X2Y\HyperswitchClient\Resource\RefundsResource;
+use X2Y\HyperswitchClient\Resource\RelayResource;
 use X2Y\HyperswitchClient\Resource\SubscriptionsResource;
 use X2Y\HyperswitchClient\Transport\ApiClient;
 use X2Y\HyperswitchClient\Transport\ApiClientInterface;
@@ -44,6 +50,12 @@ final class HyperswitchClient implements HyperswitchClientInterface
     private ?SubscriptionsResource $subscriptions = null;
     private ?PaymentMethodsResource $paymentMethods = null;
     private ?PaymentMethodSessionsResource $paymentMethodSessions = null;
+    private ?MandatesResource $mandates = null;
+    private ?DisputesResource $disputes = null;
+    private ?PayoutsResource $payouts = null;
+    private ?RelayResource $relay = null;
+    private ?ProxyResource $proxy = null;
+    private ?PlatformResource $platform = null;
 
     public function __construct(
         private readonly ApiClientInterface $apiClient,
@@ -160,5 +172,35 @@ final class HyperswitchClient implements HyperswitchClientInterface
     public function paymentMethodSessions(): PaymentMethodSessionsResource
     {
         return $this->paymentMethodSessions ??= new PaymentMethodSessionsResource($this->apiClient);
+    }
+
+    public function mandates(): MandatesResource
+    {
+        return $this->mandates ??= new MandatesResource($this->apiClient);
+    }
+
+    public function disputes(): DisputesResource
+    {
+        return $this->disputes ??= new DisputesResource($this->apiClient);
+    }
+
+    public function payouts(): PayoutsResource
+    {
+        return $this->payouts ??= new PayoutsResource($this->apiClient);
+    }
+
+    public function relay(): RelayResource
+    {
+        return $this->relay ??= new RelayResource($this->apiClient);
+    }
+
+    public function proxy(): ProxyResource
+    {
+        return $this->proxy ??= new ProxyResource($this->apiClient);
+    }
+
+    public function platform(): PlatformResource
+    {
+        return $this->platform ??= new PlatformResource($this->apiClient);
     }
 }
