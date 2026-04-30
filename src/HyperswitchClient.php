@@ -8,6 +8,7 @@ use Psr\Http\Message\RequestFactoryInterface;
 use Psr\Http\Message\StreamFactoryInterface;
 use X2Y\HyperswitchClient\Auth\AuthContextResolverInterface;
 use X2Y\HyperswitchClient\Resource\PaymentsResource;
+use X2Y\HyperswitchClient\Resource\RefundsResource;
 use X2Y\HyperswitchClient\Transport\ApiClient;
 use X2Y\HyperswitchClient\Transport\ApiClientInterface;
 use X2Y\HyperswitchClient\Transport\Middleware\ClientMiddlewareInterface;
@@ -24,6 +25,7 @@ final class HyperswitchClient implements HyperswitchClientInterface
     public const PRODUCTION_BASE_URL = 'https://api.hyperswitch.io';
 
     private ?PaymentsResource $payments = null;
+    private ?RefundsResource $refunds = null;
 
     public function __construct(
         private readonly ApiClientInterface $apiClient,
@@ -90,5 +92,10 @@ final class HyperswitchClient implements HyperswitchClientInterface
     public function payments(): PaymentsResource
     {
         return $this->payments ??= new PaymentsResource($this->apiClient);
+    }
+
+    public function refunds(): RefundsResource
+    {
+        return $this->refunds ??= new RefundsResource($this->apiClient);
     }
 }
