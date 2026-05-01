@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace X2Y\HyperswitchClient\Enum;
+namespace X2Y\HyperSwitchClient\Enum;
 
 /**
  * Acknowledgement status reported when updating a saved payment method

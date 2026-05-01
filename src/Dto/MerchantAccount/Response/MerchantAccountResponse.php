@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace X2Y\HyperswitchClient\Dto\MerchantAccount\Response;
+namespace X2Y\HyperSwitchClient\Dto\MerchantAccount\Response;
 
-use X2Y\HyperswitchClient\Dto\AbstractResponseDto;
+use X2Y\HyperSwitchClient\Dto\AbstractResponseDto;
 
 /**
  * Response from /accounts create / retrieve / update.

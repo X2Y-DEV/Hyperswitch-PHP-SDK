@@ -1,14 +1,14 @@
 <?php
 declare(strict_types=1);
 
-namespace X2Y\HyperswitchClient\Resource;
+namespace X2Y\HyperSwitchClient\Resource;
 
-use X2Y\HyperswitchClient\Dto\PaymentLink\Response\PaymentLinkResponse;
-use X2Y\HyperswitchClient\Endpoint\PaymentLinksEndpoints;
-use X2Y\HyperswitchClient\Exception\HyperswitchApiException;
+use X2Y\HyperSwitchClient\Dto\PaymentLink\Response\PaymentLinkResponse;
+use X2Y\HyperSwitchClient\Endpoint\PaymentLinksEndpoints;
+use X2Y\HyperSwitchClient\Exception\HyperSwitchApiException;
 
 /**
- * Typed facade over the Hyperswitch Payment Links API group.
+ * Typed facade over the HyperSwitch Payment Links API group.
  *
  * Payment links are *created* by setting `payment_link: true` on a regular
  * `Payments::create()` call. Only retrieval has its own endpoint.
@@ -28,7 +28,7 @@ final class PaymentLinksResource extends AbstractResource
             pathParams: ['id' => $paymentLinkId],
         );
         if (!$response instanceof PaymentLinkResponse) {
-            throw new HyperswitchApiException('Unexpected response type from PaymentLinks::retrieve.');
+            throw new HyperSwitchApiException('Unexpected response type from PaymentLinks::retrieve.');
         }
         return $response;
     }

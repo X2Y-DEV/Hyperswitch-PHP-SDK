@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace X2Y\HyperswitchClient\Transport\Middleware;
+namespace X2Y\HyperSwitchClient\Transport\Middleware;
 
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;

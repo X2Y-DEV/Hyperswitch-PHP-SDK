@@ -1,11 +1,11 @@
 <?php
 declare(strict_types=1);
 
-namespace X2Y\HyperswitchClient\Dto\Relay\Response;
+namespace X2Y\HyperSwitchClient\Dto\Relay\Response;
 
-use X2Y\HyperswitchClient\Dto\AbstractResponseDto;
-use X2Y\HyperswitchClient\Enum\RelayType;
-use X2Y\HyperswitchClient\Internal\DateTimeParser;
+use X2Y\HyperSwitchClient\Dto\AbstractResponseDto;
+use X2Y\HyperSwitchClient\Enum\RelayType;
+use X2Y\HyperSwitchClient\Internal\DateTimeParser;
 
 /**
  * Response from /relay create / retrieve.

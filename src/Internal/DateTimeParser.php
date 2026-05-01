@@ -1,14 +1,14 @@
 <?php
 declare(strict_types=1);
 
-namespace X2Y\HyperswitchClient\Internal;
+namespace X2Y\HyperSwitchClient\Internal;
 
-use X2Y\HyperswitchClient\Exception\HyperswitchApiException;
+use X2Y\HyperSwitchClient\Exception\HyperSwitchApiException;
 
 /**
  * Robust datetime parser for response fields.
  *
- * Hyperswitch is not consistent across endpoints: most timestamps come back
+ * HyperSwitch is not consistent across endpoints: most timestamps come back
  * as ISO 8601 strings (`"2026-04-30T12:34:56.789Z"`), but some endpoints —
  * notably `POST /ephemeral_keys` — return Unix timestamps as integers
  * (`1777579037`). This helper accepts either.
@@ -32,7 +32,7 @@ final class DateTimeParser
      *   - int / numeric string            → treated as Unix epoch seconds
      *   - ISO 8601 string                 → parsed by DateTimeImmutable
      *
-     * @throws HyperswitchApiException when a non-empty value cannot be parsed.
+     * @throws HyperSwitchApiException when a non-empty value cannot be parsed.
      */
     public static function parse(mixed $value): ?\DateTimeImmutable
     {
@@ -52,7 +52,7 @@ final class DateTimeParser
             try {
                 return new \DateTimeImmutable($value);
             } catch (\DateMalformedStringException | \Exception $e) {
-                throw new HyperswitchApiException(
+                throw new HyperSwitchApiException(
                     'Failed to parse datetime value "' . $value . '": ' . $e->getMessage(),
                     0,
                     $e,
@@ -60,7 +60,7 @@ final class DateTimeParser
             }
         }
 
-        throw new HyperswitchApiException(
+        throw new HyperSwitchApiException(
             'Unexpected datetime value type: ' . get_debug_type($value)
         );
     }

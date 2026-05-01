@@ -1,14 +1,14 @@
 <?php
 declare(strict_types=1);
 
-namespace X2Y\HyperswitchClient\Tests\Integration;
+namespace X2Y\HyperSwitchClient\Tests\Integration;
 
-use X2Y\HyperswitchClient\Dto\Common\Address;
-use X2Y\HyperswitchClient\Dto\Customer\Request\CreateCustomerRequest;
-use X2Y\HyperswitchClient\Dto\Customer\Request\CreateEphemeralKeyRequest;
-use X2Y\HyperswitchClient\Dto\Customer\Request\UpdateCustomerRequest;
-use X2Y\HyperswitchClient\Exception\HyperswitchExceptionInterface;
-use X2Y\HyperswitchClient\Exception\NotFoundException;
+use X2Y\HyperSwitchClient\Dto\Common\Address;
+use X2Y\HyperSwitchClient\Dto\Customer\Request\CreateCustomerRequest;
+use X2Y\HyperSwitchClient\Dto\Customer\Request\CreateEphemeralKeyRequest;
+use X2Y\HyperSwitchClient\Dto\Customer\Request\UpdateCustomerRequest;
+use X2Y\HyperSwitchClient\Exception\HyperSwitchExceptionInterface;
+use X2Y\HyperSwitchClient\Exception\NotFoundException;
 
 /**
  * Real-sandbox lifecycle for the Customers resource.
@@ -30,7 +30,7 @@ final class CustomersIntegrationTest extends AbstractIntegrationTestCase
         $this->onTearDown(function () use ($customerId): void {
             try {
                 $this->client->customers()->delete($customerId);
-            } catch (HyperswitchExceptionInterface) {
+            } catch (HyperSwitchExceptionInterface) {
                 // already deleted by the test path
             }
         });
@@ -65,7 +65,7 @@ final class CustomersIntegrationTest extends AbstractIntegrationTestCase
         $list = $this->client->customers()->list();
         self::assertGreaterThanOrEqual(1, $list->count());
 
-        // 6. Delete — Hyperswitch soft-deletes: the record remains retrievable
+        // 6. Delete — HyperSwitch soft-deletes: the record remains retrievable
         // with `customer_deleted: true` rather than returning 404 afterward.
         $deleted = $this->client->customers()->delete($customerId);
         self::assertTrue($deleted->customerDeleted);

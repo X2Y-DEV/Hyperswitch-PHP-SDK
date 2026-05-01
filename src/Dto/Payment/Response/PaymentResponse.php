@@ -1,13 +1,13 @@
 <?php
 declare(strict_types=1);
 
-namespace X2Y\HyperswitchClient\Dto\Payment\Response;
+namespace X2Y\HyperSwitchClient\Dto\Payment\Response;
 
-use X2Y\HyperswitchClient\Dto\AbstractResponseDto;
-use X2Y\HyperswitchClient\Enum\CaptureMethod;
-use X2Y\HyperswitchClient\Enum\Currency;
-use X2Y\HyperswitchClient\Enum\IntentStatus;
-use X2Y\HyperswitchClient\Internal\DateTimeParser;
+use X2Y\HyperSwitchClient\Dto\AbstractResponseDto;
+use X2Y\HyperSwitchClient\Enum\CaptureMethod;
+use X2Y\HyperSwitchClient\Enum\Currency;
+use X2Y\HyperSwitchClient\Enum\IntentStatus;
+use X2Y\HyperSwitchClient\Internal\DateTimeParser;
 
 /**
  * Response from /payments create / retrieve / confirm / capture / cancel.

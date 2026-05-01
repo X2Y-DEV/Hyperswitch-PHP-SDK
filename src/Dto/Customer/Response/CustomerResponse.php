@@ -1,11 +1,11 @@
 <?php
 declare(strict_types=1);
 
-namespace X2Y\HyperswitchClient\Dto\Customer\Response;
+namespace X2Y\HyperSwitchClient\Dto\Customer\Response;
 
-use X2Y\HyperswitchClient\Dto\AbstractResponseDto;
-use X2Y\HyperswitchClient\Dto\Common\Address;
-use X2Y\HyperswitchClient\Internal\DateTimeParser;
+use X2Y\HyperSwitchClient\Dto\AbstractResponseDto;
+use X2Y\HyperSwitchClient\Dto\Common\Address;
+use X2Y\HyperSwitchClient\Internal\DateTimeParser;
 
 /**
  * Response from /customers create / retrieve / update and /customers/list items.

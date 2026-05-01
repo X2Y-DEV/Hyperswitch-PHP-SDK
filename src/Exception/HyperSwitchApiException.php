@@ -1,16 +1,16 @@
 <?php
 declare(strict_types=1);
 
-namespace X2Y\HyperswitchClient\Exception;
+namespace X2Y\HyperSwitchClient\Exception;
 
 /**
- * Generic Hyperswitch API failure. Specific subclasses extend this for
+ * Generic HyperSwitch API failure. Specific subclasses extend this for
  * authentication, validation, not-found, rate-limit, and transient errors.
  *
  * `$payload` carries the decoded error body when available, useful for
- * inspecting Hyperswitch's `error_code`, `error_type`, and `error_message`.
+ * inspecting HyperSwitch's `error_code`, `error_type`, and `error_message`.
  */
-class HyperswitchApiException extends \RuntimeException implements HyperswitchExceptionInterface
+class HyperSwitchApiException extends \RuntimeException implements HyperSwitchExceptionInterface
 {
     /**
      * @param array<string, mixed> $payload

@@ -1,15 +1,15 @@
 <?php
 declare(strict_types=1);
 
-namespace X2Y\HyperswitchClient\Dto\Payout\Request;
+namespace X2Y\HyperSwitchClient\Dto\Payout\Request;
 
-use X2Y\HyperswitchClient\Dto\AbstractRequestDto;
-use X2Y\HyperswitchClient\Dto\Common\Address;
-use X2Y\HyperswitchClient\Dto\Common\BillingDetails;
-use X2Y\HyperswitchClient\Enum\Currency;
-use X2Y\HyperswitchClient\Enum\PayoutType;
-use X2Y\HyperswitchClient\Enum\SetupFutureUsage;
-use X2Y\HyperswitchClient\Enum\StorageType;
+use X2Y\HyperSwitchClient\Dto\AbstractRequestDto;
+use X2Y\HyperSwitchClient\Dto\Common\Address;
+use X2Y\HyperSwitchClient\Dto\Common\BillingDetails;
+use X2Y\HyperSwitchClient\Enum\Currency;
+use X2Y\HyperSwitchClient\Enum\PayoutType;
+use X2Y\HyperSwitchClient\Enum\SetupFutureUsage;
+use X2Y\HyperSwitchClient\Enum\StorageType;
 
 /**
  * Create a payout. Polymorphic: the same endpoint also creates payout-links

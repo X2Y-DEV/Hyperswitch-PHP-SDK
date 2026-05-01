@@ -1,10 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace X2Y\HyperswitchClient\Dto\ApiKey\Response;
+namespace X2Y\HyperSwitchClient\Dto\ApiKey\Response;
 
-use X2Y\HyperswitchClient\Dto\AbstractResponseDto;
-use X2Y\HyperswitchClient\Internal\DateTimeParser;
+use X2Y\HyperSwitchClient\Dto\AbstractResponseDto;
+use X2Y\HyperSwitchClient\Internal\DateTimeParser;
 
 /**
  * Response from API key create / update / retrieve / list (item shape).

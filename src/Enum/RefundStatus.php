@@ -1,10 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace X2Y\HyperswitchClient\Enum;
+namespace X2Y\HyperSwitchClient\Enum;
 
 /**
- * Status of a refund as returned by Hyperswitch.
+ * Status of a refund as returned by HyperSwitch.
  *
  * @postman             Refunds / Refunds - Retrieve (status)
  * @hyperswitch-source  2026-04-30

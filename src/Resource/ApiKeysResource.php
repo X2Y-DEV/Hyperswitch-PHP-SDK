@@ -1,18 +1,18 @@
 <?php
 declare(strict_types=1);
 
-namespace X2Y\HyperswitchClient\Resource;
+namespace X2Y\HyperSwitchClient\Resource;
 
-use X2Y\HyperswitchClient\Dto\ApiKey\Request\CreateApiKeyRequest;
-use X2Y\HyperswitchClient\Dto\ApiKey\Request\UpdateApiKeyRequest;
-use X2Y\HyperswitchClient\Dto\ApiKey\Response\ApiKeyDeleteResponse;
-use X2Y\HyperswitchClient\Dto\ApiKey\Response\ApiKeyResponse;
-use X2Y\HyperswitchClient\Dto\Common\PaginatedList;
-use X2Y\HyperswitchClient\Endpoint\ApiKeysEndpoints;
-use X2Y\HyperswitchClient\Exception\HyperswitchApiException;
+use X2Y\HyperSwitchClient\Dto\ApiKey\Request\CreateApiKeyRequest;
+use X2Y\HyperSwitchClient\Dto\ApiKey\Request\UpdateApiKeyRequest;
+use X2Y\HyperSwitchClient\Dto\ApiKey\Response\ApiKeyDeleteResponse;
+use X2Y\HyperSwitchClient\Dto\ApiKey\Response\ApiKeyResponse;
+use X2Y\HyperSwitchClient\Dto\Common\PaginatedList;
+use X2Y\HyperSwitchClient\Endpoint\ApiKeysEndpoints;
+use X2Y\HyperSwitchClient\Exception\HyperSwitchApiException;
 
 /**
- * Typed facade over the Hyperswitch API Keys group. Admin-tier.
+ * Typed facade over the HyperSwitch API Keys group. Admin-tier.
  *
  * @postman             API Key
  * @hyperswitch-source  2026-04-30
@@ -27,7 +27,7 @@ final class ApiKeysResource extends AbstractResource
             pathParams: ['merchant_id' => $merchantId],
         );
         if (!$response instanceof ApiKeyResponse) {
-            throw new HyperswitchApiException('Unexpected response type from ApiKeys::create.');
+            throw new HyperSwitchApiException('Unexpected response type from ApiKeys::create.');
         }
         return $response;
     }
@@ -40,7 +40,7 @@ final class ApiKeysResource extends AbstractResource
             pathParams: ['merchant_id' => $merchantId, 'api_key_id' => $apiKeyId],
         );
         if (!$response instanceof ApiKeyResponse) {
-            throw new HyperswitchApiException('Unexpected response type from ApiKeys::update.');
+            throw new HyperSwitchApiException('Unexpected response type from ApiKeys::update.');
         }
         return $response;
     }
@@ -52,7 +52,7 @@ final class ApiKeysResource extends AbstractResource
             pathParams: ['merchant_id' => $merchantId, 'api_key_id' => $apiKeyId],
         );
         if (!$response instanceof ApiKeyResponse) {
-            throw new HyperswitchApiException('Unexpected response type from ApiKeys::retrieve.');
+            throw new HyperSwitchApiException('Unexpected response type from ApiKeys::retrieve.');
         }
         return $response;
     }
@@ -67,7 +67,7 @@ final class ApiKeysResource extends AbstractResource
             pathParams: ['merchant_id' => $merchantId],
         );
         if ($response !== null && !is_array($response)) {
-            throw new HyperswitchApiException('Unexpected response type from ApiKeys::list.');
+            throw new HyperSwitchApiException('Unexpected response type from ApiKeys::list.');
         }
         /** @var array<int|string, mixed> $raw */
         $raw = $response ?? [];
@@ -84,7 +84,7 @@ final class ApiKeysResource extends AbstractResource
             pathParams: ['merchant_id' => $merchantId, 'api_key_id' => $apiKeyId],
         );
         if (!$response instanceof ApiKeyDeleteResponse) {
-            throw new HyperswitchApiException('Unexpected response type from ApiKeys::delete.');
+            throw new HyperSwitchApiException('Unexpected response type from ApiKeys::delete.');
         }
         return $response;
     }

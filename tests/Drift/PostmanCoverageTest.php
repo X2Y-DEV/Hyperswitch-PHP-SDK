@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace X2Y\HyperswitchClient\Tests\Drift;
+namespace X2Y\HyperSwitchClient\Tests\Drift;
 
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
@@ -17,7 +17,7 @@ use PHPUnit\Framework\TestCase;
  *
  * Run during the v0.1 phase as a guide for what AI maintenance must fill in.
  * After the SDK is fully populated, this becomes the gate that fails CI when
- * Hyperswitch ships a change.
+ * HyperSwitch ships a change.
  */
 final class PostmanCoverageTest extends TestCase
 {

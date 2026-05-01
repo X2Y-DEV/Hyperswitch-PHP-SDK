@@ -1,23 +1,23 @@
 <?php
 declare(strict_types=1);
 
-namespace X2Y\HyperswitchClient\Endpoint;
+namespace X2Y\HyperSwitchClient\Endpoint;
 
-use X2Y\HyperswitchClient\Auth\AuthTier;
-use X2Y\HyperswitchClient\Dto\Payment\Request\CancelPaymentRequest;
-use X2Y\HyperswitchClient\Dto\Payment\Request\CancelPostCapturePaymentRequest;
-use X2Y\HyperswitchClient\Dto\Payment\Request\CapturePaymentRequest;
-use X2Y\HyperswitchClient\Dto\Payment\Request\ConfirmPaymentRequest;
-use X2Y\HyperswitchClient\Dto\Payment\Request\CreatePaymentRequest;
-use X2Y\HyperswitchClient\Dto\Payment\Request\IncrementalAuthorizationRequest;
-use X2Y\HyperswitchClient\Dto\Payment\Request\SessionTokensRequest;
-use X2Y\HyperswitchClient\Dto\Payment\Request\UpdatePaymentRequest;
-use X2Y\HyperswitchClient\Dto\Payment\Response\PaymentResponse;
-use X2Y\HyperswitchClient\Dto\Payment\Response\SessionTokensResponse;
-use X2Y\HyperswitchClient\Transport\Endpoint;
+use X2Y\HyperSwitchClient\Auth\AuthTier;
+use X2Y\HyperSwitchClient\Dto\Payment\Request\CancelPaymentRequest;
+use X2Y\HyperSwitchClient\Dto\Payment\Request\CancelPostCapturePaymentRequest;
+use X2Y\HyperSwitchClient\Dto\Payment\Request\CapturePaymentRequest;
+use X2Y\HyperSwitchClient\Dto\Payment\Request\ConfirmPaymentRequest;
+use X2Y\HyperSwitchClient\Dto\Payment\Request\CreatePaymentRequest;
+use X2Y\HyperSwitchClient\Dto\Payment\Request\IncrementalAuthorizationRequest;
+use X2Y\HyperSwitchClient\Dto\Payment\Request\SessionTokensRequest;
+use X2Y\HyperSwitchClient\Dto\Payment\Request\UpdatePaymentRequest;
+use X2Y\HyperSwitchClient\Dto\Payment\Response\PaymentResponse;
+use X2Y\HyperSwitchClient\Dto\Payment\Response\SessionTokensResponse;
+use X2Y\HyperSwitchClient\Transport\Endpoint;
 
 /**
- * Hyperswitch Payments group. The hot path of the SDK — every storefront
+ * HyperSwitch Payments group. The hot path of the SDK — every storefront
  * checkout flow runs through here.
  *
  * `POST /payments` is polymorphic: the same path handles standard creates,

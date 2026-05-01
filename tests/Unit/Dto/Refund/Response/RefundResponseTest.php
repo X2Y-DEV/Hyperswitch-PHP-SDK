@@ -1,13 +1,13 @@
 <?php
 declare(strict_types=1);
 
-namespace X2Y\HyperswitchClient\Tests\Unit\Dto\Refund\Response;
+namespace X2Y\HyperSwitchClient\Tests\Unit\Dto\Refund\Response;
 
 use PHPUnit\Framework\TestCase;
-use X2Y\HyperswitchClient\Dto\Refund\Response\RefundResponse;
-use X2Y\HyperswitchClient\Enum\Currency;
-use X2Y\HyperswitchClient\Enum\RefundStatus;
-use X2Y\HyperswitchClient\Enum\RefundType;
+use X2Y\HyperSwitchClient\Dto\Refund\Response\RefundResponse;
+use X2Y\HyperSwitchClient\Enum\Currency;
+use X2Y\HyperSwitchClient\Enum\RefundStatus;
+use X2Y\HyperSwitchClient\Enum\RefundType;
 
 final class RefundResponseTest extends TestCase
 {

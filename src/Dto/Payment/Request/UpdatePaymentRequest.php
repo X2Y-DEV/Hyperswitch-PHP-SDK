@@ -1,15 +1,15 @@
 <?php
 declare(strict_types=1);
 
-namespace X2Y\HyperswitchClient\Dto\Payment\Request;
+namespace X2Y\HyperSwitchClient\Dto\Payment\Request;
 
-use X2Y\HyperswitchClient\Dto\AbstractRequestDto;
-use X2Y\HyperswitchClient\Dto\Common\Address;
-use X2Y\HyperswitchClient\Dto\Common\BillingDetails;
-use X2Y\HyperswitchClient\Enum\AuthenticationType;
-use X2Y\HyperswitchClient\Enum\CaptureMethod;
-use X2Y\HyperswitchClient\Enum\Currency;
-use X2Y\HyperswitchClient\Enum\SetupFutureUsage;
+use X2Y\HyperSwitchClient\Dto\AbstractRequestDto;
+use X2Y\HyperSwitchClient\Dto\Common\Address;
+use X2Y\HyperSwitchClient\Dto\Common\BillingDetails;
+use X2Y\HyperSwitchClient\Enum\AuthenticationType;
+use X2Y\HyperSwitchClient\Enum\CaptureMethod;
+use X2Y\HyperSwitchClient\Enum\Currency;
+use X2Y\HyperSwitchClient\Enum\SetupFutureUsage;
 
 /**
  * Update an existing payment intent before confirmation. Same field shape

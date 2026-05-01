@@ -1,10 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace X2Y\HyperswitchClient\Dto\PaymentMethodSession\Response;
+namespace X2Y\HyperSwitchClient\Dto\PaymentMethodSession\Response;
 
-use X2Y\HyperswitchClient\Dto\AbstractResponseDto;
-use X2Y\HyperswitchClient\Internal\DateTimeParser;
+use X2Y\HyperSwitchClient\Dto\AbstractResponseDto;
+use X2Y\HyperSwitchClient\Internal\DateTimeParser;
 
 /**
  * Response from /v1/payment-method-sessions create / retrieve / confirm /

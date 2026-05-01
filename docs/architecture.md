@@ -1,6 +1,6 @@
 # Architecture
 
-The SDK is a thin, layered client for the Hyperswitch HTTP API. Every layer is
+The SDK is a thin, layered client for the HyperSwitch HTTP API. Every layer is
 replaceable in isolation — Resources don't know about HTTP, the ApiClient
 doesn't know about Postman groups, and DTOs don't know about transport.
 
@@ -64,7 +64,7 @@ doesn't know about Postman groups, and DTOs don't know about transport.
 - **AuthTier enum:** ADMIN, MERCHANT, PUBLISHABLE, EPHEMERAL.
 - **AuthContextResolverInterface:** returns headers for a given tier.
 - **Wiring:** the consumer instantiates resolvers with their keys and registers
-  them with `HyperswitchClient`. The ApiClient picks the right resolver from
+  them with `HyperSwitchClient`. The ApiClient picks the right resolver from
   the Endpoint's declared `authTier`.
 
 ## Why this shape
@@ -80,7 +80,7 @@ doesn't know about Postman groups, and DTOs don't know about transport.
 4. **Replaceable transport.** The PSR-18 dependency is a contract, not a
    library — consumers pick `symfony/http-client`, `guzzlehttp/guzzle`, or
    their own.
-5. **Forward compatibility.** Hyperswitch can add fields to a response without
+5. **Forward compatibility.** HyperSwitch can add fields to a response without
    breaking the SDK — `extras` preserves them. Bumping minor versions for
    new fields is non-disruptive.
 
@@ -100,4 +100,4 @@ doesn't know about Postman groups, and DTOs don't know about transport.
 Semver. See [README.md](../README.md#versioning) and
 [CHANGELOG.md](../CHANGELOG.md). Each release is tagged with the
 `@hyperswitch-source` date it was reconciled against, so consumers can trace
-exactly which Hyperswitch API surface a release reflects.
+exactly which HyperSwitch API surface a release reflects.

@@ -1,17 +1,17 @@
 <?php
 declare(strict_types=1);
 
-namespace X2Y\HyperswitchClient\Endpoint;
+namespace X2Y\HyperSwitchClient\Endpoint;
 
-use X2Y\HyperswitchClient\Auth\AuthTier;
-use X2Y\HyperswitchClient\Dto\Connector\Request\CreateConnectorRequest;
-use X2Y\HyperswitchClient\Dto\Connector\Request\UpdateConnectorRequest;
-use X2Y\HyperswitchClient\Dto\Connector\Response\ConnectorDeleteResponse;
-use X2Y\HyperswitchClient\Dto\Connector\Response\ConnectorResponse;
-use X2Y\HyperswitchClient\Transport\Endpoint;
+use X2Y\HyperSwitchClient\Auth\AuthTier;
+use X2Y\HyperSwitchClient\Dto\Connector\Request\CreateConnectorRequest;
+use X2Y\HyperSwitchClient\Dto\Connector\Request\UpdateConnectorRequest;
+use X2Y\HyperSwitchClient\Dto\Connector\Response\ConnectorDeleteResponse;
+use X2Y\HyperSwitchClient\Dto\Connector\Response\ConnectorResponse;
+use X2Y\HyperSwitchClient\Transport\Endpoint;
 
 /**
- * Hyperswitch Payment Connectors group. Admin-tier — for attaching and
+ * HyperSwitch Payment Connectors group. Admin-tier — for attaching and
  * configuring upstream PSPs (Stripe, Adyen, etc.) on a merchant account.
  *
  * @postman             PaymentConnectors

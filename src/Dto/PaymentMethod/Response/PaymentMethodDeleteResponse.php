@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace X2Y\HyperswitchClient\Dto\PaymentMethod\Response;
+namespace X2Y\HyperSwitchClient\Dto\PaymentMethod\Response;
 
-use X2Y\HyperswitchClient\Dto\AbstractResponseDto;
+use X2Y\HyperSwitchClient\Dto\AbstractResponseDto;
 
 /**
  * @postman             Payment Methods - Modular Payment / Payment Methods - Delete

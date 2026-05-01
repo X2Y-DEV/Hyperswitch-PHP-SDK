@@ -1,27 +1,27 @@
 <?php
 declare(strict_types=1);
 
-namespace X2Y\HyperswitchClient\Resource;
+namespace X2Y\HyperSwitchClient\Resource;
 
-use X2Y\HyperswitchClient\Dto\Common\PaginatedList;
-use X2Y\HyperswitchClient\Dto\Subscription\Request\CancelSubscriptionRequest;
-use X2Y\HyperswitchClient\Dto\Subscription\Request\ConfirmSubscriptionRequest;
-use X2Y\HyperswitchClient\Dto\Subscription\Request\CreateAndConfirmSubscriptionRequest;
-use X2Y\HyperswitchClient\Dto\Subscription\Request\CreateSubscriptionRequest;
-use X2Y\HyperswitchClient\Dto\Subscription\Request\EstimateSubscriptionRequest;
-use X2Y\HyperswitchClient\Dto\Subscription\Request\ListPlansRequest;
-use X2Y\HyperswitchClient\Dto\Subscription\Request\ListSubscriptionsRequest;
-use X2Y\HyperswitchClient\Dto\Subscription\Request\PauseSubscriptionRequest;
-use X2Y\HyperswitchClient\Dto\Subscription\Request\ResumeSubscriptionRequest;
-use X2Y\HyperswitchClient\Dto\Subscription\Request\UpdateSubscriptionRequest;
-use X2Y\HyperswitchClient\Dto\Subscription\Response\EstimateResponse;
-use X2Y\HyperswitchClient\Dto\Subscription\Response\PlanResponse;
-use X2Y\HyperswitchClient\Dto\Subscription\Response\SubscriptionResponse;
-use X2Y\HyperswitchClient\Endpoint\SubscriptionsEndpoints;
-use X2Y\HyperswitchClient\Exception\HyperswitchApiException;
+use X2Y\HyperSwitchClient\Dto\Common\PaginatedList;
+use X2Y\HyperSwitchClient\Dto\Subscription\Request\CancelSubscriptionRequest;
+use X2Y\HyperSwitchClient\Dto\Subscription\Request\ConfirmSubscriptionRequest;
+use X2Y\HyperSwitchClient\Dto\Subscription\Request\CreateAndConfirmSubscriptionRequest;
+use X2Y\HyperSwitchClient\Dto\Subscription\Request\CreateSubscriptionRequest;
+use X2Y\HyperSwitchClient\Dto\Subscription\Request\EstimateSubscriptionRequest;
+use X2Y\HyperSwitchClient\Dto\Subscription\Request\ListPlansRequest;
+use X2Y\HyperSwitchClient\Dto\Subscription\Request\ListSubscriptionsRequest;
+use X2Y\HyperSwitchClient\Dto\Subscription\Request\PauseSubscriptionRequest;
+use X2Y\HyperSwitchClient\Dto\Subscription\Request\ResumeSubscriptionRequest;
+use X2Y\HyperSwitchClient\Dto\Subscription\Request\UpdateSubscriptionRequest;
+use X2Y\HyperSwitchClient\Dto\Subscription\Response\EstimateResponse;
+use X2Y\HyperSwitchClient\Dto\Subscription\Response\PlanResponse;
+use X2Y\HyperSwitchClient\Dto\Subscription\Response\SubscriptionResponse;
+use X2Y\HyperSwitchClient\Endpoint\SubscriptionsEndpoints;
+use X2Y\HyperSwitchClient\Exception\HyperSwitchApiException;
 
 /**
- * Typed facade over the Hyperswitch Subscriptions API group.
+ * Typed facade over the HyperSwitch Subscriptions API group.
  *
  * @postman             Subscriptions
  * @hyperswitch-source  2026-04-30
@@ -38,7 +38,7 @@ final class SubscriptionsResource extends AbstractResource
             request: $request,
         );
         if (!$response instanceof SubscriptionResponse) {
-            throw new HyperswitchApiException('Unexpected response type from Subscriptions::create.');
+            throw new HyperSwitchApiException('Unexpected response type from Subscriptions::create.');
         }
         return $response;
     }
@@ -53,7 +53,7 @@ final class SubscriptionsResource extends AbstractResource
             request: $request,
         );
         if (!$response instanceof SubscriptionResponse) {
-            throw new HyperswitchApiException('Unexpected response type from Subscriptions::createAndConfirm.');
+            throw new HyperSwitchApiException('Unexpected response type from Subscriptions::createAndConfirm.');
         }
         return $response;
     }
@@ -69,7 +69,7 @@ final class SubscriptionsResource extends AbstractResource
             pathParams: ['id' => $subscriptionId],
         );
         if (!$response instanceof SubscriptionResponse) {
-            throw new HyperswitchApiException('Unexpected response type from Subscriptions::confirm.');
+            throw new HyperSwitchApiException('Unexpected response type from Subscriptions::confirm.');
         }
         return $response;
     }
@@ -85,7 +85,7 @@ final class SubscriptionsResource extends AbstractResource
             pathParams: ['id' => $subscriptionId],
         );
         if (!$response instanceof SubscriptionResponse) {
-            throw new HyperswitchApiException('Unexpected response type from Subscriptions::update.');
+            throw new HyperSwitchApiException('Unexpected response type from Subscriptions::update.');
         }
         return $response;
     }
@@ -100,7 +100,7 @@ final class SubscriptionsResource extends AbstractResource
             pathParams: ['id' => $subscriptionId],
         );
         if (!$response instanceof SubscriptionResponse) {
-            throw new HyperswitchApiException('Unexpected response type from Subscriptions::retrieve.');
+            throw new HyperSwitchApiException('Unexpected response type from Subscriptions::retrieve.');
         }
         return $response;
     }
@@ -116,7 +116,7 @@ final class SubscriptionsResource extends AbstractResource
             pathParams: ['id' => $subscriptionId],
         );
         if (!$response instanceof SubscriptionResponse) {
-            throw new HyperswitchApiException('Unexpected response type from Subscriptions::pause.');
+            throw new HyperSwitchApiException('Unexpected response type from Subscriptions::pause.');
         }
         return $response;
     }
@@ -132,7 +132,7 @@ final class SubscriptionsResource extends AbstractResource
             pathParams: ['id' => $subscriptionId],
         );
         if (!$response instanceof SubscriptionResponse) {
-            throw new HyperswitchApiException('Unexpected response type from Subscriptions::resume.');
+            throw new HyperSwitchApiException('Unexpected response type from Subscriptions::resume.');
         }
         return $response;
     }
@@ -148,7 +148,7 @@ final class SubscriptionsResource extends AbstractResource
             pathParams: ['id' => $subscriptionId],
         );
         if (!$response instanceof SubscriptionResponse) {
-            throw new HyperswitchApiException('Unexpected response type from Subscriptions::cancel.');
+            throw new HyperSwitchApiException('Unexpected response type from Subscriptions::cancel.');
         }
         return $response;
     }
@@ -167,7 +167,7 @@ final class SubscriptionsResource extends AbstractResource
             queryParams: $queryParams,
         );
         if ($response !== null && !is_array($response)) {
-            throw new HyperswitchApiException('Unexpected response type from Subscriptions::list.');
+            throw new HyperSwitchApiException('Unexpected response type from Subscriptions::list.');
         }
         /** @var array<int|string, mixed> $raw */
         $raw = $response ?? [];
@@ -191,7 +191,7 @@ final class SubscriptionsResource extends AbstractResource
             queryParams: $queryParams,
         );
         if ($response !== null && !is_array($response)) {
-            throw new HyperswitchApiException('Unexpected response type from Subscriptions::plans.');
+            throw new HyperSwitchApiException('Unexpected response type from Subscriptions::plans.');
         }
         /** @var array<int|string, mixed> $raw */
         $raw = $response ?? [];
@@ -211,7 +211,7 @@ final class SubscriptionsResource extends AbstractResource
             queryParams: $request->toArray(),
         );
         if (!$response instanceof EstimateResponse) {
-            throw new HyperswitchApiException('Unexpected response type from Subscriptions::estimate.');
+            throw new HyperSwitchApiException('Unexpected response type from Subscriptions::estimate.');
         }
         return $response;
     }

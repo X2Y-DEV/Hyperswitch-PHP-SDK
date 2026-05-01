@@ -1,10 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace X2Y\HyperswitchClient\Enum;
+namespace X2Y\HyperSwitchClient\Enum;
 
 /**
- * Hyperswitch webhook event types. The set is open-ended — Hyperswitch can
+ * HyperSwitch webhook event types. The set is open-ended — HyperSwitch can
  * ship new event types at any time, so consumers should always retain the
  * raw string from `WebhookEvent::$eventTypeRaw` and treat the enum as an
  * ergonomic lookup that may return `null` for unknown types.
@@ -12,7 +12,7 @@ namespace X2Y\HyperswitchClient\Enum;
  * Use `EventType::tryFrom(...)` rather than `EventType::from(...)` when
  * decoding inbound events.
  *
- * @postman             Webhooks (cross-cutting; emitted by every Hyperswitch resource)
+ * @postman             Webhooks (cross-cutting; emitted by every HyperSwitch resource)
  * @hyperswitch-source  2026-04-30
  */
 enum EventType: string implements LabelledEnum

@@ -1,25 +1,25 @@
 <?php
 /**
  * Minimal webhook receiver — bare PHP, no framework. Drop into a public
- * endpoint and point Hyperswitch's webhook configuration at this URL.
+ * endpoint and point HyperSwitch's webhook configuration at this URL.
  *
  * For PSR-15 / framework integrations the same pattern applies — read the
  * raw body, read the signature header, decode, dispatch on event type.
  *
  * Configuration:
  *   - HYPERSWITCH_WEBHOOK_KEY  the merchant's "Payment Response Hash Key"
- *                              from Hyperswitch's business profile config.
+ *                              from HyperSwitch's business profile config.
  */
 
 declare(strict_types=1);
 
 require __DIR__ . '/../../vendor/autoload.php';
 
-use X2Y\HyperswitchClient\Enum\EventType;
-use X2Y\HyperswitchClient\Exception\InvalidSignatureException;
-use X2Y\HyperswitchClient\Exception\InvalidWebhookPayloadException;
-use X2Y\HyperswitchClient\Webhook\EventDecoder;
-use X2Y\HyperswitchClient\Webhook\SignatureVerifier;
+use X2Y\HyperSwitchClient\Enum\EventType;
+use X2Y\HyperSwitchClient\Exception\InvalidSignatureException;
+use X2Y\HyperSwitchClient\Exception\InvalidWebhookPayloadException;
+use X2Y\HyperSwitchClient\Webhook\EventDecoder;
+use X2Y\HyperSwitchClient\Webhook\SignatureVerifier;
 
 $hashKey = getenv('HYPERSWITCH_WEBHOOK_KEY');
 if ($hashKey === false || $hashKey === '') {
@@ -32,7 +32,7 @@ if ($hashKey === false || $hashKey === '') {
 $verifier = new SignatureVerifier($hashKey, SignatureVerifier::ALGO_SHA512);
 $decoder  = new EventDecoder($verifier);
 
-// Hyperswitch's signature header name has varied across versions. Check
+// HyperSwitch's signature header name has varied across versions. Check
 // both common forms; case-insensitive.
 $signature = $_SERVER['HTTP_X_WEBHOOK_SIGNATURE_512']
     ?? $_SERVER['HTTP_X_WEBHOOK_SIGNATURE']
@@ -95,7 +95,7 @@ switch ($event->eventType) {
         break;
 
     case null:
-        // Hyperswitch shipped an event_type the SDK does not yet enumerate.
+        // HyperSwitch shipped an event_type the SDK does not yet enumerate.
         // The raw string is preserved on $event->eventTypeRaw.
         error_log(sprintf(
             '[hyperswitch-webhook] unknown event_type "%s" (event_id=%s)',
@@ -114,7 +114,7 @@ switch ($event->eventType) {
 }
 
 // Always ack with 200 once authenticated, even for unhandled events —
-// otherwise Hyperswitch will retry indefinitely.
+// otherwise HyperSwitch will retry indefinitely.
 http_response_code(200);
 header('Content-Type: text/plain');
 echo "OK\n";

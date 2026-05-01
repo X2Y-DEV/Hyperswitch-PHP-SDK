@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace X2Y\HyperswitchClient\Tests\Unit\Transport;
+namespace X2Y\HyperSwitchClient\Tests\Unit\Transport;
 
 use Nyholm\Psr7\Factory\Psr17Factory;
 use Nyholm\Psr7\Response;
@@ -10,21 +10,21 @@ use Psr\Http\Client\ClientExceptionInterface;
 use Psr\Http\Client\ClientInterface;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
-use X2Y\HyperswitchClient\Auth\AuthTier;
-use X2Y\HyperswitchClient\Auth\MerchantKeyAuthResolver;
-use X2Y\HyperswitchClient\Dto\Payment\Request\CreatePaymentRequest;
-use X2Y\HyperswitchClient\Dto\Payment\Response\PaymentResponse;
-use X2Y\HyperswitchClient\Enum\Currency;
-use X2Y\HyperswitchClient\Exception\AuthenticationException;
-use X2Y\HyperswitchClient\Exception\HyperswitchApiException;
-use X2Y\HyperswitchClient\Exception\NotFoundException;
-use X2Y\HyperswitchClient\Exception\RateLimitedException;
-use X2Y\HyperswitchClient\Exception\TransientException;
-use X2Y\HyperswitchClient\Exception\TransportException;
-use X2Y\HyperswitchClient\Exception\ValidationException;
-use X2Y\HyperswitchClient\Transport\ApiClient;
-use X2Y\HyperswitchClient\Transport\Endpoint;
-use X2Y\HyperswitchClient\Transport\Middleware\ClientMiddlewareInterface;
+use X2Y\HyperSwitchClient\Auth\AuthTier;
+use X2Y\HyperSwitchClient\Auth\MerchantKeyAuthResolver;
+use X2Y\HyperSwitchClient\Dto\Payment\Request\CreatePaymentRequest;
+use X2Y\HyperSwitchClient\Dto\Payment\Response\PaymentResponse;
+use X2Y\HyperSwitchClient\Enum\Currency;
+use X2Y\HyperSwitchClient\Exception\AuthenticationException;
+use X2Y\HyperSwitchClient\Exception\HyperSwitchApiException;
+use X2Y\HyperSwitchClient\Exception\NotFoundException;
+use X2Y\HyperSwitchClient\Exception\RateLimitedException;
+use X2Y\HyperSwitchClient\Exception\TransientException;
+use X2Y\HyperSwitchClient\Exception\TransportException;
+use X2Y\HyperSwitchClient\Exception\ValidationException;
+use X2Y\HyperSwitchClient\Transport\ApiClient;
+use X2Y\HyperSwitchClient\Transport\Endpoint;
+use X2Y\HyperSwitchClient\Transport\Middleware\ClientMiddlewareInterface;
 
 final class ApiClientTest extends TestCase
 {
@@ -243,7 +243,7 @@ final class ApiClientTest extends TestCase
     {
         $http = $this->clientReturning(new Response(200, [], '{}'));
         $client = $this->makeClient($http, []); // no resolvers registered
-        $this->expectException(HyperswitchApiException::class);
+        $this->expectException(HyperSwitchApiException::class);
         $this->expectExceptionMessage('No AuthContextResolver registered for tier "merchant"');
         $client->execute($this->paymentEndpoint(), request: new CreatePaymentRequest(amount: 1, currency: Currency::USD));
     }
@@ -284,7 +284,7 @@ final class ApiClientTest extends TestCase
     {
         $http = $this->clientReturning(new Response(200, [], '[1, 2, 3]'));
         $client = $this->makeClient($http, ['merchant' => new MerchantKeyAuthResolver('snd')]);
-        $this->expectException(HyperswitchApiException::class);
+        $this->expectException(HyperSwitchApiException::class);
         $this->expectExceptionMessage('returned a JSON array');
         $client->execute($this->paymentEndpoint(), request: new CreatePaymentRequest(amount: 1, currency: Currency::USD));
     }

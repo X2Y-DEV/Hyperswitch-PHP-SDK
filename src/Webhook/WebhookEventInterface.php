@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace X2Y\HyperswitchClient\Webhook;
+namespace X2Y\HyperSwitchClient\Webhook;
 
 /**
  * Marker interface for inbound webhook events. Concrete implementations

@@ -1,18 +1,18 @@
 <?php
 declare(strict_types=1);
 
-namespace X2Y\HyperswitchClient\Resource;
+namespace X2Y\HyperSwitchClient\Resource;
 
-use X2Y\HyperswitchClient\Dto\BusinessProfile\Request\CreateBusinessProfileRequest;
-use X2Y\HyperswitchClient\Dto\BusinessProfile\Request\UpdateBusinessProfileRequest;
-use X2Y\HyperswitchClient\Dto\BusinessProfile\Response\BusinessProfileDeleteResponse;
-use X2Y\HyperswitchClient\Dto\BusinessProfile\Response\BusinessProfileResponse;
-use X2Y\HyperswitchClient\Dto\Common\PaginatedList;
-use X2Y\HyperswitchClient\Endpoint\BusinessProfileEndpoints;
-use X2Y\HyperswitchClient\Exception\HyperswitchApiException;
+use X2Y\HyperSwitchClient\Dto\BusinessProfile\Request\CreateBusinessProfileRequest;
+use X2Y\HyperSwitchClient\Dto\BusinessProfile\Request\UpdateBusinessProfileRequest;
+use X2Y\HyperSwitchClient\Dto\BusinessProfile\Response\BusinessProfileDeleteResponse;
+use X2Y\HyperSwitchClient\Dto\BusinessProfile\Response\BusinessProfileResponse;
+use X2Y\HyperSwitchClient\Dto\Common\PaginatedList;
+use X2Y\HyperSwitchClient\Endpoint\BusinessProfileEndpoints;
+use X2Y\HyperSwitchClient\Exception\HyperSwitchApiException;
 
 /**
- * Typed facade over the Hyperswitch Business Profile group. Admin-tier.
+ * Typed facade over the HyperSwitch Business Profile group. Admin-tier.
  *
  * @postman             Business Profile
  * @hyperswitch-source  2026-04-30
@@ -27,7 +27,7 @@ final class BusinessProfileResource extends AbstractResource
             pathParams: ['merchant_id' => $merchantId],
         );
         if (!$response instanceof BusinessProfileResponse) {
-            throw new HyperswitchApiException('Unexpected response type from BusinessProfile::create.');
+            throw new HyperSwitchApiException('Unexpected response type from BusinessProfile::create.');
         }
         return $response;
     }
@@ -39,7 +39,7 @@ final class BusinessProfileResource extends AbstractResource
             pathParams: ['merchant_id' => $merchantId, 'profile_id' => $profileId],
         );
         if (!$response instanceof BusinessProfileResponse) {
-            throw new HyperswitchApiException('Unexpected response type from BusinessProfile::retrieve.');
+            throw new HyperSwitchApiException('Unexpected response type from BusinessProfile::retrieve.');
         }
         return $response;
     }
@@ -55,7 +55,7 @@ final class BusinessProfileResource extends AbstractResource
             pathParams: ['merchant_id' => $merchantId, 'profile_id' => $profileId],
         );
         if (!$response instanceof BusinessProfileResponse) {
-            throw new HyperswitchApiException('Unexpected response type from BusinessProfile::update.');
+            throw new HyperSwitchApiException('Unexpected response type from BusinessProfile::update.');
         }
         return $response;
     }
@@ -67,7 +67,7 @@ final class BusinessProfileResource extends AbstractResource
             pathParams: ['merchant_id' => $merchantId, 'profile_id' => $profileId],
         );
         if (!$response instanceof BusinessProfileDeleteResponse) {
-            throw new HyperswitchApiException('Unexpected response type from BusinessProfile::delete.');
+            throw new HyperSwitchApiException('Unexpected response type from BusinessProfile::delete.');
         }
         return $response;
     }
@@ -82,7 +82,7 @@ final class BusinessProfileResource extends AbstractResource
             pathParams: ['merchant_id' => $merchantId],
         );
         if ($response !== null && !is_array($response)) {
-            throw new HyperswitchApiException('Unexpected response type from BusinessProfile::list.');
+            throw new HyperSwitchApiException('Unexpected response type from BusinessProfile::list.');
         }
         /** @var array<int|string, mixed> $raw */
         $raw = $response ?? [];

@@ -1,10 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace X2Y\HyperswitchClient\Dto\PaymentMethodSession\Request;
+namespace X2Y\HyperSwitchClient\Dto\PaymentMethodSession\Request;
 
-use X2Y\HyperswitchClient\Dto\AbstractRequestDto;
-use X2Y\HyperswitchClient\Enum\PaymentMethod;
+use X2Y\HyperSwitchClient\Dto\AbstractRequestDto;
+use X2Y\HyperSwitchClient\Enum\PaymentMethod;
 
 /**
  * Confirm a payment-method session by attaching a tokenised instrument.

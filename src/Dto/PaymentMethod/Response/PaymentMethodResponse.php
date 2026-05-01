@@ -1,11 +1,11 @@
 <?php
 declare(strict_types=1);
 
-namespace X2Y\HyperswitchClient\Dto\PaymentMethod\Response;
+namespace X2Y\HyperSwitchClient\Dto\PaymentMethod\Response;
 
-use X2Y\HyperswitchClient\Dto\AbstractResponseDto;
-use X2Y\HyperswitchClient\Enum\PaymentMethod;
-use X2Y\HyperswitchClient\Internal\DateTimeParser;
+use X2Y\HyperSwitchClient\Dto\AbstractResponseDto;
+use X2Y\HyperSwitchClient\Enum\PaymentMethod;
+use X2Y\HyperSwitchClient\Internal\DateTimeParser;
 
 /**
  * Response from /v1/payment-methods create / retrieve / update / list (item).

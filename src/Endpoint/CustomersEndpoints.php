@@ -1,19 +1,19 @@
 <?php
 declare(strict_types=1);
 
-namespace X2Y\HyperswitchClient\Endpoint;
+namespace X2Y\HyperSwitchClient\Endpoint;
 
-use X2Y\HyperswitchClient\Auth\AuthTier;
-use X2Y\HyperswitchClient\Dto\Customer\Request\CreateCustomerRequest;
-use X2Y\HyperswitchClient\Dto\Customer\Request\CreateEphemeralKeyRequest;
-use X2Y\HyperswitchClient\Dto\Customer\Request\UpdateCustomerRequest;
-use X2Y\HyperswitchClient\Dto\Customer\Response\CustomerDeleteResponse;
-use X2Y\HyperswitchClient\Dto\Customer\Response\CustomerResponse;
-use X2Y\HyperswitchClient\Dto\Customer\Response\EphemeralKeyResponse;
-use X2Y\HyperswitchClient\Transport\Endpoint;
+use X2Y\HyperSwitchClient\Auth\AuthTier;
+use X2Y\HyperSwitchClient\Dto\Customer\Request\CreateCustomerRequest;
+use X2Y\HyperSwitchClient\Dto\Customer\Request\CreateEphemeralKeyRequest;
+use X2Y\HyperSwitchClient\Dto\Customer\Request\UpdateCustomerRequest;
+use X2Y\HyperSwitchClient\Dto\Customer\Response\CustomerDeleteResponse;
+use X2Y\HyperSwitchClient\Dto\Customer\Response\CustomerResponse;
+use X2Y\HyperSwitchClient\Dto\Customer\Response\EphemeralKeyResponse;
+use X2Y\HyperSwitchClient\Transport\Endpoint;
 
 /**
- * Hyperswitch Customers group.
+ * HyperSwitch Customers group.
  *
  * @postman             Customers
  * @hyperswitch-source  2026-04-30

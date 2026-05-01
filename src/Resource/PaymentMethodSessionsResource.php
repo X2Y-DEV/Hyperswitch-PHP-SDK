@@ -1,20 +1,20 @@
 <?php
 declare(strict_types=1);
 
-namespace X2Y\HyperswitchClient\Resource;
+namespace X2Y\HyperSwitchClient\Resource;
 
-use X2Y\HyperswitchClient\Dto\Common\PaginatedList;
-use X2Y\HyperswitchClient\Dto\PaymentMethod\Response\PaymentMethodResponse;
-use X2Y\HyperswitchClient\Dto\PaymentMethodSession\Request\ConfirmSessionRequest;
-use X2Y\HyperswitchClient\Dto\PaymentMethodSession\Request\CreateSessionRequest;
-use X2Y\HyperswitchClient\Dto\PaymentMethodSession\Request\SessionTokenLookupRequest;
-use X2Y\HyperswitchClient\Dto\PaymentMethodSession\Request\UpdateSavedPaymentMethodRequest;
-use X2Y\HyperswitchClient\Dto\PaymentMethodSession\Response\SessionResponse;
-use X2Y\HyperswitchClient\Endpoint\PaymentMethodSessionsEndpoints;
-use X2Y\HyperswitchClient\Exception\HyperswitchApiException;
+use X2Y\HyperSwitchClient\Dto\Common\PaginatedList;
+use X2Y\HyperSwitchClient\Dto\PaymentMethod\Response\PaymentMethodResponse;
+use X2Y\HyperSwitchClient\Dto\PaymentMethodSession\Request\ConfirmSessionRequest;
+use X2Y\HyperSwitchClient\Dto\PaymentMethodSession\Request\CreateSessionRequest;
+use X2Y\HyperSwitchClient\Dto\PaymentMethodSession\Request\SessionTokenLookupRequest;
+use X2Y\HyperSwitchClient\Dto\PaymentMethodSession\Request\UpdateSavedPaymentMethodRequest;
+use X2Y\HyperSwitchClient\Dto\PaymentMethodSession\Response\SessionResponse;
+use X2Y\HyperSwitchClient\Endpoint\PaymentMethodSessionsEndpoints;
+use X2Y\HyperSwitchClient\Exception\HyperSwitchApiException;
 
 /**
- * Typed facade over the Hyperswitch V1 Payment Method Sessions group.
+ * Typed facade over the HyperSwitch V1 Payment Method Sessions group.
  *
  * @postman             Payment Method Sessions
  * @hyperswitch-source  2026-04-30
@@ -28,7 +28,7 @@ final class PaymentMethodSessionsResource extends AbstractResource
             request: $request,
         );
         if (!$response instanceof SessionResponse) {
-            throw new HyperswitchApiException('Unexpected response type from PaymentMethodSessions::create.');
+            throw new HyperSwitchApiException('Unexpected response type from PaymentMethodSessions::create.');
         }
         return $response;
     }
@@ -40,7 +40,7 @@ final class PaymentMethodSessionsResource extends AbstractResource
             pathParams: ['id' => $sessionId],
         );
         if (!$response instanceof SessionResponse) {
-            throw new HyperswitchApiException('Unexpected response type from PaymentMethodSessions::retrieve.');
+            throw new HyperSwitchApiException('Unexpected response type from PaymentMethodSessions::retrieve.');
         }
         return $response;
     }
@@ -55,7 +55,7 @@ final class PaymentMethodSessionsResource extends AbstractResource
             pathParams: ['id' => $sessionId],
         );
         if ($response !== null && !is_array($response)) {
-            throw new HyperswitchApiException(
+            throw new HyperSwitchApiException(
                 'Unexpected response type from PaymentMethodSessions::listPaymentMethods.'
             );
         }
@@ -77,7 +77,7 @@ final class PaymentMethodSessionsResource extends AbstractResource
             pathParams: ['id' => $sessionId],
         );
         if (!$response instanceof SessionResponse) {
-            throw new HyperswitchApiException(
+            throw new HyperSwitchApiException(
                 'Unexpected response type from PaymentMethodSessions::updateSavedPaymentMethod.'
             );
         }
@@ -92,7 +92,7 @@ final class PaymentMethodSessionsResource extends AbstractResource
             pathParams: ['id' => $sessionId],
         );
         if (!$response instanceof SessionResponse) {
-            throw new HyperswitchApiException('Unexpected response type from PaymentMethodSessions::confirm.');
+            throw new HyperSwitchApiException('Unexpected response type from PaymentMethodSessions::confirm.');
         }
         return $response;
     }
@@ -109,7 +109,7 @@ final class PaymentMethodSessionsResource extends AbstractResource
             pathParams: ['token' => $token],
         );
         if (!$response instanceof SessionResponse) {
-            throw new HyperswitchApiException(
+            throw new HyperSwitchApiException(
                 'Unexpected response type from PaymentMethodSessions::tokenLookup.'
             );
         }

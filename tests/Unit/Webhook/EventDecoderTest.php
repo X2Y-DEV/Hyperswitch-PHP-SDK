@@ -1,14 +1,14 @@
 <?php
 declare(strict_types=1);
 
-namespace X2Y\HyperswitchClient\Tests\Unit\Webhook;
+namespace X2Y\HyperSwitchClient\Tests\Unit\Webhook;
 
 use PHPUnit\Framework\TestCase;
-use X2Y\HyperswitchClient\Enum\EventType;
-use X2Y\HyperswitchClient\Exception\InvalidSignatureException;
-use X2Y\HyperswitchClient\Exception\InvalidWebhookPayloadException;
-use X2Y\HyperswitchClient\Webhook\EventDecoder;
-use X2Y\HyperswitchClient\Webhook\SignatureVerifier;
+use X2Y\HyperSwitchClient\Enum\EventType;
+use X2Y\HyperSwitchClient\Exception\InvalidSignatureException;
+use X2Y\HyperSwitchClient\Exception\InvalidWebhookPayloadException;
+use X2Y\HyperSwitchClient\Webhook\EventDecoder;
+use X2Y\HyperSwitchClient\Webhook\SignatureVerifier;
 
 final class EventDecoderTest extends TestCase
 {
@@ -56,7 +56,7 @@ final class EventDecoderTest extends TestCase
 
     public function testFlatTopLevelPayloadIsNotMisinterpreted(): void
     {
-        // Hyperswitch occasionally ships the resource at the top level
+        // HyperSwitch occasionally ships the resource at the top level
         // alongside event_type. We extract from content/data when present;
         // otherwise the payload is empty and asPayment() returns null.
         $body = json_encode([

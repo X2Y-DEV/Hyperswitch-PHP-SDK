@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace X2Y\HyperswitchClient\Tests\Integration;
+namespace X2Y\HyperSwitchClient\Tests\Integration;
 
-use X2Y\HyperswitchClient\Exception\NotFoundException;
+use X2Y\HyperSwitchClient\Exception\NotFoundException;
 
 final class PayoutsIntegrationTest extends AbstractIntegrationTestCase
 {

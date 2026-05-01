@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace X2Y\HyperswitchClient\Dto\Connector\Request;
+namespace X2Y\HyperSwitchClient\Dto\Connector\Request;
 
-use X2Y\HyperswitchClient\Dto\AbstractRequestDto;
+use X2Y\HyperSwitchClient\Dto\AbstractRequestDto;
 
 /**
  * Attach a payment connector (Stripe, Adyen, Worldpay, etc.) to a merchant

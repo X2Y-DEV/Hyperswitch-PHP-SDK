@@ -1,11 +1,11 @@
 <?php
 declare(strict_types=1);
 
-namespace X2Y\HyperswitchClient\Tests\Unit\Internal;
+namespace X2Y\HyperSwitchClient\Tests\Unit\Internal;
 
 use PHPUnit\Framework\TestCase;
-use X2Y\HyperswitchClient\Exception\HyperswitchApiException;
-use X2Y\HyperswitchClient\Internal\DateTimeParser;
+use X2Y\HyperSwitchClient\Exception\HyperSwitchApiException;
+use X2Y\HyperSwitchClient\Internal\DateTimeParser;
 
 final class DateTimeParserTest extends TestCase
 {
@@ -50,21 +50,21 @@ final class DateTimeParserTest extends TestCase
 
     public function testInvalidDatetimeStringThrows(): void
     {
-        $this->expectException(HyperswitchApiException::class);
+        $this->expectException(HyperSwitchApiException::class);
         $this->expectExceptionMessage('Failed to parse datetime');
         DateTimeParser::parse('not-a-date');
     }
 
     public function testUnsupportedTypeThrows(): void
     {
-        $this->expectException(HyperswitchApiException::class);
+        $this->expectException(HyperSwitchApiException::class);
         $this->expectExceptionMessage('Unexpected datetime value type');
         DateTimeParser::parse(['not', 'a', 'date']);
     }
 
     public function testFloatIsRejectedAsUnexpectedType(): void
     {
-        $this->expectException(HyperswitchApiException::class);
+        $this->expectException(HyperSwitchApiException::class);
         DateTimeParser::parse(1.5);
     }
 }

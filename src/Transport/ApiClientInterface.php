@@ -1,13 +1,13 @@
 <?php
 declare(strict_types=1);
 
-namespace X2Y\HyperswitchClient\Transport;
+namespace X2Y\HyperSwitchClient\Transport;
 
-use X2Y\HyperswitchClient\Dto\AbstractRequestDto;
-use X2Y\HyperswitchClient\Dto\AbstractResponseDto;
+use X2Y\HyperSwitchClient\Dto\AbstractRequestDto;
+use X2Y\HyperSwitchClient\Dto\AbstractResponseDto;
 
 /**
- * Single entry point Resources use to dispatch a Hyperswitch call.
+ * Single entry point Resources use to dispatch a HyperSwitch call.
  *
  * Resources never call PSR-18 / curl / sockets directly. They build an
  * Endpoint + Request DTO + path/query params and hand them here.

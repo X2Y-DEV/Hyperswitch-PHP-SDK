@@ -1,17 +1,17 @@
 <?php
 declare(strict_types=1);
 
-namespace X2Y\HyperswitchClient\Endpoint;
+namespace X2Y\HyperSwitchClient\Endpoint;
 
-use X2Y\HyperswitchClient\Auth\AuthTier;
-use X2Y\HyperswitchClient\Dto\MerchantAccount\Request\CreateMerchantAccountRequest;
-use X2Y\HyperswitchClient\Dto\MerchantAccount\Request\UpdateMerchantAccountRequest;
-use X2Y\HyperswitchClient\Dto\MerchantAccount\Response\MerchantAccountDeleteResponse;
-use X2Y\HyperswitchClient\Dto\MerchantAccount\Response\MerchantAccountResponse;
-use X2Y\HyperswitchClient\Transport\Endpoint;
+use X2Y\HyperSwitchClient\Auth\AuthTier;
+use X2Y\HyperSwitchClient\Dto\MerchantAccount\Request\CreateMerchantAccountRequest;
+use X2Y\HyperSwitchClient\Dto\MerchantAccount\Request\UpdateMerchantAccountRequest;
+use X2Y\HyperSwitchClient\Dto\MerchantAccount\Response\MerchantAccountDeleteResponse;
+use X2Y\HyperSwitchClient\Dto\MerchantAccount\Response\MerchantAccountResponse;
+use X2Y\HyperSwitchClient\Transport\Endpoint;
 
 /**
- * Hyperswitch Merchant Accounts group. Admin-tier — for onboarding new
+ * HyperSwitch Merchant Accounts group. Admin-tier — for onboarding new
  * merchants under the platform.
  *
  * @postman             MerchantAccounts

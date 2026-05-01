@@ -1,13 +1,13 @@
 <?php
 declare(strict_types=1);
 
-namespace X2Y\HyperswitchClient\Dto\Customer\Request;
+namespace X2Y\HyperSwitchClient\Dto\Customer\Request;
 
-use X2Y\HyperswitchClient\Dto\AbstractRequestDto;
-use X2Y\HyperswitchClient\Dto\Common\Address;
+use X2Y\HyperSwitchClient\Dto\AbstractRequestDto;
+use X2Y\HyperSwitchClient\Dto\Common\Address;
 
 /**
- * Create a Hyperswitch customer record.
+ * Create a HyperSwitch customer record.
  *
  * @postman             Customers / Create Customer
  * @endpoint            POST /customers

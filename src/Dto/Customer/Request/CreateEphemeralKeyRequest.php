@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace X2Y\HyperswitchClient\Dto\Customer\Request;
+namespace X2Y\HyperSwitchClient\Dto\Customer\Request;
 
-use X2Y\HyperswitchClient\Dto\AbstractRequestDto;
+use X2Y\HyperSwitchClient\Dto\AbstractRequestDto;
 
 /**
  * Mint a short-lived ephemeral key bound to a customer. The merchant server

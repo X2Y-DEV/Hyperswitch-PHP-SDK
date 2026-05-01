@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace X2Y\HyperswitchClient\Auth;
+namespace X2Y\HyperSwitchClient\Auth;
 
 final class PublishableKeyAuthResolver implements AuthContextResolverInterface
 {

@@ -1,6 +1,6 @@
 <?php
 /**
- * End-to-end example: create a payment in the Hyperswitch sandbox.
+ * End-to-end example: create a payment in the HyperSwitch sandbox.
  *
  * Run from the repo root:
  *
@@ -16,12 +16,12 @@ require __DIR__ . '/../../vendor/autoload.php';
 
 use Nyholm\Psr7\Factory\Psr17Factory;
 use Symfony\Component\HttpClient\Psr18Client;
-use X2Y\HyperswitchClient\Auth\MerchantKeyAuthResolver;
-use X2Y\HyperswitchClient\Dto\Payment\Request\CreatePaymentRequest;
-use X2Y\HyperswitchClient\Enum\Currency;
-use X2Y\HyperswitchClient\HyperswitchClient;
-use X2Y\HyperswitchClient\Transport\Middleware\IdempotencyKeyMiddleware;
-use X2Y\HyperswitchClient\Transport\Middleware\RetryMiddleware;
+use X2Y\HyperSwitchClient\Auth\MerchantKeyAuthResolver;
+use X2Y\HyperSwitchClient\Dto\Payment\Request\CreatePaymentRequest;
+use X2Y\HyperSwitchClient\Enum\Currency;
+use X2Y\HyperSwitchClient\HyperSwitchClient;
+use X2Y\HyperSwitchClient\Transport\Middleware\IdempotencyKeyMiddleware;
+use X2Y\HyperSwitchClient\Transport\Middleware\RetryMiddleware;
 
 $apiKey = getenv('HYPERSWITCH_SANDBOX_KEY') ?: throw new RuntimeException(
     'Set HYPERSWITCH_SANDBOX_KEY before running this example.'
@@ -29,7 +29,7 @@ $apiKey = getenv('HYPERSWITCH_SANDBOX_KEY') ?: throw new RuntimeException(
 
 $psr17 = new Psr17Factory();
 
-$client = HyperswitchClient::sandbox(
+$client = HyperSwitchClient::sandbox(
     httpClient:     new Psr18Client(),
     requestFactory: $psr17,
     streamFactory:  $psr17,

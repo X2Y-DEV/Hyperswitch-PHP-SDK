@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace X2Y\HyperswitchClient\Transport\Middleware;
+namespace X2Y\HyperSwitchClient\Transport\Middleware;
 
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
@@ -10,7 +10,7 @@ use Psr\Http\Message\ResponseInterface;
  * Adds an idempotency key header to mutating requests when the caller has
  * not already supplied one. The key is a UUIDv4 generated per call.
  *
- * The header name is configurable; Hyperswitch's documented header is
+ * The header name is configurable; HyperSwitch's documented header is
  * `X-Idempotency-Key` but check current docs before deploying.
  */
 final class IdempotencyKeyMiddleware implements ClientMiddlewareInterface

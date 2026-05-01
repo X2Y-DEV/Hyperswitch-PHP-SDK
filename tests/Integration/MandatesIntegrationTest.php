@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace X2Y\HyperswitchClient\Tests\Integration;
+namespace X2Y\HyperSwitchClient\Tests\Integration;
 
-use X2Y\HyperswitchClient\Exception\NotFoundException;
+use X2Y\HyperSwitchClient\Exception\NotFoundException;
 
 final class MandatesIntegrationTest extends AbstractIntegrationTestCase
 {
@@ -15,7 +15,7 @@ final class MandatesIntegrationTest extends AbstractIntegrationTestCase
 
     public function testListForNonExistentCustomerReturnsNotFound(): void
     {
-        // Hyperswitch returns 404 (not an empty list) when no mandates exist
+        // HyperSwitch returns 404 (not an empty list) when no mandates exist
         // for a customer — we verified this manually during Phase 3.
         $this->expectException(NotFoundException::class);
         $this->client->mandates()->listForCustomer($this->uniqueId('cus_nope'));

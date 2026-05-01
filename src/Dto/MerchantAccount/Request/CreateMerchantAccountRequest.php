@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace X2Y\HyperswitchClient\Dto\MerchantAccount\Request;
+namespace X2Y\HyperSwitchClient\Dto\MerchantAccount\Request;
 
-use X2Y\HyperswitchClient\Dto\AbstractRequestDto;
+use X2Y\HyperSwitchClient\Dto\AbstractRequestDto;
 
 /**
  * Create a new merchant account on the platform. Admin-tier.

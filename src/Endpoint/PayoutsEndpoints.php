@@ -1,18 +1,18 @@
 <?php
 declare(strict_types=1);
 
-namespace X2Y\HyperswitchClient\Endpoint;
+namespace X2Y\HyperSwitchClient\Endpoint;
 
-use X2Y\HyperswitchClient\Auth\AuthTier;
-use X2Y\HyperswitchClient\Dto\Payout\Request\CancelPayoutRequest;
-use X2Y\HyperswitchClient\Dto\Payout\Request\ConfirmPayoutRequest;
-use X2Y\HyperswitchClient\Dto\Payout\Request\CreatePayoutRequest;
-use X2Y\HyperswitchClient\Dto\Payout\Request\UpdatePayoutRequest;
-use X2Y\HyperswitchClient\Dto\Payout\Response\PayoutResponse;
-use X2Y\HyperswitchClient\Transport\Endpoint;
+use X2Y\HyperSwitchClient\Auth\AuthTier;
+use X2Y\HyperSwitchClient\Dto\Payout\Request\CancelPayoutRequest;
+use X2Y\HyperSwitchClient\Dto\Payout\Request\ConfirmPayoutRequest;
+use X2Y\HyperSwitchClient\Dto\Payout\Request\CreatePayoutRequest;
+use X2Y\HyperSwitchClient\Dto\Payout\Request\UpdatePayoutRequest;
+use X2Y\HyperSwitchClient\Dto\Payout\Response\PayoutResponse;
+use X2Y\HyperSwitchClient\Transport\Endpoint;
 
 /**
- * Hyperswitch Payouts group.
+ * HyperSwitch Payouts group.
  *
  * The Postman "Payout Links" group is intentionally not modelled as its
  * own Resource because all five of its items collide with paths owned by

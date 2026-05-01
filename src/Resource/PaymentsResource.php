@@ -1,25 +1,25 @@
 <?php
 declare(strict_types=1);
 
-namespace X2Y\HyperswitchClient\Resource;
+namespace X2Y\HyperSwitchClient\Resource;
 
-use X2Y\HyperswitchClient\Dto\Common\PaginatedList;
-use X2Y\HyperswitchClient\Dto\Payment\Request\CancelPaymentRequest;
-use X2Y\HyperswitchClient\Dto\Payment\Request\CancelPostCapturePaymentRequest;
-use X2Y\HyperswitchClient\Dto\Payment\Request\CapturePaymentRequest;
-use X2Y\HyperswitchClient\Dto\Payment\Request\ConfirmPaymentRequest;
-use X2Y\HyperswitchClient\Dto\Payment\Request\CreatePaymentRequest;
-use X2Y\HyperswitchClient\Dto\Payment\Request\IncrementalAuthorizationRequest;
-use X2Y\HyperswitchClient\Dto\Payment\Request\ListPaymentsRequest;
-use X2Y\HyperswitchClient\Dto\Payment\Request\SessionTokensRequest;
-use X2Y\HyperswitchClient\Dto\Payment\Request\UpdatePaymentRequest;
-use X2Y\HyperswitchClient\Dto\Payment\Response\PaymentResponse;
-use X2Y\HyperswitchClient\Dto\Payment\Response\SessionTokensResponse;
-use X2Y\HyperswitchClient\Endpoint\PaymentsEndpoints;
-use X2Y\HyperswitchClient\Exception\HyperswitchApiException;
+use X2Y\HyperSwitchClient\Dto\Common\PaginatedList;
+use X2Y\HyperSwitchClient\Dto\Payment\Request\CancelPaymentRequest;
+use X2Y\HyperSwitchClient\Dto\Payment\Request\CancelPostCapturePaymentRequest;
+use X2Y\HyperSwitchClient\Dto\Payment\Request\CapturePaymentRequest;
+use X2Y\HyperSwitchClient\Dto\Payment\Request\ConfirmPaymentRequest;
+use X2Y\HyperSwitchClient\Dto\Payment\Request\CreatePaymentRequest;
+use X2Y\HyperSwitchClient\Dto\Payment\Request\IncrementalAuthorizationRequest;
+use X2Y\HyperSwitchClient\Dto\Payment\Request\ListPaymentsRequest;
+use X2Y\HyperSwitchClient\Dto\Payment\Request\SessionTokensRequest;
+use X2Y\HyperSwitchClient\Dto\Payment\Request\UpdatePaymentRequest;
+use X2Y\HyperSwitchClient\Dto\Payment\Response\PaymentResponse;
+use X2Y\HyperSwitchClient\Dto\Payment\Response\SessionTokensResponse;
+use X2Y\HyperSwitchClient\Endpoint\PaymentsEndpoints;
+use X2Y\HyperSwitchClient\Exception\HyperSwitchApiException;
 
 /**
- * Typed facade over the Hyperswitch Payments API group.
+ * Typed facade over the HyperSwitch Payments API group.
  *
  * @postman             Payments
  * @hyperswitch-source  2026-04-30
@@ -36,7 +36,7 @@ final class PaymentsResource extends AbstractResource
             request: $request,
         );
         if (!$response instanceof PaymentResponse) {
-            throw new HyperswitchApiException('Unexpected response type from Payments::create.');
+            throw new HyperSwitchApiException('Unexpected response type from Payments::create.');
         }
         return $response;
     }
@@ -52,7 +52,7 @@ final class PaymentsResource extends AbstractResource
             pathParams: ['id' => $paymentId],
         );
         if (!$response instanceof PaymentResponse) {
-            throw new HyperswitchApiException('Unexpected response type from Payments::update.');
+            throw new HyperSwitchApiException('Unexpected response type from Payments::update.');
         }
         return $response;
     }
@@ -71,7 +71,7 @@ final class PaymentsResource extends AbstractResource
             queryParams: $queryParams,
         );
         if (!$response instanceof PaymentResponse) {
-            throw new HyperswitchApiException('Unexpected response type from Payments::retrieve.');
+            throw new HyperSwitchApiException('Unexpected response type from Payments::retrieve.');
         }
         return $response;
     }
@@ -91,7 +91,7 @@ final class PaymentsResource extends AbstractResource
             pathParams: ['id' => $paymentId],
         );
         if (!$response instanceof PaymentResponse) {
-            throw new HyperswitchApiException('Unexpected response type from Payments::confirm.');
+            throw new HyperSwitchApiException('Unexpected response type from Payments::confirm.');
         }
         return $response;
     }
@@ -107,7 +107,7 @@ final class PaymentsResource extends AbstractResource
             pathParams: ['id' => $paymentId],
         );
         if (!$response instanceof PaymentResponse) {
-            throw new HyperswitchApiException('Unexpected response type from Payments::capture.');
+            throw new HyperSwitchApiException('Unexpected response type from Payments::capture.');
         }
         return $response;
     }
@@ -123,7 +123,7 @@ final class PaymentsResource extends AbstractResource
             pathParams: ['id' => $paymentId],
         );
         if (!$response instanceof PaymentResponse) {
-            throw new HyperswitchApiException('Unexpected response type from Payments::cancel.');
+            throw new HyperSwitchApiException('Unexpected response type from Payments::cancel.');
         }
         return $response;
     }
@@ -141,7 +141,7 @@ final class PaymentsResource extends AbstractResource
             pathParams: ['id' => $paymentId],
         );
         if (!$response instanceof PaymentResponse) {
-            throw new HyperswitchApiException('Unexpected response type from Payments::cancelPostCapture.');
+            throw new HyperSwitchApiException('Unexpected response type from Payments::cancelPostCapture.');
         }
         return $response;
     }
@@ -160,7 +160,7 @@ final class PaymentsResource extends AbstractResource
             queryParams: $queryParams,
         );
         if ($response !== null && !is_array($response)) {
-            throw new HyperswitchApiException('Unexpected response type from Payments::list.');
+            throw new HyperSwitchApiException('Unexpected response type from Payments::list.');
         }
         /** @var array<int|string, mixed> $raw */
         $raw = $response ?? [];
@@ -180,7 +180,7 @@ final class PaymentsResource extends AbstractResource
             request: $request,
         );
         if (!$response instanceof SessionTokensResponse) {
-            throw new HyperswitchApiException('Unexpected response type from Payments::sessionTokens.');
+            throw new HyperSwitchApiException('Unexpected response type from Payments::sessionTokens.');
         }
         return $response;
     }
@@ -198,7 +198,7 @@ final class PaymentsResource extends AbstractResource
             pathParams: ['id' => $paymentId],
         );
         if (!$response instanceof PaymentResponse) {
-            throw new HyperswitchApiException('Unexpected response type from Payments::incrementalAuthorization.');
+            throw new HyperSwitchApiException('Unexpected response type from Payments::incrementalAuthorization.');
         }
         return $response;
     }
@@ -213,7 +213,7 @@ final class PaymentsResource extends AbstractResource
             pathParams: ['id' => $paymentId],
         );
         if (!$response instanceof PaymentResponse) {
-            throw new HyperswitchApiException('Unexpected response type from Payments::extendAuthorization.');
+            throw new HyperSwitchApiException('Unexpected response type from Payments::extendAuthorization.');
         }
         return $response;
     }

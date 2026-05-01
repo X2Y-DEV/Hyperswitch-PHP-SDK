@@ -1,10 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace X2Y\HyperswitchClient\Dto\Relay\Request;
+namespace X2Y\HyperSwitchClient\Dto\Relay\Request;
 
-use X2Y\HyperswitchClient\Dto\AbstractRequestDto;
-use X2Y\HyperswitchClient\Enum\RelayType;
+use X2Y\HyperSwitchClient\Dto\AbstractRequestDto;
+use X2Y\HyperSwitchClient\Enum\RelayType;
 
 /**
  * Relay an operation (capture / refund / void / incremental auth) directly

@@ -1,14 +1,14 @@
 <?php
 declare(strict_types=1);
 
-namespace X2Y\HyperswitchClient\Webhook;
+namespace X2Y\HyperSwitchClient\Webhook;
 
-use X2Y\HyperswitchClient\Exception\InvalidSignatureException;
-use X2Y\HyperswitchClient\Exception\InvalidWebhookPayloadException;
-use X2Y\HyperswitchClient\Internal\Json;
+use X2Y\HyperSwitchClient\Exception\InvalidSignatureException;
+use X2Y\HyperSwitchClient\Exception\InvalidWebhookPayloadException;
+use X2Y\HyperSwitchClient\Internal\Json;
 
 /**
- * One-stop entry point for inbound Hyperswitch webhook handling.
+ * One-stop entry point for inbound HyperSwitch webhook handling.
  *
  *   $decoder = new EventDecoder(new SignatureVerifier($hashKey));
  *

@@ -1,14 +1,14 @@
 <?php
 declare(strict_types=1);
 
-namespace X2Y\HyperswitchClient\Transport;
+namespace X2Y\HyperSwitchClient\Transport;
 
-use X2Y\HyperswitchClient\Auth\AuthTier;
-use X2Y\HyperswitchClient\Dto\AbstractRequestDto;
-use X2Y\HyperswitchClient\Dto\AbstractResponseDto;
+use X2Y\HyperSwitchClient\Auth\AuthTier;
+use X2Y\HyperSwitchClient\Dto\AbstractRequestDto;
+use X2Y\HyperSwitchClient\Dto\AbstractResponseDto;
 
 /**
- * Value object describing one Hyperswitch endpoint.
+ * Value object describing one HyperSwitch endpoint.
  *
  * Resources construct Endpoints (typically via static factory methods on
  * `<Group>Endpoints` classes) and pass them to the ApiClient. The Endpoint

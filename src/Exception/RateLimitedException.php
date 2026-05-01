@@ -1,10 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace X2Y\HyperswitchClient\Exception;
+namespace X2Y\HyperSwitchClient\Exception;
 
 /** Thrown for HTTP 429 responses. Honours the `Retry-After` header when present. */
-final class RateLimitedException extends HyperswitchApiException
+final class RateLimitedException extends HyperSwitchApiException
 {
     public function __construct(
         string $message,

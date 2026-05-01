@@ -1,19 +1,19 @@
 <?php
 declare(strict_types=1);
 
-namespace X2Y\HyperswitchClient\Tests\Integration;
+namespace X2Y\HyperSwitchClient\Tests\Integration;
 
 use Nyholm\Psr7\Factory\Psr17Factory;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpClient\Psr18Client;
-use X2Y\HyperswitchClient\Auth\MerchantKeyAuthResolver;
-use X2Y\HyperswitchClient\Auth\MerchantKeyV1AuthResolver;
-use X2Y\HyperswitchClient\HyperswitchClient;
-use X2Y\HyperswitchClient\Transport\Middleware\IdempotencyKeyMiddleware;
-use X2Y\HyperswitchClient\Transport\Middleware\RetryMiddleware;
+use X2Y\HyperSwitchClient\Auth\MerchantKeyAuthResolver;
+use X2Y\HyperSwitchClient\Auth\MerchantKeyV1AuthResolver;
+use X2Y\HyperSwitchClient\HyperSwitchClient;
+use X2Y\HyperSwitchClient\Transport\Middleware\IdempotencyKeyMiddleware;
+use X2Y\HyperSwitchClient\Transport\Middleware\RetryMiddleware;
 
 /**
- * Base class for tests that hit the real Hyperswitch sandbox.
+ * Base class for tests that hit the real HyperSwitch sandbox.
  *
  * Skips cleanly when `HYPERSWITCH_SANDBOX_KEY` is not set so contributors
  * without sandbox access can still run the unit + drift suites.
@@ -25,7 +25,7 @@ use X2Y\HyperswitchClient\Transport\Middleware\RetryMiddleware;
  */
 abstract class AbstractIntegrationTestCase extends TestCase
 {
-    protected HyperswitchClient $client;
+    protected HyperSwitchClient $client;
     protected string $prefix;
     protected ?string $profileId = null;
 
@@ -40,7 +40,7 @@ abstract class AbstractIntegrationTestCase extends TestCase
         }
 
         $psr17 = new Psr17Factory();
-        $this->client = HyperswitchClient::sandbox(
+        $this->client = HyperSwitchClient::sandbox(
             httpClient:     new Psr18Client(),
             requestFactory: $psr17,
             streamFactory:  $psr17,

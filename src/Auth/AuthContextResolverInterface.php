@@ -1,13 +1,13 @@
 <?php
 declare(strict_types=1);
 
-namespace X2Y\HyperswitchClient\Auth;
+namespace X2Y\HyperSwitchClient\Auth;
 
 /**
  * Returns the headers a request needs for a given auth tier.
  *
  * Implementations are stateless and reusable — instantiated once per tier
- * and registered with the HyperswitchClient.
+ * and registered with the HyperSwitchClient.
  */
 interface AuthContextResolverInterface
 {

@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace X2Y\HyperswitchClient\Dto\Payment\Request;
+namespace X2Y\HyperSwitchClient\Dto\Payment\Request;
 
-use X2Y\HyperswitchClient\Dto\AbstractRequestDto;
+use X2Y\HyperSwitchClient\Dto\AbstractRequestDto;
 
 /**
  * Increase the authorised amount on a payment without re-authenticating.

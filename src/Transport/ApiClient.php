@@ -1,20 +1,20 @@
 <?php
 declare(strict_types=1);
 
-namespace X2Y\HyperswitchClient\Transport;
+namespace X2Y\HyperSwitchClient\Transport;
 
 use Psr\Http\Client\ClientInterface;
 use Psr\Http\Message\RequestFactoryInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\StreamFactoryInterface;
-use X2Y\HyperswitchClient\Auth\AuthContextResolverInterface;
-use X2Y\HyperswitchClient\Auth\AuthTier;
-use X2Y\HyperswitchClient\Dto\AbstractRequestDto;
-use X2Y\HyperswitchClient\Dto\AbstractResponseDto;
-use X2Y\HyperswitchClient\Exception\HyperswitchApiException;
-use X2Y\HyperswitchClient\Exception\TransportException;
-use X2Y\HyperswitchClient\Internal\Json;
-use X2Y\HyperswitchClient\Transport\Middleware\ClientMiddlewareInterface;
+use X2Y\HyperSwitchClient\Auth\AuthContextResolverInterface;
+use X2Y\HyperSwitchClient\Auth\AuthTier;
+use X2Y\HyperSwitchClient\Dto\AbstractRequestDto;
+use X2Y\HyperSwitchClient\Dto\AbstractResponseDto;
+use X2Y\HyperSwitchClient\Exception\HyperSwitchApiException;
+use X2Y\HyperSwitchClient\Exception\TransportException;
+use X2Y\HyperSwitchClient\Internal\Json;
+use X2Y\HyperSwitchClient\Transport\Middleware\ClientMiddlewareInterface;
 
 final class ApiClient implements ApiClientInterface
 {
@@ -65,7 +65,7 @@ final class ApiClient implements ApiClientInterface
                 return $this->httpClient->sendRequest($req);
             } catch (\Psr\Http\Client\ClientExceptionInterface $e) {
                 throw new TransportException(
-                    'Hyperswitch transport failure: ' . $e->getMessage(),
+                    'HyperSwitch transport failure: ' . $e->getMessage(),
                     0,
                     $e,
                 );
@@ -83,7 +83,7 @@ final class ApiClient implements ApiClientInterface
 
         // Errors and typed responses must be JSON objects; only the
         // "no responseClass" path (list endpoints) tolerates JSON arrays.
-        // Some Hyperswitch error responses arrive as plain text rather than
+        // Some HyperSwitch error responses arrive as plain text rather than
         // JSON — fall back to raw-body extraction so the typed status
         // exception still fires with a useful message.
         if ($status >= 400) {
@@ -91,7 +91,7 @@ final class ApiClient implements ApiClientInterface
             if ($raw !== '') {
                 try {
                     $errorPayload = Json::decode($raw);
-                } catch (HyperswitchApiException) {
+                } catch (HyperSwitchApiException) {
                     $errorPayload = ['message' => $raw];
                 }
             }
@@ -117,7 +117,7 @@ final class ApiClient implements ApiClientInterface
     {
         $resolver = $this->authResolvers[$tier->value] ?? null;
         if ($resolver === null) {
-            throw new HyperswitchApiException(
+            throw new HyperSwitchApiException(
                 sprintf('No AuthContextResolver registered for tier "%s".', $tier->value)
             );
         }
@@ -132,17 +132,17 @@ final class ApiClient implements ApiClientInterface
         $message = $this->extractMessage($payload, $status);
         throw match (true) {
             $status === 401, $status === 403
-                => new \X2Y\HyperswitchClient\Exception\AuthenticationException($message, 0, null, $status, $payload),
+                => new \X2Y\HyperSwitchClient\Exception\AuthenticationException($message, 0, null, $status, $payload),
             $status === 404
-                => new \X2Y\HyperswitchClient\Exception\NotFoundException($message, 0, null, $status, $payload),
+                => new \X2Y\HyperSwitchClient\Exception\NotFoundException($message, 0, null, $status, $payload),
             $status === 400, $status === 422
-                => new \X2Y\HyperswitchClient\Exception\ValidationException($message, 0, null, $status, $payload),
+                => new \X2Y\HyperSwitchClient\Exception\ValidationException($message, 0, null, $status, $payload),
             $status === 429
-                => new \X2Y\HyperswitchClient\Exception\RateLimitedException($message, 0, null, $status, $payload),
+                => new \X2Y\HyperSwitchClient\Exception\RateLimitedException($message, 0, null, $status, $payload),
             $status >= 500
-                => new \X2Y\HyperswitchClient\Exception\TransientException($message, 0, null, $status, $payload),
+                => new \X2Y\HyperSwitchClient\Exception\TransientException($message, 0, null, $status, $payload),
             default
-                => new HyperswitchApiException($message, 0, null, $status, $payload),
+                => new HyperSwitchApiException($message, 0, null, $status, $payload),
         };
     }
 
@@ -151,7 +151,7 @@ final class ApiClient implements ApiClientInterface
      */
     private function extractMessage(array $payload, int $status): string
     {
-        // Hyperswitch uses three different error shapes depending on endpoint:
+        // HyperSwitch uses three different error shapes depending on endpoint:
         //   1) { "error": { "message": "...", "code": "..." } }
         //   2) { "error_message": "..." }
         //   3) { "type": "...", "code": "...", "message": "..." }   (flat — IR_xx errors)
@@ -174,6 +174,6 @@ final class ApiClient implements ApiClientInterface
                 ? sprintf('%s [%s]', $message, $code)
                 : $message;
         }
-        return sprintf('Hyperswitch API error (HTTP %d).', $status);
+        return sprintf('HyperSwitch API error (HTTP %d).', $status);
     }
 }

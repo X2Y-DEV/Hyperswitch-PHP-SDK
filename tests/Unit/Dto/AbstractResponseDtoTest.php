@@ -1,10 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace X2Y\HyperswitchClient\Tests\Unit\Dto;
+namespace X2Y\HyperSwitchClient\Tests\Unit\Dto;
 
 use PHPUnit\Framework\TestCase;
-use X2Y\HyperswitchClient\Dto\AbstractResponseDto;
+use X2Y\HyperSwitchClient\Dto\AbstractResponseDto;
 
 final class AbstractResponseDtoTest extends TestCase
 {

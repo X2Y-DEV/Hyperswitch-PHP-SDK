@@ -1,18 +1,18 @@
 <?php
 declare(strict_types=1);
 
-namespace X2Y\HyperswitchClient\Endpoint;
+namespace X2Y\HyperSwitchClient\Endpoint;
 
-use X2Y\HyperswitchClient\Auth\AuthTier;
-use X2Y\HyperswitchClient\Dto\PaymentMethodSession\Request\ConfirmSessionRequest;
-use X2Y\HyperswitchClient\Dto\PaymentMethodSession\Request\CreateSessionRequest;
-use X2Y\HyperswitchClient\Dto\PaymentMethodSession\Request\SessionTokenLookupRequest;
-use X2Y\HyperswitchClient\Dto\PaymentMethodSession\Request\UpdateSavedPaymentMethodRequest;
-use X2Y\HyperswitchClient\Dto\PaymentMethodSession\Response\SessionResponse;
-use X2Y\HyperswitchClient\Transport\Endpoint;
+use X2Y\HyperSwitchClient\Auth\AuthTier;
+use X2Y\HyperSwitchClient\Dto\PaymentMethodSession\Request\ConfirmSessionRequest;
+use X2Y\HyperSwitchClient\Dto\PaymentMethodSession\Request\CreateSessionRequest;
+use X2Y\HyperSwitchClient\Dto\PaymentMethodSession\Request\SessionTokenLookupRequest;
+use X2Y\HyperSwitchClient\Dto\PaymentMethodSession\Request\UpdateSavedPaymentMethodRequest;
+use X2Y\HyperSwitchClient\Dto\PaymentMethodSession\Response\SessionResponse;
+use X2Y\HyperSwitchClient\Transport\Endpoint;
 
 /**
- * Hyperswitch V1 Payment Method Sessions group.
+ * HyperSwitch V1 Payment Method Sessions group.
  *
  * @postman             Payment Method Sessions
  * @hyperswitch-source  2026-04-30
@@ -61,7 +61,7 @@ final class PaymentMethodSessionsEndpoints
      *
      * Returns the available payment methods for the session — Resource
      * passes through the raw envelope as PaginatedList<array> until
-     * Hyperswitch publishes a stable shape for this endpoint.
+     * HyperSwitch publishes a stable shape for this endpoint.
      */
     public static function listPaymentMethods(): Endpoint
     {
@@ -113,7 +113,7 @@ final class PaymentMethodSessionsEndpoints
      *
      * Despite the DELETE verb, this is effectively a token-lookup /
      * revocation operation that returns the underlying payment method id.
-     * Hyperswitch's choice of HTTP method is unusual but modelled exactly.
+     * HyperSwitch's choice of HTTP method is unusual but modelled exactly.
      */
     public static function tokenLookup(): Endpoint
     {

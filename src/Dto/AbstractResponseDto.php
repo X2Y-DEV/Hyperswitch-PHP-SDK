@@ -1,13 +1,13 @@
 <?php
 declare(strict_types=1);
 
-namespace X2Y\HyperswitchClient\Dto;
+namespace X2Y\HyperSwitchClient\Dto;
 
 /**
  * Base for every Response DTO.
  *
  * Subclasses implement `fromArray()` to construct themselves from a decoded JSON
- * payload. Unknown fields are preserved in `$extras` so non-breaking Hyperswitch
+ * payload. Unknown fields are preserved in `$extras` so non-breaking HyperSwitch
  * additions don't crash existing consumers — callers can inspect `extras()` to
  * read fields the SDK doesn't yet model.
  *

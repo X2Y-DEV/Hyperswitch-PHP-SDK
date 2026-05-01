@@ -1,10 +1,10 @@
-# Hyperswitch PHP Client
+# HyperSwitch PHP Client
 
 [![CI](https://github.com/x2yio/hyperswitch-client-php/actions/workflows/ci.yml/badge.svg)](https://github.com/x2yio/hyperswitch-client-php/actions)
 [![Packagist](https://img.shields.io/packagist/v/x2y/hyperswitch-client.svg)](https://packagist.org/packages/x2y/hyperswitch-client)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
-A pure-PHP SDK for the [Hyperswitch](https://hyperswitch.io) payment orchestration API.
+A pure-PHP SDK for the [HyperSwitch](https://hyperswitch.io) payment orchestration API.
 Framework-agnostic, PSR-18 / PSR-3 compatible, built for full coverage of the public
 API surface.
 
@@ -23,14 +23,14 @@ Requires PHP 8.1+ and a PSR-18 HTTP client (e.g. `symfony/http-client`,
 use Symfony\Component\HttpClient\Psr18Client;
 use Nyholm\Psr7\Factory\Psr17Factory;
 
-use X2Y\HyperswitchClient\HyperswitchClient;
-use X2Y\HyperswitchClient\Auth\MerchantKeyAuthResolver;
-use X2Y\HyperswitchClient\Dto\Payment\Request\CreatePaymentRequest;
-use X2Y\HyperswitchClient\Enum\Currency;
+use X2Y\HyperSwitchClient\HyperSwitchClient;
+use X2Y\HyperSwitchClient\Auth\MerchantKeyAuthResolver;
+use X2Y\HyperSwitchClient\Dto\Payment\Request\CreatePaymentRequest;
+use X2Y\HyperSwitchClient\Enum\Currency;
 
 $psr17 = new Psr17Factory();
 
-$client = HyperswitchClient::sandbox(
+$client = HyperSwitchClient::sandbox(
     httpClient:     new Psr18Client(),
     requestFactory: $psr17,
     streamFactory:  $psr17,
@@ -48,17 +48,17 @@ echo $response->clientSecret;  // pay_…_secret_…
 
 ## Receiving webhooks
 
-Hyperswitch signs outbound webhook bodies with HMAC (SHA-512 by default) using
+HyperSwitch signs outbound webhook bodies with HMAC (SHA-512 by default) using
 the merchant's "Payment Response Hash Key". The SDK ships a verifier and a
 typed event decoder — verification happens before JSON decode, so an invalid
 signature short-circuits without exposing the body to the JSON parser.
 
 ```php
-use X2Y\HyperswitchClient\Enum\EventType;
-use X2Y\HyperswitchClient\Exception\InvalidSignatureException;
-use X2Y\HyperswitchClient\Exception\InvalidWebhookPayloadException;
-use X2Y\HyperswitchClient\Webhook\EventDecoder;
-use X2Y\HyperswitchClient\Webhook\SignatureVerifier;
+use X2Y\HyperSwitchClient\Enum\EventType;
+use X2Y\HyperSwitchClient\Exception\InvalidSignatureException;
+use X2Y\HyperSwitchClient\Exception\InvalidWebhookPayloadException;
+use X2Y\HyperSwitchClient\Webhook\EventDecoder;
+use X2Y\HyperSwitchClient\Webhook\SignatureVerifier;
 
 $decoder = new EventDecoder(new SignatureVerifier(getenv('HYPERSWITCH_WEBHOOK_KEY')));
 
@@ -84,19 +84,55 @@ match ($event->eventType) {
 };
 ```
 
-`$event->eventType` is `null` when Hyperswitch ships an event type not yet
+`$event->eventType` is `null` when HyperSwitch ships an event type not yet
 enumerated by the SDK — the raw string is always available on
 `$event->eventTypeRaw`. See [docs/examples/webhook-receiver.php](docs/examples/webhook-receiver.php)
 for a runnable bare-PHP example.
 
+## API coverage
+
+| Group | Endpoints | Resource accessor |
+|---|---|---|
+| Payments | 11 | `$client->payments()` |
+| Refunds | 4 | `$client->refunds()` |
+| Customers | 6 | `$client->customers()` |
+| Mandates | 3 | `$client->mandates()` |
+| Subscriptions | 11 | `$client->subscriptions()` |
+| PaymentMethods (V1) | 6 | `$client->paymentMethods()` |
+| PaymentMethodSessions | 6 | `$client->paymentMethodSessions()` |
+| Disputes | 4 | `$client->disputes()` |
+| Payouts | 6 | `$client->payouts()` |
+| PaymentLinks | 1 | `$client->paymentLinks()` |
+| ApiKeys | 5 | `$client->apiKeys()` |
+| BusinessProfile | 5 | `$client->businessProfile()` |
+| MerchantAccounts | 4 | `$client->merchantAccounts()` |
+| Connectors | 5 | `$client->connectors()` |
+| Platform | 3 | `$client->platform()` |
+| Relay | 2 | `$client->relay()` |
+| Proxy | 1 | `$client->proxy()` |
+| **Webhooks** (inbound) | n/a | `Webhook\EventDecoder` |
+
+Total: **17 of 17 Postman groups, ~83 unique endpoints.** The legacy
+`/payment_methods/*` group (5 endpoints) is intentionally not modelled —
+V1 paths under `/v1/payment-methods` are the supported surface.
+
+V1 endpoints (PaymentMethods, PaymentMethodSessions) require an
+`X-Profile-Id` header; consumers attach it via the fluent builder:
+
+```php
+$client->paymentMethods()
+       ->withProfileId('pro_42')
+       ->retrieve('pm_xyz');
+```
+
 ## Maintenance guide
 
-This SDK is a 1:1 mirror of the Hyperswitch HTTP API. It has zero framework
+This SDK is a 1:1 mirror of the HyperSwitch HTTP API. It has zero framework
 dependencies and could be lifted into any PHP project.
 
 ### Source of truth
 
-`tests/Fixtures/postman.json` (the pinned Postman export). Hyperswitch
+`tests/Fixtures/postman.json` (the pinned Postman export). HyperSwitch
 does not publish a public OpenAPI specification, so the Postman export is
 the only mechanical source of truth — drift detection and AI maintenance
 both pivot on it.
@@ -112,7 +148,7 @@ both pivot on it.
 
 Full rules: [docs/conventions.md](docs/conventions.md).
 
-### When Hyperswitch ships an API change
+### When HyperSwitch ships an API change
 
 1. Replace `tests/Fixtures/postman.json` with the new export
    (`tools/update-postman.sh`).
@@ -131,7 +167,7 @@ Full rules: [docs/conventions.md](docs/conventions.md).
 - DTOs are immutable. Constructor takes everything; no setters.
 - DTOs implement `toArray()` (request) and `fromArray()` (response).
 - Unknown response fields are preserved in `extras` to survive non-breaking
-  Hyperswitch additions without crashing.
+  HyperSwitch additions without crashing.
 - One DTO per file. One enum per file.
 - Resources contain no business logic — they only bind Endpoints to ApiClient.
 
@@ -152,8 +188,8 @@ composer ci                # everything CI runs
 
 ## Versioning
 
-Semver. Minor versions track Hyperswitch API additions; major versions track
-breaking changes. CHANGELOG.md records the Hyperswitch source date each release
+Semver. Minor versions track HyperSwitch API additions; major versions track
+breaking changes. CHANGELOG.md records the HyperSwitch source date each release
 was reconciled against.
 
 ## License
@@ -162,5 +198,5 @@ MIT. See [LICENSE](LICENSE).
 
 ## Maintained by
 
-[X2Y](https://x2y.io). Built to power the X2Y Hyperswitch Magento module and
-related integrations.
+[X2Y.DEV](https://x2y.dev). Built to power the X2Y HyperSwitch Magento
+module and related integrations.

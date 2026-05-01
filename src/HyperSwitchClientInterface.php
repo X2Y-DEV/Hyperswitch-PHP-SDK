@@ -1,30 +1,30 @@
 <?php
 declare(strict_types=1);
 
-namespace X2Y\HyperswitchClient;
+namespace X2Y\HyperSwitchClient;
 
-use X2Y\HyperswitchClient\Resource\ApiKeysResource;
-use X2Y\HyperswitchClient\Resource\BusinessProfileResource;
-use X2Y\HyperswitchClient\Resource\ConnectorsResource;
-use X2Y\HyperswitchClient\Resource\CustomersResource;
-use X2Y\HyperswitchClient\Resource\DisputesResource;
-use X2Y\HyperswitchClient\Resource\MandatesResource;
-use X2Y\HyperswitchClient\Resource\MerchantAccountsResource;
-use X2Y\HyperswitchClient\Resource\PaymentLinksResource;
-use X2Y\HyperswitchClient\Resource\PaymentMethodSessionsResource;
-use X2Y\HyperswitchClient\Resource\PaymentMethodsResource;
-use X2Y\HyperswitchClient\Resource\PaymentsResource;
-use X2Y\HyperswitchClient\Resource\PayoutsResource;
-use X2Y\HyperswitchClient\Resource\PlatformResource;
-use X2Y\HyperswitchClient\Resource\ProxyResource;
-use X2Y\HyperswitchClient\Resource\RefundsResource;
-use X2Y\HyperswitchClient\Resource\RelayResource;
-use X2Y\HyperswitchClient\Resource\SubscriptionsResource;
+use X2Y\HyperSwitchClient\Resource\ApiKeysResource;
+use X2Y\HyperSwitchClient\Resource\BusinessProfileResource;
+use X2Y\HyperSwitchClient\Resource\ConnectorsResource;
+use X2Y\HyperSwitchClient\Resource\CustomersResource;
+use X2Y\HyperSwitchClient\Resource\DisputesResource;
+use X2Y\HyperSwitchClient\Resource\MandatesResource;
+use X2Y\HyperSwitchClient\Resource\MerchantAccountsResource;
+use X2Y\HyperSwitchClient\Resource\PaymentLinksResource;
+use X2Y\HyperSwitchClient\Resource\PaymentMethodSessionsResource;
+use X2Y\HyperSwitchClient\Resource\PaymentMethodsResource;
+use X2Y\HyperSwitchClient\Resource\PaymentsResource;
+use X2Y\HyperSwitchClient\Resource\PayoutsResource;
+use X2Y\HyperSwitchClient\Resource\PlatformResource;
+use X2Y\HyperSwitchClient\Resource\ProxyResource;
+use X2Y\HyperSwitchClient\Resource\RefundsResource;
+use X2Y\HyperSwitchClient\Resource\RelayResource;
+use X2Y\HyperSwitchClient\Resource\SubscriptionsResource;
 
 /**
  * Top-level facade. Each Postman group exposes one resource accessor.
  */
-interface HyperswitchClientInterface
+interface HyperSwitchClientInterface
 {
     public function payments(): PaymentsResource;
 

@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace X2Y\HyperswitchClient\Transport;
+namespace X2Y\HyperSwitchClient\Transport;
 
-use X2Y\HyperswitchClient\Exception\HyperswitchApiException;
+use X2Y\HyperSwitchClient\Exception\HyperSwitchApiException;
 
 /**
  * Substitutes `{name}` placeholders in path templates with provided values
@@ -29,7 +29,7 @@ final class PathBinder
             static function (array $match) use ($pathParams, $template): string {
                 $name = $match[1];
                 if (!array_key_exists($name, $pathParams)) {
-                    throw new HyperswitchApiException(
+                    throw new HyperSwitchApiException(
                         sprintf('Missing path parameter "%s" for template "%s".', $name, $template)
                     );
                 }
@@ -39,7 +39,7 @@ final class PathBinder
         );
 
         if ($path === null) {
-            throw new HyperswitchApiException(sprintf('Failed to bind path template "%s".', $template));
+            throw new HyperSwitchApiException(sprintf('Failed to bind path template "%s".', $template));
         }
 
         if ($queryParams !== []) {

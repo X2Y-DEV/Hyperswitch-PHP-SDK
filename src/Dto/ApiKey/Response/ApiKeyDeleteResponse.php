@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace X2Y\HyperswitchClient\Dto\ApiKey\Response;
+namespace X2Y\HyperSwitchClient\Dto\ApiKey\Response;
 
-use X2Y\HyperswitchClient\Dto\AbstractResponseDto;
+use X2Y\HyperSwitchClient\Dto\AbstractResponseDto;
 
 /**
  * @postman             API Key / Delete API Key

@@ -1,10 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace X2Y\HyperswitchClient\Enum;
+namespace X2Y\HyperSwitchClient\Enum;
 
 /**
- * Payment intent (top-level payment) status as returned by Hyperswitch.
+ * Payment intent (top-level payment) status as returned by HyperSwitch.
  *
  * @postman             Payments / Payments - Retrieve (status)
  * @hyperswitch-source  2026-04-30

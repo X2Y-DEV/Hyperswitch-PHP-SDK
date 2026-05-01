@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace X2Y\HyperswitchClient\Dto\Payment\Response;
+namespace X2Y\HyperSwitchClient\Dto\Payment\Response;
 
-use X2Y\HyperswitchClient\Dto\AbstractResponseDto;
+use X2Y\HyperSwitchClient\Dto\AbstractResponseDto;
 
 /**
  * Response from POST /payments/session_tokens.

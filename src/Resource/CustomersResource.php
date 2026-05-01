@@ -1,20 +1,20 @@
 <?php
 declare(strict_types=1);
 
-namespace X2Y\HyperswitchClient\Resource;
+namespace X2Y\HyperSwitchClient\Resource;
 
-use X2Y\HyperswitchClient\Dto\Common\PaginatedList;
-use X2Y\HyperswitchClient\Dto\Customer\Request\CreateCustomerRequest;
-use X2Y\HyperswitchClient\Dto\Customer\Request\CreateEphemeralKeyRequest;
-use X2Y\HyperswitchClient\Dto\Customer\Request\UpdateCustomerRequest;
-use X2Y\HyperswitchClient\Dto\Customer\Response\CustomerDeleteResponse;
-use X2Y\HyperswitchClient\Dto\Customer\Response\CustomerResponse;
-use X2Y\HyperswitchClient\Dto\Customer\Response\EphemeralKeyResponse;
-use X2Y\HyperswitchClient\Endpoint\CustomersEndpoints;
-use X2Y\HyperswitchClient\Exception\HyperswitchApiException;
+use X2Y\HyperSwitchClient\Dto\Common\PaginatedList;
+use X2Y\HyperSwitchClient\Dto\Customer\Request\CreateCustomerRequest;
+use X2Y\HyperSwitchClient\Dto\Customer\Request\CreateEphemeralKeyRequest;
+use X2Y\HyperSwitchClient\Dto\Customer\Request\UpdateCustomerRequest;
+use X2Y\HyperSwitchClient\Dto\Customer\Response\CustomerDeleteResponse;
+use X2Y\HyperSwitchClient\Dto\Customer\Response\CustomerResponse;
+use X2Y\HyperSwitchClient\Dto\Customer\Response\EphemeralKeyResponse;
+use X2Y\HyperSwitchClient\Endpoint\CustomersEndpoints;
+use X2Y\HyperSwitchClient\Exception\HyperSwitchApiException;
 
 /**
- * Typed facade over the Hyperswitch Customers API group.
+ * Typed facade over the HyperSwitch Customers API group.
  *
  * @postman             Customers
  * @hyperswitch-source  2026-04-30
@@ -31,7 +31,7 @@ final class CustomersResource extends AbstractResource
             request: $request,
         );
         if (!$response instanceof CustomerResponse) {
-            throw new HyperswitchApiException('Unexpected response type from Customers::create.');
+            throw new HyperSwitchApiException('Unexpected response type from Customers::create.');
         }
         return $response;
     }
@@ -46,7 +46,7 @@ final class CustomersResource extends AbstractResource
             pathParams: ['id' => $customerId],
         );
         if (!$response instanceof CustomerResponse) {
-            throw new HyperswitchApiException('Unexpected response type from Customers::retrieve.');
+            throw new HyperSwitchApiException('Unexpected response type from Customers::retrieve.');
         }
         return $response;
     }
@@ -62,7 +62,7 @@ final class CustomersResource extends AbstractResource
             pathParams: ['id' => $customerId],
         );
         if (!$response instanceof CustomerResponse) {
-            throw new HyperswitchApiException('Unexpected response type from Customers::update.');
+            throw new HyperSwitchApiException('Unexpected response type from Customers::update.');
         }
         return $response;
     }
@@ -77,7 +77,7 @@ final class CustomersResource extends AbstractResource
             pathParams: ['id' => $customerId],
         );
         if (!$response instanceof CustomerDeleteResponse) {
-            throw new HyperswitchApiException('Unexpected response type from Customers::delete.');
+            throw new HyperSwitchApiException('Unexpected response type from Customers::delete.');
         }
         return $response;
     }
@@ -91,7 +91,7 @@ final class CustomersResource extends AbstractResource
     {
         $response = $this->execute(CustomersEndpoints::list());
         if ($response !== null && !is_array($response)) {
-            throw new HyperswitchApiException('Unexpected response type from Customers::list.');
+            throw new HyperSwitchApiException('Unexpected response type from Customers::list.');
         }
         /** @var array<string, mixed> $raw */
         $raw = $response ?? [];
@@ -114,7 +114,7 @@ final class CustomersResource extends AbstractResource
             request: $request,
         );
         if (!$response instanceof EphemeralKeyResponse) {
-            throw new HyperswitchApiException('Unexpected response type from Customers::createEphemeralKey.');
+            throw new HyperSwitchApiException('Unexpected response type from Customers::createEphemeralKey.');
         }
         return $response;
     }

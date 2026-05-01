@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace X2Y\HyperswitchClient\Dto\BusinessProfile\Response;
+namespace X2Y\HyperSwitchClient\Dto\BusinessProfile\Response;
 
-use X2Y\HyperswitchClient\Dto\AbstractResponseDto;
+use X2Y\HyperSwitchClient\Dto\AbstractResponseDto;
 
 /**
  * Response from business profile create / retrieve / update / list (item).

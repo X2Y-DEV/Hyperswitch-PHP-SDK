@@ -1,11 +1,11 @@
 <?php
 declare(strict_types=1);
 
-namespace X2Y\HyperswitchClient\Tests\Integration;
+namespace X2Y\HyperSwitchClient\Tests\Integration;
 
-use X2Y\HyperswitchClient\Exception\HyperswitchExceptionInterface;
-use X2Y\HyperswitchClient\Exception\NotFoundException;
-use X2Y\HyperswitchClient\Exception\ValidationException;
+use X2Y\HyperSwitchClient\Exception\HyperSwitchExceptionInterface;
+use X2Y\HyperSwitchClient\Exception\NotFoundException;
+use X2Y\HyperSwitchClient\Exception\ValidationException;
 
 final class PaymentMethodsIntegrationTest extends AbstractIntegrationTestCase
 {
@@ -26,7 +26,7 @@ final class PaymentMethodsIntegrationTest extends AbstractIntegrationTestCase
      * the right scheme + a profile id, retrieve of a non-existent payment
      * method returns 404 typed as NotFoundException.
      *
-     * Without the profile id, Hyperswitch returns 422 "Missing header key:
+     * Without the profile id, HyperSwitch returns 422 "Missing header key:
      * X-Profile-Id" — also acceptable; the V1 auth itself is no longer the
      * blocker. Set HYPERSWITCH_SANDBOX_PROFILE_ID to exercise the 404 path.
      */
@@ -47,7 +47,7 @@ final class PaymentMethodsIntegrationTest extends AbstractIntegrationTestCase
             // shifted from "Missing required param: Authorization" to
             // "Missing header key: X-Profile-Id".
             self::assertStringContainsString('X-Profile-Id', $e->getMessage());
-        } catch (HyperswitchExceptionInterface $e) {
+        } catch (HyperSwitchExceptionInterface $e) {
             self::fail('unexpected SDK exception: ' . get_class($e) . ' — ' . $e->getMessage());
         }
     }

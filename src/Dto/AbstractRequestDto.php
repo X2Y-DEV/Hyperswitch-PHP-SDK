@@ -1,12 +1,12 @@
 <?php
 declare(strict_types=1);
 
-namespace X2Y\HyperswitchClient\Dto;
+namespace X2Y\HyperSwitchClient\Dto;
 
 /**
  * Base for every Request DTO.
  *
- * Subclasses implement `toArray()` to produce the JSON body Hyperswitch expects.
+ * Subclasses implement `toArray()` to produce the JSON body HyperSwitch expects.
  * The `filterNulls()` helper drops null fields so optional parameters omitted by
  * the caller don't end up as `null` in the request body.
  *

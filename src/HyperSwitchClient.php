@@ -1,32 +1,32 @@
 <?php
 declare(strict_types=1);
 
-namespace X2Y\HyperswitchClient;
+namespace X2Y\HyperSwitchClient;
 
 use Psr\Http\Client\ClientInterface;
 use Psr\Http\Message\RequestFactoryInterface;
 use Psr\Http\Message\StreamFactoryInterface;
-use X2Y\HyperswitchClient\Auth\AuthContextResolverInterface;
-use X2Y\HyperswitchClient\Resource\ApiKeysResource;
-use X2Y\HyperswitchClient\Resource\BusinessProfileResource;
-use X2Y\HyperswitchClient\Resource\ConnectorsResource;
-use X2Y\HyperswitchClient\Resource\CustomersResource;
-use X2Y\HyperswitchClient\Resource\DisputesResource;
-use X2Y\HyperswitchClient\Resource\MandatesResource;
-use X2Y\HyperswitchClient\Resource\MerchantAccountsResource;
-use X2Y\HyperswitchClient\Resource\PaymentLinksResource;
-use X2Y\HyperswitchClient\Resource\PaymentMethodSessionsResource;
-use X2Y\HyperswitchClient\Resource\PaymentMethodsResource;
-use X2Y\HyperswitchClient\Resource\PaymentsResource;
-use X2Y\HyperswitchClient\Resource\PayoutsResource;
-use X2Y\HyperswitchClient\Resource\PlatformResource;
-use X2Y\HyperswitchClient\Resource\ProxyResource;
-use X2Y\HyperswitchClient\Resource\RefundsResource;
-use X2Y\HyperswitchClient\Resource\RelayResource;
-use X2Y\HyperswitchClient\Resource\SubscriptionsResource;
-use X2Y\HyperswitchClient\Transport\ApiClient;
-use X2Y\HyperswitchClient\Transport\ApiClientInterface;
-use X2Y\HyperswitchClient\Transport\Middleware\ClientMiddlewareInterface;
+use X2Y\HyperSwitchClient\Auth\AuthContextResolverInterface;
+use X2Y\HyperSwitchClient\Resource\ApiKeysResource;
+use X2Y\HyperSwitchClient\Resource\BusinessProfileResource;
+use X2Y\HyperSwitchClient\Resource\ConnectorsResource;
+use X2Y\HyperSwitchClient\Resource\CustomersResource;
+use X2Y\HyperSwitchClient\Resource\DisputesResource;
+use X2Y\HyperSwitchClient\Resource\MandatesResource;
+use X2Y\HyperSwitchClient\Resource\MerchantAccountsResource;
+use X2Y\HyperSwitchClient\Resource\PaymentLinksResource;
+use X2Y\HyperSwitchClient\Resource\PaymentMethodSessionsResource;
+use X2Y\HyperSwitchClient\Resource\PaymentMethodsResource;
+use X2Y\HyperSwitchClient\Resource\PaymentsResource;
+use X2Y\HyperSwitchClient\Resource\PayoutsResource;
+use X2Y\HyperSwitchClient\Resource\PlatformResource;
+use X2Y\HyperSwitchClient\Resource\ProxyResource;
+use X2Y\HyperSwitchClient\Resource\RefundsResource;
+use X2Y\HyperSwitchClient\Resource\RelayResource;
+use X2Y\HyperSwitchClient\Resource\SubscriptionsResource;
+use X2Y\HyperSwitchClient\Transport\ApiClient;
+use X2Y\HyperSwitchClient\Transport\ApiClientInterface;
+use X2Y\HyperSwitchClient\Transport\Middleware\ClientMiddlewareInterface;
 
 /**
  * Top-level entry point. Construct via the named factories
@@ -34,7 +34,7 @@ use X2Y\HyperswitchClient\Transport\Middleware\ClientMiddlewareInterface;
  *
  * Resources are lazily instantiated on first access.
  */
-final class HyperswitchClient implements HyperswitchClientInterface
+final class HyperSwitchClient implements HyperSwitchClientInterface
 {
     public const SANDBOX_BASE_URL    = 'https://sandbox.hyperswitch.io';
     public const PRODUCTION_BASE_URL = 'https://api.hyperswitch.io';

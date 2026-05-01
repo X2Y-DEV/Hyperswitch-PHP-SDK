@@ -1,12 +1,12 @@
 <?php
 declare(strict_types=1);
 
-namespace X2Y\HyperswitchClient\Dto\PaymentMethod\Request;
+namespace X2Y\HyperSwitchClient\Dto\PaymentMethod\Request;
 
-use X2Y\HyperswitchClient\Dto\AbstractRequestDto;
-use X2Y\HyperswitchClient\Dto\Common\BillingDetails;
-use X2Y\HyperswitchClient\Enum\PaymentMethod;
-use X2Y\HyperswitchClient\Enum\StorageType;
+use X2Y\HyperSwitchClient\Dto\AbstractRequestDto;
+use X2Y\HyperSwitchClient\Dto\Common\BillingDetails;
+use X2Y\HyperSwitchClient\Enum\PaymentMethod;
+use X2Y\HyperSwitchClient\Enum\StorageType;
 
 /**
  * Tokenize and persist a payment method against a customer.

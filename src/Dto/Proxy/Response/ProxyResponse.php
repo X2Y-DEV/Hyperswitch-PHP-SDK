@@ -1,12 +1,12 @@
 <?php
 declare(strict_types=1);
 
-namespace X2Y\HyperswitchClient\Dto\Proxy\Response;
+namespace X2Y\HyperSwitchClient\Dto\Proxy\Response;
 
-use X2Y\HyperswitchClient\Dto\AbstractResponseDto;
+use X2Y\HyperSwitchClient\Dto\AbstractResponseDto;
 
 /**
- * Response from POST /v1/proxy. Hyperswitch surfaces the upstream response
+ * Response from POST /v1/proxy. HyperSwitch surfaces the upstream response
  * as a passthrough — most of the body is connector-shaped and lives in
  * `extras`.
  *

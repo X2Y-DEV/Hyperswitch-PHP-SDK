@@ -1,10 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace X2Y\HyperswitchClient\Auth;
+namespace X2Y\HyperSwitchClient\Auth;
 
 /**
- * Hyperswitch authentication tiers.
+ * HyperSwitch authentication tiers.
  *
  * Each Endpoint declares which tier it requires; the ApiClient picks the
  * matching AuthContextResolver to populate request headers.
@@ -24,7 +24,7 @@ enum AuthTier: string
     case EPHEMERAL = 'ephemeral';
 
     /**
-     * V1 merchant auth — same merchant key, but Hyperswitch's V1 endpoints
+     * V1 merchant auth — same merchant key, but HyperSwitch's V1 endpoints
      * (paths under `/v1/payment-methods` and `/v1/payment-method-sessions`)
      * expect it as `Authorization: api-key=<key>` rather than the standard
      * `api-key: <key>` header. V1 endpoints additionally require an

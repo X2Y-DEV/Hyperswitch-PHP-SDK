@@ -1,14 +1,14 @@
 <?php
 declare(strict_types=1);
 
-namespace X2Y\HyperswitchClient\Endpoint;
+namespace X2Y\HyperSwitchClient\Endpoint;
 
-use X2Y\HyperswitchClient\Auth\AuthTier;
-use X2Y\HyperswitchClient\Dto\Mandate\Response\MandateResponse;
-use X2Y\HyperswitchClient\Transport\Endpoint;
+use X2Y\HyperSwitchClient\Auth\AuthTier;
+use X2Y\HyperSwitchClient\Dto\Mandate\Response\MandateResponse;
+use X2Y\HyperSwitchClient\Transport\Endpoint;
 
 /**
- * Hyperswitch Mandates group.
+ * HyperSwitch Mandates group.
  *
  * Note: 7 of the Postman items in this group hit `POST /payments` with
  * different bodies (CIT, Setup-Mandate, MIT-by-payment-method-id, MIT-by-

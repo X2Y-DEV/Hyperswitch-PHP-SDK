@@ -1,11 +1,11 @@
 <?php
 declare(strict_types=1);
 
-namespace X2Y\HyperswitchClient\Tests\Unit\Internal;
+namespace X2Y\HyperSwitchClient\Tests\Unit\Internal;
 
 use PHPUnit\Framework\TestCase;
-use X2Y\HyperswitchClient\Exception\HyperswitchApiException;
-use X2Y\HyperswitchClient\Internal\Json;
+use X2Y\HyperSwitchClient\Exception\HyperSwitchApiException;
+use X2Y\HyperSwitchClient\Internal\Json;
 
 final class JsonTest extends TestCase
 {
@@ -27,9 +27,9 @@ final class JsonTest extends TestCase
         self::assertSame('{"name":"José"}', Json::encode(['name' => 'José']));
     }
 
-    public function testEncodeFailureSurfacesAsHyperswitchException(): void
+    public function testEncodeFailureSurfacesAsHyperSwitchException(): void
     {
-        $this->expectException(HyperswitchApiException::class);
+        $this->expectException(HyperSwitchApiException::class);
         $this->expectExceptionMessage('Failed to encode');
         // Resource handles aren't JSON-encodable
         $resource = fopen('php://memory', 'r');
@@ -54,20 +54,20 @@ final class JsonTest extends TestCase
 
     public function testDecodeRejectsBareJsonArrayWhenObjectExpected(): void
     {
-        $this->expectException(HyperswitchApiException::class);
+        $this->expectException(HyperSwitchApiException::class);
         $this->expectExceptionMessage('JSON array where an object was expected');
         Json::decode('[1, 2, 3]');
     }
 
     public function testDecodeRejectsScalarTopLevel(): void
     {
-        $this->expectException(HyperswitchApiException::class);
+        $this->expectException(HyperSwitchApiException::class);
         Json::decode('"just a string"');
     }
 
     public function testDecodeRejectsMalformedJson(): void
     {
-        $this->expectException(HyperswitchApiException::class);
+        $this->expectException(HyperSwitchApiException::class);
         $this->expectExceptionMessage('Failed to decode');
         Json::decode('{"oops":');
     }
@@ -89,7 +89,7 @@ final class JsonTest extends TestCase
 
     public function testDecodeAnyRejectsNonArrayJson(): void
     {
-        $this->expectException(HyperswitchApiException::class);
+        $this->expectException(HyperSwitchApiException::class);
         Json::decodeAny('42');
     }
 }

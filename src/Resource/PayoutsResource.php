@@ -1,18 +1,18 @@
 <?php
 declare(strict_types=1);
 
-namespace X2Y\HyperswitchClient\Resource;
+namespace X2Y\HyperSwitchClient\Resource;
 
-use X2Y\HyperswitchClient\Dto\Payout\Request\CancelPayoutRequest;
-use X2Y\HyperswitchClient\Dto\Payout\Request\ConfirmPayoutRequest;
-use X2Y\HyperswitchClient\Dto\Payout\Request\CreatePayoutRequest;
-use X2Y\HyperswitchClient\Dto\Payout\Request\UpdatePayoutRequest;
-use X2Y\HyperswitchClient\Dto\Payout\Response\PayoutResponse;
-use X2Y\HyperswitchClient\Endpoint\PayoutsEndpoints;
-use X2Y\HyperswitchClient\Exception\HyperswitchApiException;
+use X2Y\HyperSwitchClient\Dto\Payout\Request\CancelPayoutRequest;
+use X2Y\HyperSwitchClient\Dto\Payout\Request\ConfirmPayoutRequest;
+use X2Y\HyperSwitchClient\Dto\Payout\Request\CreatePayoutRequest;
+use X2Y\HyperSwitchClient\Dto\Payout\Request\UpdatePayoutRequest;
+use X2Y\HyperSwitchClient\Dto\Payout\Response\PayoutResponse;
+use X2Y\HyperSwitchClient\Endpoint\PayoutsEndpoints;
+use X2Y\HyperSwitchClient\Exception\HyperSwitchApiException;
 
 /**
- * Typed facade over the Hyperswitch Payouts group. Payout-link flows reuse
+ * Typed facade over the HyperSwitch Payouts group. Payout-link flows reuse
  * the same endpoints — see PayoutsEndpoints for the polymorphism note.
  *
  * @postman             Payouts
@@ -24,7 +24,7 @@ final class PayoutsResource extends AbstractResource
     {
         $response = $this->execute(PayoutsEndpoints::create(), request: $request);
         if (!$response instanceof PayoutResponse) {
-            throw new HyperswitchApiException('Unexpected response type from Payouts::create.');
+            throw new HyperSwitchApiException('Unexpected response type from Payouts::create.');
         }
         return $response;
     }
@@ -37,7 +37,7 @@ final class PayoutsResource extends AbstractResource
             pathParams: ['id' => $payoutId],
         );
         if (!$response instanceof PayoutResponse) {
-            throw new HyperswitchApiException('Unexpected response type from Payouts::update.');
+            throw new HyperSwitchApiException('Unexpected response type from Payouts::update.');
         }
         return $response;
     }
@@ -49,7 +49,7 @@ final class PayoutsResource extends AbstractResource
             pathParams: ['id' => $payoutId],
         );
         if (!$response instanceof PayoutResponse) {
-            throw new HyperswitchApiException('Unexpected response type from Payouts::retrieve.');
+            throw new HyperSwitchApiException('Unexpected response type from Payouts::retrieve.');
         }
         return $response;
     }
@@ -62,7 +62,7 @@ final class PayoutsResource extends AbstractResource
             pathParams: ['id' => $payoutId],
         );
         if (!$response instanceof PayoutResponse) {
-            throw new HyperswitchApiException('Unexpected response type from Payouts::confirm.');
+            throw new HyperSwitchApiException('Unexpected response type from Payouts::confirm.');
         }
         return $response;
     }
@@ -74,7 +74,7 @@ final class PayoutsResource extends AbstractResource
             pathParams: ['id' => $payoutId],
         );
         if (!$response instanceof PayoutResponse) {
-            throw new HyperswitchApiException('Unexpected response type from Payouts::fulfill.');
+            throw new HyperSwitchApiException('Unexpected response type from Payouts::fulfill.');
         }
         return $response;
     }
@@ -87,7 +87,7 @@ final class PayoutsResource extends AbstractResource
             pathParams: ['id' => $payoutId],
         );
         if (!$response instanceof PayoutResponse) {
-            throw new HyperswitchApiException('Unexpected response type from Payouts::cancel.');
+            throw new HyperSwitchApiException('Unexpected response type from Payouts::cancel.');
         }
         return $response;
     }

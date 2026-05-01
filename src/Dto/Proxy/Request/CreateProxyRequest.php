@@ -1,13 +1,13 @@
 <?php
 declare(strict_types=1);
 
-namespace X2Y\HyperswitchClient\Dto\Proxy\Request;
+namespace X2Y\HyperSwitchClient\Dto\Proxy\Request;
 
-use X2Y\HyperswitchClient\Dto\AbstractRequestDto;
+use X2Y\HyperSwitchClient\Dto\AbstractRequestDto;
 
 /**
  * Forward a vault-tokenised request to a destination URL with the
- * sensitive instrument data hydrated from Hyperswitch's vault.
+ * sensitive instrument data hydrated from HyperSwitch's vault.
  *
  * @postman             Proxy / Proxy - Create
  * @endpoint            POST /v1/proxy

@@ -1,13 +1,13 @@
 <?php
 declare(strict_types=1);
 
-namespace X2Y\HyperswitchClient\Dto\Subscription\Request;
+namespace X2Y\HyperSwitchClient\Dto\Subscription\Request;
 
-use X2Y\HyperswitchClient\Dto\AbstractRequestDto;
-use X2Y\HyperswitchClient\Enum\SubscriptionCancelOption;
-use X2Y\HyperswitchClient\Enum\SubscriptionCreditOption;
-use X2Y\HyperswitchClient\Enum\SubscriptionRefundableCreditsHandling;
-use X2Y\HyperswitchClient\Enum\SubscriptionUnbilledChargesOption;
+use X2Y\HyperSwitchClient\Dto\AbstractRequestDto;
+use X2Y\HyperSwitchClient\Enum\SubscriptionCancelOption;
+use X2Y\HyperSwitchClient\Enum\SubscriptionCreditOption;
+use X2Y\HyperSwitchClient\Enum\SubscriptionRefundableCreditsHandling;
+use X2Y\HyperSwitchClient\Enum\SubscriptionUnbilledChargesOption;
 
 /**
  * @postman             Subscriptions / Subscription - Cancel

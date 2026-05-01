@@ -1,22 +1,22 @@
 <?php
 declare(strict_types=1);
 
-namespace X2Y\HyperswitchClient\Endpoint;
+namespace X2Y\HyperSwitchClient\Endpoint;
 
-use X2Y\HyperswitchClient\Auth\AuthTier;
-use X2Y\HyperswitchClient\Dto\Subscription\Request\CancelSubscriptionRequest;
-use X2Y\HyperswitchClient\Dto\Subscription\Request\ConfirmSubscriptionRequest;
-use X2Y\HyperswitchClient\Dto\Subscription\Request\CreateAndConfirmSubscriptionRequest;
-use X2Y\HyperswitchClient\Dto\Subscription\Request\CreateSubscriptionRequest;
-use X2Y\HyperswitchClient\Dto\Subscription\Request\PauseSubscriptionRequest;
-use X2Y\HyperswitchClient\Dto\Subscription\Request\ResumeSubscriptionRequest;
-use X2Y\HyperswitchClient\Dto\Subscription\Request\UpdateSubscriptionRequest;
-use X2Y\HyperswitchClient\Dto\Subscription\Response\EstimateResponse;
-use X2Y\HyperswitchClient\Dto\Subscription\Response\SubscriptionResponse;
-use X2Y\HyperswitchClient\Transport\Endpoint;
+use X2Y\HyperSwitchClient\Auth\AuthTier;
+use X2Y\HyperSwitchClient\Dto\Subscription\Request\CancelSubscriptionRequest;
+use X2Y\HyperSwitchClient\Dto\Subscription\Request\ConfirmSubscriptionRequest;
+use X2Y\HyperSwitchClient\Dto\Subscription\Request\CreateAndConfirmSubscriptionRequest;
+use X2Y\HyperSwitchClient\Dto\Subscription\Request\CreateSubscriptionRequest;
+use X2Y\HyperSwitchClient\Dto\Subscription\Request\PauseSubscriptionRequest;
+use X2Y\HyperSwitchClient\Dto\Subscription\Request\ResumeSubscriptionRequest;
+use X2Y\HyperSwitchClient\Dto\Subscription\Request\UpdateSubscriptionRequest;
+use X2Y\HyperSwitchClient\Dto\Subscription\Response\EstimateResponse;
+use X2Y\HyperSwitchClient\Dto\Subscription\Response\SubscriptionResponse;
+use X2Y\HyperSwitchClient\Transport\Endpoint;
 
 /**
- * Hyperswitch Subscriptions group.
+ * HyperSwitch Subscriptions group.
  *
  * Two distinct creation flows:
  *   - POST /subscriptions/create  — create only, must be confirmed separately

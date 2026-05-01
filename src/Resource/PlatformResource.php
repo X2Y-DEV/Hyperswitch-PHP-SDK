@@ -1,17 +1,17 @@
 <?php
 declare(strict_types=1);
 
-namespace X2Y\HyperswitchClient\Resource;
+namespace X2Y\HyperSwitchClient\Resource;
 
-use X2Y\HyperswitchClient\Dto\Platform\Request\ConvertToPlatformRequest;
-use X2Y\HyperswitchClient\Dto\Platform\Request\CreateOrganizationRequest;
-use X2Y\HyperswitchClient\Dto\Platform\Request\CreatePlatformUserRequest;
-use X2Y\HyperswitchClient\Dto\Platform\Response\PlatformResponse;
-use X2Y\HyperswitchClient\Endpoint\PlatformEndpoints;
-use X2Y\HyperswitchClient\Exception\HyperswitchApiException;
+use X2Y\HyperSwitchClient\Dto\Platform\Request\ConvertToPlatformRequest;
+use X2Y\HyperSwitchClient\Dto\Platform\Request\CreateOrganizationRequest;
+use X2Y\HyperSwitchClient\Dto\Platform\Request\CreatePlatformUserRequest;
+use X2Y\HyperSwitchClient\Dto\Platform\Response\PlatformResponse;
+use X2Y\HyperSwitchClient\Endpoint\PlatformEndpoints;
+use X2Y\HyperSwitchClient\Exception\HyperSwitchApiException;
 
 /**
- * Typed facade over the Hyperswitch Platform group. Admin-tier.
+ * Typed facade over the HyperSwitch Platform group. Admin-tier.
  *
  * @postman             Platform
  * @hyperswitch-source  2026-04-30
@@ -22,7 +22,7 @@ final class PlatformResource extends AbstractResource
     {
         $response = $this->execute(PlatformEndpoints::createOrganization(), request: $request);
         if (!$response instanceof PlatformResponse) {
-            throw new HyperswitchApiException('Unexpected response type from Platform::createOrganization.');
+            throw new HyperSwitchApiException('Unexpected response type from Platform::createOrganization.');
         }
         return $response;
     }
@@ -35,7 +35,7 @@ final class PlatformResource extends AbstractResource
             pathParams: ['organization_id' => $organizationId],
         );
         if (!$response instanceof PlatformResponse) {
-            throw new HyperswitchApiException('Unexpected response type from Platform::convertToPlatform.');
+            throw new HyperSwitchApiException('Unexpected response type from Platform::convertToPlatform.');
         }
         return $response;
     }
@@ -44,7 +44,7 @@ final class PlatformResource extends AbstractResource
     {
         $response = $this->execute(PlatformEndpoints::createPlatformUser(), request: $request);
         if (!$response instanceof PlatformResponse) {
-            throw new HyperswitchApiException('Unexpected response type from Platform::createPlatformUser.');
+            throw new HyperSwitchApiException('Unexpected response type from Platform::createPlatformUser.');
         }
         return $response;
     }

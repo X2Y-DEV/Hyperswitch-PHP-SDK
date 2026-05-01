@@ -1,17 +1,17 @@
 <?php
 declare(strict_types=1);
 
-namespace X2Y\HyperswitchClient\Endpoint;
+namespace X2Y\HyperSwitchClient\Endpoint;
 
-use X2Y\HyperswitchClient\Auth\AuthTier;
-use X2Y\HyperswitchClient\Dto\Refund\Request\CreateRefundRequest;
-use X2Y\HyperswitchClient\Dto\Refund\Request\ListRefundsRequest;
-use X2Y\HyperswitchClient\Dto\Refund\Request\UpdateRefundRequest;
-use X2Y\HyperswitchClient\Dto\Refund\Response\RefundResponse;
-use X2Y\HyperswitchClient\Transport\Endpoint;
+use X2Y\HyperSwitchClient\Auth\AuthTier;
+use X2Y\HyperSwitchClient\Dto\Refund\Request\CreateRefundRequest;
+use X2Y\HyperSwitchClient\Dto\Refund\Request\ListRefundsRequest;
+use X2Y\HyperSwitchClient\Dto\Refund\Request\UpdateRefundRequest;
+use X2Y\HyperSwitchClient\Dto\Refund\Response\RefundResponse;
+use X2Y\HyperSwitchClient\Transport\Endpoint;
 
 /**
- * Hyperswitch Refunds group.
+ * HyperSwitch Refunds group.
  *
  * @postman             Refunds
  * @hyperswitch-source  2026-04-30

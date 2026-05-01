@@ -1,17 +1,17 @@
 <?php
 declare(strict_types=1);
 
-namespace X2Y\HyperswitchClient\Endpoint;
+namespace X2Y\HyperSwitchClient\Endpoint;
 
-use X2Y\HyperswitchClient\Auth\AuthTier;
-use X2Y\HyperswitchClient\Dto\ApiKey\Request\CreateApiKeyRequest;
-use X2Y\HyperswitchClient\Dto\ApiKey\Request\UpdateApiKeyRequest;
-use X2Y\HyperswitchClient\Dto\ApiKey\Response\ApiKeyDeleteResponse;
-use X2Y\HyperswitchClient\Dto\ApiKey\Response\ApiKeyResponse;
-use X2Y\HyperswitchClient\Transport\Endpoint;
+use X2Y\HyperSwitchClient\Auth\AuthTier;
+use X2Y\HyperSwitchClient\Dto\ApiKey\Request\CreateApiKeyRequest;
+use X2Y\HyperSwitchClient\Dto\ApiKey\Request\UpdateApiKeyRequest;
+use X2Y\HyperSwitchClient\Dto\ApiKey\Response\ApiKeyDeleteResponse;
+use X2Y\HyperSwitchClient\Dto\ApiKey\Response\ApiKeyResponse;
+use X2Y\HyperSwitchClient\Transport\Endpoint;
 
 /**
- * Hyperswitch API Key management. Admin-tier — API key lifecycle is
+ * HyperSwitch API Key management. Admin-tier — API key lifecycle is
  * managed with the platform's admin key, not a merchant key.
  *
  * @postman             API Key

@@ -1,20 +1,20 @@
 <?php
 declare(strict_types=1);
 
-namespace X2Y\HyperswitchClient\Endpoint;
+namespace X2Y\HyperSwitchClient\Endpoint;
 
-use X2Y\HyperswitchClient\Auth\AuthTier;
-use X2Y\HyperswitchClient\Dto\Relay\Request\CreateRelayRequest;
-use X2Y\HyperswitchClient\Dto\Relay\Response\RelayResponse;
-use X2Y\HyperswitchClient\Transport\Endpoint;
+use X2Y\HyperSwitchClient\Auth\AuthTier;
+use X2Y\HyperSwitchClient\Dto\Relay\Request\CreateRelayRequest;
+use X2Y\HyperSwitchClient\Dto\Relay\Response\RelayResponse;
+use X2Y\HyperSwitchClient\Transport\Endpoint;
 
 /**
- * Hyperswitch Relay group. Three Postman items (capture / void /
+ * HyperSwitch Relay group. Three Postman items (capture / void /
  * incremental-auth) all hit POST /relay with different `data` payloads —
  * single Endpoint, one permissive `CreateRelayRequest`.
  *
  * The Postman "Relay - Retrieve" item has an empty URL. Modelled
- * speculatively as `GET /relay/{id}` based on Hyperswitch's conventional
+ * speculatively as `GET /relay/{id}` based on HyperSwitch's conventional
  * shape; verify against an updated Postman / OpenAPI export when available.
  *
  * @postman             Relay

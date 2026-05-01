@@ -16,7 +16,7 @@ test and phpstan enforce most of them mechanically; a few are review-only.
 - **PHP property naming: camelCase.** Map to/from snake_case keys in
   `toArray()` and `fromArray()`.
 - **Enum cases: SCREAMING_SNAKE_CASE.** Backing values match the literal
-  Hyperswitch string (typically lowercase or snake_case).
+  HyperSwitch string (typically lowercase or snake_case).
 
 ## Per-file frontmatter
 
@@ -55,12 +55,12 @@ Postman export. Reviewers check this when evaluating drift.
 
 ## Special-case fields
 
-These conventions cover field shapes that Hyperswitch deliberately leaves
+These conventions cover field shapes that HyperSwitch deliberately leaves
 loose. Don't over-type them.
 
 ### Metadata fields
 
-Hyperswitch lets merchants attach arbitrary key/value metadata to many
+HyperSwitch lets merchants attach arbitrary key/value metadata to many
 resources (`payments`, `refunds`, `customers`, `mandates`, …). The shape
 is intentionally open.
 
@@ -68,7 +68,7 @@ is intentionally open.
 - Property name: `$metadata`. JSON key: `metadata`.
 - Don't introduce a wrapper class (`Metadata` value object). It would add
   one allocation per field for no type-safety gain over the typed array.
-- Don't try to constrain the array's value type beyond `mixed` — Hyperswitch
+- Don't try to constrain the array's value type beyond `mixed` — HyperSwitch
   accepts strings, numbers, booleans, and nested objects.
 
 ### Connector-specific blob fields
@@ -79,17 +79,17 @@ When a Postman body shows a connector-keyed nested object — such as
 `?array<string, mixed>` rather than introducing a typed DTO.
 
 - These shapes branch per connector (Stripe / Adyen / Worldpay / …) and
-  Hyperswitch hasn't normalised them in the public API surface.
+  HyperSwitch hasn't normalised them in the public API surface.
 - A typed DTO would lock us into one connector's shape and break others.
 - Add a docblock referencing the Postman example so reviewers know where
   the loose typing came from.
 
 ### Datetime fields
 
-Hyperswitch is inconsistent across endpoints: most timestamps come back as ISO
+HyperSwitch is inconsistent across endpoints: most timestamps come back as ISO
 8601 strings, but some endpoints — notably `POST /ephemeral_keys` — return
 Unix timestamps as integers. **Always parse datetime fields via
-`X2Y\HyperswitchClient\Internal\DateTimeParser::parse()`.**
+`X2Y\HyperSwitchClient\Internal\DateTimeParser::parse()`.**
 
 ```php
 createdAt: DateTimeParser::parse($data['created_at'] ?? null),
@@ -101,7 +101,7 @@ integer Unix epochs, and numeric-string Unix epochs uniformly.
 
 ### Request DTO `extras` passthrough
 
-Hyperswitch's larger bodies (Payments create / update / confirm in particular)
+HyperSwitch's larger bodies (Payments create / update / confirm in particular)
 have 60+ fields, many connector-specific or rarely used. Modelling every field
 with a typed accessor is high churn and provides little value for fields the
 SDK author won't recognise.
@@ -160,7 +160,7 @@ returns `PaginatedList<T>` from its Resource method.
    `final class` with a private constructor and one static factory method per
    Postman item.
 2. Path templates use `{name}` placeholders, not `:name`.
-3. `idempotent: true` only when Hyperswitch documents safe retries — generally
+3. `idempotent: true` only when HyperSwitch documents safe retries — generally
    `POST /payments`, `POST /refunds`, etc. Idempotency adds a header; don't
    set it on operations where retries change state.
 4. `requestClass` is `null` when the endpoint takes no body (most GETs).
@@ -187,7 +187,7 @@ returns `PaginatedList<T>` from its Resource method.
 3. **V1 endpoints (`/v1/payment-methods/*`, `/v1/payment-method-sessions/*`)
    use `AuthTier::MERCHANT_V1`** — same merchant key value as `MERCHANT`,
    but the wire format is `Authorization: api-key=<key>` rather than the
-   standard `api-key: <key>` header. Hyperswitch's V1 surface also requires
+   standard `api-key: <key>` header. HyperSwitch's V1 surface also requires
    an `X-Profile-Id` header on every call; consumers attach it via
    `Resource::withProfileId('pro_xxx')` rather than per-call header args.
 

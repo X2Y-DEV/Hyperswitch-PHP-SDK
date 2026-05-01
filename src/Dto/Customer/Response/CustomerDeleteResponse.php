@@ -1,14 +1,14 @@
 <?php
 declare(strict_types=1);
 
-namespace X2Y\HyperswitchClient\Dto\Customer\Response;
+namespace X2Y\HyperSwitchClient\Dto\Customer\Response;
 
-use X2Y\HyperswitchClient\Dto\AbstractResponseDto;
+use X2Y\HyperSwitchClient\Dto\AbstractResponseDto;
 
 /**
  * Response from DELETE /customers/{id}.
  *
- * Hyperswitch acknowledges the delete with `customer_id` and a flag indicating
+ * HyperSwitch acknowledges the delete with `customer_id` and a flag indicating
  * the soft-delete state.
  *
  * @postman             Customers / Delete Customer

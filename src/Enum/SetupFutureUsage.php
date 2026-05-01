@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace X2Y\HyperswitchClient\Enum;
+namespace X2Y\HyperSwitchClient\Enum;
 
 /**
  * @postman             Payments / Payments - Create (setup_future_usage)

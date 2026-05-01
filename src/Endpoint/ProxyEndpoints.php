@@ -1,12 +1,12 @@
 <?php
 declare(strict_types=1);
 
-namespace X2Y\HyperswitchClient\Endpoint;
+namespace X2Y\HyperSwitchClient\Endpoint;
 
-use X2Y\HyperswitchClient\Auth\AuthTier;
-use X2Y\HyperswitchClient\Dto\Proxy\Request\CreateProxyRequest;
-use X2Y\HyperswitchClient\Dto\Proxy\Response\ProxyResponse;
-use X2Y\HyperswitchClient\Transport\Endpoint;
+use X2Y\HyperSwitchClient\Auth\AuthTier;
+use X2Y\HyperSwitchClient\Dto\Proxy\Request\CreateProxyRequest;
+use X2Y\HyperSwitchClient\Dto\Proxy\Response\ProxyResponse;
+use X2Y\HyperSwitchClient\Transport\Endpoint;
 
 /**
  * @postman             Proxy

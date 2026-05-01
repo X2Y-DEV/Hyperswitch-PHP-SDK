@@ -1,23 +1,23 @@
 <?php
 declare(strict_types=1);
 
-namespace X2Y\HyperswitchClient\Tests\Integration;
+namespace X2Y\HyperSwitchClient\Tests\Integration;
 
 use PHPUnit\Framework\TestCase;
-use X2Y\HyperswitchClient\Enum\EventType;
-use X2Y\HyperswitchClient\Webhook\EventDecoder;
-use X2Y\HyperswitchClient\Webhook\SignatureVerifier;
+use X2Y\HyperSwitchClient\Enum\EventType;
+use X2Y\HyperSwitchClient\Webhook\EventDecoder;
+use X2Y\HyperSwitchClient\Webhook\SignatureVerifier;
 
 /**
  * Round-trip the webhook signing/decoding pipeline end-to-end against a
  * real merchant hash key. No network call — but uses the actual hash key
  * value the merchant has on file, so a regression in the hash algorithm
  * or header expectations would surface here even before pointing
- * Hyperswitch's webhook delivery at the SDK.
+ * HyperSwitch's webhook delivery at the SDK.
  *
  * Skipped when `HYPERSWITCH_WEBHOOK_KEY` is not set. Note this is a
  * separate env var from `HYPERSWITCH_SANDBOX_KEY` because webhook keys
- * (the "Payment Response Hash Key" in Hyperswitch's dashboard) are not
+ * (the "Payment Response Hash Key" in HyperSwitch's dashboard) are not
  * the same value as the merchant API key.
  */
 final class WebhookIntegrationTest extends TestCase
@@ -37,7 +37,7 @@ final class WebhookIntegrationTest extends TestCase
 
     public function testRoundTripPaymentSucceededShape(): void
     {
-        // Simulated Hyperswitch payment.succeeded envelope using the live key.
+        // Simulated HyperSwitch payment.succeeded envelope using the live key.
         $body = (string) json_encode([
             'merchant_id' => 'merchant_integration',
             'event_id'    => 'evt_int_001',
@@ -67,7 +67,7 @@ final class WebhookIntegrationTest extends TestCase
 
         $tampered = (string) json_encode(['event_type' => 'refund_succeeded'], JSON_THROW_ON_ERROR);
 
-        $this->expectException(\X2Y\HyperswitchClient\Exception\InvalidSignatureException::class);
+        $this->expectException(\X2Y\HyperSwitchClient\Exception\InvalidSignatureException::class);
         $this->decoder->decode($tampered, $sig);
     }
 }

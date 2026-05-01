@@ -1,11 +1,11 @@
 <?php
 declare(strict_types=1);
 
-namespace X2Y\HyperswitchClient\Transport\Middleware;
+namespace X2Y\HyperSwitchClient\Transport\Middleware;
 
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
-use X2Y\HyperswitchClient\Exception\TransportException;
+use X2Y\HyperSwitchClient\Exception\TransportException;
 
 /**
  * Retries on 5xx responses, 429 (with Retry-After honoured when present),

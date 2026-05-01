@@ -1,17 +1,17 @@
 <?php
 declare(strict_types=1);
 
-namespace X2Y\HyperswitchClient\Webhook;
+namespace X2Y\HyperSwitchClient\Webhook;
 
-use X2Y\HyperswitchClient\Exception\InvalidSignatureException;
+use X2Y\HyperSwitchClient\Exception\InvalidSignatureException;
 
 /**
- * Verifies the HMAC signature Hyperswitch attaches to outbound webhook
+ * Verifies the HMAC signature HyperSwitch attaches to outbound webhook
  * deliveries.
  *
- * Hyperswitch signs the raw HTTP body (not the headers, not a canonical
+ * HyperSwitch signs the raw HTTP body (not the headers, not a canonical
  * representation) using HMAC with the merchant's "Payment Response Hash
- * Key" — visible as `payment_response_hash_key` in Hyperswitch's merchant
+ * Key" — visible as `payment_response_hash_key` in HyperSwitch's merchant
  * dashboard. By default the algorithm is SHA-512; merchants can also
  * configure SHA-256.
  *

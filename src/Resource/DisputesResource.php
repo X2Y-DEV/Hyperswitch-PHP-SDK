@@ -1,16 +1,16 @@
 <?php
 declare(strict_types=1);
 
-namespace X2Y\HyperswitchClient\Resource;
+namespace X2Y\HyperSwitchClient\Resource;
 
-use X2Y\HyperswitchClient\Dto\Common\PaginatedList;
-use X2Y\HyperswitchClient\Dto\Dispute\Request\SubmitEvidenceRequest;
-use X2Y\HyperswitchClient\Dto\Dispute\Response\DisputeResponse;
-use X2Y\HyperswitchClient\Endpoint\DisputesEndpoints;
-use X2Y\HyperswitchClient\Exception\HyperswitchApiException;
+use X2Y\HyperSwitchClient\Dto\Common\PaginatedList;
+use X2Y\HyperSwitchClient\Dto\Dispute\Request\SubmitEvidenceRequest;
+use X2Y\HyperSwitchClient\Dto\Dispute\Response\DisputeResponse;
+use X2Y\HyperSwitchClient\Endpoint\DisputesEndpoints;
+use X2Y\HyperSwitchClient\Exception\HyperSwitchApiException;
 
 /**
- * Typed facade over the Hyperswitch Disputes group.
+ * Typed facade over the HyperSwitch Disputes group.
  *
  * @postman             Disputes
  * @hyperswitch-source  2026-04-30
@@ -24,7 +24,7 @@ final class DisputesResource extends AbstractResource
             pathParams: ['id' => $disputeId],
         );
         if (!$response instanceof DisputeResponse) {
-            throw new HyperswitchApiException('Unexpected response type from Disputes::retrieve.');
+            throw new HyperSwitchApiException('Unexpected response type from Disputes::retrieve.');
         }
         return $response;
     }
@@ -36,7 +36,7 @@ final class DisputesResource extends AbstractResource
     {
         $response = $this->execute(DisputesEndpoints::list());
         if ($response !== null && !is_array($response)) {
-            throw new HyperswitchApiException('Unexpected response type from Disputes::list.');
+            throw new HyperSwitchApiException('Unexpected response type from Disputes::list.');
         }
         /** @var array<int|string, mixed> $raw */
         $raw = $response ?? [];
@@ -53,7 +53,7 @@ final class DisputesResource extends AbstractResource
             pathParams: ['id' => $disputeId],
         );
         if (!$response instanceof DisputeResponse) {
-            throw new HyperswitchApiException('Unexpected response type from Disputes::accept.');
+            throw new HyperSwitchApiException('Unexpected response type from Disputes::accept.');
         }
         return $response;
     }
@@ -65,7 +65,7 @@ final class DisputesResource extends AbstractResource
             request: $request,
         );
         if (!$response instanceof DisputeResponse) {
-            throw new HyperswitchApiException('Unexpected response type from Disputes::submitEvidence.');
+            throw new HyperSwitchApiException('Unexpected response type from Disputes::submitEvidence.');
         }
         return $response;
     }

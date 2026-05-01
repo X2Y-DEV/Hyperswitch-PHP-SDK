@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace X2Y\HyperswitchClient\Dto;
+namespace X2Y\HyperSwitchClient\Dto;
 
 /**
  * Marker interface for every DTO.

@@ -57,7 +57,7 @@ jobs:
           name: coverage
           path: coverage.xml
 
-  # Integration tests run against the Hyperswitch sandbox and require a secret.
+  # Integration tests run against the HyperSwitch sandbox and require a secret.
   # Scheduled nightly rather than on every PR.
   integration:
     runs-on: ubuntu-latest

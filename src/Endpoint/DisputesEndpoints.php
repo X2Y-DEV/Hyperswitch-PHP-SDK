@@ -1,15 +1,15 @@
 <?php
 declare(strict_types=1);
 
-namespace X2Y\HyperswitchClient\Endpoint;
+namespace X2Y\HyperSwitchClient\Endpoint;
 
-use X2Y\HyperswitchClient\Auth\AuthTier;
-use X2Y\HyperswitchClient\Dto\Dispute\Request\SubmitEvidenceRequest;
-use X2Y\HyperswitchClient\Dto\Dispute\Response\DisputeResponse;
-use X2Y\HyperswitchClient\Transport\Endpoint;
+use X2Y\HyperSwitchClient\Auth\AuthTier;
+use X2Y\HyperSwitchClient\Dto\Dispute\Request\SubmitEvidenceRequest;
+use X2Y\HyperSwitchClient\Dto\Dispute\Response\DisputeResponse;
+use X2Y\HyperSwitchClient\Transport\Endpoint;
 
 /**
- * Hyperswitch Disputes group.
+ * HyperSwitch Disputes group.
  *
  * @postman             Disputes
  * @hyperswitch-source  2026-04-30

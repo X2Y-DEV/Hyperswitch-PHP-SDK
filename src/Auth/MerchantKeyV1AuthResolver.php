@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace X2Y\HyperswitchClient\Auth;
+namespace X2Y\HyperSwitchClient\Auth;
 
 /**
  * V1 endpoints under `/v1/payment-methods` and `/v1/payment-method-sessions`

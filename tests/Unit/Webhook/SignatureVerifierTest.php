@@ -1,11 +1,11 @@
 <?php
 declare(strict_types=1);
 
-namespace X2Y\HyperswitchClient\Tests\Unit\Webhook;
+namespace X2Y\HyperSwitchClient\Tests\Unit\Webhook;
 
 use PHPUnit\Framework\TestCase;
-use X2Y\HyperswitchClient\Exception\InvalidSignatureException;
-use X2Y\HyperswitchClient\Webhook\SignatureVerifier;
+use X2Y\HyperSwitchClient\Exception\InvalidSignatureException;
+use X2Y\HyperSwitchClient\Webhook\SignatureVerifier;
 
 final class SignatureVerifierTest extends TestCase
 {

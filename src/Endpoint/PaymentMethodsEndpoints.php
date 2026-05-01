@@ -1,18 +1,18 @@
 <?php
 declare(strict_types=1);
 
-namespace X2Y\HyperswitchClient\Endpoint;
+namespace X2Y\HyperSwitchClient\Endpoint;
 
-use X2Y\HyperswitchClient\Auth\AuthTier;
-use X2Y\HyperswitchClient\Dto\PaymentMethod\Request\CreatePaymentMethodRequest;
-use X2Y\HyperswitchClient\Dto\PaymentMethod\Request\UpdatePaymentMethodRequest;
-use X2Y\HyperswitchClient\Dto\PaymentMethod\Response\PaymentMethodDeleteResponse;
-use X2Y\HyperswitchClient\Dto\PaymentMethod\Response\PaymentMethodResponse;
-use X2Y\HyperswitchClient\Dto\PaymentMethod\Response\PaymentMethodTokenDetailsResponse;
-use X2Y\HyperswitchClient\Transport\Endpoint;
+use X2Y\HyperSwitchClient\Auth\AuthTier;
+use X2Y\HyperSwitchClient\Dto\PaymentMethod\Request\CreatePaymentMethodRequest;
+use X2Y\HyperSwitchClient\Dto\PaymentMethod\Request\UpdatePaymentMethodRequest;
+use X2Y\HyperSwitchClient\Dto\PaymentMethod\Response\PaymentMethodDeleteResponse;
+use X2Y\HyperSwitchClient\Dto\PaymentMethod\Response\PaymentMethodResponse;
+use X2Y\HyperSwitchClient\Dto\PaymentMethod\Response\PaymentMethodTokenDetailsResponse;
+use X2Y\HyperSwitchClient\Transport\Endpoint;
 
 /**
- * Hyperswitch V1 Payment Methods (Modular Payment) group.
+ * HyperSwitch V1 Payment Methods (Modular Payment) group.
  *
  * Legacy `/payment_methods` endpoints are intentionally not modelled — V1
  * paths under `/v1/payment-methods` are the supported surface.

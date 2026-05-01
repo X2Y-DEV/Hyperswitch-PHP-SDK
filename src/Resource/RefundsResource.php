@@ -1,18 +1,18 @@
 <?php
 declare(strict_types=1);
 
-namespace X2Y\HyperswitchClient\Resource;
+namespace X2Y\HyperSwitchClient\Resource;
 
-use X2Y\HyperswitchClient\Dto\Common\PaginatedList;
-use X2Y\HyperswitchClient\Dto\Refund\Request\CreateRefundRequest;
-use X2Y\HyperswitchClient\Dto\Refund\Request\ListRefundsRequest;
-use X2Y\HyperswitchClient\Dto\Refund\Request\UpdateRefundRequest;
-use X2Y\HyperswitchClient\Dto\Refund\Response\RefundResponse;
-use X2Y\HyperswitchClient\Endpoint\RefundsEndpoints;
-use X2Y\HyperswitchClient\Exception\HyperswitchApiException;
+use X2Y\HyperSwitchClient\Dto\Common\PaginatedList;
+use X2Y\HyperSwitchClient\Dto\Refund\Request\CreateRefundRequest;
+use X2Y\HyperSwitchClient\Dto\Refund\Request\ListRefundsRequest;
+use X2Y\HyperSwitchClient\Dto\Refund\Request\UpdateRefundRequest;
+use X2Y\HyperSwitchClient\Dto\Refund\Response\RefundResponse;
+use X2Y\HyperSwitchClient\Endpoint\RefundsEndpoints;
+use X2Y\HyperSwitchClient\Exception\HyperSwitchApiException;
 
 /**
- * Typed facade over the Hyperswitch Refunds API group.
+ * Typed facade over the HyperSwitch Refunds API group.
  *
  * @postman             Refunds
  * @hyperswitch-source  2026-04-30
@@ -29,7 +29,7 @@ final class RefundsResource extends AbstractResource
             request: $request,
         );
         if (!$response instanceof RefundResponse) {
-            throw new HyperswitchApiException('Unexpected response type from Refunds::create.');
+            throw new HyperSwitchApiException('Unexpected response type from Refunds::create.');
         }
         return $response;
     }
@@ -45,7 +45,7 @@ final class RefundsResource extends AbstractResource
             pathParams: ['id' => $refundId],
         );
         if (!$response instanceof RefundResponse) {
-            throw new HyperswitchApiException('Unexpected response type from Refunds::update.');
+            throw new HyperSwitchApiException('Unexpected response type from Refunds::update.');
         }
         return $response;
     }
@@ -60,7 +60,7 @@ final class RefundsResource extends AbstractResource
             pathParams: ['id' => $refundId],
         );
         if (!$response instanceof RefundResponse) {
-            throw new HyperswitchApiException('Unexpected response type from Refunds::retrieve.');
+            throw new HyperSwitchApiException('Unexpected response type from Refunds::retrieve.');
         }
         return $response;
     }
@@ -77,7 +77,7 @@ final class RefundsResource extends AbstractResource
             request: $request,
         );
         if ($response !== null && !is_array($response)) {
-            throw new HyperswitchApiException('Unexpected response type from Refunds::list.');
+            throw new HyperSwitchApiException('Unexpected response type from Refunds::list.');
         }
         /** @var array<string, mixed> $raw */
         $raw = $response ?? [];

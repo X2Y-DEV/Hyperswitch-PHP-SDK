@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace X2Y\HyperswitchClient\Exception;
+namespace X2Y\HyperSwitchClient\Exception;
 
 /**
  * Thrown when a webhook body is well-signed but its JSON shape is missing
@@ -9,6 +9,6 @@ namespace X2Y\HyperswitchClient\Exception;
  * because the request is authenticated — receivers SHOULD respond 400
  * (not 401) and log the body for forensics.
  */
-final class InvalidWebhookPayloadException extends \RuntimeException implements HyperswitchExceptionInterface
+final class InvalidWebhookPayloadException extends \RuntimeException implements HyperSwitchExceptionInterface
 {
 }

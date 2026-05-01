@@ -1,17 +1,17 @@
 <?php
 declare(strict_types=1);
 
-namespace X2Y\HyperswitchClient\Endpoint;
+namespace X2Y\HyperSwitchClient\Endpoint;
 
-use X2Y\HyperswitchClient\Auth\AuthTier;
-use X2Y\HyperswitchClient\Dto\Platform\Request\ConvertToPlatformRequest;
-use X2Y\HyperswitchClient\Dto\Platform\Request\CreateOrganizationRequest;
-use X2Y\HyperswitchClient\Dto\Platform\Request\CreatePlatformUserRequest;
-use X2Y\HyperswitchClient\Dto\Platform\Response\PlatformResponse;
-use X2Y\HyperswitchClient\Transport\Endpoint;
+use X2Y\HyperSwitchClient\Auth\AuthTier;
+use X2Y\HyperSwitchClient\Dto\Platform\Request\ConvertToPlatformRequest;
+use X2Y\HyperSwitchClient\Dto\Platform\Request\CreateOrganizationRequest;
+use X2Y\HyperSwitchClient\Dto\Platform\Request\CreatePlatformUserRequest;
+use X2Y\HyperSwitchClient\Dto\Platform\Response\PlatformResponse;
+use X2Y\HyperSwitchClient\Transport\Endpoint;
 
 /**
- * Hyperswitch Platform group — admin-tier endpoints for organization /
+ * HyperSwitch Platform group — admin-tier endpoints for organization /
  * multi-tenant platform onboarding.
  *
  * @postman             Platform

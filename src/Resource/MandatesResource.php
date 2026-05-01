@@ -1,15 +1,15 @@
 <?php
 declare(strict_types=1);
 
-namespace X2Y\HyperswitchClient\Resource;
+namespace X2Y\HyperSwitchClient\Resource;
 
-use X2Y\HyperswitchClient\Dto\Common\PaginatedList;
-use X2Y\HyperswitchClient\Dto\Mandate\Response\MandateResponse;
-use X2Y\HyperswitchClient\Endpoint\MandatesEndpoints;
-use X2Y\HyperswitchClient\Exception\HyperswitchApiException;
+use X2Y\HyperSwitchClient\Dto\Common\PaginatedList;
+use X2Y\HyperSwitchClient\Dto\Mandate\Response\MandateResponse;
+use X2Y\HyperSwitchClient\Endpoint\MandatesEndpoints;
+use X2Y\HyperSwitchClient\Exception\HyperSwitchApiException;
 
 /**
- * Typed facade over the Hyperswitch Mandates group.
+ * Typed facade over the HyperSwitch Mandates group.
  *
  * Mandate *creation* happens via `Payments::create()` with the appropriate
  * `mandate_data` / `customer_acceptance` / `setup_future_usage` fields — see
@@ -27,7 +27,7 @@ final class MandatesResource extends AbstractResource
             pathParams: ['id' => $mandateId],
         );
         if (!$response instanceof MandateResponse) {
-            throw new HyperswitchApiException('Unexpected response type from Mandates::retrieve.');
+            throw new HyperSwitchApiException('Unexpected response type from Mandates::retrieve.');
         }
         return $response;
     }
@@ -42,7 +42,7 @@ final class MandatesResource extends AbstractResource
             pathParams: ['customer_id' => $customerId],
         );
         if ($response !== null && !is_array($response)) {
-            throw new HyperswitchApiException('Unexpected response type from Mandates::listForCustomer.');
+            throw new HyperSwitchApiException('Unexpected response type from Mandates::listForCustomer.');
         }
         /** @var array<int|string, mixed> $raw */
         $raw = $response ?? [];
@@ -59,7 +59,7 @@ final class MandatesResource extends AbstractResource
             pathParams: ['id' => $mandateId],
         );
         if (!$response instanceof MandateResponse) {
-            throw new HyperswitchApiException('Unexpected response type from Mandates::revoke.');
+            throw new HyperSwitchApiException('Unexpected response type from Mandates::revoke.');
         }
         return $response;
     }

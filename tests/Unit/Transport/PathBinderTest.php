@@ -1,11 +1,11 @@
 <?php
 declare(strict_types=1);
 
-namespace X2Y\HyperswitchClient\Tests\Unit\Transport;
+namespace X2Y\HyperSwitchClient\Tests\Unit\Transport;
 
 use PHPUnit\Framework\TestCase;
-use X2Y\HyperswitchClient\Exception\HyperswitchApiException;
-use X2Y\HyperswitchClient\Transport\PathBinder;
+use X2Y\HyperSwitchClient\Exception\HyperSwitchApiException;
+use X2Y\HyperSwitchClient\Transport\PathBinder;
 
 final class PathBinderTest extends TestCase
 {
@@ -37,7 +37,7 @@ final class PathBinderTest extends TestCase
 
     public function testThrowsOnMissingPathParam(): void
     {
-        $this->expectException(HyperswitchApiException::class);
+        $this->expectException(HyperSwitchApiException::class);
         $this->expectExceptionMessage('Missing path parameter "id"');
         PathBinder::bind('/payments/{id}', []);
     }

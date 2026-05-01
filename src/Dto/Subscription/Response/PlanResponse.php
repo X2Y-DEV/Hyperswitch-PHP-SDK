@@ -1,10 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace X2Y\HyperswitchClient\Dto\Subscription\Response;
+namespace X2Y\HyperSwitchClient\Dto\Subscription\Response;
 
-use X2Y\HyperswitchClient\Dto\AbstractResponseDto;
-use X2Y\HyperswitchClient\Enum\Currency;
+use X2Y\HyperSwitchClient\Dto\AbstractResponseDto;
+use X2Y\HyperSwitchClient\Enum\Currency;
 
 /**
  * Catalog plan item returned by `/subscriptions/plans`. Plans come from the

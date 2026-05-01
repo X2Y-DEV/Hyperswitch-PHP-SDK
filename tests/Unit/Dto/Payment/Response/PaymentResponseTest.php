@@ -1,13 +1,13 @@
 <?php
 declare(strict_types=1);
 
-namespace X2Y\HyperswitchClient\Tests\Unit\Dto\Payment\Response;
+namespace X2Y\HyperSwitchClient\Tests\Unit\Dto\Payment\Response;
 
 use PHPUnit\Framework\TestCase;
-use X2Y\HyperswitchClient\Dto\Payment\Response\PaymentResponse;
-use X2Y\HyperswitchClient\Enum\CaptureMethod;
-use X2Y\HyperswitchClient\Enum\Currency;
-use X2Y\HyperswitchClient\Enum\IntentStatus;
+use X2Y\HyperSwitchClient\Dto\Payment\Response\PaymentResponse;
+use X2Y\HyperSwitchClient\Enum\CaptureMethod;
+use X2Y\HyperSwitchClient\Enum\Currency;
+use X2Y\HyperSwitchClient\Enum\IntentStatus;
 
 final class PaymentResponseTest extends TestCase
 {

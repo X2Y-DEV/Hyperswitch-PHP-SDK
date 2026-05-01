@@ -1,12 +1,12 @@
 <?php
 declare(strict_types=1);
 
-namespace X2Y\HyperswitchClient\Tests\Unit\Dto\Subscription\Response;
+namespace X2Y\HyperSwitchClient\Tests\Unit\Dto\Subscription\Response;
 
 use PHPUnit\Framework\TestCase;
-use X2Y\HyperswitchClient\Dto\Subscription\Response\SubscriptionResponse;
-use X2Y\HyperswitchClient\Enum\Currency;
-use X2Y\HyperswitchClient\Enum\SubscriptionStatus;
+use X2Y\HyperSwitchClient\Dto\Subscription\Response\SubscriptionResponse;
+use X2Y\HyperSwitchClient\Enum\Currency;
+use X2Y\HyperSwitchClient\Enum\SubscriptionStatus;
 
 final class SubscriptionResponseTest extends TestCase
 {

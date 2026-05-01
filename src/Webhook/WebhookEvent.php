@@ -1,22 +1,22 @@
 <?php
 declare(strict_types=1);
 
-namespace X2Y\HyperswitchClient\Webhook;
+namespace X2Y\HyperSwitchClient\Webhook;
 
-use X2Y\HyperswitchClient\Dto\Customer\Response\CustomerResponse;
-use X2Y\HyperswitchClient\Dto\Dispute\Response\DisputeResponse;
-use X2Y\HyperswitchClient\Dto\Mandate\Response\MandateResponse;
-use X2Y\HyperswitchClient\Dto\Payment\Response\PaymentResponse;
-use X2Y\HyperswitchClient\Dto\Payout\Response\PayoutResponse;
-use X2Y\HyperswitchClient\Dto\Refund\Response\RefundResponse;
-use X2Y\HyperswitchClient\Dto\Subscription\Response\SubscriptionResponse;
-use X2Y\HyperswitchClient\Enum\EventType;
-use X2Y\HyperswitchClient\Internal\DateTimeParser;
+use X2Y\HyperSwitchClient\Dto\Customer\Response\CustomerResponse;
+use X2Y\HyperSwitchClient\Dto\Dispute\Response\DisputeResponse;
+use X2Y\HyperSwitchClient\Dto\Mandate\Response\MandateResponse;
+use X2Y\HyperSwitchClient\Dto\Payment\Response\PaymentResponse;
+use X2Y\HyperSwitchClient\Dto\Payout\Response\PayoutResponse;
+use X2Y\HyperSwitchClient\Dto\Refund\Response\RefundResponse;
+use X2Y\HyperSwitchClient\Dto\Subscription\Response\SubscriptionResponse;
+use X2Y\HyperSwitchClient\Enum\EventType;
+use X2Y\HyperSwitchClient\Internal\DateTimeParser;
 
 /**
  * Verified inbound webhook event.
  *
- * The envelope shape Hyperswitch emits is approximately:
+ * The envelope shape HyperSwitch emits is approximately:
  *
  *     {
  *       "merchant_id":  "...",
@@ -26,7 +26,7 @@ use X2Y\HyperswitchClient\Internal\DateTimeParser;
  *       "timestamp":    "2026-04-30T12:34:56.789Z"
  *     }
  *
- * Hyperswitch occasionally tweaks the envelope (e.g. `data` instead of
+ * HyperSwitch occasionally tweaks the envelope (e.g. `data` instead of
  * `content`, flat resource at the top level instead of nested under
  * `content.object`) — we accept both. Anything not modelled goes to
  * `extras` so consumers don't lose forward compatibility.

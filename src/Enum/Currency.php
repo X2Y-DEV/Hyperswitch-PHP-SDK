@@ -1,11 +1,11 @@
 <?php
 declare(strict_types=1);
 
-namespace X2Y\HyperswitchClient\Enum;
+namespace X2Y\HyperSwitchClient\Enum;
 
 /**
  * ISO 4217 currency codes. Stub set; the AI maintenance pass populates
- * the full list from Hyperswitch's accepted currencies.
+ * the full list from HyperSwitch's accepted currencies.
  *
  * @hyperswitch-source 2026-04-30
  */

@@ -1,12 +1,12 @@
 <?php
 declare(strict_types=1);
 
-namespace X2Y\HyperswitchClient\Dto\Common;
+namespace X2Y\HyperSwitchClient\Dto\Common;
 
 /**
- * Generic envelope for Hyperswitch list endpoints.
+ * Generic envelope for HyperSwitch list endpoints.
  *
- * Hyperswitch wraps list responses in `{"data": [...], "size": N}` (sometimes
+ * HyperSwitch wraps list responses in `{"data": [...], "size": N}` (sometimes
  * with `total_count` instead of or in addition to `size`). This class is the
  * uniform return type for every list-style Resource method, parameterised by
  * the element DTO.
@@ -35,9 +35,9 @@ final class PaginatedList
     }
 
     /**
-     * Construct a paginated list from a Hyperswitch list response.
+     * Construct a paginated list from a HyperSwitch list response.
      *
-     * Hyperswitch is inconsistent across endpoints:
+     * HyperSwitch is inconsistent across endpoints:
      *   - Some return an envelope: `{"data": [...], "size": N, "total_count": N}`
      *     (e.g. `/refunds/list`)
      *   - Some return a bare array: `[ {...}, {...} ]` (e.g. `/customers/list`)

@@ -1,14 +1,14 @@
 <?php
 declare(strict_types=1);
 
-namespace X2Y\HyperswitchClient\Tests\Unit\Auth;
+namespace X2Y\HyperSwitchClient\Tests\Unit\Auth;
 
 use PHPUnit\Framework\TestCase;
-use X2Y\HyperswitchClient\Auth\AdminKeyAuthResolver;
-use X2Y\HyperswitchClient\Auth\AuthTier;
-use X2Y\HyperswitchClient\Auth\EphemeralKeyAuthResolver;
-use X2Y\HyperswitchClient\Auth\MerchantKeyAuthResolver;
-use X2Y\HyperswitchClient\Auth\PublishableKeyAuthResolver;
+use X2Y\HyperSwitchClient\Auth\AdminKeyAuthResolver;
+use X2Y\HyperSwitchClient\Auth\AuthTier;
+use X2Y\HyperSwitchClient\Auth\EphemeralKeyAuthResolver;
+use X2Y\HyperSwitchClient\Auth\MerchantKeyAuthResolver;
+use X2Y\HyperSwitchClient\Auth\PublishableKeyAuthResolver;
 
 final class AuthResolversTest extends TestCase
 {

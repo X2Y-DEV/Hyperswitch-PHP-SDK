@@ -1,13 +1,13 @@
 <?php
 declare(strict_types=1);
 
-namespace X2Y\HyperswitchClient\Dto\Dispute\Response;
+namespace X2Y\HyperSwitchClient\Dto\Dispute\Response;
 
-use X2Y\HyperswitchClient\Dto\AbstractResponseDto;
-use X2Y\HyperswitchClient\Enum\Currency;
-use X2Y\HyperswitchClient\Enum\DisputeStage;
-use X2Y\HyperswitchClient\Enum\DisputeStatus;
-use X2Y\HyperswitchClient\Internal\DateTimeParser;
+use X2Y\HyperSwitchClient\Dto\AbstractResponseDto;
+use X2Y\HyperSwitchClient\Enum\Currency;
+use X2Y\HyperSwitchClient\Enum\DisputeStage;
+use X2Y\HyperSwitchClient\Enum\DisputeStatus;
+use X2Y\HyperSwitchClient\Internal\DateTimeParser;
 
 /**
  * Response from /disputes retrieve / list (item) / accept / submit-evidence.

@@ -1,10 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace X2Y\HyperswitchClient\Dto\PaymentMethod\Request;
+namespace X2Y\HyperSwitchClient\Dto\PaymentMethod\Request;
 
-use X2Y\HyperswitchClient\Dto\AbstractRequestDto;
-use X2Y\HyperswitchClient\Enum\PaymentMethodAckStatus;
+use X2Y\HyperSwitchClient\Dto\AbstractRequestDto;
+use X2Y\HyperSwitchClient\Enum\PaymentMethodAckStatus;
 
 /**
  * Update a saved payment method — e.g. updating cardholder name, nickname,

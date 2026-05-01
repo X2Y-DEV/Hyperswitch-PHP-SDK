@@ -1,13 +1,13 @@
 <?php
 declare(strict_types=1);
 
-namespace X2Y\HyperswitchClient\Dto\Customer\Request;
+namespace X2Y\HyperSwitchClient\Dto\Customer\Request;
 
-use X2Y\HyperswitchClient\Dto\AbstractRequestDto;
-use X2Y\HyperswitchClient\Dto\Common\Address;
+use X2Y\HyperSwitchClient\Dto\AbstractRequestDto;
+use X2Y\HyperSwitchClient\Dto\Common\Address;
 
 /**
- * Update an existing Hyperswitch customer. Same field set as create; every
+ * Update an existing HyperSwitch customer. Same field set as create; every
  * field is optional and only the provided fields are updated.
  *
  * @postman             Customers / Update Customer

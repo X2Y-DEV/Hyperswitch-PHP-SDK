@@ -1,10 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace X2Y\HyperswitchClient\Dto\Payment\Request;
+namespace X2Y\HyperSwitchClient\Dto\Payment\Request;
 
-use X2Y\HyperswitchClient\Dto\AbstractRequestDto;
-use X2Y\HyperswitchClient\Enum\IntentStatus;
+use X2Y\HyperSwitchClient\Dto\AbstractRequestDto;
+use X2Y\HyperSwitchClient\Enum\IntentStatus;
 
 /**
  * List payments with optional filters. Sent as query parameters on a GET

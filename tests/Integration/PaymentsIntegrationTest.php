@@ -1,17 +1,17 @@
 <?php
 declare(strict_types=1);
 
-namespace X2Y\HyperswitchClient\Tests\Integration;
+namespace X2Y\HyperSwitchClient\Tests\Integration;
 
-use X2Y\HyperswitchClient\Dto\Common\PaginatedList;
-use X2Y\HyperswitchClient\Dto\Payment\Request\CancelPaymentRequest;
-use X2Y\HyperswitchClient\Dto\Payment\Request\CreatePaymentRequest;
-use X2Y\HyperswitchClient\Dto\Payment\Request\ListPaymentsRequest;
-use X2Y\HyperswitchClient\Dto\Payment\Request\UpdatePaymentRequest;
-use X2Y\HyperswitchClient\Dto\Payment\Response\PaymentResponse;
-use X2Y\HyperswitchClient\Enum\Currency;
-use X2Y\HyperswitchClient\Enum\IntentStatus;
-use X2Y\HyperswitchClient\Exception\HyperswitchExceptionInterface;
+use X2Y\HyperSwitchClient\Dto\Common\PaginatedList;
+use X2Y\HyperSwitchClient\Dto\Payment\Request\CancelPaymentRequest;
+use X2Y\HyperSwitchClient\Dto\Payment\Request\CreatePaymentRequest;
+use X2Y\HyperSwitchClient\Dto\Payment\Request\ListPaymentsRequest;
+use X2Y\HyperSwitchClient\Dto\Payment\Request\UpdatePaymentRequest;
+use X2Y\HyperSwitchClient\Dto\Payment\Response\PaymentResponse;
+use X2Y\HyperSwitchClient\Enum\Currency;
+use X2Y\HyperSwitchClient\Enum\IntentStatus;
+use X2Y\HyperSwitchClient\Exception\HyperSwitchExceptionInterface;
 
 final class PaymentsIntegrationTest extends AbstractIntegrationTestCase
 {
@@ -35,7 +35,7 @@ final class PaymentsIntegrationTest extends AbstractIntegrationTestCase
         $this->onTearDown(function () use ($paymentId): void {
             try {
                 $this->client->payments()->cancel($paymentId);
-            } catch (HyperswitchExceptionInterface) {
+            } catch (HyperSwitchExceptionInterface) {
                 // already cancelled by the test or already terminal
             }
         });

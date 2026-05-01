@@ -4,7 +4,7 @@ This is the canonical prompt used when an AI agent updates the SDK against
 a new Postman export. Paste it verbatim along with the output of
 `composer test:drift`.
 
-Note: Hyperswitch does not publish a public OpenAPI specification, so the
+Note: HyperSwitch does not publish a public OpenAPI specification, so the
 Postman collection at `tests/Fixtures/postman.json` is the only mechanical
 source of truth.
 
@@ -51,7 +51,7 @@ dependencies.
    - Field naming: PHP camelCase properties; map to/from snake_case keys in
      `toArray()` / `fromArray()`.
 6. **Enums:** PHP 8.1 backed string enums implementing `LabelledEnum`.
-   Cases match Hyperswitch's literal string values. `label()` returns a short
+   Cases match HyperSwitch's literal string values. `label()` returns a short
    English description.
 7. **Resources:** Extend `ResourceInterface`. One method per Endpoint. No
    business logic — bind Endpoint, dispatch via injected `ApiClientInterface`,
@@ -72,7 +72,7 @@ dependencies.
       declares `responseClass: null` so the Resource can wrap manually).
     - Datetime fields use `Internal\DateTimeParser::parse($data['x'] ?? null)`.
       Never construct `\DateTimeImmutable` directly on response data —
-      Hyperswitch returns Unix epoch ints on some endpoints (e.g.
+      HyperSwitch returns Unix epoch ints on some endpoints (e.g.
       `/ephemeral_keys`) and ISO 8601 elsewhere.
     - Request DTOs with >20 fields take a final `array $extras = []`
       parameter and merge via `$this->mergeExtras($typed, $this->extras)`

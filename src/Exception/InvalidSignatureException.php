@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace X2Y\HyperswitchClient\Exception;
+namespace X2Y\HyperSwitchClient\Exception;
 
 /**
  * Thrown when a webhook signature fails HMAC verification, when the
@@ -12,6 +12,6 @@ namespace X2Y\HyperswitchClient\Exception;
  * exception. Do not echo the exception message back to the caller — it
  * may include the canonical input that was signed.
  */
-final class InvalidSignatureException extends \RuntimeException implements HyperswitchExceptionInterface
+final class InvalidSignatureException extends \RuntimeException implements HyperSwitchExceptionInterface
 {
 }

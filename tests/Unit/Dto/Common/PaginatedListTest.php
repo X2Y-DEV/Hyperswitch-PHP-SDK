@@ -1,10 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace X2Y\HyperswitchClient\Tests\Unit\Dto\Common;
+namespace X2Y\HyperSwitchClient\Tests\Unit\Dto\Common;
 
 use PHPUnit\Framework\TestCase;
-use X2Y\HyperswitchClient\Dto\Common\PaginatedList;
+use X2Y\HyperSwitchClient\Dto\Common\PaginatedList;
 
 final class PaginatedListTest extends TestCase
 {

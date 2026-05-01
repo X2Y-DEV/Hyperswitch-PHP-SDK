@@ -1,12 +1,12 @@
 <?php
 declare(strict_types=1);
 
-namespace X2Y\HyperswitchClient\Resource;
+namespace X2Y\HyperSwitchClient\Resource;
 
-use X2Y\HyperswitchClient\Dto\Proxy\Request\CreateProxyRequest;
-use X2Y\HyperswitchClient\Dto\Proxy\Response\ProxyResponse;
-use X2Y\HyperswitchClient\Endpoint\ProxyEndpoints;
-use X2Y\HyperswitchClient\Exception\HyperswitchApiException;
+use X2Y\HyperSwitchClient\Dto\Proxy\Request\CreateProxyRequest;
+use X2Y\HyperSwitchClient\Dto\Proxy\Response\ProxyResponse;
+use X2Y\HyperSwitchClient\Endpoint\ProxyEndpoints;
+use X2Y\HyperSwitchClient\Exception\HyperSwitchApiException;
 
 /**
  * @postman             Proxy
@@ -18,7 +18,7 @@ final class ProxyResource extends AbstractResource
     {
         $response = $this->execute(ProxyEndpoints::create(), request: $request);
         if (!$response instanceof ProxyResponse) {
-            throw new HyperswitchApiException('Unexpected response type from Proxy::create.');
+            throw new HyperSwitchApiException('Unexpected response type from Proxy::create.');
         }
         return $response;
     }

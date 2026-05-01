@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace X2Y\HyperswitchClient\Auth;
+namespace X2Y\HyperSwitchClient\Auth;
 
 /**
  * Ephemeral keys are short-lived, per-customer keys minted by the merchant

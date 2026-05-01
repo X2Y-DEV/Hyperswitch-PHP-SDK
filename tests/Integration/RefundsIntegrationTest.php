@@ -1,12 +1,12 @@
 <?php
 declare(strict_types=1);
 
-namespace X2Y\HyperswitchClient\Tests\Integration;
+namespace X2Y\HyperSwitchClient\Tests\Integration;
 
-use X2Y\HyperswitchClient\Dto\Common\PaginatedList;
-use X2Y\HyperswitchClient\Dto\Refund\Request\ListRefundsRequest;
-use X2Y\HyperswitchClient\Dto\Refund\Response\RefundResponse;
-use X2Y\HyperswitchClient\Exception\NotFoundException;
+use X2Y\HyperSwitchClient\Dto\Common\PaginatedList;
+use X2Y\HyperSwitchClient\Dto\Refund\Request\ListRefundsRequest;
+use X2Y\HyperSwitchClient\Dto\Refund\Response\RefundResponse;
+use X2Y\HyperSwitchClient\Exception\NotFoundException;
 
 final class RefundsIntegrationTest extends AbstractIntegrationTestCase
 {

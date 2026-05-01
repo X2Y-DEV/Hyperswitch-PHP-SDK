@@ -1,18 +1,18 @@
 <?php
 declare(strict_types=1);
 
-namespace X2Y\HyperswitchClient\Dto\Subscription\Response;
+namespace X2Y\HyperSwitchClient\Dto\Subscription\Response;
 
-use X2Y\HyperswitchClient\Dto\AbstractResponseDto;
-use X2Y\HyperswitchClient\Enum\Currency;
-use X2Y\HyperswitchClient\Enum\SubscriptionStatus;
-use X2Y\HyperswitchClient\Internal\DateTimeParser;
+use X2Y\HyperSwitchClient\Dto\AbstractResponseDto;
+use X2Y\HyperSwitchClient\Enum\Currency;
+use X2Y\HyperSwitchClient\Enum\SubscriptionStatus;
+use X2Y\HyperSwitchClient\Internal\DateTimeParser;
 
 /**
  * Response from subscription create / confirm / update / retrieve / pause /
  * resume / cancel and list-item shape.
  *
- * Hyperswitch's subscription response embeds plan/billing-cycle metadata that
+ * HyperSwitch's subscription response embeds plan/billing-cycle metadata that
  * varies per upstream catalog provider (Chargebee, in-house). Top-level
  * scalars are typed; the deep catalog blobs follow the connector-blob
  * convention and stay in `extras`.

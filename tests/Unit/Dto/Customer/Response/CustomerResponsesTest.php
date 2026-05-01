@@ -1,12 +1,12 @@
 <?php
 declare(strict_types=1);
 
-namespace X2Y\HyperswitchClient\Tests\Unit\Dto\Customer\Response;
+namespace X2Y\HyperSwitchClient\Tests\Unit\Dto\Customer\Response;
 
 use PHPUnit\Framework\TestCase;
-use X2Y\HyperswitchClient\Dto\Customer\Response\CustomerDeleteResponse;
-use X2Y\HyperswitchClient\Dto\Customer\Response\CustomerResponse;
-use X2Y\HyperswitchClient\Dto\Customer\Response\EphemeralKeyResponse;
+use X2Y\HyperSwitchClient\Dto\Customer\Response\CustomerDeleteResponse;
+use X2Y\HyperSwitchClient\Dto\Customer\Response\CustomerResponse;
+use X2Y\HyperSwitchClient\Dto\Customer\Response\EphemeralKeyResponse;
 
 final class CustomerResponsesTest extends TestCase
 {
@@ -43,7 +43,7 @@ final class CustomerResponsesTest extends TestCase
 
     public function testEphemeralKeyResponseHandlesUnixEpoch(): void
     {
-        // The reason DateTimeParser exists — Hyperswitch returns Unix int timestamps here.
+        // The reason DateTimeParser exists — HyperSwitch returns Unix int timestamps here.
         $e = EphemeralKeyResponse::fromArray([
             'customer_id' => 'cus_42',
             'id'          => 'eki_xyz',

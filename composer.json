@@ -1,6 +1,6 @@
 {
     "name": "x2y/hyperswitch-client",
-    "description": "Pure PHP SDK for the Hyperswitch payment orchestration API.",
+    "description": "Pure PHP SDK for the HyperSwitch payment orchestration API.",
     "type": "library",
     "license": "MIT",
     "keywords": ["hyperswitch", "payments", "api", "sdk", "psr-18"],
@@ -22,12 +22,12 @@
     },
     "autoload": {
         "psr-4": {
-            "X2Y\\HyperswitchClient\\": "src/"
+            "X2Y\\HyperSwitchClient\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "X2Y\\HyperswitchClient\\Tests\\": "tests/"
+            "X2Y\\HyperSwitchClient\\Tests\\": "tests/"
         }
     },
     "scripts": {

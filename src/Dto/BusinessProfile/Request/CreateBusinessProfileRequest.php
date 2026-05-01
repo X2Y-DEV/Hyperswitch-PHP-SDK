@@ -1,14 +1,14 @@
 <?php
 declare(strict_types=1);
 
-namespace X2Y\HyperswitchClient\Dto\BusinessProfile\Request;
+namespace X2Y\HyperSwitchClient\Dto\BusinessProfile\Request;
 
-use X2Y\HyperswitchClient\Dto\AbstractRequestDto;
+use X2Y\HyperSwitchClient\Dto\AbstractRequestDto;
 
 /**
  * Create a business profile under a merchant account.
  *
- * Hyperswitch's business profile body has 40+ fields, most of which are
+ * HyperSwitch's business profile body has 40+ fields, most of which are
  * loose nested config blobs (webhook_details, routing algorithms, payment
  * link configuration, fraud connector details, etc.). Per the
  * connector-blob convention, those nested fields are typed

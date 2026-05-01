@@ -1,13 +1,13 @@
 <?php
 declare(strict_types=1);
 
-namespace X2Y\HyperswitchClient\Internal;
+namespace X2Y\HyperSwitchClient\Internal;
 
-use X2Y\HyperswitchClient\Exception\HyperswitchApiException;
+use X2Y\HyperSwitchClient\Exception\HyperSwitchApiException;
 
 /**
  * Internal JSON helper. Wraps json_encode/json_decode with JSON_THROW_ON_ERROR
- * and surfaces failures as HyperswitchApiException.
+ * and surfaces failures as HyperSwitchApiException.
  *
  * Not part of the public API — `@internal`.
  */
@@ -25,25 +25,25 @@ final class Json
         try {
             return json_encode($value, JSON_THROW_ON_ERROR | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
         } catch (\JsonException $e) {
-            throw new HyperswitchApiException('Failed to encode request body as JSON: ' . $e->getMessage(), 0, $e);
+            throw new HyperSwitchApiException('Failed to encode request body as JSON: ' . $e->getMessage(), 0, $e);
         }
     }
 
     /**
-     * Decode an object-shaped JSON response. The vast majority of Hyperswitch
+     * Decode an object-shaped JSON response. The vast majority of HyperSwitch
      * endpoints return objects; this is the default path.
      *
      * @return array<string, mixed>
      *
-     * @throws HyperswitchApiException when the JSON is malformed, non-array,
+     * @throws HyperSwitchApiException when the JSON is malformed, non-array,
      *         or arrives as a JSON array instead of an object.
      */
     public static function decode(string $raw): array
     {
         $decoded = self::decodeAny($raw);
         if (array_is_list($decoded) && $decoded !== []) {
-            throw new HyperswitchApiException(
-                'Hyperswitch returned a JSON array where an object was expected.'
+            throw new HyperSwitchApiException(
+                'HyperSwitch returned a JSON array where an object was expected.'
             );
         }
         /** @var array<string, mixed> $decoded */
@@ -65,10 +65,10 @@ final class Json
         try {
             $decoded = json_decode($raw, true, 512, JSON_THROW_ON_ERROR);
         } catch (\JsonException $e) {
-            throw new HyperswitchApiException('Failed to decode response body as JSON: ' . $e->getMessage(), 0, $e);
+            throw new HyperSwitchApiException('Failed to decode response body as JSON: ' . $e->getMessage(), 0, $e);
         }
         if (!is_array($decoded)) {
-            throw new HyperswitchApiException('Hyperswitch returned a non-object JSON payload.');
+            throw new HyperSwitchApiException('HyperSwitch returned a non-object JSON payload.');
         }
         return $decoded;
     }

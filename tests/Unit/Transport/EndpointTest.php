@@ -1,11 +1,11 @@
 <?php
 declare(strict_types=1);
 
-namespace X2Y\HyperswitchClient\Tests\Unit\Transport;
+namespace X2Y\HyperSwitchClient\Tests\Unit\Transport;
 
 use PHPUnit\Framework\TestCase;
-use X2Y\HyperswitchClient\Auth\AuthTier;
-use X2Y\HyperswitchClient\Transport\Endpoint;
+use X2Y\HyperSwitchClient\Auth\AuthTier;
+use X2Y\HyperSwitchClient\Transport\Endpoint;
 
 final class EndpointTest extends TestCase
 {

@@ -1,19 +1,19 @@
 <?php
 declare(strict_types=1);
 
-namespace X2Y\HyperswitchClient\Resource;
+namespace X2Y\HyperSwitchClient\Resource;
 
-use X2Y\HyperswitchClient\Dto\Common\PaginatedList;
-use X2Y\HyperswitchClient\Dto\PaymentMethod\Request\CreatePaymentMethodRequest;
-use X2Y\HyperswitchClient\Dto\PaymentMethod\Request\UpdatePaymentMethodRequest;
-use X2Y\HyperswitchClient\Dto\PaymentMethod\Response\PaymentMethodDeleteResponse;
-use X2Y\HyperswitchClient\Dto\PaymentMethod\Response\PaymentMethodResponse;
-use X2Y\HyperswitchClient\Dto\PaymentMethod\Response\PaymentMethodTokenDetailsResponse;
-use X2Y\HyperswitchClient\Endpoint\PaymentMethodsEndpoints;
-use X2Y\HyperswitchClient\Exception\HyperswitchApiException;
+use X2Y\HyperSwitchClient\Dto\Common\PaginatedList;
+use X2Y\HyperSwitchClient\Dto\PaymentMethod\Request\CreatePaymentMethodRequest;
+use X2Y\HyperSwitchClient\Dto\PaymentMethod\Request\UpdatePaymentMethodRequest;
+use X2Y\HyperSwitchClient\Dto\PaymentMethod\Response\PaymentMethodDeleteResponse;
+use X2Y\HyperSwitchClient\Dto\PaymentMethod\Response\PaymentMethodResponse;
+use X2Y\HyperSwitchClient\Dto\PaymentMethod\Response\PaymentMethodTokenDetailsResponse;
+use X2Y\HyperSwitchClient\Endpoint\PaymentMethodsEndpoints;
+use X2Y\HyperSwitchClient\Exception\HyperSwitchApiException;
 
 /**
- * Typed facade over the Hyperswitch V1 Payment Methods group.
+ * Typed facade over the HyperSwitch V1 Payment Methods group.
  *
  * @postman             Payment Methods - Modular Payment
  * @hyperswitch-source  2026-04-30
@@ -27,7 +27,7 @@ final class PaymentMethodsResource extends AbstractResource
             request: $request,
         );
         if (!$response instanceof PaymentMethodResponse) {
-            throw new HyperswitchApiException('Unexpected response type from PaymentMethods::create.');
+            throw new HyperSwitchApiException('Unexpected response type from PaymentMethods::create.');
         }
         return $response;
     }
@@ -39,7 +39,7 @@ final class PaymentMethodsResource extends AbstractResource
             pathParams: ['id' => $paymentMethodId],
         );
         if (!$response instanceof PaymentMethodResponse) {
-            throw new HyperswitchApiException('Unexpected response type from PaymentMethods::retrieve.');
+            throw new HyperSwitchApiException('Unexpected response type from PaymentMethods::retrieve.');
         }
         return $response;
     }
@@ -52,7 +52,7 @@ final class PaymentMethodsResource extends AbstractResource
             pathParams: ['id' => $paymentMethodId],
         );
         if (!$response instanceof PaymentMethodResponse) {
-            throw new HyperswitchApiException('Unexpected response type from PaymentMethods::update.');
+            throw new HyperSwitchApiException('Unexpected response type from PaymentMethods::update.');
         }
         return $response;
     }
@@ -67,7 +67,7 @@ final class PaymentMethodsResource extends AbstractResource
             pathParams: ['id' => $customerId],
         );
         if ($response !== null && !is_array($response)) {
-            throw new HyperswitchApiException('Unexpected response type from PaymentMethods::listForCustomer.');
+            throw new HyperSwitchApiException('Unexpected response type from PaymentMethods::listForCustomer.');
         }
         /** @var array<int|string, mixed> $raw */
         $raw = $response ?? [];
@@ -84,7 +84,7 @@ final class PaymentMethodsResource extends AbstractResource
             pathParams: ['id' => $paymentMethodId],
         );
         if (!$response instanceof PaymentMethodDeleteResponse) {
-            throw new HyperswitchApiException('Unexpected response type from PaymentMethods::delete.');
+            throw new HyperSwitchApiException('Unexpected response type from PaymentMethods::delete.');
         }
         return $response;
     }
@@ -96,7 +96,7 @@ final class PaymentMethodsResource extends AbstractResource
             pathParams: ['token' => $temporaryToken],
         );
         if (!$response instanceof PaymentMethodTokenDetailsResponse) {
-            throw new HyperswitchApiException('Unexpected response type from PaymentMethods::tokenDetails.');
+            throw new HyperSwitchApiException('Unexpected response type from PaymentMethods::tokenDetails.');
         }
         return $response;
     }

@@ -1,17 +1,17 @@
 <?php
 declare(strict_types=1);
 
-namespace X2Y\HyperswitchClient\Endpoint;
+namespace X2Y\HyperSwitchClient\Endpoint;
 
-use X2Y\HyperswitchClient\Auth\AuthTier;
-use X2Y\HyperswitchClient\Dto\BusinessProfile\Request\CreateBusinessProfileRequest;
-use X2Y\HyperswitchClient\Dto\BusinessProfile\Request\UpdateBusinessProfileRequest;
-use X2Y\HyperswitchClient\Dto\BusinessProfile\Response\BusinessProfileDeleteResponse;
-use X2Y\HyperswitchClient\Dto\BusinessProfile\Response\BusinessProfileResponse;
-use X2Y\HyperswitchClient\Transport\Endpoint;
+use X2Y\HyperSwitchClient\Auth\AuthTier;
+use X2Y\HyperSwitchClient\Dto\BusinessProfile\Request\CreateBusinessProfileRequest;
+use X2Y\HyperSwitchClient\Dto\BusinessProfile\Request\UpdateBusinessProfileRequest;
+use X2Y\HyperSwitchClient\Dto\BusinessProfile\Response\BusinessProfileDeleteResponse;
+use X2Y\HyperSwitchClient\Dto\BusinessProfile\Response\BusinessProfileResponse;
+use X2Y\HyperSwitchClient\Transport\Endpoint;
 
 /**
- * Hyperswitch Business Profile group. Admin-tier.
+ * HyperSwitch Business Profile group. Admin-tier.
  *
  * @postman             Business Profile
  * @hyperswitch-source  2026-04-30
