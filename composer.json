@@ -4,7 +4,7 @@
     "type": "library",
     "license": "MIT",
     "keywords": ["hyperswitch", "payments", "api", "sdk", "psr-18"],
-    "homepage": "https://github.com/x2yio/hyperswitch-client-php",
+    "homepage": "https://github.com/X2Y-DEV/hyperswitch-client-php",
     "require": {
         "php": "^8.1",
         "psr/http-client": "^1.0",

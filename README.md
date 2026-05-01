@@ -1,6 +1,6 @@
 # HyperSwitch PHP Client
 
-[![CI](https://github.com/x2yio/hyperswitch-client-php/actions/workflows/ci.yml/badge.svg)](https://github.com/x2yio/hyperswitch-client-php/actions)
+[![CI](https://github.com/X2Y-DEV/hyperswitch-client-php/actions/workflows/ci.yml/badge.svg)](https://github.com/X2Y-DEV/hyperswitch-client-php/actions)
 [![Packagist](https://img.shields.io/packagist/v/x2y/hyperswitch-client.svg)](https://packagist.org/packages/x2y/hyperswitch-client)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
