@@ -22,7 +22,9 @@ jobs:
         with:
           php-version: ${{ matrix.php }}
           extensions: mbstring, json, curl
-          coverage: none
+          # PCOV is faster than Xdebug for line coverage; only enable on
+          # the newest PHP so the rest of the matrix stays fast.
+          coverage: ${{ matrix.php == '8.4' && 'pcov' || 'none' }}
           tools: composer:v2
 
       - name: Cache Composer
@@ -43,6 +45,17 @@ jobs:
 
       - name: PHPStan
         run: composer stan
+
+      - name: Coverage (PHP 8.4 only)
+        if: matrix.php == '8.4'
+        run: vendor/bin/phpunit --testsuite=unit --coverage-clover=coverage.xml --coverage-text
+
+      - name: Upload coverage artifact
+        if: matrix.php == '8.4'
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage
+          path: coverage.xml
 
   # Integration tests run against the Hyperswitch sandbox and require a secret.
   # Scheduled nightly rather than on every PR.
