@@ -7,6 +7,7 @@ use Nyholm\Psr7\Factory\Psr17Factory;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpClient\Psr18Client;
 use X2Y\HyperswitchClient\Auth\MerchantKeyAuthResolver;
+use X2Y\HyperswitchClient\Auth\MerchantKeyV1AuthResolver;
 use X2Y\HyperswitchClient\HyperswitchClient;
 use X2Y\HyperswitchClient\Transport\Middleware\IdempotencyKeyMiddleware;
 use X2Y\HyperswitchClient\Transport\Middleware\RetryMiddleware;
@@ -26,6 +27,7 @@ abstract class AbstractIntegrationTestCase extends TestCase
 {
     protected HyperswitchClient $client;
     protected string $prefix;
+    protected ?string $profileId = null;
 
     /** @var list<callable():void> */
     private array $cleanupCallbacks = [];
@@ -42,14 +44,22 @@ abstract class AbstractIntegrationTestCase extends TestCase
             httpClient:     new Psr18Client(),
             requestFactory: $psr17,
             streamFactory:  $psr17,
-            auth:           [new MerchantKeyAuthResolver($key)],
+            auth:           [
+                new MerchantKeyAuthResolver($key),
+                // V1 endpoints (PaymentMethods, PaymentMethodSessions) authenticate
+                // the same key under a different header format. Register both so
+                // tests can exercise either tier without re-wiring the client.
+                new MerchantKeyV1AuthResolver($key),
+            ],
             middleware:     [
                 new IdempotencyKeyMiddleware(),
                 new RetryMiddleware(maxAttempts: 2, baseDelayMs: 100),
             ],
         );
 
-        $this->prefix = 'sdkit_' . bin2hex(random_bytes(4));
+        $this->prefix    = 'sdkit_' . bin2hex(random_bytes(4));
+        $profileId       = getenv('HYPERSWITCH_SANDBOX_PROFILE_ID');
+        $this->profileId = ($profileId !== false && $profileId !== '') ? $profileId : null;
     }
 
     protected function tearDown(): void

@@ -12,7 +12,6 @@ use X2Y\HyperswitchClient\Dto\PaymentMethodSession\Request\UpdateSavedPaymentMet
 use X2Y\HyperswitchClient\Dto\PaymentMethodSession\Response\SessionResponse;
 use X2Y\HyperswitchClient\Endpoint\PaymentMethodSessionsEndpoints;
 use X2Y\HyperswitchClient\Exception\HyperswitchApiException;
-use X2Y\HyperswitchClient\Transport\ApiClientInterface;
 
 /**
  * Typed facade over the Hyperswitch V1 Payment Method Sessions group.
@@ -20,15 +19,11 @@ use X2Y\HyperswitchClient\Transport\ApiClientInterface;
  * @postman             Payment Method Sessions
  * @hyperswitch-source  2026-04-30
  */
-final class PaymentMethodSessionsResource implements ResourceInterface
+final class PaymentMethodSessionsResource extends AbstractResource
 {
-    public function __construct(private readonly ApiClientInterface $client)
-    {
-    }
-
     public function create(CreateSessionRequest $request): SessionResponse
     {
-        $response = $this->client->execute(
+        $response = $this->execute(
             PaymentMethodSessionsEndpoints::create(),
             request: $request,
         );
@@ -40,7 +35,7 @@ final class PaymentMethodSessionsResource implements ResourceInterface
 
     public function retrieve(string $sessionId): SessionResponse
     {
-        $response = $this->client->execute(
+        $response = $this->execute(
             PaymentMethodSessionsEndpoints::retrieve(),
             pathParams: ['id' => $sessionId],
         );
@@ -55,7 +50,7 @@ final class PaymentMethodSessionsResource implements ResourceInterface
      */
     public function listPaymentMethods(string $sessionId): PaginatedList
     {
-        $response = $this->client->execute(
+        $response = $this->execute(
             PaymentMethodSessionsEndpoints::listPaymentMethods(),
             pathParams: ['id' => $sessionId],
         );
@@ -76,7 +71,7 @@ final class PaymentMethodSessionsResource implements ResourceInterface
         string $sessionId,
         UpdateSavedPaymentMethodRequest $request,
     ): SessionResponse {
-        $response = $this->client->execute(
+        $response = $this->execute(
             PaymentMethodSessionsEndpoints::updateSavedPaymentMethod(),
             request:    $request,
             pathParams: ['id' => $sessionId],
@@ -91,7 +86,7 @@ final class PaymentMethodSessionsResource implements ResourceInterface
 
     public function confirm(string $sessionId, ConfirmSessionRequest $request): SessionResponse
     {
-        $response = $this->client->execute(
+        $response = $this->execute(
             PaymentMethodSessionsEndpoints::confirm(),
             request:    $request,
             pathParams: ['id' => $sessionId],
@@ -108,7 +103,7 @@ final class PaymentMethodSessionsResource implements ResourceInterface
      */
     public function tokenLookup(string $token, SessionTokenLookupRequest $request): SessionResponse
     {
-        $response = $this->client->execute(
+        $response = $this->execute(
             PaymentMethodSessionsEndpoints::tokenLookup(),
             request:    $request,
             pathParams: ['token' => $token],

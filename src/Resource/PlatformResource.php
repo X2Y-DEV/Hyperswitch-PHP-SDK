@@ -9,7 +9,6 @@ use X2Y\HyperswitchClient\Dto\Platform\Request\CreatePlatformUserRequest;
 use X2Y\HyperswitchClient\Dto\Platform\Response\PlatformResponse;
 use X2Y\HyperswitchClient\Endpoint\PlatformEndpoints;
 use X2Y\HyperswitchClient\Exception\HyperswitchApiException;
-use X2Y\HyperswitchClient\Transport\ApiClientInterface;
 
 /**
  * Typed facade over the Hyperswitch Platform group. Admin-tier.
@@ -17,15 +16,11 @@ use X2Y\HyperswitchClient\Transport\ApiClientInterface;
  * @postman             Platform
  * @hyperswitch-source  2026-04-30
  */
-final class PlatformResource implements ResourceInterface
+final class PlatformResource extends AbstractResource
 {
-    public function __construct(private readonly ApiClientInterface $client)
-    {
-    }
-
     public function createOrganization(CreateOrganizationRequest $request): PlatformResponse
     {
-        $response = $this->client->execute(PlatformEndpoints::createOrganization(), request: $request);
+        $response = $this->execute(PlatformEndpoints::createOrganization(), request: $request);
         if (!$response instanceof PlatformResponse) {
             throw new HyperswitchApiException('Unexpected response type from Platform::createOrganization.');
         }
@@ -34,7 +29,7 @@ final class PlatformResource implements ResourceInterface
 
     public function convertToPlatform(string $organizationId, ConvertToPlatformRequest $request): PlatformResponse
     {
-        $response = $this->client->execute(
+        $response = $this->execute(
             PlatformEndpoints::convertToPlatform(),
             request:    $request,
             pathParams: ['organization_id' => $organizationId],
@@ -47,7 +42,7 @@ final class PlatformResource implements ResourceInterface
 
     public function createPlatformUser(CreatePlatformUserRequest $request): PlatformResponse
     {
-        $response = $this->client->execute(PlatformEndpoints::createPlatformUser(), request: $request);
+        $response = $this->execute(PlatformEndpoints::createPlatformUser(), request: $request);
         if (!$response instanceof PlatformResponse) {
             throw new HyperswitchApiException('Unexpected response type from Platform::createPlatformUser.');
         }

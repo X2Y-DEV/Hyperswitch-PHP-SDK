@@ -10,7 +10,6 @@ use X2Y\HyperswitchClient\Dto\ApiKey\Response\ApiKeyResponse;
 use X2Y\HyperswitchClient\Dto\Common\PaginatedList;
 use X2Y\HyperswitchClient\Endpoint\ApiKeysEndpoints;
 use X2Y\HyperswitchClient\Exception\HyperswitchApiException;
-use X2Y\HyperswitchClient\Transport\ApiClientInterface;
 
 /**
  * Typed facade over the Hyperswitch API Keys group. Admin-tier.
@@ -18,15 +17,11 @@ use X2Y\HyperswitchClient\Transport\ApiClientInterface;
  * @postman             API Key
  * @hyperswitch-source  2026-04-30
  */
-final class ApiKeysResource implements ResourceInterface
+final class ApiKeysResource extends AbstractResource
 {
-    public function __construct(private readonly ApiClientInterface $client)
-    {
-    }
-
     public function create(string $merchantId, CreateApiKeyRequest $request): ApiKeyResponse
     {
-        $response = $this->client->execute(
+        $response = $this->execute(
             ApiKeysEndpoints::create(),
             request:    $request,
             pathParams: ['merchant_id' => $merchantId],
@@ -39,7 +34,7 @@ final class ApiKeysResource implements ResourceInterface
 
     public function update(string $merchantId, string $apiKeyId, UpdateApiKeyRequest $request): ApiKeyResponse
     {
-        $response = $this->client->execute(
+        $response = $this->execute(
             ApiKeysEndpoints::update(),
             request:    $request,
             pathParams: ['merchant_id' => $merchantId, 'api_key_id' => $apiKeyId],
@@ -52,7 +47,7 @@ final class ApiKeysResource implements ResourceInterface
 
     public function retrieve(string $merchantId, string $apiKeyId): ApiKeyResponse
     {
-        $response = $this->client->execute(
+        $response = $this->execute(
             ApiKeysEndpoints::retrieve(),
             pathParams: ['merchant_id' => $merchantId, 'api_key_id' => $apiKeyId],
         );
@@ -67,7 +62,7 @@ final class ApiKeysResource implements ResourceInterface
      */
     public function list(string $merchantId): PaginatedList
     {
-        $response = $this->client->execute(
+        $response = $this->execute(
             ApiKeysEndpoints::list(),
             pathParams: ['merchant_id' => $merchantId],
         );
@@ -84,7 +79,7 @@ final class ApiKeysResource implements ResourceInterface
 
     public function delete(string $merchantId, string $apiKeyId): ApiKeyDeleteResponse
     {
-        $response = $this->client->execute(
+        $response = $this->execute(
             ApiKeysEndpoints::delete(),
             pathParams: ['merchant_id' => $merchantId, 'api_key_id' => $apiKeyId],
         );

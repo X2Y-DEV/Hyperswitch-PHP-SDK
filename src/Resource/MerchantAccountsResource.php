@@ -9,7 +9,6 @@ use X2Y\HyperswitchClient\Dto\MerchantAccount\Response\MerchantAccountDeleteResp
 use X2Y\HyperswitchClient\Dto\MerchantAccount\Response\MerchantAccountResponse;
 use X2Y\HyperswitchClient\Endpoint\MerchantAccountsEndpoints;
 use X2Y\HyperswitchClient\Exception\HyperswitchApiException;
-use X2Y\HyperswitchClient\Transport\ApiClientInterface;
 
 /**
  * Typed facade over the Hyperswitch Merchant Accounts group. Admin-tier.
@@ -17,15 +16,11 @@ use X2Y\HyperswitchClient\Transport\ApiClientInterface;
  * @postman             MerchantAccounts
  * @hyperswitch-source  2026-04-30
  */
-final class MerchantAccountsResource implements ResourceInterface
+final class MerchantAccountsResource extends AbstractResource
 {
-    public function __construct(private readonly ApiClientInterface $client)
-    {
-    }
-
     public function create(CreateMerchantAccountRequest $request): MerchantAccountResponse
     {
-        $response = $this->client->execute(
+        $response = $this->execute(
             MerchantAccountsEndpoints::create(),
             request: $request,
         );
@@ -37,7 +32,7 @@ final class MerchantAccountsResource implements ResourceInterface
 
     public function retrieve(string $merchantId): MerchantAccountResponse
     {
-        $response = $this->client->execute(
+        $response = $this->execute(
             MerchantAccountsEndpoints::retrieve(),
             pathParams: ['id' => $merchantId],
         );
@@ -49,7 +44,7 @@ final class MerchantAccountsResource implements ResourceInterface
 
     public function update(string $merchantId, UpdateMerchantAccountRequest $request): MerchantAccountResponse
     {
-        $response = $this->client->execute(
+        $response = $this->execute(
             MerchantAccountsEndpoints::update(),
             request:    $request,
             pathParams: ['id' => $merchantId],
@@ -62,7 +57,7 @@ final class MerchantAccountsResource implements ResourceInterface
 
     public function delete(string $merchantId): MerchantAccountDeleteResponse
     {
-        $response = $this->client->execute(
+        $response = $this->execute(
             MerchantAccountsEndpoints::delete(),
             pathParams: ['id' => $merchantId],
         );

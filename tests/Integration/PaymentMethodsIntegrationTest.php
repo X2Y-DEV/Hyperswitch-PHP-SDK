@@ -22,28 +22,31 @@ final class PaymentMethodsIntegrationTest extends AbstractIntegrationTestCase
     }
 
     /**
-     * `GET /v1/payment-methods/{id}` rejects merchant-key authentication with
-     * "Missing required param: Authorization" — this V1 endpoint expects a
-     * Bearer Authorization header rather than the `api-key` header that the
-     * MerchantKeyAuthResolver sets. The SDK does not yet support per-Resource
-     * Authorization-header injection; that's planned for Phase 4d.
+     * V1 auth scheme is now wired up (Authorization: api-key=<key>). With
+     * the right scheme + a profile id, retrieve of a non-existent payment
+     * method returns 404 typed as NotFoundException.
      *
-     * This test pins the *current* behavior. When 4d ships per-Resource
-     * `extraHeaders` and the test starts catching NotFoundException, update
-     * the assertion accordingly — that's the signal the auth gap was closed.
+     * Without the profile id, Hyperswitch returns 422 "Missing header key:
+     * X-Profile-Id" — also acceptable; the V1 auth itself is no longer the
+     * blocker. Set HYPERSWITCH_SANDBOX_PROFILE_ID to exercise the 404 path.
      */
-    public function testRetrieveCurrentlyRejectsMerchantAuth(): void
+    public function testRetrieveWithV1AuthGetsPastTheAuthGate(): void
     {
+        $resource = $this->profileId !== null
+            ? $this->client->paymentMethods()->withProfileId($this->profileId)
+            : $this->client->paymentMethods();
+
         try {
-            $this->client->paymentMethods()->retrieve($this->uniqueId('pm'));
+            $resource->retrieve($this->uniqueId('pm'));
             self::fail('expected an authentication / not-found exception');
+        } catch (NotFoundException $e) {
+            // Happy path: V1 auth + profile id authenticate; PM doesn't exist; 404.
+            self::assertSame(404, $e->httpStatus);
         } catch (ValidationException $e) {
-            // Current behavior — V1 endpoint demands Authorization header.
-            self::assertStringContainsString('Authorization', $e->getMessage());
-        } catch (NotFoundException) {
-            // Future behavior — once 4d adds per-Resource extraHeaders the
-            // request authenticates correctly and Hyperswitch returns 404.
-            self::assertTrue(true);
+            // Profile id missing — but the V1 auth itself worked: error has
+            // shifted from "Missing required param: Authorization" to
+            // "Missing header key: X-Profile-Id".
+            self::assertStringContainsString('X-Profile-Id', $e->getMessage());
         } catch (HyperswitchExceptionInterface $e) {
             self::fail('unexpected SDK exception: ' . get_class($e) . ' — ' . $e->getMessage());
         }

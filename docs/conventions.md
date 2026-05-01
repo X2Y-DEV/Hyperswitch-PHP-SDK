@@ -184,6 +184,36 @@ returns `PaginatedList<T>` from its Resource method.
    Endpoint, and the ApiClient picks the right resolver.
 2. Don't introduce new auth tiers without updating `AuthTier` enum and
    adding the corresponding resolver implementation.
+3. **V1 endpoints (`/v1/payment-methods/*`, `/v1/payment-method-sessions/*`)
+   use `AuthTier::MERCHANT_V1`** — same merchant key value as `MERCHANT`,
+   but the wire format is `Authorization: api-key=<key>` rather than the
+   standard `api-key: <key>` header. Hyperswitch's V1 surface also requires
+   an `X-Profile-Id` header on every call; consumers attach it via
+   `Resource::withProfileId('pro_xxx')` rather than per-call header args.
+
+## Resource-scoped headers
+
+For headers that need to be attached to every call from a Resource (the
+`X-Profile-Id` header on V1 endpoints is the canonical example) the
+consumer pattern is the fluent builder form:
+
+```php
+$client->paymentMethods()
+       ->withProfileId('pro_42')
+       ->retrieve('pm_xyz');
+```
+
+`AbstractResource::withExtraHeaders()` returns a *new* Resource instance
+with the merged header set; the original is untouched, so the same base
+Resource can serve multiple business contexts in the same process.
+Per-call headers passed to the protected `execute()` helper override
+Resource-scoped headers on key collision.
+
+When adding a new Resource that needs scoped headers, prefer extending
+`AbstractResource` (it handles `withExtraHeaders()` and `withProfileId()`
+for free) over implementing `ResourceInterface` directly. The `execute()`
+helper merges Resource-level extras automatically — call it instead of
+`$this->client->execute()`.
 
 ## Architecture rules
 

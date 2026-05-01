@@ -12,7 +12,6 @@ use X2Y\HyperswitchClient\Dto\Customer\Response\CustomerResponse;
 use X2Y\HyperswitchClient\Dto\Customer\Response\EphemeralKeyResponse;
 use X2Y\HyperswitchClient\Endpoint\CustomersEndpoints;
 use X2Y\HyperswitchClient\Exception\HyperswitchApiException;
-use X2Y\HyperswitchClient\Transport\ApiClientInterface;
 
 /**
  * Typed facade over the Hyperswitch Customers API group.
@@ -20,18 +19,14 @@ use X2Y\HyperswitchClient\Transport\ApiClientInterface;
  * @postman             Customers
  * @hyperswitch-source  2026-04-30
  */
-final class CustomersResource implements ResourceInterface
+final class CustomersResource extends AbstractResource
 {
-    public function __construct(private readonly ApiClientInterface $client)
-    {
-    }
-
     /**
      * @postman   Customers / Create Customer
      */
     public function create(CreateCustomerRequest $request): CustomerResponse
     {
-        $response = $this->client->execute(
+        $response = $this->execute(
             CustomersEndpoints::create(),
             request: $request,
         );
@@ -46,7 +41,7 @@ final class CustomersResource implements ResourceInterface
      */
     public function retrieve(string $customerId): CustomerResponse
     {
-        $response = $this->client->execute(
+        $response = $this->execute(
             CustomersEndpoints::retrieve(),
             pathParams: ['id' => $customerId],
         );
@@ -61,7 +56,7 @@ final class CustomersResource implements ResourceInterface
      */
     public function update(string $customerId, UpdateCustomerRequest $request): CustomerResponse
     {
-        $response = $this->client->execute(
+        $response = $this->execute(
             CustomersEndpoints::update(),
             request:    $request,
             pathParams: ['id' => $customerId],
@@ -77,7 +72,7 @@ final class CustomersResource implements ResourceInterface
      */
     public function delete(string $customerId): CustomerDeleteResponse
     {
-        $response = $this->client->execute(
+        $response = $this->execute(
             CustomersEndpoints::delete(),
             pathParams: ['id' => $customerId],
         );
@@ -94,7 +89,7 @@ final class CustomersResource implements ResourceInterface
      */
     public function list(): PaginatedList
     {
-        $response = $this->client->execute(CustomersEndpoints::list());
+        $response = $this->execute(CustomersEndpoints::list());
         if ($response !== null && !is_array($response)) {
             throw new HyperswitchApiException('Unexpected response type from Customers::list.');
         }
@@ -114,7 +109,7 @@ final class CustomersResource implements ResourceInterface
      */
     public function createEphemeralKey(CreateEphemeralKeyRequest $request): EphemeralKeyResponse
     {
-        $response = $this->client->execute(
+        $response = $this->execute(
             CustomersEndpoints::ephemeralKey(),
             request: $request,
         );

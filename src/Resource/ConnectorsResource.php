@@ -10,7 +10,6 @@ use X2Y\HyperswitchClient\Dto\Connector\Response\ConnectorDeleteResponse;
 use X2Y\HyperswitchClient\Dto\Connector\Response\ConnectorResponse;
 use X2Y\HyperswitchClient\Endpoint\ConnectorsEndpoints;
 use X2Y\HyperswitchClient\Exception\HyperswitchApiException;
-use X2Y\HyperswitchClient\Transport\ApiClientInterface;
 
 /**
  * Typed facade over the Hyperswitch Payment Connectors group. Admin-tier.
@@ -18,15 +17,11 @@ use X2Y\HyperswitchClient\Transport\ApiClientInterface;
  * @postman             PaymentConnectors
  * @hyperswitch-source  2026-04-30
  */
-final class ConnectorsResource implements ResourceInterface
+final class ConnectorsResource extends AbstractResource
 {
-    public function __construct(private readonly ApiClientInterface $client)
-    {
-    }
-
     public function create(string $accountId, CreateConnectorRequest $request): ConnectorResponse
     {
-        $response = $this->client->execute(
+        $response = $this->execute(
             ConnectorsEndpoints::create(),
             request:    $request,
             pathParams: ['account_id' => $accountId],
@@ -39,7 +34,7 @@ final class ConnectorsResource implements ResourceInterface
 
     public function retrieve(string $accountId, string $connectorId): ConnectorResponse
     {
-        $response = $this->client->execute(
+        $response = $this->execute(
             ConnectorsEndpoints::retrieve(),
             pathParams: ['account_id' => $accountId, 'connector_id' => $connectorId],
         );
@@ -51,7 +46,7 @@ final class ConnectorsResource implements ResourceInterface
 
     public function update(string $accountId, string $connectorId, UpdateConnectorRequest $request): ConnectorResponse
     {
-        $response = $this->client->execute(
+        $response = $this->execute(
             ConnectorsEndpoints::update(),
             request:    $request,
             pathParams: ['account_id' => $accountId, 'connector_id' => $connectorId],
@@ -67,7 +62,7 @@ final class ConnectorsResource implements ResourceInterface
      */
     public function list(string $accountId): PaginatedList
     {
-        $response = $this->client->execute(
+        $response = $this->execute(
             ConnectorsEndpoints::list(),
             pathParams: ['account_id' => $accountId],
         );
@@ -84,7 +79,7 @@ final class ConnectorsResource implements ResourceInterface
 
     public function delete(string $accountId, string $connectorId): ConnectorDeleteResponse
     {
-        $response = $this->client->execute(
+        $response = $this->execute(
             ConnectorsEndpoints::delete(),
             pathParams: ['account_id' => $accountId, 'connector_id' => $connectorId],
         );

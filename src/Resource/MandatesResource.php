@@ -7,7 +7,6 @@ use X2Y\HyperswitchClient\Dto\Common\PaginatedList;
 use X2Y\HyperswitchClient\Dto\Mandate\Response\MandateResponse;
 use X2Y\HyperswitchClient\Endpoint\MandatesEndpoints;
 use X2Y\HyperswitchClient\Exception\HyperswitchApiException;
-use X2Y\HyperswitchClient\Transport\ApiClientInterface;
 
 /**
  * Typed facade over the Hyperswitch Mandates group.
@@ -19,15 +18,11 @@ use X2Y\HyperswitchClient\Transport\ApiClientInterface;
  * @postman             Mandates
  * @hyperswitch-source  2026-04-30
  */
-final class MandatesResource implements ResourceInterface
+final class MandatesResource extends AbstractResource
 {
-    public function __construct(private readonly ApiClientInterface $client)
-    {
-    }
-
     public function retrieve(string $mandateId): MandateResponse
     {
-        $response = $this->client->execute(
+        $response = $this->execute(
             MandatesEndpoints::retrieve(),
             pathParams: ['id' => $mandateId],
         );
@@ -42,7 +37,7 @@ final class MandatesResource implements ResourceInterface
      */
     public function listForCustomer(string $customerId): PaginatedList
     {
-        $response = $this->client->execute(
+        $response = $this->execute(
             MandatesEndpoints::listForCustomer(),
             pathParams: ['customer_id' => $customerId],
         );
@@ -59,7 +54,7 @@ final class MandatesResource implements ResourceInterface
 
     public function revoke(string $mandateId): MandateResponse
     {
-        $response = $this->client->execute(
+        $response = $this->execute(
             MandatesEndpoints::revoke(),
             pathParams: ['id' => $mandateId],
         );

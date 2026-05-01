@@ -22,4 +22,13 @@ enum AuthTier: string
 
     /** Ephemeral key — short-lived per-customer key for client-side payment-method calls. */
     case EPHEMERAL = 'ephemeral';
+
+    /**
+     * V1 merchant auth — same merchant key, but Hyperswitch's V1 endpoints
+     * (paths under `/v1/payment-methods` and `/v1/payment-method-sessions`)
+     * expect it as `Authorization: api-key=<key>` rather than the standard
+     * `api-key: <key>` header. V1 endpoints additionally require an
+     * `X-Profile-Id` header — see Resource::withProfileId().
+     */
+    case MERCHANT_V1 = 'merchant_v1';
 }

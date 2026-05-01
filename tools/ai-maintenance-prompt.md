@@ -81,6 +81,10 @@ dependencies.
       polymorphic `POST /payments` create and `POST /payments/{id}/confirm`),
       register ONE Endpoint factory and ONE Resource method. Use a single
       Request DTO with optional fields covering every variant.
+    - V1 paths (`/v1/payment-methods/*`, `/v1/payment-method-sessions/*`)
+      declare `AuthTier::MERCHANT_V1` and require `X-Profile-Id`. Resources
+      targeting V1 endpoints extend `AbstractResource` so consumers can
+      attach the profile id via `withProfileId('pro_xxx')`.
 
 ## Output format
 

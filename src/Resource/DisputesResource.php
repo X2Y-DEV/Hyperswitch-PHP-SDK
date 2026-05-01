@@ -8,7 +8,6 @@ use X2Y\HyperswitchClient\Dto\Dispute\Request\SubmitEvidenceRequest;
 use X2Y\HyperswitchClient\Dto\Dispute\Response\DisputeResponse;
 use X2Y\HyperswitchClient\Endpoint\DisputesEndpoints;
 use X2Y\HyperswitchClient\Exception\HyperswitchApiException;
-use X2Y\HyperswitchClient\Transport\ApiClientInterface;
 
 /**
  * Typed facade over the Hyperswitch Disputes group.
@@ -16,15 +15,11 @@ use X2Y\HyperswitchClient\Transport\ApiClientInterface;
  * @postman             Disputes
  * @hyperswitch-source  2026-04-30
  */
-final class DisputesResource implements ResourceInterface
+final class DisputesResource extends AbstractResource
 {
-    public function __construct(private readonly ApiClientInterface $client)
-    {
-    }
-
     public function retrieve(string $disputeId): DisputeResponse
     {
-        $response = $this->client->execute(
+        $response = $this->execute(
             DisputesEndpoints::retrieve(),
             pathParams: ['id' => $disputeId],
         );
@@ -39,7 +34,7 @@ final class DisputesResource implements ResourceInterface
      */
     public function list(): PaginatedList
     {
-        $response = $this->client->execute(DisputesEndpoints::list());
+        $response = $this->execute(DisputesEndpoints::list());
         if ($response !== null && !is_array($response)) {
             throw new HyperswitchApiException('Unexpected response type from Disputes::list.');
         }
@@ -53,7 +48,7 @@ final class DisputesResource implements ResourceInterface
 
     public function accept(string $disputeId): DisputeResponse
     {
-        $response = $this->client->execute(
+        $response = $this->execute(
             DisputesEndpoints::accept(),
             pathParams: ['id' => $disputeId],
         );
@@ -65,7 +60,7 @@ final class DisputesResource implements ResourceInterface
 
     public function submitEvidence(SubmitEvidenceRequest $request): DisputeResponse
     {
-        $response = $this->client->execute(
+        $response = $this->execute(
             DisputesEndpoints::submitEvidence(),
             request: $request,
         );

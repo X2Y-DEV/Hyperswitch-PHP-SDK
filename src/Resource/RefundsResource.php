@@ -10,7 +10,6 @@ use X2Y\HyperswitchClient\Dto\Refund\Request\UpdateRefundRequest;
 use X2Y\HyperswitchClient\Dto\Refund\Response\RefundResponse;
 use X2Y\HyperswitchClient\Endpoint\RefundsEndpoints;
 use X2Y\HyperswitchClient\Exception\HyperswitchApiException;
-use X2Y\HyperswitchClient\Transport\ApiClientInterface;
 
 /**
  * Typed facade over the Hyperswitch Refunds API group.
@@ -18,18 +17,14 @@ use X2Y\HyperswitchClient\Transport\ApiClientInterface;
  * @postman             Refunds
  * @hyperswitch-source  2026-04-30
  */
-final class RefundsResource implements ResourceInterface
+final class RefundsResource extends AbstractResource
 {
-    public function __construct(private readonly ApiClientInterface $client)
-    {
-    }
-
     /**
      * @postman   Refunds / Refunds - Create
      */
     public function create(CreateRefundRequest $request): RefundResponse
     {
-        $response = $this->client->execute(
+        $response = $this->execute(
             RefundsEndpoints::create(),
             request: $request,
         );
@@ -44,7 +39,7 @@ final class RefundsResource implements ResourceInterface
      */
     public function update(string $refundId, UpdateRefundRequest $request): RefundResponse
     {
-        $response = $this->client->execute(
+        $response = $this->execute(
             RefundsEndpoints::update(),
             request:    $request,
             pathParams: ['id' => $refundId],
@@ -60,7 +55,7 @@ final class RefundsResource implements ResourceInterface
      */
     public function retrieve(string $refundId): RefundResponse
     {
-        $response = $this->client->execute(
+        $response = $this->execute(
             RefundsEndpoints::retrieve(),
             pathParams: ['id' => $refundId],
         );
@@ -77,7 +72,7 @@ final class RefundsResource implements ResourceInterface
      */
     public function list(ListRefundsRequest $request): PaginatedList
     {
-        $response = $this->client->execute(
+        $response = $this->execute(
             RefundsEndpoints::list(),
             request: $request,
         );

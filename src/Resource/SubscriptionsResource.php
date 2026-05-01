@@ -19,7 +19,6 @@ use X2Y\HyperswitchClient\Dto\Subscription\Response\PlanResponse;
 use X2Y\HyperswitchClient\Dto\Subscription\Response\SubscriptionResponse;
 use X2Y\HyperswitchClient\Endpoint\SubscriptionsEndpoints;
 use X2Y\HyperswitchClient\Exception\HyperswitchApiException;
-use X2Y\HyperswitchClient\Transport\ApiClientInterface;
 
 /**
  * Typed facade over the Hyperswitch Subscriptions API group.
@@ -27,18 +26,14 @@ use X2Y\HyperswitchClient\Transport\ApiClientInterface;
  * @postman             Subscriptions
  * @hyperswitch-source  2026-04-30
  */
-final class SubscriptionsResource implements ResourceInterface
+final class SubscriptionsResource extends AbstractResource
 {
-    public function __construct(private readonly ApiClientInterface $client)
-    {
-    }
-
     /**
      * @postman   Subscriptions / Subscription - Create
      */
     public function create(CreateSubscriptionRequest $request): SubscriptionResponse
     {
-        $response = $this->client->execute(
+        $response = $this->execute(
             SubscriptionsEndpoints::create(),
             request: $request,
         );
@@ -53,7 +48,7 @@ final class SubscriptionsResource implements ResourceInterface
      */
     public function createAndConfirm(CreateAndConfirmSubscriptionRequest $request): SubscriptionResponse
     {
-        $response = $this->client->execute(
+        $response = $this->execute(
             SubscriptionsEndpoints::createAndConfirm(),
             request: $request,
         );
@@ -68,7 +63,7 @@ final class SubscriptionsResource implements ResourceInterface
      */
     public function confirm(string $subscriptionId, ConfirmSubscriptionRequest $request): SubscriptionResponse
     {
-        $response = $this->client->execute(
+        $response = $this->execute(
             SubscriptionsEndpoints::confirm(),
             request:    $request,
             pathParams: ['id' => $subscriptionId],
@@ -84,7 +79,7 @@ final class SubscriptionsResource implements ResourceInterface
      */
     public function update(string $subscriptionId, UpdateSubscriptionRequest $request): SubscriptionResponse
     {
-        $response = $this->client->execute(
+        $response = $this->execute(
             SubscriptionsEndpoints::update(),
             request:    $request,
             pathParams: ['id' => $subscriptionId],
@@ -100,7 +95,7 @@ final class SubscriptionsResource implements ResourceInterface
      */
     public function retrieve(string $subscriptionId): SubscriptionResponse
     {
-        $response = $this->client->execute(
+        $response = $this->execute(
             SubscriptionsEndpoints::retrieve(),
             pathParams: ['id' => $subscriptionId],
         );
@@ -115,7 +110,7 @@ final class SubscriptionsResource implements ResourceInterface
      */
     public function pause(string $subscriptionId, ?PauseSubscriptionRequest $request = null): SubscriptionResponse
     {
-        $response = $this->client->execute(
+        $response = $this->execute(
             SubscriptionsEndpoints::pause(),
             request:    $request ?? new PauseSubscriptionRequest(),
             pathParams: ['id' => $subscriptionId],
@@ -131,7 +126,7 @@ final class SubscriptionsResource implements ResourceInterface
      */
     public function resume(string $subscriptionId, ?ResumeSubscriptionRequest $request = null): SubscriptionResponse
     {
-        $response = $this->client->execute(
+        $response = $this->execute(
             SubscriptionsEndpoints::resume(),
             request:    $request ?? new ResumeSubscriptionRequest(),
             pathParams: ['id' => $subscriptionId],
@@ -147,7 +142,7 @@ final class SubscriptionsResource implements ResourceInterface
      */
     public function cancel(string $subscriptionId, ?CancelSubscriptionRequest $request = null): SubscriptionResponse
     {
-        $response = $this->client->execute(
+        $response = $this->execute(
             SubscriptionsEndpoints::cancel(),
             request:    $request ?? new CancelSubscriptionRequest(),
             pathParams: ['id' => $subscriptionId],
@@ -167,7 +162,7 @@ final class SubscriptionsResource implements ResourceInterface
     {
         $queryParams = $request?->toArray() ?? [];
 
-        $response = $this->client->execute(
+        $response = $this->execute(
             SubscriptionsEndpoints::list(),
             queryParams: $queryParams,
         );
@@ -191,7 +186,7 @@ final class SubscriptionsResource implements ResourceInterface
     {
         $queryParams = $request?->toArray() ?? [];
 
-        $response = $this->client->execute(
+        $response = $this->execute(
             SubscriptionsEndpoints::plans(),
             queryParams: $queryParams,
         );
@@ -211,7 +206,7 @@ final class SubscriptionsResource implements ResourceInterface
      */
     public function estimate(EstimateSubscriptionRequest $request): EstimateResponse
     {
-        $response = $this->client->execute(
+        $response = $this->execute(
             SubscriptionsEndpoints::estimate(),
             queryParams: $request->toArray(),
         );

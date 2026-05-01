@@ -6,7 +6,6 @@ namespace X2Y\HyperswitchClient\Resource;
 use X2Y\HyperswitchClient\Dto\PaymentLink\Response\PaymentLinkResponse;
 use X2Y\HyperswitchClient\Endpoint\PaymentLinksEndpoints;
 use X2Y\HyperswitchClient\Exception\HyperswitchApiException;
-use X2Y\HyperswitchClient\Transport\ApiClientInterface;
 
 /**
  * Typed facade over the Hyperswitch Payment Links API group.
@@ -17,18 +16,14 @@ use X2Y\HyperswitchClient\Transport\ApiClientInterface;
  * @postman             Payment Links
  * @hyperswitch-source  2026-04-30
  */
-final class PaymentLinksResource implements ResourceInterface
+final class PaymentLinksResource extends AbstractResource
 {
-    public function __construct(private readonly ApiClientInterface $client)
-    {
-    }
-
     /**
      * @postman   Payment Links / Payment Link - Retrieve
      */
     public function retrieve(string $paymentLinkId): PaymentLinkResponse
     {
-        $response = $this->client->execute(
+        $response = $this->execute(
             PaymentLinksEndpoints::retrieve(),
             pathParams: ['id' => $paymentLinkId],
         );

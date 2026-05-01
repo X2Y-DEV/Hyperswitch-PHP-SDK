@@ -35,7 +35,7 @@ final class PaymentMethodsEndpoints
         return new Endpoint(
             method:        'POST',
             pathTemplate:  '/v1/payment-methods',
-            authTier:      AuthTier::MERCHANT,
+            authTier:      AuthTier::MERCHANT_V1,
             idempotent:    true,
             requestClass:  CreatePaymentMethodRequest::class,
             responseClass: PaymentMethodResponse::class,
@@ -51,7 +51,7 @@ final class PaymentMethodsEndpoints
         return new Endpoint(
             method:        'GET',
             pathTemplate:  '/v1/payment-methods/{id}',
-            authTier:      AuthTier::MERCHANT,
+            authTier:      AuthTier::MERCHANT_V1,
             idempotent:    false,
             requestClass:  null,
             responseClass: PaymentMethodResponse::class,
@@ -67,7 +67,7 @@ final class PaymentMethodsEndpoints
         return new Endpoint(
             method:        'PUT',
             pathTemplate:  '/v1/payment-methods/{id}/update-saved-payment-method',
-            authTier:      AuthTier::MERCHANT,
+            authTier:      AuthTier::MERCHANT_V1,
             idempotent:    false,
             requestClass:  UpdatePaymentMethodRequest::class,
             responseClass: PaymentMethodResponse::class,
@@ -85,7 +85,7 @@ final class PaymentMethodsEndpoints
         return new Endpoint(
             method:        'GET',
             pathTemplate:  '/v1/customers/{id}/saved-payment-methods',
-            authTier:      AuthTier::MERCHANT,
+            authTier:      AuthTier::MERCHANT_V1,
             idempotent:    false,
             requestClass:  null,
             responseClass: null,
@@ -101,7 +101,7 @@ final class PaymentMethodsEndpoints
         return new Endpoint(
             method:        'DELETE',
             pathTemplate:  '/v1/payment-methods/{id}',
-            authTier:      AuthTier::MERCHANT,
+            authTier:      AuthTier::MERCHANT_V1,
             idempotent:    false,
             requestClass:  null,
             responseClass: PaymentMethodDeleteResponse::class,
@@ -117,7 +117,7 @@ final class PaymentMethodsEndpoints
         return new Endpoint(
             method:        'GET',
             pathTemplate:  '/v1/payment-methods/token/{token}/details',
-            authTier:      AuthTier::PUBLISHABLE,
+            authTier:      AuthTier::MERCHANT_V1,
             idempotent:    false,
             requestClass:  null,
             responseClass: PaymentMethodTokenDetailsResponse::class,

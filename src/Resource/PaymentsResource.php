@@ -17,7 +17,6 @@ use X2Y\HyperswitchClient\Dto\Payment\Response\PaymentResponse;
 use X2Y\HyperswitchClient\Dto\Payment\Response\SessionTokensResponse;
 use X2Y\HyperswitchClient\Endpoint\PaymentsEndpoints;
 use X2Y\HyperswitchClient\Exception\HyperswitchApiException;
-use X2Y\HyperswitchClient\Transport\ApiClientInterface;
 
 /**
  * Typed facade over the Hyperswitch Payments API group.
@@ -25,18 +24,14 @@ use X2Y\HyperswitchClient\Transport\ApiClientInterface;
  * @postman             Payments
  * @hyperswitch-source  2026-04-30
  */
-final class PaymentsResource implements ResourceInterface
+final class PaymentsResource extends AbstractResource
 {
-    public function __construct(private readonly ApiClientInterface $client)
-    {
-    }
-
     /**
      * @postman   Payments / Payments - Create
      */
     public function create(CreatePaymentRequest $request): PaymentResponse
     {
-        $response = $this->client->execute(
+        $response = $this->execute(
             PaymentsEndpoints::create(),
             request: $request,
         );
@@ -51,7 +46,7 @@ final class PaymentsResource implements ResourceInterface
      */
     public function update(string $paymentId, UpdatePaymentRequest $request): PaymentResponse
     {
-        $response = $this->client->execute(
+        $response = $this->execute(
             PaymentsEndpoints::update(),
             request:    $request,
             pathParams: ['id' => $paymentId],
@@ -70,7 +65,7 @@ final class PaymentsResource implements ResourceInterface
      */
     public function retrieve(string $paymentId, array $queryParams = []): PaymentResponse
     {
-        $response = $this->client->execute(
+        $response = $this->execute(
             PaymentsEndpoints::retrieve(),
             pathParams:  ['id' => $paymentId],
             queryParams: $queryParams,
@@ -90,7 +85,7 @@ final class PaymentsResource implements ResourceInterface
      */
     public function confirm(string $paymentId, ConfirmPaymentRequest $request): PaymentResponse
     {
-        $response = $this->client->execute(
+        $response = $this->execute(
             PaymentsEndpoints::confirm(),
             request:    $request,
             pathParams: ['id' => $paymentId],
@@ -106,7 +101,7 @@ final class PaymentsResource implements ResourceInterface
      */
     public function capture(string $paymentId, ?CapturePaymentRequest $request = null): PaymentResponse
     {
-        $response = $this->client->execute(
+        $response = $this->execute(
             PaymentsEndpoints::capture(),
             request:    $request ?? new CapturePaymentRequest(),
             pathParams: ['id' => $paymentId],
@@ -122,7 +117,7 @@ final class PaymentsResource implements ResourceInterface
      */
     public function cancel(string $paymentId, ?CancelPaymentRequest $request = null): PaymentResponse
     {
-        $response = $this->client->execute(
+        $response = $this->execute(
             PaymentsEndpoints::cancel(),
             request:    $request ?? new CancelPaymentRequest(),
             pathParams: ['id' => $paymentId],
@@ -140,7 +135,7 @@ final class PaymentsResource implements ResourceInterface
         string $paymentId,
         ?CancelPostCapturePaymentRequest $request = null,
     ): PaymentResponse {
-        $response = $this->client->execute(
+        $response = $this->execute(
             PaymentsEndpoints::cancelPostCapture(),
             request:    $request ?? new CancelPostCapturePaymentRequest(),
             pathParams: ['id' => $paymentId],
@@ -160,7 +155,7 @@ final class PaymentsResource implements ResourceInterface
     {
         $queryParams = $request?->toArray() ?? [];
 
-        $response = $this->client->execute(
+        $response = $this->execute(
             PaymentsEndpoints::list(),
             queryParams: $queryParams,
         );
@@ -180,7 +175,7 @@ final class PaymentsResource implements ResourceInterface
      */
     public function sessionTokens(SessionTokensRequest $request): SessionTokensResponse
     {
-        $response = $this->client->execute(
+        $response = $this->execute(
             PaymentsEndpoints::sessionTokens(),
             request: $request,
         );
@@ -197,7 +192,7 @@ final class PaymentsResource implements ResourceInterface
         string $paymentId,
         IncrementalAuthorizationRequest $request,
     ): PaymentResponse {
-        $response = $this->client->execute(
+        $response = $this->execute(
             PaymentsEndpoints::incrementalAuthorization(),
             request:    $request,
             pathParams: ['id' => $paymentId],
@@ -213,7 +208,7 @@ final class PaymentsResource implements ResourceInterface
      */
     public function extendAuthorization(string $paymentId): PaymentResponse
     {
-        $response = $this->client->execute(
+        $response = $this->execute(
             PaymentsEndpoints::extendAuthorization(),
             pathParams: ['id' => $paymentId],
         );

@@ -32,7 +32,7 @@ final class PaymentMethodSessionsEndpoints
         return new Endpoint(
             method:        'POST',
             pathTemplate:  '/v1/payment-method-sessions',
-            authTier:      AuthTier::MERCHANT,
+            authTier:      AuthTier::MERCHANT_V1,
             idempotent:    true,
             requestClass:  CreateSessionRequest::class,
             responseClass: SessionResponse::class,
@@ -48,7 +48,7 @@ final class PaymentMethodSessionsEndpoints
         return new Endpoint(
             method:        'GET',
             pathTemplate:  '/v1/payment-method-sessions/{id}',
-            authTier:      AuthTier::PUBLISHABLE,
+            authTier:      AuthTier::MERCHANT_V1,
             idempotent:    false,
             requestClass:  null,
             responseClass: SessionResponse::class,
@@ -68,7 +68,7 @@ final class PaymentMethodSessionsEndpoints
         return new Endpoint(
             method:        'GET',
             pathTemplate:  '/v1/payment-method-sessions/{id}/list-payment-methods',
-            authTier:      AuthTier::PUBLISHABLE,
+            authTier:      AuthTier::MERCHANT_V1,
             idempotent:    false,
             requestClass:  null,
             responseClass: null,
@@ -84,7 +84,7 @@ final class PaymentMethodSessionsEndpoints
         return new Endpoint(
             method:        'PUT',
             pathTemplate:  '/v1/payment-method-sessions/{id}/update-saved-payment-method',
-            authTier:      AuthTier::PUBLISHABLE,
+            authTier:      AuthTier::MERCHANT_V1,
             idempotent:    false,
             requestClass:  UpdateSavedPaymentMethodRequest::class,
             responseClass: SessionResponse::class,
@@ -100,7 +100,7 @@ final class PaymentMethodSessionsEndpoints
         return new Endpoint(
             method:        'POST',
             pathTemplate:  '/v1/payment-method-sessions/{id}/confirm',
-            authTier:      AuthTier::PUBLISHABLE,
+            authTier:      AuthTier::MERCHANT_V1,
             idempotent:    true,
             requestClass:  ConfirmSessionRequest::class,
             responseClass: SessionResponse::class,
@@ -120,7 +120,7 @@ final class PaymentMethodSessionsEndpoints
         return new Endpoint(
             method:        'DELETE',
             pathTemplate:  '/v1/payment-method-sessions/{token}',
-            authTier:      AuthTier::MERCHANT,
+            authTier:      AuthTier::MERCHANT_V1,
             idempotent:    false,
             requestClass:  SessionTokenLookupRequest::class,
             responseClass: SessionResponse::class,

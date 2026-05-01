@@ -28,6 +28,22 @@ final class PostmanCoverageTest extends TestCase
     /** Symfony PSR adapter packages may legitimately appear in dev examples; keep the
      *  rule scoped to src/ and allow PSR namespaces. */
 
+    /**
+     * Postman items the SDK intentionally does not model. Each entry is the
+     * canonicalised "METHOD /path" form (after `normalisePath`).
+     *
+     * The legacy `/payment_methods` endpoints are skipped per the project's
+     * "V1 only" decision — V1 paths under `/v1/payment-methods` are the
+     * supported surface. See PLAN.md decisions log.
+     */
+    private const INTENTIONALLY_SKIPPED = [
+        'POST /payment_methods',
+        'POST /payment_methods/{id}',
+        'GET /account/payment_methods',
+        'GET /customers/{id}/payment_methods',
+        'DELETE /payment_methods/{id}',
+    ];
+
     public function testPostmanFixtureIsReadable(): void
     {
         self::assertFileExists(self::POSTMAN_PATH);
@@ -67,33 +83,28 @@ final class PostmanCoverageTest extends TestCase
      * which Endpoint definitions are still missing. Currently informational
      * (the SDK is being populated by AI in Phase 3).
      */
-    public function testEveryPostmanEndpointIsCoveredOrTrackedAsTodo(): void
+    public function testEveryPostmanEndpointIsCovered(): void
     {
         $postman = json_decode((string) file_get_contents(self::POSTMAN_PATH), true);
         self::assertIsArray($postman);
         $expected = $this->extractEndpointsFromPostman($postman['item'] ?? []);
 
-        $registered = $this->discoverRegisteredEndpoints();
-
-        $missing = array_values(array_diff($expected, $registered));
-        sort($missing);
-
-        // Phase 1 expectation: only the template (Payments::create, Payments::retrieve)
-        // is covered. Phase 3 (AI-driven coverage expansion) drives this list to zero.
         self::assertGreaterThan(
             0,
             count($expected),
             'Postman fixture appears to contain no endpoints.'
         );
 
-        if ($missing !== []) {
-            // Don't fail yet — print as informational. Replace with assertEmpty()
-            // once Phase 3 is complete.
-            fwrite(STDERR, "\n[Drift] Endpoints not yet registered in src/Endpoint/ (" . count($missing) . " items):\n");
-            foreach ($missing as $line) {
-                fwrite(STDERR, "  - $line\n");
-            }
-        }
+        $registered = $this->discoverRegisteredEndpoints();
+        $missing    = array_values(array_diff($expected, $registered, self::INTENTIONALLY_SKIPPED));
+        sort($missing);
+
+        self::assertEmpty(
+            $missing,
+            "Postman endpoints not registered in src/Endpoint/ and not on the intentional-skip list:\n  - "
+                . implode("\n  - ", $missing)
+                . "\n\nIf this is genuinely intentional, add it to PostmanCoverageTest::INTENTIONALLY_SKIPPED with a comment."
+        );
     }
 
     /**
@@ -142,21 +153,90 @@ final class PostmanCoverageTest extends TestCase
 
     /**
      * Strip the {{baseUrl}} prefix and query string, keep the path with
-     * Postman placeholders ($id → {id}).
+     * placeholders normalised so SDK and Postman compare cleanly.
+     *
+     * Two normalisations matter for false-positive elimination:
+     *
+     *   1) Postman uses both `:name` and `{{name}}` for path params.
+     *      We collapse both to the SDK's `{id}` form. Postman variables
+     *      like `{{payment_method_id}}` previously stripped to empty
+     *      segments — now they become `{id}` like everything else.
+     *
+     *   2) Postman names path params variously (`:id`, `:dispute_id`,
+     *      `:payment_id`, `:customer_id`) while the SDK always uses `{id}`
+     *      or `{customer_id}`. We normalise all `{<anything>_id}` and
+     *      `{id}` to a single canonical `{id}`, EXCEPT for paths that
+     *      genuinely need two distinct path params (e.g.
+     *      `/api_keys/{merchant_id}/{api_key_id}`) — those keep the
+     *      first and collapse the second to `{id}`. Same rule on both
+     *      sides of the comparison so the heuristic is symmetric.
      */
     private function normalisePath(string $rawUrl): ?string
     {
-        $url = preg_replace('/\{\{[^}]+}}/', '', $rawUrl);
-        if (!is_string($url) || $url === '') {
+        // Strip everything before the first '/' — Postman raw URLs prefix
+        // the path with `{{baseUrl}}` or `{{base_url}}` placeholders that
+        // aren't part of the path itself.
+        $slash = strpos($rawUrl, '/');
+        if ($slash === false) {
             return null;
         }
+        $url = substr($rawUrl, $slash);
+
+        // Strip query string.
         $url = preg_replace('/\?.*$/', '', $url) ?? $url;
-        // Convert :id-style Postman params to {id}
-        $url = preg_replace('/:([a-zA-Z_][a-zA-Z0-9_]*)/', '{$1}', $url) ?? $url;
-        if (!str_starts_with($url, '/')) {
+
+        // Resolve Postman-style placeholders: {{name}} → {name}.
+        $url = preg_replace('/\{\{([^}]+)}}/', '{$1}', $url) ?? $url;
+
+        // Convert :id-style Postman params to {id}. Allow hyphens (e.g. :api-key)
+        // so we don't strand them as empty segments.
+        $url = preg_replace('/:([a-zA-Z_][a-zA-Z0-9_-]*)/', '{$1}', $url) ?? $url;
+
+        if (!str_starts_with($url, '/') || $url === '/') {
             return null;
         }
-        return $url;
+        return self::canonicalisePathParams($url);
+    }
+
+    /**
+     * Reduce path-param names to a canonical form so SDK ({id}) and
+     * Postman (:dispute_id, :payment_id, …) compare equal.
+     *
+     * Heuristic: for paths with a single `{*_id}` placeholder, rename to
+     * `{id}`. For paths with multiple placeholders, keep the first and
+     * canonicalise subsequent ones to `{id}`. Hyphenated placeholders
+     * like `{api-key}` are also collapsed to `{id}`.
+     */
+    public static function canonicalisePathParams(string $path): string
+    {
+        $segments = explode('/', $path);
+        $placeholderCount = 0;
+        foreach ($segments as $i => $segment) {
+            if (preg_match('/^\{[^}]+}$/', $segment) === 1) {
+                $placeholderCount++;
+                // First placeholder keeps its name only when it's an "anchor"
+                // like {merchant_id} that distinguishes the resource. The
+                // *last* placeholder almost always names the leaf resource —
+                // we collapse that to {id} regardless.
+                $segments[$i] = '{id}';
+            }
+        }
+        // If exactly one placeholder, the loop above already canonicalised it
+        // to {id}. If multiple, we have all-{id} now — re-introduce the
+        // first one's original name so /a/{merchant_id}/b/{id} is preserved.
+        if ($placeholderCount > 1) {
+            $original = explode('/', $path);
+            $first = true;
+            foreach ($original as $i => $segment) {
+                if (preg_match('/^\{[^}]+}$/', $segment) === 1) {
+                    if ($first) {
+                        $segments[$i] = $segment;
+                        $first = false;
+                    }
+                }
+            }
+        }
+        return implode('/', $segments);
     }
 
     /**
@@ -181,7 +261,9 @@ final class PostmanCoverageTest extends TestCase
                 PREG_SET_ORDER
             ) > 0) {
                 foreach ($matches as $m) {
-                    $registered[] = $m['method'] . ' ' . $m['path'];
+                    // Same canonicalisation as Postman side so a Postman
+                    // `:dispute_id` and an SDK `{id}` compare equal.
+                    $registered[] = $m['method'] . ' ' . self::canonicalisePathParams($m['path']);
                 }
             }
         }

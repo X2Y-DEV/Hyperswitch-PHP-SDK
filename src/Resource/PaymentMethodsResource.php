@@ -11,7 +11,6 @@ use X2Y\HyperswitchClient\Dto\PaymentMethod\Response\PaymentMethodResponse;
 use X2Y\HyperswitchClient\Dto\PaymentMethod\Response\PaymentMethodTokenDetailsResponse;
 use X2Y\HyperswitchClient\Endpoint\PaymentMethodsEndpoints;
 use X2Y\HyperswitchClient\Exception\HyperswitchApiException;
-use X2Y\HyperswitchClient\Transport\ApiClientInterface;
 
 /**
  * Typed facade over the Hyperswitch V1 Payment Methods group.
@@ -19,15 +18,11 @@ use X2Y\HyperswitchClient\Transport\ApiClientInterface;
  * @postman             Payment Methods - Modular Payment
  * @hyperswitch-source  2026-04-30
  */
-final class PaymentMethodsResource implements ResourceInterface
+final class PaymentMethodsResource extends AbstractResource
 {
-    public function __construct(private readonly ApiClientInterface $client)
-    {
-    }
-
     public function create(CreatePaymentMethodRequest $request): PaymentMethodResponse
     {
-        $response = $this->client->execute(
+        $response = $this->execute(
             PaymentMethodsEndpoints::create(),
             request: $request,
         );
@@ -39,7 +34,7 @@ final class PaymentMethodsResource implements ResourceInterface
 
     public function retrieve(string $paymentMethodId): PaymentMethodResponse
     {
-        $response = $this->client->execute(
+        $response = $this->execute(
             PaymentMethodsEndpoints::retrieve(),
             pathParams: ['id' => $paymentMethodId],
         );
@@ -51,7 +46,7 @@ final class PaymentMethodsResource implements ResourceInterface
 
     public function update(string $paymentMethodId, UpdatePaymentMethodRequest $request): PaymentMethodResponse
     {
-        $response = $this->client->execute(
+        $response = $this->execute(
             PaymentMethodsEndpoints::update(),
             request:    $request,
             pathParams: ['id' => $paymentMethodId],
@@ -67,7 +62,7 @@ final class PaymentMethodsResource implements ResourceInterface
      */
     public function listForCustomer(string $customerId): PaginatedList
     {
-        $response = $this->client->execute(
+        $response = $this->execute(
             PaymentMethodsEndpoints::listForCustomer(),
             pathParams: ['id' => $customerId],
         );
@@ -84,7 +79,7 @@ final class PaymentMethodsResource implements ResourceInterface
 
     public function delete(string $paymentMethodId): PaymentMethodDeleteResponse
     {
-        $response = $this->client->execute(
+        $response = $this->execute(
             PaymentMethodsEndpoints::delete(),
             pathParams: ['id' => $paymentMethodId],
         );
@@ -96,7 +91,7 @@ final class PaymentMethodsResource implements ResourceInterface
 
     public function tokenDetails(string $temporaryToken): PaymentMethodTokenDetailsResponse
     {
-        $response = $this->client->execute(
+        $response = $this->execute(
             PaymentMethodsEndpoints::tokenDetails(),
             pathParams: ['token' => $temporaryToken],
         );

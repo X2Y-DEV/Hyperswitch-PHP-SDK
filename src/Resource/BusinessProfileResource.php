@@ -10,7 +10,6 @@ use X2Y\HyperswitchClient\Dto\BusinessProfile\Response\BusinessProfileResponse;
 use X2Y\HyperswitchClient\Dto\Common\PaginatedList;
 use X2Y\HyperswitchClient\Endpoint\BusinessProfileEndpoints;
 use X2Y\HyperswitchClient\Exception\HyperswitchApiException;
-use X2Y\HyperswitchClient\Transport\ApiClientInterface;
 
 /**
  * Typed facade over the Hyperswitch Business Profile group. Admin-tier.
@@ -18,15 +17,11 @@ use X2Y\HyperswitchClient\Transport\ApiClientInterface;
  * @postman             Business Profile
  * @hyperswitch-source  2026-04-30
  */
-final class BusinessProfileResource implements ResourceInterface
+final class BusinessProfileResource extends AbstractResource
 {
-    public function __construct(private readonly ApiClientInterface $client)
-    {
-    }
-
     public function create(string $merchantId, CreateBusinessProfileRequest $request): BusinessProfileResponse
     {
-        $response = $this->client->execute(
+        $response = $this->execute(
             BusinessProfileEndpoints::create(),
             request:    $request,
             pathParams: ['merchant_id' => $merchantId],
@@ -39,7 +34,7 @@ final class BusinessProfileResource implements ResourceInterface
 
     public function retrieve(string $merchantId, string $profileId): BusinessProfileResponse
     {
-        $response = $this->client->execute(
+        $response = $this->execute(
             BusinessProfileEndpoints::retrieve(),
             pathParams: ['merchant_id' => $merchantId, 'profile_id' => $profileId],
         );
@@ -54,7 +49,7 @@ final class BusinessProfileResource implements ResourceInterface
         string $profileId,
         UpdateBusinessProfileRequest $request,
     ): BusinessProfileResponse {
-        $response = $this->client->execute(
+        $response = $this->execute(
             BusinessProfileEndpoints::update(),
             request:    $request,
             pathParams: ['merchant_id' => $merchantId, 'profile_id' => $profileId],
@@ -67,7 +62,7 @@ final class BusinessProfileResource implements ResourceInterface
 
     public function delete(string $merchantId, string $profileId): BusinessProfileDeleteResponse
     {
-        $response = $this->client->execute(
+        $response = $this->execute(
             BusinessProfileEndpoints::delete(),
             pathParams: ['merchant_id' => $merchantId, 'profile_id' => $profileId],
         );
@@ -82,7 +77,7 @@ final class BusinessProfileResource implements ResourceInterface
      */
     public function list(string $merchantId): PaginatedList
     {
-        $response = $this->client->execute(
+        $response = $this->execute(
             BusinessProfileEndpoints::list(),
             pathParams: ['merchant_id' => $merchantId],
         );
