@@ -46,6 +46,49 @@ echo $response->paymentId;     // pay_abc123
 echo $response->clientSecret;  // pay_…_secret_…
 ```
 
+## Receiving webhooks
+
+Hyperswitch signs outbound webhook bodies with HMAC (SHA-512 by default) using
+the merchant's "Payment Response Hash Key". The SDK ships a verifier and a
+typed event decoder — verification happens before JSON decode, so an invalid
+signature short-circuits without exposing the body to the JSON parser.
+
+```php
+use X2Y\HyperswitchClient\Enum\EventType;
+use X2Y\HyperswitchClient\Exception\InvalidSignatureException;
+use X2Y\HyperswitchClient\Exception\InvalidWebhookPayloadException;
+use X2Y\HyperswitchClient\Webhook\EventDecoder;
+use X2Y\HyperswitchClient\Webhook\SignatureVerifier;
+
+$decoder = new EventDecoder(new SignatureVerifier(getenv('HYPERSWITCH_WEBHOOK_KEY')));
+
+$body      = (string) $request->getBody();
+$signature = $request->getHeaderLine('X-Webhook-Signature-512');
+
+try {
+    $event = $decoder->decode($body, $signature);
+} catch (InvalidSignatureException) {
+    return $response->withStatus(401);
+} catch (InvalidWebhookPayloadException) {
+    return $response->withStatus(400);
+}
+
+match ($event->eventType) {
+    EventType::PAYMENT_SUCCEEDED      => $this->markOrderPaid($event->asPayment()),
+    EventType::REFUND_SUCCEEDED       => $this->creditMemoFor($event->asRefund()),
+    EventType::DISPUTE_OPENED         => $this->flagDispute($event->asDispute()),
+    EventType::SUBSCRIPTION_RENEWAL_SUCCEEDED
+                                      => $this->createOrderFrom($event->asSubscription()),
+    null                              => $this->logUnknown($event->eventTypeRaw),
+    default                           => $this->logUnhandled($event),
+};
+```
+
+`$event->eventType` is `null` when Hyperswitch ships an event type not yet
+enumerated by the SDK — the raw string is always available on
+`$event->eventTypeRaw`. See [docs/examples/webhook-receiver.php](docs/examples/webhook-receiver.php)
+for a runnable bare-PHP example.
+
 ## Maintenance guide
 
 This SDK is a 1:1 mirror of the Hyperswitch HTTP API. It has zero framework
