@@ -12,7 +12,7 @@ against the upstream Postman collection.
 
 _No changes yet._
 
-## [0.1.0] — Coverage-complete pre-release
+## [0.1.0] — 2026-04-30
 
 ### Added
 
