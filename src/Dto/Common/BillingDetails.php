@@ -26,7 +26,9 @@ final class BillingDetails extends AbstractRequestDto
         return $this->filterNulls([
             'address'            => $this->address?->toArray(),
             'email'              => $this->email,
-            'phone'              => $this->phone,
+            'phone'              => null !== $this->phone ?
+                ['number' => $this->phone] :
+                null,
             'phone_country_code' => $this->phoneCountryCode,
         ]);
     }

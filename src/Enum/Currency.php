@@ -18,6 +18,7 @@ enum Currency: string implements LabelledEnum
     case AUD = 'AUD';
     case JPY = 'JPY';
     case INR = 'INR';
+    case ZAR = 'ZAR';
 
     public function label(): string
     {
@@ -29,6 +30,7 @@ enum Currency: string implements LabelledEnum
             self::AUD => 'Australian Dollar',
             self::JPY => 'Japanese Yen',
             self::INR => 'Indian Rupee',
+            self::ZAR => 'South African rand',
         };
     }
 }
