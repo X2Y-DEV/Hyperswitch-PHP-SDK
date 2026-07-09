@@ -183,8 +183,38 @@ composer test:unit         # fast, no network
 composer test:drift        # asserts Postman ↔ SDK coverage
 composer test:integration  # requires HYPERSWITCH_SANDBOX_KEY
 composer stan              # PHPStan at level max
-composer ci                # everything CI runs
+composer ci                # unit + drift + stan (no network; integration excluded)
 ```
+
+### Integration tests against the sandbox
+
+The integration suite hits the real HyperSwitch **sandbox** and is gated behind
+environment variables. Each test skips cleanly when its variable is unset, so
+`composer ci` and contributors without sandbox access are unaffected.
+
+| Variable | Required | Purpose |
+|---|---|---|
+| `HYPERSWITCH_SANDBOX_KEY` | yes | Merchant `snd_…` key; without it the whole suite skips. |
+| `HYPERSWITCH_SANDBOX_PROFILE_ID` | no | A `pro_…` id to exercise profile-scoped V1 paths. |
+| `HYPERSWITCH_WEBHOOK_KEY` | no | Payment Response Hash Key; enables the webhook test. |
+
+```bash
+HYPERSWITCH_SANDBOX_KEY='snd_yourKeyHere' composer test:integration
+```
+
+With the optional variables, and running a single file directly:
+
+```bash
+HYPERSWITCH_SANDBOX_KEY='snd_…' \
+HYPERSWITCH_SANDBOX_PROFILE_ID='pro_…' \
+HYPERSWITCH_WEBHOOK_KEY='whsec_…' \
+vendor/bin/phpunit tests/Integration/CustomersIntegrationTest.php
+```
+
+Tests create real sandbox resources (prefixed `sdkit_…`) and remove them in a
+best-effort `tearDown`; cleanup failures are logged to STDERR but do not fail
+the run. Prefer `export`-ing the key for your session rather than inlining it,
+to keep credentials out of your shell history.
 
 ## Versioning
 
