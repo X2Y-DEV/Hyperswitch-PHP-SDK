@@ -33,24 +33,17 @@ final class OpenApiCoverageTest extends TestCase
     private const HTTP_METHODS       = ['get', 'post', 'put', 'patch', 'delete'];
 
     /**
-     * v1 spec operations the SDK does not model YET. Each value is a category
-     * tag ("gap-<priority>-<group>") so the burndown is legible and grep-able.
-     * Phases 1–3 of the v1-alignment work remove entries here as each group's
-     * Endpoints/DTOs/Resource/tests land. Keys are canonical "METHOD /path"
-     * (see canonicalisePath): every {placeholder} is collapsed to {id}.
+     * v1 spec operations the SDK deliberately does not model, keyed by canonical
+     * "METHOD /path" (see canonicalisePath) with a reason value.
      *
-     * When the SDK genuinely should not model an operation, keep it here with a
-     * deliberate reason instead of a "gap-*" tag. Do NOT delete a key to silence
-     * a failure — model the endpoint, or justify the exclusion.
+     * The v1-alignment burndown is complete — the SDK now models all 150 v1
+     * operations, so this list is empty. If HyperSwitch ships a new operation,
+     * either model it (preferred) or add it here with a deliberate reason.
+     * Do NOT add a "gap" entry just to silence a failure — model the endpoint.
      *
      * @var array<string, string>
      */
     private const EXCLUDED = [
-        // --- gap-p2-events (4) ---
-        'GET /events/{id}/{id}/attempts' => 'gap-p2-events',
-        'POST /events/profile/list' => 'gap-p2-events',
-        'POST /events/{id}' => 'gap-p2-events',
-        'POST /events/{id}/{id}/retry' => 'gap-p2-events',
     ];
 
     /**

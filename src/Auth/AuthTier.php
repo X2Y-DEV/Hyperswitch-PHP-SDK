@@ -31,4 +31,11 @@ enum AuthTier: string
      * `X-Profile-Id` header — see Resource::withProfileId().
      */
     case MERCHANT_V1 = 'merchant_v1';
+
+    /**
+     * JWT bearer auth — dashboard/JWT-scoped endpoints (event management, some
+     * routing reads). Sent as `Authorization: Bearer <token>`. See
+     * JwtKeyAuthResolver.
+     */
+    case JWT = 'jwt';
 }

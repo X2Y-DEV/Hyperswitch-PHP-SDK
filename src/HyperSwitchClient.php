@@ -23,6 +23,7 @@ use X2Y\HyperSwitchClient\Resource\PayoutsResource;
 use X2Y\HyperSwitchClient\Resource\AuthenticationResource;
 use X2Y\HyperSwitchClient\Resource\BlocklistResource;
 use X2Y\HyperSwitchClient\Resource\CardIssuerResource;
+use X2Y\HyperSwitchClient\Resource\EventsResource;
 use X2Y\HyperSwitchClient\Resource\GsmResource;
 use X2Y\HyperSwitchClient\Resource\PlatformResource;
 use X2Y\HyperSwitchClient\Resource\PollResource;
@@ -74,6 +75,7 @@ final class HyperSwitchClient implements HyperSwitchClientInterface
     private ?GsmResource $gsm = null;
     private ?CardIssuerResource $cardIssuer = null;
     private ?ProfileAcquirerResource $profileAcquirer = null;
+    private ?EventsResource $events = null;
 
     public function __construct(
         private readonly ApiClientInterface $apiClient,
@@ -269,5 +271,10 @@ final class HyperSwitchClient implements HyperSwitchClientInterface
     public function profileAcquirer(): ProfileAcquirerResource
     {
         return $this->profileAcquirer ??= new ProfileAcquirerResource($this->apiClient);
+    }
+
+    public function events(): EventsResource
+    {
+        return $this->events ??= new EventsResource($this->apiClient);
     }
 }
