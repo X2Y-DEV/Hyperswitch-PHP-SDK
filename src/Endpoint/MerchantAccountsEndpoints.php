@@ -5,9 +5,11 @@ namespace X2Y\HyperSwitchClient\Endpoint;
 
 use X2Y\HyperSwitchClient\Auth\AuthTier;
 use X2Y\HyperSwitchClient\Dto\MerchantAccount\Request\CreateMerchantAccountRequest;
+use X2Y\HyperSwitchClient\Dto\MerchantAccount\Request\ToggleKvRequest;
 use X2Y\HyperSwitchClient\Dto\MerchantAccount\Request\UpdateMerchantAccountRequest;
 use X2Y\HyperSwitchClient\Dto\MerchantAccount\Response\MerchantAccountDeleteResponse;
 use X2Y\HyperSwitchClient\Dto\MerchantAccount\Response\MerchantAccountResponse;
+use X2Y\HyperSwitchClient\Dto\MerchantAccount\Response\ToggleKvResponse;
 use X2Y\HyperSwitchClient\Transport\Endpoint;
 
 /**
@@ -84,6 +86,22 @@ final class MerchantAccountsEndpoints
             idempotent:    false,
             requestClass:  null,
             responseClass: MerchantAccountDeleteResponse::class,
+        );
+    }
+
+    /**
+     * @openapi   "Enable/Disable KV for a Merchant Account"
+     * @endpoint  POST /accounts/{id}/kv
+     */
+    public static function toggleKv(): Endpoint
+    {
+        return new Endpoint(
+            method:        'POST',
+            pathTemplate:  '/accounts/{id}/kv',
+            authTier:      AuthTier::ADMIN,
+            idempotent:    false,
+            requestClass:  ToggleKvRequest::class,
+            responseClass: ToggleKvResponse::class,
         );
     }
 }

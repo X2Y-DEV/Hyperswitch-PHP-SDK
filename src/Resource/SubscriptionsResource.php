@@ -215,4 +215,26 @@ final class SubscriptionsResource extends AbstractResource
         }
         return $response;
     }
+
+    /**
+     * @openapi   "Get Subscription Items"
+     *
+     * @param array<string, scalar> $queryParams e.g. ['limit' => 20, 'product_id' => 'prod_1'].
+     * @return list<array<string, mixed>>
+     */
+    public function items(array $queryParams = []): array
+    {
+        $response = $this->execute(SubscriptionsEndpoints::items(), queryParams: $queryParams);
+        if ($response !== null && !is_array($response)) {
+            throw new HyperSwitchApiException('Unexpected response type from Subscriptions::items.');
+        }
+        $items = [];
+        foreach (($response ?? []) as $row) {
+            if (is_array($row)) {
+                /** @var array<string, mixed> $row */
+                $items[] = $row;
+            }
+        }
+        return $items;
+    }
 }

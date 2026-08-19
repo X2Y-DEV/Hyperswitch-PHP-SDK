@@ -4,10 +4,12 @@ declare(strict_types=1);
 namespace X2Y\HyperSwitchClient\Resource;
 
 use X2Y\HyperSwitchClient\Dto\Common\PaginatedList;
+use X2Y\HyperSwitchClient\Dto\Connector\Request\ConnectorWebhookRegisterRequest;
 use X2Y\HyperSwitchClient\Dto\Connector\Request\CreateConnectorRequest;
 use X2Y\HyperSwitchClient\Dto\Connector\Request\UpdateConnectorRequest;
 use X2Y\HyperSwitchClient\Dto\Connector\Response\ConnectorDeleteResponse;
 use X2Y\HyperSwitchClient\Dto\Connector\Response\ConnectorResponse;
+use X2Y\HyperSwitchClient\Dto\Connector\Response\RegisterConnectorWebhookResponse;
 use X2Y\HyperSwitchClient\Endpoint\ConnectorsEndpoints;
 use X2Y\HyperSwitchClient\Exception\HyperSwitchApiException;
 
@@ -85,6 +87,25 @@ final class ConnectorsResource extends AbstractResource
         );
         if (!$response instanceof ConnectorDeleteResponse) {
             throw new HyperSwitchApiException('Unexpected response type from Connectors::delete.');
+        }
+        return $response;
+    }
+
+    /**
+     * @openapi   "Register a Connector Webhook"
+     */
+    public function registerWebhook(
+        string $merchantId,
+        string $merchantConnectorId,
+        ConnectorWebhookRegisterRequest $request,
+    ): RegisterConnectorWebhookResponse {
+        $response = $this->execute(
+            ConnectorsEndpoints::registerWebhook(),
+            request:    $request,
+            pathParams: ['account_id' => $merchantId, 'merchant_connector_id' => $merchantConnectorId],
+        );
+        if (!$response instanceof RegisterConnectorWebhookResponse) {
+            throw new HyperSwitchApiException('Unexpected response type from Connectors::registerWebhook.');
         }
         return $response;
     }

@@ -4,9 +4,11 @@ declare(strict_types=1);
 namespace X2Y\HyperSwitchClient\Resource;
 
 use X2Y\HyperSwitchClient\Dto\MerchantAccount\Request\CreateMerchantAccountRequest;
+use X2Y\HyperSwitchClient\Dto\MerchantAccount\Request\ToggleKvRequest;
 use X2Y\HyperSwitchClient\Dto\MerchantAccount\Request\UpdateMerchantAccountRequest;
 use X2Y\HyperSwitchClient\Dto\MerchantAccount\Response\MerchantAccountDeleteResponse;
 use X2Y\HyperSwitchClient\Dto\MerchantAccount\Response\MerchantAccountResponse;
+use X2Y\HyperSwitchClient\Dto\MerchantAccount\Response\ToggleKvResponse;
 use X2Y\HyperSwitchClient\Endpoint\MerchantAccountsEndpoints;
 use X2Y\HyperSwitchClient\Exception\HyperSwitchApiException;
 
@@ -63,6 +65,22 @@ final class MerchantAccountsResource extends AbstractResource
         );
         if (!$response instanceof MerchantAccountDeleteResponse) {
             throw new HyperSwitchApiException('Unexpected response type from MerchantAccounts::delete.');
+        }
+        return $response;
+    }
+
+    /**
+     * @openapi   "Enable/Disable KV for a Merchant Account"
+     */
+    public function toggleKv(string $merchantId, ToggleKvRequest $request): ToggleKvResponse
+    {
+        $response = $this->execute(
+            MerchantAccountsEndpoints::toggleKv(),
+            request:    $request,
+            pathParams: ['id' => $merchantId],
+        );
+        if (!$response instanceof ToggleKvResponse) {
+            throw new HyperSwitchApiException('Unexpected response type from MerchantAccounts::toggleKv.');
         }
         return $response;
     }

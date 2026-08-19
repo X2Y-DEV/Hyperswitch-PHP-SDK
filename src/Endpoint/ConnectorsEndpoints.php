@@ -4,10 +4,12 @@ declare(strict_types=1);
 namespace X2Y\HyperSwitchClient\Endpoint;
 
 use X2Y\HyperSwitchClient\Auth\AuthTier;
+use X2Y\HyperSwitchClient\Dto\Connector\Request\ConnectorWebhookRegisterRequest;
 use X2Y\HyperSwitchClient\Dto\Connector\Request\CreateConnectorRequest;
 use X2Y\HyperSwitchClient\Dto\Connector\Request\UpdateConnectorRequest;
 use X2Y\HyperSwitchClient\Dto\Connector\Response\ConnectorDeleteResponse;
 use X2Y\HyperSwitchClient\Dto\Connector\Response\ConnectorResponse;
+use X2Y\HyperSwitchClient\Dto\Connector\Response\RegisterConnectorWebhookResponse;
 use X2Y\HyperSwitchClient\Transport\Endpoint;
 
 /**
@@ -102,6 +104,22 @@ final class ConnectorsEndpoints
             idempotent:    false,
             requestClass:  null,
             responseClass: ConnectorDeleteResponse::class,
+        );
+    }
+
+    /**
+     * @openapi   "Register a Connector Webhook"
+     * @endpoint  POST /account/{account_id}/webhooks/{merchant_connector_id}
+     */
+    public static function registerWebhook(): Endpoint
+    {
+        return new Endpoint(
+            method:        'POST',
+            pathTemplate:  '/account/{account_id}/webhooks/{merchant_connector_id}',
+            authTier:      AuthTier::MERCHANT,
+            idempotent:    false,
+            requestClass:  ConnectorWebhookRegisterRequest::class,
+            responseClass: RegisterConnectorWebhookResponse::class,
         );
     }
 }

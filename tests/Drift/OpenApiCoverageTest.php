@@ -46,9 +46,6 @@ final class OpenApiCoverageTest extends TestCase
      * @var array<string, string>
      */
     private const EXCLUDED = [
-        // --- gap-p2-account (2) ---
-        'POST /account/{id}/webhooks/{id}' => 'gap-p2-account',
-        'POST /accounts/{id}/kv' => 'gap-p2-account',
         // --- gap-p2-authentication (8) ---
         'GET /authentication/{id}/eligibility-check' => 'gap-p2-authentication',
         'POST /authentication' => 'gap-p2-authentication',
@@ -63,11 +60,6 @@ final class OpenApiCoverageTest extends TestCase
         'POST /events/profile/list' => 'gap-p2-events',
         'POST /events/{id}' => 'gap-p2-events',
         'POST /events/{id}/{id}/retry' => 'gap-p2-events',
-        // --- gap-p2-misc (2) ---
-        'GET /poll/status/{id}' => 'gap-p2-misc',
-        'POST /three_ds_decision/execute' => 'gap-p2-misc',
-        // --- gap-p2-subscriptions (1) ---
-        'GET /subscriptions/items' => 'gap-p2-subscriptions',
         // --- gap-p3-blocklist (7) ---
         'DELETE /blocklist' => 'gap-p3-blocklist',
         'GET /blocklist' => 'gap-p3-blocklist',

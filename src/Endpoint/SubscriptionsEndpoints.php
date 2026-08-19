@@ -210,4 +210,22 @@ final class SubscriptionsEndpoints
             responseClass: EstimateResponse::class,
         );
     }
+
+    /**
+     * @openapi   "Get Subscription Items"
+     * @endpoint  GET /subscriptions/items
+     *
+     * Returns a bare array of subscription items; the Resource returns them raw.
+     */
+    public static function items(): Endpoint
+    {
+        return new Endpoint(
+            method:        'GET',
+            pathTemplate:  '/subscriptions/items',
+            authTier:      AuthTier::MERCHANT,
+            idempotent:    false,
+            requestClass:  null,
+            responseClass: null,
+        );
+    }
 }
