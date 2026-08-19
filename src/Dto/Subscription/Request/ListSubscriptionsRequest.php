@@ -10,7 +10,6 @@ use X2Y\HyperSwitchClient\Enum\SubscriptionStatus;
  * Filters for listing subscriptions. Sent as query parameters on a GET
  * request — Resource passes `toArray()` as `queryParams`.
  *
- * @postman             Subscriptions / Subscription - List
  * @endpoint            GET /subscriptions/list
  * @hyperswitch-source  2026-04-30
  */

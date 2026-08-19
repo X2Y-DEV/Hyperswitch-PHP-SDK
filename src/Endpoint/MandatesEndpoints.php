@@ -10,7 +10,7 @@ use X2Y\HyperSwitchClient\Transport\Endpoint;
 /**
  * HyperSwitch Mandates group.
  *
- * Note: 7 of the Postman items in this group hit `POST /payments` with
+ * Note: 7 of the mandate flows in this group hit `POST /payments` with
  * different bodies (CIT, Setup-Mandate, MIT-by-payment-method-id, MIT-by-
  * mandate-id, MIT-by-network-tx-id, MIT-by-processor-token, MIT-by-
  * limited-card-data). These are not separate Endpoints — they are
@@ -19,7 +19,6 @@ use X2Y\HyperSwitchClient\Transport\Endpoint;
  *
  * Only the three genuinely-distinct mandate paths are modelled here.
  *
- * @postman             Mandates
  * @hyperswitch-source  2026-04-30
  */
 final class MandatesEndpoints
@@ -29,7 +28,6 @@ final class MandatesEndpoints
     }
 
     /**
-     * @postman   Mandates / Mandate - List details of a mandate
      * @endpoint  GET /mandates/{id}
      */
     public static function retrieve(): Endpoint
@@ -45,7 +43,6 @@ final class MandatesEndpoints
     }
 
     /**
-     * @postman   Mandates / Mandate - List all mandates against a customer id
      * @endpoint  GET /customers/{customer_id}/mandates
      *
      * Resource wraps in PaginatedList<MandateResponse>.
@@ -63,7 +60,6 @@ final class MandatesEndpoints
     }
 
     /**
-     * @postman   Mandates / Mandate - Revoke a mandate
      * @endpoint  POST /mandates/revoke/{id}
      */
     public static function revoke(): Endpoint

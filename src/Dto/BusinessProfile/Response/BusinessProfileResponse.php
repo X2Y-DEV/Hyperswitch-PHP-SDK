@@ -12,7 +12,6 @@ use X2Y\HyperSwitchClient\Dto\AbstractResponseDto;
  * connector-blob convention and stay as `array<string, mixed>` (preserved
  * via the `extras` mechanism).
  *
- * @postman             Business Profile / Business Profile - Retrieve
  * @endpoint            GET /account/{merchant_id}/business_profile/{profile_id}
  * @hyperswitch-source  2026-04-30
  */

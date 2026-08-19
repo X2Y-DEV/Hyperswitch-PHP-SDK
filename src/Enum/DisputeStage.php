@@ -4,7 +4,6 @@ declare(strict_types=1);
 namespace X2Y\HyperSwitchClient\Enum;
 
 /**
- * @postman             Disputes / Disputes - Retrieve (dispute_stage)
  * @hyperswitch-source  2026-04-30
  */
 enum DisputeStage: string implements LabelledEnum

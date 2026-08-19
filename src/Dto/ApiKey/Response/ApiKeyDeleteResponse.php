@@ -6,7 +6,6 @@ namespace X2Y\HyperSwitchClient\Dto\ApiKey\Response;
 use X2Y\HyperSwitchClient\Dto\AbstractResponseDto;
 
 /**
- * @postman             API Key / Delete API Key
  * @endpoint            DELETE /api_keys/{merchant_id}/{api_key_id}
  * @hyperswitch-source  2026-04-30
  */

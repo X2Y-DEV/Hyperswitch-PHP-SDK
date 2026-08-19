@@ -9,7 +9,6 @@ use X2Y\HyperSwitchClient\Enum\PaymentMethod;
 /**
  * Confirm a payment-method session by attaching a tokenised instrument.
  *
- * @postman             Payment Method Sessions / Payment Methods Session - Confirm
  * @endpoint            POST /v1/payment-method-sessions/{id}/confirm
  * @hyperswitch-source  2026-04-30
  */

@@ -17,14 +17,13 @@ use X2Y\HyperSwitchClient\Transport\Endpoint;
 /**
  * HyperSwitch Payouts group.
  *
- * The Postman "Payout Links" group is intentionally not modelled as its
- * own Resource because all five of its items collide with paths owned by
+ * The "Payout Links" flows are intentionally not modelled as their
+ * own Resource because all five of them collide with paths owned by
  * Payouts (POST /payouts/create, /confirm, /fulfill, GET /payouts/{id})
  * or by BusinessProfile (POST /account/{merchant_id}/business_profile/{profile_id}).
  * Payout-link flows are activated by setting `payout_link: true` on
  * `CreatePayoutRequest` — same Endpoint, different body.
  *
- * @postman             Payouts
  * @hyperswitch-source  2026-04-30
  */
 final class PayoutsEndpoints
@@ -34,8 +33,6 @@ final class PayoutsEndpoints
     }
 
     /**
-     * @postman   Payouts / Payouts - Create
-     * @postman   Payout Links / Payout Links - Create
      * @endpoint  POST /payouts/create
      */
     public static function create(): Endpoint
@@ -52,7 +49,6 @@ final class PayoutsEndpoints
 
     /**
      * @openapi   "Update a Payout"
-     * @postman   Payouts / Payouts - Update
      * @endpoint  POST /payouts/{id}
      *
      * v1 spec uses POST (not PUT) for payout update — reconciled 2026-08-19.
@@ -70,8 +66,6 @@ final class PayoutsEndpoints
     }
 
     /**
-     * @postman   Payouts / Payouts - Confirm
-     * @postman   Payout Links / Payout Links - Confirm
      * @endpoint  POST /payouts/{id}/confirm
      */
     public static function confirm(): Endpoint
@@ -87,8 +81,6 @@ final class PayoutsEndpoints
     }
 
     /**
-     * @postman   Payouts / Payouts - Fulfill
-     * @postman   Payout Links / Payout Links - Fulfill
      * @endpoint  POST /payouts/{id}/fulfill
      */
     public static function fulfill(): Endpoint
@@ -104,7 +96,6 @@ final class PayoutsEndpoints
     }
 
     /**
-     * @postman   Payouts / Payouts - Cancel
      * @endpoint  POST /payouts/{id}/cancel
      */
     public static function cancel(): Endpoint
@@ -120,8 +111,6 @@ final class PayoutsEndpoints
     }
 
     /**
-     * @postman   Payouts / Payouts - Retrieve
-     * @postman   Payout Links / Payout Links - Retrieve
      * @endpoint  GET /payouts/{id}
      */
     public static function retrieve(): Endpoint

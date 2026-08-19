@@ -14,7 +14,6 @@ use X2Y\HyperSwitchClient\Dto\AbstractRequestDto;
  * connector-blob convention, those nested fields are typed
  * `?array<string, mixed>` and passed through.
  *
- * @postman             Business Profile / Business Profile - Create
  * @endpoint            POST /account/{merchant_id}/business_profile
  * @hyperswitch-source  2026-04-30
  */

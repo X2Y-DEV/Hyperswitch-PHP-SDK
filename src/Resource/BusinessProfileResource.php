@@ -14,7 +14,6 @@ use X2Y\HyperSwitchClient\Exception\HyperSwitchApiException;
 /**
  * Typed facade over the HyperSwitch Business Profile group. Admin-tier.
  *
- * @postman             Business Profile
  * @hyperswitch-source  2026-04-30
  */
 final class BusinessProfileResource extends AbstractResource

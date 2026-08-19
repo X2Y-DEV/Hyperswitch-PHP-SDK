@@ -6,13 +6,12 @@ namespace X2Y\HyperSwitchClient\Dto\PaymentMethodSession\Request;
 use X2Y\HyperSwitchClient\Dto\AbstractRequestDto;
 
 /**
- * Body for the token-lookup operation. Postman calls this endpoint
+ * Body for the token-lookup operation. The API calls this endpoint
  * `DELETE /v1/payment-method-sessions/{token}` with the token also in the
  * body — likely a token-revocation flow that returns the underlying PM id.
- * Modelled exactly as Postman describes; unusual HTTP semantics are
+ * Modelled exactly as the API describes; unusual HTTP semantics are
  * HyperSwitch's, not ours to redesign.
  *
- * @postman             Payment Method Sessions / Get PM ID from Payment Method token Copy
  * @endpoint            DELETE /v1/payment-method-sessions/{token}
  * @hyperswitch-source  2026-04-30
  */

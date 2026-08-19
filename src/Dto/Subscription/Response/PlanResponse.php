@@ -12,7 +12,6 @@ use X2Y\HyperSwitchClient\Enum\Currency;
  * loose; we capture the most useful identifiers and let the rest pass
  * through `extras`.
  *
- * @postman             Subscriptions / Subscription - Plans (item shape)
  * @endpoint            GET /subscriptions/plans
  * @hyperswitch-source  2026-04-30
  */

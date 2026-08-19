@@ -12,7 +12,6 @@ use X2Y\HyperSwitchClient\Dto\AbstractRequestDto;
  * webhook_details, primary_business_details) follow the connector-blob
  * convention and stay loose.
  *
- * @postman             MerchantAccounts / Merchant Account - Create
  * @endpoint            POST /accounts
  * @hyperswitch-source  2026-04-30
  */

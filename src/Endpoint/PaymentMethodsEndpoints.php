@@ -17,7 +17,6 @@ use X2Y\HyperSwitchClient\Transport\Endpoint;
  * Legacy `/payment_methods` endpoints are intentionally not modelled — V1
  * paths under `/v1/payment-methods` are the supported surface.
  *
- * @postman             Payment Methods - Modular Payment
  * @hyperswitch-source  2026-04-30
  */
 final class PaymentMethodsEndpoints
@@ -27,7 +26,6 @@ final class PaymentMethodsEndpoints
     }
 
     /**
-     * @postman   Payment Methods - Modular Payment / Payment Methods - Create
      * @endpoint  POST /v1/payment-methods
      */
     public static function create(): Endpoint
@@ -43,7 +41,6 @@ final class PaymentMethodsEndpoints
     }
 
     /**
-     * @postman   Payment Methods - Modular Payment / Payment Methods - Retrieve
      * @endpoint  GET /v1/payment-methods/{id}
      */
     public static function retrieve(): Endpoint
@@ -59,7 +56,6 @@ final class PaymentMethodsEndpoints
     }
 
     /**
-     * @postman   Payment Methods - Modular Payment / Payment Methods - Update
      * @endpoint  PUT /v1/payment-methods/{id}/update-saved-payment-method
      */
     public static function update(): Endpoint
@@ -75,7 +71,6 @@ final class PaymentMethodsEndpoints
     }
 
     /**
-     * @postman   Payment Methods - Modular Payment / Payment Method - List Customer Saved Payment Methods
      * @endpoint  GET /v1/customers/{id}/saved-payment-methods
      *
      * Resource wraps in PaginatedList<PaymentMethodResponse>.
@@ -93,7 +88,6 @@ final class PaymentMethodsEndpoints
     }
 
     /**
-     * @postman   Payment Methods - Modular Payment / Payment Methods - Delete
      * @endpoint  DELETE /v1/payment-methods/{id}
      */
     public static function delete(): Endpoint
@@ -109,7 +103,6 @@ final class PaymentMethodsEndpoints
     }
 
     /**
-     * @postman   Payment Methods - Modular Payment / Payment Method - Get Payment Method Token Data
      * @endpoint  GET /v1/payment-methods/token/{token}/details
      */
     public static function tokenDetails(): Endpoint

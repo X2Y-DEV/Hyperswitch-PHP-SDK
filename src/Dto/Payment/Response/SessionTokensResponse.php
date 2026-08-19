@@ -13,7 +13,6 @@ use X2Y\HyperSwitchClient\Dto\AbstractResponseDto;
  * Each entry's shape varies per wallet, so per the connector-blob convention
  * the items stay typed as `array<string, mixed>`.
  *
- * @postman             Payments / Session Token
  * @endpoint            POST /payments/session_tokens
  * @hyperswitch-source  2026-04-30
  */

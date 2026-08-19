@@ -16,14 +16,10 @@ use X2Y\HyperSwitchClient\Exception\HyperSwitchApiException;
 /**
  * Typed facade over the HyperSwitch Customers API group.
  *
- * @postman             Customers
  * @hyperswitch-source  2026-04-30
  */
 final class CustomersResource extends AbstractResource
 {
-    /**
-     * @postman   Customers / Create Customer
-     */
     public function create(CreateCustomerRequest $request): CustomerResponse
     {
         $response = $this->execute(
@@ -36,9 +32,6 @@ final class CustomersResource extends AbstractResource
         return $response;
     }
 
-    /**
-     * @postman   Customers / Retrieve Customer
-     */
     public function retrieve(string $customerId): CustomerResponse
     {
         $response = $this->execute(
@@ -66,9 +59,6 @@ final class CustomersResource extends AbstractResource
         return $response;
     }
 
-    /**
-     * @postman   Customers / Update Customer
-     */
     public function update(string $customerId, UpdateCustomerRequest $request): CustomerResponse
     {
         $response = $this->execute(
@@ -82,9 +72,6 @@ final class CustomersResource extends AbstractResource
         return $response;
     }
 
-    /**
-     * @postman   Customers / Delete Customer
-     */
     public function delete(string $customerId): CustomerDeleteResponse
     {
         $response = $this->execute(
@@ -98,8 +85,6 @@ final class CustomersResource extends AbstractResource
     }
 
     /**
-     * @postman   Customers / List Customer
-     *
      * @return PaginatedList<CustomerResponse>
      */
     public function list(): PaginatedList
@@ -117,8 +102,6 @@ final class CustomersResource extends AbstractResource
     }
 
     /**
-     * @postman   Customers / Ephemeral Key
-     *
      * Mints a short-lived ephemeral key bound to the given customer. The
      * resulting `secret` is what the merchant hands to client-side code.
      */

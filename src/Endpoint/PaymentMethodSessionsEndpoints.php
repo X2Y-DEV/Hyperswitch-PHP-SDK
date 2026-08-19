@@ -14,7 +14,6 @@ use X2Y\HyperSwitchClient\Transport\Endpoint;
 /**
  * HyperSwitch V1 Payment Method Sessions group.
  *
- * @postman             Payment Method Sessions
  * @hyperswitch-source  2026-04-30
  */
 final class PaymentMethodSessionsEndpoints
@@ -24,7 +23,6 @@ final class PaymentMethodSessionsEndpoints
     }
 
     /**
-     * @postman   Payment Method Sessions / Payment Method Session - Create
      * @endpoint  POST /v1/payment-method-sessions
      */
     public static function create(): Endpoint
@@ -40,7 +38,6 @@ final class PaymentMethodSessionsEndpoints
     }
 
     /**
-     * @postman   Payment Method Sessions / Payment Methods Session - Retrieve
      * @endpoint  GET /v1/payment-method-sessions/{id}
      */
     public static function retrieve(): Endpoint
@@ -56,7 +53,6 @@ final class PaymentMethodSessionsEndpoints
     }
 
     /**
-     * @postman   Payment Method Sessions / Payment Method Session - List Payment Methods
      * @endpoint  GET /v1/payment-method-sessions/{id}/list-payment-methods
      *
      * Returns the available payment methods for the session — Resource
@@ -76,7 +72,6 @@ final class PaymentMethodSessionsEndpoints
     }
 
     /**
-     * @postman   Payment Method Sessions / Payment Method Session - Update a saved payment method
      * @endpoint  PUT /v1/payment-method-sessions/{id}/update-saved-payment-method
      */
     public static function updateSavedPaymentMethod(): Endpoint
@@ -92,7 +87,6 @@ final class PaymentMethodSessionsEndpoints
     }
 
     /**
-     * @postman   Payment Method Sessions / Payment Methods Session - Confirm
      * @endpoint  POST /v1/payment-method-sessions/{id}/confirm
      */
     public static function confirm(): Endpoint
@@ -108,7 +102,6 @@ final class PaymentMethodSessionsEndpoints
     }
 
     /**
-     * @postman   Payment Method Sessions / Get PM ID from Payment Method token Copy
      * @endpoint  DELETE /v1/payment-method-sessions/{token}
      *
      * Despite the DELETE verb, this is effectively a token-lookup /

@@ -9,7 +9,6 @@ use X2Y\HyperSwitchClient\Dto\AbstractRequestDto;
  * Estimate the cost of a subscription before creating it (proration, taxes,
  * etc.). Sent as query parameters.
  *
- * @postman             Subscriptions / Subscription - Estimate
  * @endpoint            GET /subscriptions/estimate
  * @hyperswitch-source  2026-04-30
  */

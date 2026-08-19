@@ -14,7 +14,6 @@ use X2Y\HyperSwitchClient\Transport\Endpoint;
  * HyperSwitch API Key management. Admin-tier — API key lifecycle is
  * managed with the platform's admin key, not a merchant key.
  *
- * @postman             API Key
  * @hyperswitch-source  2026-04-30
  */
 final class ApiKeysEndpoints
@@ -24,7 +23,6 @@ final class ApiKeysEndpoints
     }
 
     /**
-     * @postman   API Key / Create API Key
      * @endpoint  POST /api_keys/{merchant_id}
      */
     public static function create(): Endpoint
@@ -40,7 +38,6 @@ final class ApiKeysEndpoints
     }
 
     /**
-     * @postman   API Key / Update API Key
      * @endpoint  POST /api_keys/{merchant_id}/{api_key_id}
      */
     public static function update(): Endpoint
@@ -56,7 +53,6 @@ final class ApiKeysEndpoints
     }
 
     /**
-     * @postman   API Key / Retrieve API Key
      * @endpoint  GET /api_keys/{merchant_id}/{api_key_id}
      */
     public static function retrieve(): Endpoint
@@ -72,7 +68,6 @@ final class ApiKeysEndpoints
     }
 
     /**
-     * @postman   API Key / List API Keys
      * @endpoint  GET /api_keys/{merchant_id}/list
      *
      * Resource wraps in PaginatedList<ApiKeyResponse>.
@@ -90,7 +85,6 @@ final class ApiKeysEndpoints
     }
 
     /**
-     * @postman   API Key / Delete API Key
      * @endpoint  DELETE /api_keys/{merchant_id}/{api_key_id}
      */
     public static function delete(): Endpoint

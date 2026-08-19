@@ -10,7 +10,6 @@ use X2Y\HyperSwitchClient\Internal\DateTimeParser;
 /**
  * Response from /relay create / retrieve.
  *
- * @postman             Relay / Relay - Create
  * @endpoint            POST /relay
  * @hyperswitch-source  2026-04-30
  */

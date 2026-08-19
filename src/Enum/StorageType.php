@@ -6,7 +6,6 @@ namespace X2Y\HyperSwitchClient\Enum;
 /**
  * How long a tokenised payment method is retained.
  *
- * @postman             Payment Methods - Modular Payment / Payment Methods - Create (storage_type)
  * @hyperswitch-source  2026-04-30
  */
 enum StorageType: string implements LabelledEnum

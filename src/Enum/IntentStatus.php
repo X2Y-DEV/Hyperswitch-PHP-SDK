@@ -6,7 +6,6 @@ namespace X2Y\HyperSwitchClient\Enum;
 /**
  * Payment intent (top-level payment) status as returned by HyperSwitch.
  *
- * @postman             Payments / Payments - Retrieve (status)
  * @hyperswitch-source  2026-04-30
  */
 enum IntentStatus: string implements LabelledEnum

@@ -22,7 +22,7 @@ use X2Y\HyperSwitchClient\Resource\RelayResource;
 use X2Y\HyperSwitchClient\Resource\SubscriptionsResource;
 
 /**
- * Top-level facade. Each Postman group exposes one resource accessor.
+ * Top-level facade. Each API group exposes one resource accessor.
  */
 interface HyperSwitchClientInterface
 {

@@ -40,7 +40,6 @@ use X2Y\HyperSwitchClient\Transport\Endpoint;
  * confirm-with-token shapes — same Endpoint, one Request DTO with optional
  * fields (clientSecret, paymentToken, cardCvc).
  *
- * @postman             Payments
  * @hyperswitch-source  2026-04-30
  */
 final class PaymentsEndpoints
@@ -50,7 +49,6 @@ final class PaymentsEndpoints
     }
 
     /**
-     * @postman   Payments / Payments - Create
      * @endpoint  POST /payments
      */
     public static function create(): Endpoint
@@ -66,7 +64,6 @@ final class PaymentsEndpoints
     }
 
     /**
-     * @postman   Payments / Payments - Update
      * @endpoint  POST /payments/{id}
      */
     public static function update(): Endpoint
@@ -82,7 +79,6 @@ final class PaymentsEndpoints
     }
 
     /**
-     * @postman   Payments / Payments - Retrieve
      * @endpoint  GET /payments/{id}
      */
     public static function retrieve(): Endpoint
@@ -98,8 +94,6 @@ final class PaymentsEndpoints
     }
 
     /**
-     * @postman   Payments / Payments - Confirm
-     * @postman   Payments / Payments - Confirm with token
      * @endpoint  POST /payments/{id}/confirm
      *
      * Auth tier is PUBLISHABLE — confirm can be called from the client side
@@ -118,7 +112,6 @@ final class PaymentsEndpoints
     }
 
     /**
-     * @postman   Payments / Payments - Capture
      * @endpoint  POST /payments/{id}/capture
      */
     public static function capture(): Endpoint
@@ -134,7 +127,6 @@ final class PaymentsEndpoints
     }
 
     /**
-     * @postman   Payments / Payments - Cancel
      * @endpoint  POST /payments/{id}/cancel
      */
     public static function cancel(): Endpoint
@@ -150,7 +142,6 @@ final class PaymentsEndpoints
     }
 
     /**
-     * @postman   Payments / Payments - Cancel Post Capture
      * @endpoint  POST /payments/{id}/cancel_post_capture
      */
     public static function cancelPostCapture(): Endpoint
@@ -166,7 +157,6 @@ final class PaymentsEndpoints
     }
 
     /**
-     * @postman   Payments / Payment-List
      * @endpoint  GET /payments/list
      *
      * Resource wraps in PaginatedList<PaymentResponse>. Filters travel as
@@ -185,7 +175,6 @@ final class PaymentsEndpoints
     }
 
     /**
-     * @postman   Payments / Session Token
      * @endpoint  POST /payments/session_tokens
      *
      * Auth tier is PUBLISHABLE — minted client-side for wallet flows.
@@ -203,7 +192,6 @@ final class PaymentsEndpoints
     }
 
     /**
-     * @postman   Payments / Payments - Incremental Authorization
      * @endpoint  POST /payments/{id}/incremental_authorization
      */
     public static function incrementalAuthorization(): Endpoint
@@ -219,7 +207,6 @@ final class PaymentsEndpoints
     }
 
     /**
-     * @postman   Payments / Payment - Extend Authorization
      * @endpoint  POST /payments/{id}/extend_authorization
      */
     public static function extendAuthorization(): Endpoint

@@ -12,11 +12,10 @@ use X2Y\HyperSwitchClient\Internal\DateTimeParser;
 /**
  * Response from /payments create / retrieve / confirm / capture / cancel.
  *
- * Stub set of fields — the full Postman response has many more (mandate, attempts,
+ * Stub set of fields — the full API response has many more (mandate, attempts,
  * captures, customer, billing/shipping, etc.). AI maintenance extends this; the
  * structure here is the template. Unknown fields are preserved in `extras()`.
  *
- * @postman             Payments / Payments - Retrieve
  * @endpoint            GET /payments/{id}
  * @hyperswitch-source  2026-04-30
  */

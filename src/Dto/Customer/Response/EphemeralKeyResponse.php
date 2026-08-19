@@ -13,7 +13,6 @@ use X2Y\HyperSwitchClient\Internal\DateTimeParser;
  * authorise publishable-key-tier calls scoped to this customer. Treat as
  * sensitive — log carefully.
  *
- * @postman             Customers / Ephemeral Key
  * @endpoint            POST /ephemeral_keys
  * @hyperswitch-source  2026-04-30
  */

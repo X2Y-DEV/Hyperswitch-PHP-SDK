@@ -14,14 +14,10 @@ use X2Y\HyperSwitchClient\Exception\HyperSwitchApiException;
 /**
  * Typed facade over the HyperSwitch Refunds API group.
  *
- * @postman             Refunds
  * @hyperswitch-source  2026-04-30
  */
 final class RefundsResource extends AbstractResource
 {
-    /**
-     * @postman   Refunds / Refunds - Create
-     */
     public function create(CreateRefundRequest $request): RefundResponse
     {
         $response = $this->execute(
@@ -34,9 +30,6 @@ final class RefundsResource extends AbstractResource
         return $response;
     }
 
-    /**
-     * @postman   Refunds / Refunds - Update
-     */
     public function update(string $refundId, UpdateRefundRequest $request): RefundResponse
     {
         $response = $this->execute(
@@ -50,9 +43,6 @@ final class RefundsResource extends AbstractResource
         return $response;
     }
 
-    /**
-     * @postman   Refunds / Refunds - Retrieve
-     */
     public function retrieve(string $refundId): RefundResponse
     {
         $response = $this->execute(
@@ -66,8 +56,6 @@ final class RefundsResource extends AbstractResource
     }
 
     /**
-     * @postman   Refunds / Refunds - List
-     *
      * @return PaginatedList<RefundResponse>
      */
     public function list(ListRefundsRequest $request): PaginatedList

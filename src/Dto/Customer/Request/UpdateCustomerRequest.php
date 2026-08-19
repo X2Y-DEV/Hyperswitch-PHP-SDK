@@ -10,7 +10,6 @@ use X2Y\HyperSwitchClient\Dto\Common\Address;
  * Update an existing HyperSwitch customer. Same field set as create; every
  * field is optional and only the provided fields are updated.
  *
- * @postman             Customers / Update Customer
  * @endpoint            POST /customers/{id}
  * @hyperswitch-source  2026-04-30
  */

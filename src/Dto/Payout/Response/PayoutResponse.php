@@ -13,7 +13,6 @@ use X2Y\HyperSwitchClient\Internal\DateTimeParser;
  * Response from /payouts create / update / confirm / fulfill / cancel /
  * retrieve.
  *
- * @postman             Payouts / Payouts - Retrieve
  * @endpoint            GET /payouts/{id}
  * @hyperswitch-source  2026-04-30
  */

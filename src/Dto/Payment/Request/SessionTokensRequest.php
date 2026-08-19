@@ -9,7 +9,6 @@ use X2Y\HyperSwitchClient\Dto\AbstractRequestDto;
  * Mint connector-specific session tokens for client-side wallets
  * (Apple Pay, Google Pay, etc.) tied to a payment.
  *
- * @postman             Payments / Session Token
  * @endpoint            POST /payments/session_tokens
  * @hyperswitch-source  2026-04-30
  */

@@ -9,7 +9,6 @@ use X2Y\HyperSwitchClient\Dto\Common\Address;
 /**
  * Create a HyperSwitch customer record.
  *
- * @postman             Customers / Create Customer
  * @endpoint            POST /customers
  * @hyperswitch-source  2026-04-30
  */

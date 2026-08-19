@@ -15,7 +15,6 @@ use X2Y\HyperSwitchClient\Enum\StorageType;
  * details, wallet token, bank account, etc. — and stays loose per the
  * connector-blob convention.
  *
- * @postman             Payment Methods - Modular Payment / Payment Methods - Create
  * @endpoint            POST /v1/payment-methods
  * @hyperswitch-source  2026-04-30
  */

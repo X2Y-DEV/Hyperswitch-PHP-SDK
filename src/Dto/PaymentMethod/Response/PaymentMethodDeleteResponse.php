@@ -6,7 +6,6 @@ namespace X2Y\HyperSwitchClient\Dto\PaymentMethod\Response;
 use X2Y\HyperSwitchClient\Dto\AbstractResponseDto;
 
 /**
- * @postman             Payment Methods - Modular Payment / Payment Methods - Delete
  * @endpoint            DELETE /v1/payment-methods/{id}
  * @hyperswitch-source  2026-04-30
  */

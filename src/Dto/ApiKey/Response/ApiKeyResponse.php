@@ -13,7 +13,6 @@ use X2Y\HyperSwitchClient\Internal\DateTimeParser;
  * returned again. `prefix` (e.g. "snd_xxx", "live_xxx") is what later calls
  * surface for identification.
  *
- * @postman             API Key / Create API Key
  * @endpoint            POST /api_keys/{merchant_id}
  * @hyperswitch-source  2026-04-30
  */

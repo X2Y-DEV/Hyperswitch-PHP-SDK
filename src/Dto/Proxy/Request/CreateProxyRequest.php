@@ -9,7 +9,6 @@ use X2Y\HyperSwitchClient\Dto\AbstractRequestDto;
  * Forward a vault-tokenised request to a destination URL with the
  * sensitive instrument data hydrated from HyperSwitch's vault.
  *
- * @postman             Proxy / Proxy - Create
  * @endpoint            POST /v1/proxy
  * @hyperswitch-source  2026-04-30
  */

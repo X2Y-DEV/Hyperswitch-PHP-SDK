@@ -22,7 +22,6 @@ use X2Y\HyperSwitchClient\Transport\Endpoint;
  *   - POST /subscriptions/create  — create only, must be confirmed separately
  *   - POST /subscriptions         — create + confirm in one call
  *
- * @postman             Subscriptions
  * @hyperswitch-source  2026-04-30
  */
 final class SubscriptionsEndpoints
@@ -32,7 +31,6 @@ final class SubscriptionsEndpoints
     }
 
     /**
-     * @postman   Subscriptions / Subscription - Create
      * @endpoint  POST /subscriptions/create
      */
     public static function create(): Endpoint
@@ -48,7 +46,6 @@ final class SubscriptionsEndpoints
     }
 
     /**
-     * @postman   Subscriptions / Subscription - Create + Confirm
      * @endpoint  POST /subscriptions
      */
     public static function createAndConfirm(): Endpoint
@@ -64,7 +61,6 @@ final class SubscriptionsEndpoints
     }
 
     /**
-     * @postman   Subscriptions / Subscription - Confirm
      * @endpoint  POST /subscriptions/{id}/confirm
      */
     public static function confirm(): Endpoint
@@ -80,7 +76,6 @@ final class SubscriptionsEndpoints
     }
 
     /**
-     * @postman   Subscriptions / Subscription - Update
      * @endpoint  PUT /subscriptions/{id}/update
      */
     public static function update(): Endpoint
@@ -96,7 +91,6 @@ final class SubscriptionsEndpoints
     }
 
     /**
-     * @postman   Subscriptions / Subscription - Retrieve
      * @endpoint  GET /subscriptions/{id}
      */
     public static function retrieve(): Endpoint
@@ -112,7 +106,6 @@ final class SubscriptionsEndpoints
     }
 
     /**
-     * @postman   Subscriptions / Subscription - Pause
      * @endpoint  POST /subscriptions/{id}/pause
      */
     public static function pause(): Endpoint
@@ -128,7 +121,6 @@ final class SubscriptionsEndpoints
     }
 
     /**
-     * @postman   Subscriptions / Subscription - Resume
      * @endpoint  POST /subscriptions/{id}/resume
      */
     public static function resume(): Endpoint
@@ -144,7 +136,6 @@ final class SubscriptionsEndpoints
     }
 
     /**
-     * @postman   Subscriptions / Subscription - Cancel
      * @endpoint  POST /subscriptions/{id}/cancel
      */
     public static function cancel(): Endpoint
@@ -160,7 +151,6 @@ final class SubscriptionsEndpoints
     }
 
     /**
-     * @postman   Subscriptions / Subscription - List
      * @endpoint  GET /subscriptions/list
      *
      * Resource wraps in PaginatedList<SubscriptionResponse>.
@@ -178,7 +168,6 @@ final class SubscriptionsEndpoints
     }
 
     /**
-     * @postman   Subscriptions / Subscription - Plans
      * @endpoint  GET /subscriptions/plans
      *
      * Resource wraps in PaginatedList<PlanResponse>.
@@ -196,7 +185,6 @@ final class SubscriptionsEndpoints
     }
 
     /**
-     * @postman   Subscriptions / Subscription - Estimate
      * @endpoint  GET /subscriptions/estimate
      */
     public static function estimate(): Endpoint

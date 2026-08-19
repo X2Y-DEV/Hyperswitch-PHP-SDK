@@ -11,7 +11,6 @@ use X2Y\HyperSwitchClient\Enum\PaymentMethod;
  * a payment method by its temporary client-side token and returns the
  * underlying instrument metadata.
  *
- * @postman             Payment Methods - Modular Payment / Payment Method - Get Payment Method Token Data
  * @endpoint            GET /v1/payment-methods/token/{token}/details
  * @hyperswitch-source  2026-04-30
  */

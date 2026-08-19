@@ -13,7 +13,6 @@ use X2Y\HyperSwitchClient\Dto\AbstractRequestDto;
  * `receipt`, `service_documentation`, etc. Field set is open-ended;
  * `extras` accepts any evidence type the SDK has not typed.
  *
- * @postman             Disputes / Disputes - Submit Evidence
  * @endpoint            POST /disputes/evidence
  * @hyperswitch-source  2026-04-30
  */

@@ -4,7 +4,6 @@ declare(strict_types=1);
 namespace X2Y\HyperSwitchClient\Enum;
 
 /**
- * @postman             Subscriptions / Subscription - Pause (pause_option)
  * @hyperswitch-source  2026-04-30
  */
 enum SubscriptionPauseOption: string implements LabelledEnum

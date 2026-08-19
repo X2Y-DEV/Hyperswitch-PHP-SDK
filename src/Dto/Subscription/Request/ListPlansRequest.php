@@ -8,7 +8,6 @@ use X2Y\HyperSwitchClient\Dto\AbstractRequestDto;
 /**
  * Filters for the subscription plans catalog. Sent as query parameters.
  *
- * @postman             Subscriptions / Subscription - Plans
  * @endpoint            GET /subscriptions/plans
  * @hyperswitch-source  2026-04-30
  */

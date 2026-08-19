@@ -10,7 +10,6 @@ use X2Y\HyperSwitchClient\Enum\SubscriptionRefundableCreditsHandling;
 use X2Y\HyperSwitchClient\Enum\SubscriptionUnbilledChargesOption;
 
 /**
- * @postman             Subscriptions / Subscription - Cancel
  * @endpoint            POST /subscriptions/{id}/cancel
  * @hyperswitch-source  2026-04-30
  */

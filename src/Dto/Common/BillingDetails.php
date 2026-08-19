@@ -8,7 +8,6 @@ use X2Y\HyperSwitchClient\Dto\AbstractRequestDto;
 /**
  * Billing details on a payment — Address plus contact fields.
  *
- * @postman             Common / BillingDetails
  * @hyperswitch-source  2026-04-30
  */
 final class BillingDetails extends AbstractRequestDto

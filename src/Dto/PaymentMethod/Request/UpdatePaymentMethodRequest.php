@@ -11,7 +11,6 @@ use X2Y\HyperSwitchClient\Enum\PaymentMethodAckStatus;
  * or recording the network transaction id and acknowledgement status from
  * a CIT challenge.
  *
- * @postman             Payment Methods - Modular Payment / Payment Methods - Update
  * @endpoint            PUT /v1/payment-methods/{id}/update-saved-payment-method
  * @hyperswitch-source  2026-04-30
  */

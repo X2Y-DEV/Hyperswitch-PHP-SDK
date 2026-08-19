@@ -10,7 +10,6 @@ use X2Y\HyperSwitchClient\Enum\Currency;
  * Cost estimate for a hypothetical subscription. The deeper line-item /
  * proration / tax breakdowns vary by upstream catalog; preserved in extras.
  *
- * @postman             Subscriptions / Subscription - Estimate
  * @endpoint            GET /subscriptions/estimate
  * @hyperswitch-source  2026-04-30
  */

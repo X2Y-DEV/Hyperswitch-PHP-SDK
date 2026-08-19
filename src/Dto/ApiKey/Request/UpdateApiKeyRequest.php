@@ -6,7 +6,6 @@ namespace X2Y\HyperSwitchClient\Dto\ApiKey\Request;
 use X2Y\HyperSwitchClient\Dto\AbstractRequestDto;
 
 /**
- * @postman             API Key / Update API Key
  * @endpoint            POST /api_keys/{merchant_id}/{api_key_id}
  * @hyperswitch-source  2026-04-30
  */

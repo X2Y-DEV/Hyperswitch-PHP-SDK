@@ -8,7 +8,6 @@ use X2Y\HyperSwitchClient\Dto\AbstractRequestDto;
 /**
  * Postal address used in billing, shipping, and merchant_details.
  *
- * @postman             Common / Address
  * @hyperswitch-source  2026-04-30
  */
 final class Address extends AbstractRequestDto

@@ -12,7 +12,6 @@ use X2Y\HyperSwitchClient\Dto\Common\BillingDetails;
  * create, but `paymentDetails` carries a complete payment_method_data block
  * with customer_acceptance — the call returns an active subscription.
  *
- * @postman             Subscriptions / Subscription - Create + Confirm
  * @endpoint            POST /subscriptions
  * @hyperswitch-source  2026-04-30
  */

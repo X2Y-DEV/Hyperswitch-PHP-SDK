@@ -15,7 +15,6 @@ use X2Y\HyperSwitchClient\Internal\DateTimeParser;
  * Stub set of fields — extend as HyperSwitch's response shape evolves. Unknown
  * fields are preserved in `extras()`.
  *
- * @postman             Refunds / Refunds - Retrieve
  * @endpoint            GET /refunds/{id}
  * @hyperswitch-source  2026-04-30
  */

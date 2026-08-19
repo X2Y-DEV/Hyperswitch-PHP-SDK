@@ -32,14 +32,10 @@ use X2Y\HyperSwitchClient\Exception\HyperSwitchApiException;
 /**
  * Typed facade over the HyperSwitch Payments API group.
  *
- * @postman             Payments
  * @hyperswitch-source  2026-04-30
  */
 final class PaymentsResource extends AbstractResource
 {
-    /**
-     * @postman   Payments / Payments - Create
-     */
     public function create(CreatePaymentRequest $request): PaymentResponse
     {
         $response = $this->execute(
@@ -52,9 +48,6 @@ final class PaymentsResource extends AbstractResource
         return $response;
     }
 
-    /**
-     * @postman   Payments / Payments - Update
-     */
     public function update(string $paymentId, UpdatePaymentRequest $request): PaymentResponse
     {
         $response = $this->execute(
@@ -69,8 +62,6 @@ final class PaymentsResource extends AbstractResource
     }
 
     /**
-     * @postman   Payments / Payments - Retrieve
-     *
      * @param array<string, scalar|array<string, scalar>> $queryParams
      *        Optional query flags such as ['force_sync' => 'true', 'expand_attempts' => 'true'].
      */
@@ -88,9 +79,6 @@ final class PaymentsResource extends AbstractResource
     }
 
     /**
-     * @postman   Payments / Payments - Confirm
-     * @postman   Payments / Payments - Confirm with token
-     *
      * Both rich and token-based confirms hit the same endpoint — populate
      * `ConfirmPaymentRequest` differently per flow.
      */
@@ -107,9 +95,6 @@ final class PaymentsResource extends AbstractResource
         return $response;
     }
 
-    /**
-     * @postman   Payments / Payments - Capture
-     */
     public function capture(string $paymentId, ?CapturePaymentRequest $request = null): PaymentResponse
     {
         $response = $this->execute(
@@ -123,9 +108,6 @@ final class PaymentsResource extends AbstractResource
         return $response;
     }
 
-    /**
-     * @postman   Payments / Payments - Cancel
-     */
     public function cancel(string $paymentId, ?CancelPaymentRequest $request = null): PaymentResponse
     {
         $response = $this->execute(
@@ -139,9 +121,6 @@ final class PaymentsResource extends AbstractResource
         return $response;
     }
 
-    /**
-     * @postman   Payments / Payments - Cancel Post Capture
-     */
     public function cancelPostCapture(
         string $paymentId,
         ?CancelPostCapturePaymentRequest $request = null,
@@ -158,8 +137,6 @@ final class PaymentsResource extends AbstractResource
     }
 
     /**
-     * @postman   Payments / Payment-List
-     *
      * @return PaginatedList<PaymentResponse>
      */
     public function list(?ListPaymentsRequest $request = null): PaginatedList
@@ -181,9 +158,6 @@ final class PaymentsResource extends AbstractResource
         );
     }
 
-    /**
-     * @postman   Payments / Session Token
-     */
     public function sessionTokens(SessionTokensRequest $request): SessionTokensResponse
     {
         $response = $this->execute(
@@ -196,9 +170,6 @@ final class PaymentsResource extends AbstractResource
         return $response;
     }
 
-    /**
-     * @postman   Payments / Payments - Incremental Authorization
-     */
     public function incrementalAuthorization(
         string $paymentId,
         IncrementalAuthorizationRequest $request,
@@ -214,9 +185,6 @@ final class PaymentsResource extends AbstractResource
         return $response;
     }
 
-    /**
-     * @postman   Payments / Payment - Extend Authorization
-     */
     public function extendAuthorization(string $paymentId): PaymentResponse
     {
         $response = $this->execute(

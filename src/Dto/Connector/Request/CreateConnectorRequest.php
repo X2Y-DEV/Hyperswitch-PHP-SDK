@@ -14,7 +14,6 @@ use X2Y\HyperSwitchClient\Dto\AbstractRequestDto;
  * the chosen connector — so they follow the connector-blob convention and
  * stay loose.
  *
- * @postman             PaymentConnectors / Payment Connector - Create
  * @endpoint            POST /account/{account_id}/connectors
  * @hyperswitch-source  2026-04-30
  */

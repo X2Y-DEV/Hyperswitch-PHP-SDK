@@ -15,7 +15,6 @@ use X2Y\HyperSwitchClient\Exception\HyperSwitchApiException;
  * `mandate_data` / `customer_acceptance` / `setup_future_usage` fields — see
  * MandatesEndpoints for the polymorphism note.
  *
- * @postman             Mandates
  * @hyperswitch-source  2026-04-30
  */
 final class MandatesResource extends AbstractResource

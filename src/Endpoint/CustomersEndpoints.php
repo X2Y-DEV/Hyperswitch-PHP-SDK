@@ -15,7 +15,6 @@ use X2Y\HyperSwitchClient\Transport\Endpoint;
 /**
  * HyperSwitch Customers group.
  *
- * @postman             Customers
  * @hyperswitch-source  2026-04-30
  */
 final class CustomersEndpoints
@@ -25,7 +24,6 @@ final class CustomersEndpoints
     }
 
     /**
-     * @postman   Customers / Create Customer
      * @endpoint  POST /customers
      */
     public static function create(): Endpoint
@@ -41,7 +39,6 @@ final class CustomersEndpoints
     }
 
     /**
-     * @postman   Customers / Retrieve Customer
      * @endpoint  GET /customers/{id}
      */
     public static function retrieve(): Endpoint
@@ -57,7 +54,6 @@ final class CustomersEndpoints
     }
 
     /**
-     * @postman   Customers / Update Customer
      * @endpoint  POST /customers/{id}
      */
     public static function update(): Endpoint
@@ -73,7 +69,6 @@ final class CustomersEndpoints
     }
 
     /**
-     * @postman   Customers / Delete Customer
      * @endpoint  DELETE /customers/{id}
      */
     public static function delete(): Endpoint
@@ -89,7 +84,6 @@ final class CustomersEndpoints
     }
 
     /**
-     * @postman   Customers / List Customer
      * @endpoint  GET /customers/list
      *
      * Returns a list envelope; Resource wraps it in PaginatedList<CustomerResponse>.
@@ -107,7 +101,6 @@ final class CustomersEndpoints
     }
 
     /**
-     * @postman   Customers / Ephemeral Key
      * @endpoint  POST /ephemeral_keys
      *
      * Note: the path is /ephemeral_keys (not /customers/...). Authenticated as

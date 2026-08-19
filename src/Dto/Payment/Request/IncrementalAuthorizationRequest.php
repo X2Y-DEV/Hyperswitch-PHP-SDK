@@ -8,7 +8,6 @@ use X2Y\HyperSwitchClient\Dto\AbstractRequestDto;
 /**
  * Increase the authorised amount on a payment without re-authenticating.
  *
- * @postman             Payments / Payments - Incremental Authorization
  * @endpoint            POST /payments/{id}/incremental_authorization
  * @hyperswitch-source  2026-04-30
  */

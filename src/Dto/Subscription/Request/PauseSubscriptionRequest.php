@@ -7,7 +7,6 @@ use X2Y\HyperSwitchClient\Dto\AbstractRequestDto;
 use X2Y\HyperSwitchClient\Enum\SubscriptionPauseOption;
 
 /**
- * @postman             Subscriptions / Subscription - Pause
  * @endpoint            POST /subscriptions/{id}/pause
  * @hyperswitch-source  2026-04-30
  */

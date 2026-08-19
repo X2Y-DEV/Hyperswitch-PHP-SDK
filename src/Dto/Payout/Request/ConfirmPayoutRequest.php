@@ -8,7 +8,6 @@ use X2Y\HyperSwitchClient\Dto\AbstractRequestDto;
 /**
  * Confirm a previously-created payout by attaching the payout method.
  *
- * @postman             Payouts / Payouts - Confirm
  * @endpoint            POST /payouts/{id}/confirm
  * @hyperswitch-source  2026-04-30
  */

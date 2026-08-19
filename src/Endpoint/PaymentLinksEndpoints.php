@@ -10,12 +10,11 @@ use X2Y\HyperSwitchClient\Transport\Endpoint;
 /**
  * HyperSwitch Payment Links group.
  *
- * Note: "Create Payment Link" in the Postman collection reuses
+ * Note: "Create Payment Link" reuses
  * `POST /payments` with `payment_link: true` in the body — there is no
  * dedicated create endpoint. Use {@see PaymentsEndpoints::create()} or
  * the `PaymentsResource::create()` facade with the `paymentLink` flag.
  *
- * @postman             Payment Links
  * @hyperswitch-source  2026-04-30
  */
 final class PaymentLinksEndpoints
@@ -25,7 +24,6 @@ final class PaymentLinksEndpoints
     }
 
     /**
-     * @postman   Payment Links / Payment Link - Retrieve
      * @endpoint  GET /payment_link/{id}
      */
     public static function retrieve(): Endpoint

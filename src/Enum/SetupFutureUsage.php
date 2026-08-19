@@ -4,7 +4,6 @@ declare(strict_types=1);
 namespace X2Y\HyperSwitchClient\Enum;
 
 /**
- * @postman             Payments / Payments - Create (setup_future_usage)
  * @hyperswitch-source  2026-04-30
  */
 enum SetupFutureUsage: string implements LabelledEnum

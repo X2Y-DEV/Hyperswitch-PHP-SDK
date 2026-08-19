@@ -16,7 +16,6 @@ use X2Y\HyperSwitchClient\Exception\HyperSwitchApiException;
 /**
  * Typed facade over the HyperSwitch Payment Connectors group. Admin-tier.
  *
- * @postman             PaymentConnectors
  * @hyperswitch-source  2026-04-30
  */
 final class ConnectorsResource extends AbstractResource

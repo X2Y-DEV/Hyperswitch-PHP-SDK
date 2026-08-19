@@ -21,7 +21,6 @@ use X2Y\HyperSwitchClient\Enum\SetupFutureUsage;
  * `extras` accepts any field the SDK hasn't typed yet (e.g. connector-specific
  * blobs, recurring_details, mandate_data). Typed fields win on key collision.
  *
- * @postman             Payments / Payments - Create
  * @endpoint            POST /payments
  * @hyperswitch-source  2026-04-30
  */

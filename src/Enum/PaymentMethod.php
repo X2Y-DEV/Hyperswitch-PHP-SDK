@@ -9,7 +9,6 @@ namespace X2Y\HyperSwitchClient\Enum;
  * google_pay, apple_pay, etc.) varies per connector and stays as a string;
  * only the broad category is enumerated here.
  *
- * @postman             Payments / Payments - Create (payment_method)
  * @hyperswitch-source  2026-04-30
  */
 enum PaymentMethod: string implements LabelledEnum

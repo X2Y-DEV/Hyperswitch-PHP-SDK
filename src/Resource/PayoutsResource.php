@@ -20,7 +20,6 @@ use X2Y\HyperSwitchClient\Exception\HyperSwitchApiException;
  * Typed facade over the HyperSwitch Payouts group. Payout-link flows reuse
  * the same endpoints — see PayoutsEndpoints for the polymorphism note.
  *
- * @postman             Payouts
  * @hyperswitch-source  2026-04-30
  */
 final class PayoutsResource extends AbstractResource

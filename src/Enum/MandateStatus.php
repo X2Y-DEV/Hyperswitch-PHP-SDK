@@ -4,7 +4,6 @@ declare(strict_types=1);
 namespace X2Y\HyperSwitchClient\Enum;
 
 /**
- * @postman             Mandates / Mandate - List details of a mandate (status)
  * @hyperswitch-source  2026-04-30
  */
 enum MandateStatus: string implements LabelledEnum

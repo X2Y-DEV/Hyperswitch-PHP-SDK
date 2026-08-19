@@ -8,7 +8,6 @@ use X2Y\HyperSwitchClient\Dto\AbstractRequestDto;
 /**
  * Update reason / metadata on an existing refund.
  *
- * @postman             Refunds / Refunds - Update
  * @endpoint            POST /refunds/{id}
  * @hyperswitch-source  2026-04-30
  */

@@ -16,7 +16,6 @@ use X2Y\HyperSwitchClient\Transport\Endpoint;
  * HyperSwitch Payment Connectors group. Admin-tier — for attaching and
  * configuring upstream PSPs (Stripe, Adyen, etc.) on a merchant account.
  *
- * @postman             PaymentConnectors
  * @hyperswitch-source  2026-04-30
  */
 final class ConnectorsEndpoints
@@ -26,7 +25,6 @@ final class ConnectorsEndpoints
     }
 
     /**
-     * @postman   PaymentConnectors / Payment Connector - Create
      * @endpoint  POST /account/{account_id}/connectors
      */
     public static function create(): Endpoint
@@ -42,7 +40,6 @@ final class ConnectorsEndpoints
     }
 
     /**
-     * @postman   PaymentConnectors / Payment Connector - Retrieve
      * @endpoint  GET /account/{account_id}/connectors/{connector_id}
      */
     public static function retrieve(): Endpoint
@@ -58,7 +55,6 @@ final class ConnectorsEndpoints
     }
 
     /**
-     * @postman   PaymentConnectors / Payment Connector - Update
      * @endpoint  POST /account/{account_id}/connectors/{connector_id}
      */
     public static function update(): Endpoint
@@ -74,7 +70,6 @@ final class ConnectorsEndpoints
     }
 
     /**
-     * @postman   PaymentConnectors / List Connectors by MID
      * @endpoint  GET /account/{account_id}/connectors
      *
      * Resource wraps in PaginatedList<ConnectorResponse>.
@@ -92,7 +87,6 @@ final class ConnectorsEndpoints
     }
 
     /**
-     * @postman   PaymentConnectors / Payment Connector - Delete
      * @endpoint  DELETE /account/{account_id}/connectors/{connector_id}
      */
     public static function delete(): Endpoint

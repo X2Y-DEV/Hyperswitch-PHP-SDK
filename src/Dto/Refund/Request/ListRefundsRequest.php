@@ -7,10 +7,9 @@ use X2Y\HyperSwitchClient\Dto\AbstractRequestDto;
 use X2Y\HyperSwitchClient\Enum\RefundStatus;
 
 /**
- * Filter refunds by payment, time range, status, etc. Postman ships this
+ * Filter refunds by payment, time range, status, etc. The API ships this
  * as `POST /refunds/list` with an empty default body — every field is optional.
  *
- * @postman             Refunds / Refunds - List
  * @endpoint            POST /refunds/list
  * @hyperswitch-source  2026-04-30
  */

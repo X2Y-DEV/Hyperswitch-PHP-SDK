@@ -9,7 +9,6 @@ use X2Y\HyperSwitchClient\Enum\RefundType;
 /**
  * Initiate a full or partial refund against an existing payment.
  *
- * @postman             Refunds / Refunds - Create
  * @endpoint            POST /refunds
  * @hyperswitch-source  2026-04-30
  */

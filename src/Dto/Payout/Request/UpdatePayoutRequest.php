@@ -13,7 +13,6 @@ use X2Y\HyperSwitchClient\Enum\PayoutType;
  * Update an existing payout before fulfillment. Same shape as create with
  * every field optional.
  *
- * @postman             Payouts / Payouts - Update
  * @endpoint            PUT /payouts/{id}
  * @hyperswitch-source  2026-04-30
  */

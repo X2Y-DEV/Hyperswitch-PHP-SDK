@@ -12,7 +12,6 @@ namespace X2Y\HyperSwitchClient\Enum;
  * Use `EventType::tryFrom(...)` rather than `EventType::from(...)` when
  * decoding inbound events.
  *
- * @postman             Webhooks (cross-cutting; emitted by every HyperSwitch resource)
  * @hyperswitch-source  2026-04-30
  */
 enum EventType: string implements LabelledEnum

@@ -4,7 +4,6 @@ declare(strict_types=1);
 namespace X2Y\HyperSwitchClient\Enum;
 
 /**
- * @postman             Payments / Payments - Create (authentication_type)
  * @hyperswitch-source  2026-04-30
  */
 enum AuthenticationType: string implements LabelledEnum

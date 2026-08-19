@@ -13,7 +13,6 @@ use X2Y\HyperSwitchClient\Transport\Endpoint;
 /**
  * HyperSwitch Business Profile group. Admin-tier.
  *
- * @postman             Business Profile
  * @hyperswitch-source  2026-04-30
  */
 final class BusinessProfileEndpoints
@@ -23,7 +22,6 @@ final class BusinessProfileEndpoints
     }
 
     /**
-     * @postman   Business Profile / Business Profile - Create
      * @endpoint  POST /account/{merchant_id}/business_profile
      */
     public static function create(): Endpoint
@@ -39,7 +37,6 @@ final class BusinessProfileEndpoints
     }
 
     /**
-     * @postman   Business Profile / Business Profile - Retrieve
      * @endpoint  GET /account/{merchant_id}/business_profile/{profile_id}
      */
     public static function retrieve(): Endpoint
@@ -55,7 +52,6 @@ final class BusinessProfileEndpoints
     }
 
     /**
-     * @postman   Business Profile / Business Profile - Update
      * @endpoint  POST /account/{merchant_id}/business_profile/{profile_id}
      */
     public static function update(): Endpoint
@@ -71,7 +67,6 @@ final class BusinessProfileEndpoints
     }
 
     /**
-     * @postman   Business Profile / Business Profile - Delete
      * @endpoint  DELETE /account/{merchant_id}/business_profile/{profile_id}
      */
     public static function delete(): Endpoint
@@ -87,7 +82,6 @@ final class BusinessProfileEndpoints
     }
 
     /**
-     * @postman   Business Profile / Business Profile - List
      * @endpoint  GET /account/{merchant_id}/business_profile
      *
      * Resource wraps in PaginatedList<BusinessProfileResponse>.

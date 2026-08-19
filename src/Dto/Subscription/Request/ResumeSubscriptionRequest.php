@@ -9,7 +9,6 @@ use X2Y\HyperSwitchClient\Enum\SubscriptionResumeOption;
 use X2Y\HyperSwitchClient\Enum\SubscriptionUnpaidInvoicesHandling;
 
 /**
- * @postman             Subscriptions / Subscription - Resume
  * @endpoint            POST /subscriptions/{id}/resume
  * @hyperswitch-source  2026-04-30
  */

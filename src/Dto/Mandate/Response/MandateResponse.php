@@ -13,7 +13,6 @@ use X2Y\HyperSwitchClient\Internal\DateTimeParser;
  * Response from GET /mandates/{id}, GET /customers/{id}/mandates (item),
  * and POST /mandates/revoke/{id}.
  *
- * @postman             Mandates / Mandate - List details of a mandate
  * @endpoint            GET /mandates/{id}
  * @hyperswitch-source  2026-04-30
  */

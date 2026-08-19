@@ -20,7 +20,6 @@ use X2Y\HyperSwitchClient\Enum\StorageType;
  * details, bank account info, wallet identifiers) and stays loose per the
  * connector-blob convention.
  *
- * @postman             Payouts / Payouts - Create
  * @endpoint            POST /payouts/create
  * @hyperswitch-source  2026-04-30
  */

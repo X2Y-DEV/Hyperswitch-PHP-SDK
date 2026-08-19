@@ -14,7 +14,6 @@ use X2Y\HyperSwitchClient\Dto\AbstractRequestDto;
  * setup future usage, return URL, payment_method_data, etc.) — connector-blob
  * convention applies.
  *
- * @postman             Subscriptions / Subscription - Create
  * @endpoint            POST /subscriptions/create
  * @hyperswitch-source  2026-04-30
  */

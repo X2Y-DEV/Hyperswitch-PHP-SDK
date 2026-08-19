@@ -10,7 +10,6 @@ use X2Y\HyperSwitchClient\Dto\AbstractResponseDto;
  * different shape (Organization, Platform user, conversion ack) — the
  * fields are loosely typed; deeper data passes through `extras`.
  *
- * @postman             Platform / Organization - Create  (and others)
  * @hyperswitch-source  2026-04-30
  */
 final class PlatformResponse extends AbstractResponseDto

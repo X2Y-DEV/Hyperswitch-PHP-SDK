@@ -9,7 +9,6 @@ use X2Y\HyperSwitchClient\Endpoint\ProxyEndpoints;
 use X2Y\HyperSwitchClient\Exception\HyperSwitchApiException;
 
 /**
- * @postman             Proxy
  * @hyperswitch-source  2026-04-30
  */
 final class ProxyResource extends AbstractResource

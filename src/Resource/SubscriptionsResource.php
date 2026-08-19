@@ -23,14 +23,10 @@ use X2Y\HyperSwitchClient\Exception\HyperSwitchApiException;
 /**
  * Typed facade over the HyperSwitch Subscriptions API group.
  *
- * @postman             Subscriptions
  * @hyperswitch-source  2026-04-30
  */
 final class SubscriptionsResource extends AbstractResource
 {
-    /**
-     * @postman   Subscriptions / Subscription - Create
-     */
     public function create(CreateSubscriptionRequest $request): SubscriptionResponse
     {
         $response = $this->execute(
@@ -43,9 +39,6 @@ final class SubscriptionsResource extends AbstractResource
         return $response;
     }
 
-    /**
-     * @postman   Subscriptions / Subscription - Create + Confirm
-     */
     public function createAndConfirm(CreateAndConfirmSubscriptionRequest $request): SubscriptionResponse
     {
         $response = $this->execute(
@@ -58,9 +51,6 @@ final class SubscriptionsResource extends AbstractResource
         return $response;
     }
 
-    /**
-     * @postman   Subscriptions / Subscription - Confirm
-     */
     public function confirm(string $subscriptionId, ConfirmSubscriptionRequest $request): SubscriptionResponse
     {
         $response = $this->execute(
@@ -74,9 +64,6 @@ final class SubscriptionsResource extends AbstractResource
         return $response;
     }
 
-    /**
-     * @postman   Subscriptions / Subscription - Update
-     */
     public function update(string $subscriptionId, UpdateSubscriptionRequest $request): SubscriptionResponse
     {
         $response = $this->execute(
@@ -90,9 +77,6 @@ final class SubscriptionsResource extends AbstractResource
         return $response;
     }
 
-    /**
-     * @postman   Subscriptions / Subscription - Retrieve
-     */
     public function retrieve(string $subscriptionId): SubscriptionResponse
     {
         $response = $this->execute(
@@ -105,9 +89,6 @@ final class SubscriptionsResource extends AbstractResource
         return $response;
     }
 
-    /**
-     * @postman   Subscriptions / Subscription - Pause
-     */
     public function pause(string $subscriptionId, ?PauseSubscriptionRequest $request = null): SubscriptionResponse
     {
         $response = $this->execute(
@@ -121,9 +102,6 @@ final class SubscriptionsResource extends AbstractResource
         return $response;
     }
 
-    /**
-     * @postman   Subscriptions / Subscription - Resume
-     */
     public function resume(string $subscriptionId, ?ResumeSubscriptionRequest $request = null): SubscriptionResponse
     {
         $response = $this->execute(
@@ -137,9 +115,6 @@ final class SubscriptionsResource extends AbstractResource
         return $response;
     }
 
-    /**
-     * @postman   Subscriptions / Subscription - Cancel
-     */
     public function cancel(string $subscriptionId, ?CancelSubscriptionRequest $request = null): SubscriptionResponse
     {
         $response = $this->execute(
@@ -154,8 +129,6 @@ final class SubscriptionsResource extends AbstractResource
     }
 
     /**
-     * @postman   Subscriptions / Subscription - List
-     *
      * @return PaginatedList<SubscriptionResponse>
      */
     public function list(?ListSubscriptionsRequest $request = null): PaginatedList
@@ -178,8 +151,6 @@ final class SubscriptionsResource extends AbstractResource
     }
 
     /**
-     * @postman   Subscriptions / Subscription - Plans
-     *
      * @return PaginatedList<PlanResponse>
      */
     public function plans(?ListPlansRequest $request = null): PaginatedList
@@ -201,9 +172,6 @@ final class SubscriptionsResource extends AbstractResource
         );
     }
 
-    /**
-     * @postman   Subscriptions / Subscription - Estimate
-     */
     public function estimate(EstimateSubscriptionRequest $request): EstimateResponse
     {
         $response = $this->execute(

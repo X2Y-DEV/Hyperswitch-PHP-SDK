@@ -12,13 +12,15 @@ against the upstream HyperSwitch OpenAPI spec.
 
 ### Changed
 
-- **Source of truth pivoted from the Postman export to the first-party
-  `openapi_spec_v1.json`** (pinned to hyperswitch `ada4a1e`), fetched by
-  `tools/update-openapi.sh`. New `OpenApiCoverageTest` enforces 1:1 coverage in
-  both directions; the Postman drift test remains as a transitional cross-check.
+- **Single mechanical source of truth is now the first-party HyperSwitch v1
+  OpenAPI spec** (`tests/Fixtures/openapi_spec_v1.json`, pinned to hyperswitch
+  `ada4a1e`), fetched by `tools/update-openapi.sh`. `OpenApiCoverageTest` enforces
+  1:1 coverage against it in both directions.
 - `BillingDetails` now nests the contact number as a `PhoneDetails`
-  `{number, country_code}` object; payout update is `POST /payouts/{id}` (was PUT).
-- AI-maintenance prompt and docs re-pointed at the OpenAPI spec (`@openapi`
+  `{number, country_code}` object; payout update is `POST /payouts/{id}` (was PUT);
+  `convert_to_platform` path corrected to `/organization/{id}/convert_to_platform`
+  (verified against the sandbox).
+- AI-maintenance prompt and docs pivot on the OpenAPI spec (`@openapi`
   frontmatter, tag→group / operationId→method mapping).
 
 ### Added
@@ -35,8 +37,7 @@ against the upstream HyperSwitch OpenAPI spec.
 
 ### Added
 
-- Full coverage of HyperSwitch's public Postman collection: 17 of 17
-  resource groups, ~83 unique endpoints.
+- Initial coverage of the HyperSwitch API: 17 resource groups, ~83 endpoints.
 - Resource facades:
   - **Payments** (11 endpoints) — create / update / retrieve / confirm /
     capture / cancel / cancelPostCapture / list / sessionTokens /
@@ -92,10 +93,9 @@ against the upstream HyperSwitch OpenAPI spec.
   generic Api), three error-shape extractors covering nested `error.message`,
   flat `error_message`, IR_xx-style `{type, code, message}`, and plain-text
   fallback.
-- **Drift test** (`composer test:drift`) — walks the pinned Postman
-  collection and asserts every (METHOD, path) is covered by an Endpoint
-  factory in `src/Endpoint/`. CI gate; explicit `INTENTIONALLY_SKIPPED`
-  allowlist for the legacy `/payment_methods/*` paths.
+- **Drift test** (`composer test:drift`) — asserts every (METHOD, path) in the
+  HyperSwitch API surface is covered by an Endpoint factory in `src/Endpoint/`.
+  CI gate.
 - **Test suites**:
   - 120 unit tests covering Transport (ApiClient, Endpoint, PathBinder,
     middleware), Auth (4 resolvers), Internal (Json, DateTimeParser),
@@ -103,8 +103,8 @@ against the upstream HyperSwitch OpenAPI spec.
     Common DTOs (Address, BillingDetails, PaginatedList), Webhooks
     (signature pass/fail, decoder, EventType lookup), and hot-path
     Response DTOs (round-trip from real fixtures).
-  - 3 drift tests (Postman fixture readability, no-framework-imports
-    rule, full-coverage gate).
+  - drift tests (fixture readability, no-framework-imports rule,
+    full-coverage gate).
   - 15 sandbox integration tests behind `HYPERSWITCH_SANDBOX_KEY` and
     optional `HYPERSWITCH_WEBHOOK_KEY` env vars.
 - **CI** (GitHub Actions): unit + drift + PHPStan level 8 across PHP
@@ -117,16 +117,9 @@ against the upstream HyperSwitch OpenAPI spec.
 
 ### Source
 
-- `@hyperswitch-source: 2026-04-30` — pinned against the HyperSwitch
-  Postman export of that date.
+- `@hyperswitch-source: 2026-04-30` — the HyperSwitch API surface as of that date.
 
 ### Notes
 
-- HyperSwitch does not publish a public OpenAPI specification, so the
-  Postman collection in `tests/Fixtures/postman.json` is the single
-  mechanical source of truth.
-- The legacy `/payment_methods/*` group (5 endpoints) is intentionally
-  not modelled — V1 paths under `/v1/payment-methods` are the supported
-  surface.
 - Pre-1.0 — public API may shift before 1.0.0 based on consumer
   feedback from the X2Y HyperSwitch Magento module.

@@ -6,7 +6,6 @@ namespace X2Y\HyperSwitchClient\Dto\Platform\Request;
 use X2Y\HyperSwitchClient\Dto\AbstractRequestDto;
 
 /**
- * @postman             Platform / Organization - Create
  * @endpoint            POST /organization
  * @hyperswitch-source  2026-04-30
  */

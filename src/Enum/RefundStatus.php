@@ -6,7 +6,6 @@ namespace X2Y\HyperSwitchClient\Enum;
 /**
  * Status of a refund as returned by HyperSwitch.
  *
- * @postman             Refunds / Refunds - Retrieve (status)
  * @hyperswitch-source  2026-04-30
  */
 enum RefundStatus: string implements LabelledEnum

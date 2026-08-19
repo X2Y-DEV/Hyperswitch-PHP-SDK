@@ -9,7 +9,6 @@ use X2Y\HyperSwitchClient\Dto\AbstractRequestDto;
  * Update an existing connector configuration. Same field shape as create
  * but every field optional.
  *
- * @postman             PaymentConnectors / Payment Connector - Update
  * @endpoint            POST /account/{account_id}/connectors/{connector_id}
  * @hyperswitch-source  2026-04-30
  */

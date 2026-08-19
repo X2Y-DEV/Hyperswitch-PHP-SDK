@@ -17,7 +17,6 @@ use X2Y\HyperSwitchClient\Exception\HyperSwitchApiException;
 /**
  * Typed facade over the HyperSwitch Disputes group.
  *
- * @postman             Disputes
  * @hyperswitch-source  2026-04-30
  */
 final class DisputesResource extends AbstractResource

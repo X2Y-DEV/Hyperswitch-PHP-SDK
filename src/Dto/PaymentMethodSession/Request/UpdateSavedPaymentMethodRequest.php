@@ -11,7 +11,6 @@ use X2Y\HyperSwitchClient\Enum\PaymentMethodAckStatus;
  * direct PaymentMethods update but scoped to a session and includes the
  * `payment_method_id` in the body.
  *
- * @postman             Payment Method Sessions / Payment Method Session - Update a saved payment method
  * @endpoint            PUT /v1/payment-method-sessions/{id}/update-saved-payment-method
  * @hyperswitch-source  2026-04-30
  */

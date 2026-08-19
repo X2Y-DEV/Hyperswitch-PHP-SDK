@@ -13,7 +13,6 @@ use X2Y\HyperSwitchClient\Transport\Endpoint;
 /**
  * HyperSwitch Refunds group.
  *
- * @postman             Refunds
  * @hyperswitch-source  2026-04-30
  */
 final class RefundsEndpoints
@@ -23,7 +22,6 @@ final class RefundsEndpoints
     }
 
     /**
-     * @postman   Refunds / Refunds - Create
      * @endpoint  POST /refunds
      */
     public static function create(): Endpoint
@@ -39,7 +37,6 @@ final class RefundsEndpoints
     }
 
     /**
-     * @postman   Refunds / Refunds - Update
      * @endpoint  POST /refunds/{id}
      */
     public static function update(): Endpoint
@@ -55,7 +52,6 @@ final class RefundsEndpoints
     }
 
     /**
-     * @postman   Refunds / Refunds - Retrieve
      * @endpoint  GET /refunds/{id}
      */
     public static function retrieve(): Endpoint
@@ -71,7 +67,6 @@ final class RefundsEndpoints
     }
 
     /**
-     * @postman   Refunds / Refunds - List
      * @endpoint  POST /refunds/list
      *
      * Returns a list shape (envelope with `data: [...]`) — modelled as a raw

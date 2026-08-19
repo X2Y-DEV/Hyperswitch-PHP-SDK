@@ -50,10 +50,6 @@ carry this comment block:
 spec. `@hyperswitch-source` records the spec ref (or date) the file was last
 reconciled against. Reviewers check these when evaluating drift.
 
-A legacy `@postman <Group> / <Item Name>` tag remains on files carried over from
-the Postman era — kept as a harmless historical cross-reference; new files need
-only `@openapi`.
-
 ## DTO rules
 
 1. **One DTO per file.** Even if two operations share a payload — duplicate

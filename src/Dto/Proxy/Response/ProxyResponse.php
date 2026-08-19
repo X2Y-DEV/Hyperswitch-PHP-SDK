@@ -10,7 +10,6 @@ use X2Y\HyperSwitchClient\Dto\AbstractResponseDto;
  * as a passthrough — most of the body is connector-shaped and lives in
  * `extras`.
  *
- * @postman             Proxy / Proxy - Create
  * @endpoint            POST /v1/proxy
  * @hyperswitch-source  2026-04-30
  */

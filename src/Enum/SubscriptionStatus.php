@@ -6,7 +6,6 @@ namespace X2Y\HyperSwitchClient\Enum;
 /**
  * Subscription lifecycle status.
  *
- * @postman             Subscriptions / Subscription - Retrieve (status)
  * @hyperswitch-source  2026-04-30
  */
 enum SubscriptionStatus: string implements LabelledEnum

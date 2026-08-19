@@ -8,7 +8,6 @@ use X2Y\HyperSwitchClient\Dto\AbstractResponseDto;
 /**
  * Response from connector create / retrieve / update / list (item).
  *
- * @postman             PaymentConnectors / Payment Connector - Retrieve
  * @endpoint            GET /account/{account_id}/connectors/{connector_id}
  * @hyperswitch-source  2026-04-30
  */

@@ -4,7 +4,6 @@ declare(strict_types=1);
 namespace X2Y\HyperSwitchClient\Enum;
 
 /**
- * @postman             Subscriptions / Subscription - Cancel (cancel_option)
  * @hyperswitch-source  2026-04-30
  */
 enum SubscriptionCancelOption: string implements LabelledEnum

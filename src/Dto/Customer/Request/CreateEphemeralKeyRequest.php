@@ -10,7 +10,6 @@ use X2Y\HyperSwitchClient\Dto\AbstractRequestDto;
  * calls this with its merchant key, then hands the resulting `secret` to the
  * client (browser / mobile app) for use with publishable-key-tier endpoints.
  *
- * @postman             Customers / Ephemeral Key
  * @endpoint            POST /ephemeral_keys
  * @hyperswitch-source  2026-04-30
  */

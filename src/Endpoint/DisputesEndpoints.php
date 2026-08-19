@@ -16,7 +16,6 @@ use X2Y\HyperSwitchClient\Transport\Endpoint;
 /**
  * HyperSwitch Disputes group.
  *
- * @postman             Disputes
  * @hyperswitch-source  2026-04-30
  */
 final class DisputesEndpoints
@@ -26,7 +25,6 @@ final class DisputesEndpoints
     }
 
     /**
-     * @postman   Disputes / Disputes - Retrieve
      * @endpoint  GET /disputes/{id}
      */
     public static function retrieve(): Endpoint
@@ -42,7 +40,6 @@ final class DisputesEndpoints
     }
 
     /**
-     * @postman   Disputes / Dispute - List
      * @endpoint  GET /disputes/list
      *
      * Resource wraps in PaginatedList<DisputeResponse>.
@@ -60,7 +57,6 @@ final class DisputesEndpoints
     }
 
     /**
-     * @postman   Disputes / Disputes - Accept
      * @endpoint  POST /disputes/accept/{id}
      */
     public static function accept(): Endpoint
@@ -76,7 +72,6 @@ final class DisputesEndpoints
     }
 
     /**
-     * @postman   Disputes / Disputes - Submit Evidence
      * @endpoint  POST /disputes/evidence
      */
     public static function submitEvidence(): Endpoint

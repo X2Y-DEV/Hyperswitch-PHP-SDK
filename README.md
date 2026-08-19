@@ -128,7 +128,7 @@ The SDK models **all 150 operations** of the HyperSwitch **v1 OpenAPI spec**
 The `/v1/payment-methods*`, `/v1/payment-method-sessions*` and `/v1/proxy` paths
 are the **v2** modular-payments surface (present in `openapi_spec_v2`, not v1);
 they are kept as documented `SDK_ONLY_ALLOWED` exceptions and belong to a future,
-separate v2 SDK. See [docs/v1-alignment.md](docs/v1-alignment.md).
+separate v2 SDK.
 
 Auth tiers: `MERCHANT` (api-key), `PUBLISHABLE`, `ADMIN`, `EPHEMERAL`,
 `MERCHANT_V1` (api-key=… + X-Profile-Id), and `JWT` (Bearer, for event management).
@@ -153,8 +153,8 @@ dependencies and could be lifted into any PHP project.
 spec**, pinned to a hyperswitch commit by `tools/update-openapi.sh`. Drift
 detection (`OpenApiCoverageTest`) and AI maintenance both pivot on it: typed
 schemas, declared enums, and per-operation `security` make the maintenance loop
-mechanical. (The SDK models all 150 v1 operations; the legacy Postman export and
-its drift test have been removed now that the OpenAPI test is authoritative.)
+mechanical. (The SDK models all 150 v1 operations; `OpenApiCoverageTest` is the
+authoritative drift gate.)
 
 ### Conventions
 

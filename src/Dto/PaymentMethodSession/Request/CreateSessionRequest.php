@@ -11,7 +11,6 @@ use X2Y\HyperSwitchClient\Enum\StorageType;
  * Create a payment-method session — a short-lived envelope a client-side
  * tokenisation flow attaches to.
  *
- * @postman             Payment Method Sessions / Payment Method Session - Create
  * @endpoint            POST /v1/payment-method-sessions
  * @hyperswitch-source  2026-04-30
  */

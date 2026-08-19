@@ -10,7 +10,6 @@ use X2Y\HyperSwitchClient\Internal\DateTimeParser;
 /**
  * Response from /customers create / retrieve / update and /customers/list items.
  *
- * @postman             Customers / Retrieve Customer
  * @endpoint            GET /customers/{id}
  * @hyperswitch-source  2026-04-30
  */

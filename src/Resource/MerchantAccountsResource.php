@@ -15,7 +15,6 @@ use X2Y\HyperSwitchClient\Exception\HyperSwitchApiException;
 /**
  * Typed facade over the HyperSwitch Merchant Accounts group. Admin-tier.
  *
- * @postman             MerchantAccounts
  * @hyperswitch-source  2026-04-30
  */
 final class MerchantAccountsResource extends AbstractResource

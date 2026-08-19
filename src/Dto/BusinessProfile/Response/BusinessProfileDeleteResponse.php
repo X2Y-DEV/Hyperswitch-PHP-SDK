@@ -6,7 +6,6 @@ namespace X2Y\HyperSwitchClient\Dto\BusinessProfile\Response;
 use X2Y\HyperSwitchClient\Dto\AbstractResponseDto;
 
 /**
- * @postman             Business Profile / Business Profile - Delete
  * @endpoint            DELETE /account/{merchant_id}/business_profile/{profile_id}
  * @hyperswitch-source  2026-04-30
  */

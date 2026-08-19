@@ -6,7 +6,6 @@ namespace X2Y\HyperSwitchClient\Dto\MerchantAccount\Response;
 use X2Y\HyperSwitchClient\Dto\AbstractResponseDto;
 
 /**
- * @postman             MerchantAccounts / Merchant Account - Delete
  * @endpoint            DELETE /accounts/{id}
  * @hyperswitch-source  2026-04-30
  */

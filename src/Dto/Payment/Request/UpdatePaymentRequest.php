@@ -17,7 +17,6 @@ use X2Y\HyperSwitchClient\Enum\SetupFutureUsage;
  *
  * `extras` accepts any field the SDK hasn't typed yet.
  *
- * @postman             Payments / Payments - Update
  * @endpoint            POST /payments/{id}
  * @hyperswitch-source  2026-04-30
  */

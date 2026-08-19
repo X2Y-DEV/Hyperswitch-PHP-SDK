@@ -17,7 +17,6 @@ use X2Y\HyperSwitchClient\Internal\DateTimeParser;
  * scalars are typed; the deep catalog blobs follow the connector-blob
  * convention and stay in `extras`.
  *
- * @postman             Subscriptions / Subscription - Retrieve
  * @endpoint            GET /subscriptions/{id}
  * @hyperswitch-source  2026-04-30
  */

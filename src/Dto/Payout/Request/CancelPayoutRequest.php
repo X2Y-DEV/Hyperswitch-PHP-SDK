@@ -6,7 +6,6 @@ namespace X2Y\HyperSwitchClient\Dto\Payout\Request;
 use X2Y\HyperSwitchClient\Dto\AbstractRequestDto;
 
 /**
- * @postman             Payouts / Payouts - Cancel
  * @endpoint            POST /payouts/{id}/cancel
  * @hyperswitch-source  2026-04-30
  */

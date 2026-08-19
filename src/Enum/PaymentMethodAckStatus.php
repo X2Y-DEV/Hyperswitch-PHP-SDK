@@ -7,7 +7,6 @@ namespace X2Y\HyperSwitchClient\Enum;
  * Acknowledgement status reported when updating a saved payment method
  * after a CIT — typically following an external authentication challenge.
  *
- * @postman             Payment Methods - Modular Payment / Payment Methods - Update (acknowledgement_status)
  * @hyperswitch-source  2026-04-30
  */
 enum PaymentMethodAckStatus: string implements LabelledEnum

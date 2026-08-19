@@ -14,7 +14,6 @@ use X2Y\HyperSwitchClient\Exception\HyperSwitchApiException;
 /**
  * Typed facade over the HyperSwitch API Keys group. Admin-tier.
  *
- * @postman             API Key
  * @hyperswitch-source  2026-04-30
  */
 final class ApiKeysResource extends AbstractResource

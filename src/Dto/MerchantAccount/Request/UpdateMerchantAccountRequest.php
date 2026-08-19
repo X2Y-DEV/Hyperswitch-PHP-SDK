@@ -9,7 +9,6 @@ use X2Y\HyperSwitchClient\Dto\AbstractRequestDto;
  * Update an existing merchant account. Same field set as create; every
  * field is optional and only the provided fields are updated.
  *
- * @postman             MerchantAccounts / Merchant Account - Update
  * @endpoint            POST /accounts/{id}
  * @hyperswitch-source  2026-04-30
  */

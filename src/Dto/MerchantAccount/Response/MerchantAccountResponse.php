@@ -8,7 +8,6 @@ use X2Y\HyperSwitchClient\Dto\AbstractResponseDto;
 /**
  * Response from /accounts create / retrieve / update.
  *
- * @postman             MerchantAccounts / Merchant Account - Retrieve
  * @endpoint            GET /accounts/{id}
  * @hyperswitch-source  2026-04-30
  */

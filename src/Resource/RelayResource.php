@@ -11,7 +11,6 @@ use X2Y\HyperSwitchClient\Exception\HyperSwitchApiException;
 /**
  * Typed facade over the HyperSwitch Relay group.
  *
- * @postman             Relay
  * @hyperswitch-source  2026-04-30
  */
 final class RelayResource extends AbstractResource

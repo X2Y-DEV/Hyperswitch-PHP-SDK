@@ -8,7 +8,6 @@ use X2Y\HyperSwitchClient\Dto\AbstractRequestDto;
 /**
  * Change the plan / price tier on an active subscription.
  *
- * @postman             Subscriptions / Subscription - Update
  * @endpoint            PUT /subscriptions/{id}/update
  * @hyperswitch-source  2026-04-30
  */

@@ -11,7 +11,6 @@ use X2Y\HyperSwitchClient\Dto\AbstractResponseDto;
  * HyperSwitch acknowledges the delete with `customer_id` and a flag indicating
  * the soft-delete state.
  *
- * @postman             Customers / Delete Customer
  * @endpoint            DELETE /customers/{id}
  * @hyperswitch-source  2026-04-30
  */

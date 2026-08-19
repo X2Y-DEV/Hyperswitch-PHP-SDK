@@ -16,7 +16,6 @@ use X2Y\HyperSwitchClient\Transport\Endpoint;
  * HyperSwitch Merchant Accounts group. Admin-tier — for onboarding new
  * merchants under the platform.
  *
- * @postman             MerchantAccounts
  * @hyperswitch-source  2026-04-30
  */
 final class MerchantAccountsEndpoints
@@ -26,7 +25,6 @@ final class MerchantAccountsEndpoints
     }
 
     /**
-     * @postman   MerchantAccounts / Merchant Account - Create
      * @endpoint  POST /accounts
      */
     public static function create(): Endpoint
@@ -42,7 +40,6 @@ final class MerchantAccountsEndpoints
     }
 
     /**
-     * @postman   MerchantAccounts / Merchant Account - Retrieve
      * @endpoint  GET /accounts/{id}
      */
     public static function retrieve(): Endpoint
@@ -58,7 +55,6 @@ final class MerchantAccountsEndpoints
     }
 
     /**
-     * @postman   MerchantAccounts / Merchant Account - Update
      * @endpoint  POST /accounts/{id}
      */
     public static function update(): Endpoint
@@ -74,7 +70,6 @@ final class MerchantAccountsEndpoints
     }
 
     /**
-     * @postman   MerchantAccounts / Merchant Account - Delete
      * @endpoint  DELETE /accounts/{id}
      */
     public static function delete(): Endpoint

@@ -12,7 +12,6 @@ use X2Y\HyperSwitchClient\Internal\DateTimeParser;
 /**
  * Response from /disputes retrieve / list (item) / accept / submit-evidence.
  *
- * @postman             Disputes / Disputes - Retrieve
  * @endpoint            GET /disputes/{id}
  * @hyperswitch-source  2026-04-30
  */

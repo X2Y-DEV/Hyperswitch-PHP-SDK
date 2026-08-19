@@ -17,7 +17,6 @@ namespace X2Y\HyperSwitchClient\Dto\Common;
  *
  * @template T
  *
- * @postman             Common / PaginatedList
  * @hyperswitch-source  2026-04-30
  */
 final class PaginatedList

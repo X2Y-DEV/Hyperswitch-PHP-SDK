@@ -10,7 +10,6 @@ use X2Y\HyperSwitchClient\Internal\DateTimeParser;
 /**
  * Response from GET /payment_link/{id}.
  *
- * @postman             Payment Links / Payment Link - Retrieve
  * @endpoint            GET /payment_link/{id}
  * @hyperswitch-source  2026-04-30
  */

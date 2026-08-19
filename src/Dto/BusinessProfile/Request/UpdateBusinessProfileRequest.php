@@ -9,7 +9,6 @@ use X2Y\HyperSwitchClient\Dto\AbstractRequestDto;
  * Update an existing business profile. Same field set as create; every
  * field is optional and only the provided fields are updated.
  *
- * @postman             Business Profile / Business Profile - Update
  * @endpoint            POST /account/{merchant_id}/business_profile/{profile_id}
  * @hyperswitch-source  2026-04-30
  */

@@ -6,7 +6,6 @@ namespace X2Y\HyperSwitchClient\Enum;
 /**
  * Credit handling for current-term charges on cancellation.
  *
- * @postman             Subscriptions / Subscription - Cancel (credit_option_for_current_term_charges)
  * @hyperswitch-source  2026-04-30
  */
 enum SubscriptionCreditOption: string implements LabelledEnum

@@ -9,7 +9,6 @@ use X2Y\HyperSwitchClient\Dto\Proxy\Response\ProxyResponse;
 use X2Y\HyperSwitchClient\Transport\Endpoint;
 
 /**
- * @postman             Proxy
  * @hyperswitch-source  2026-04-30
  */
 final class ProxyEndpoints
@@ -19,7 +18,6 @@ final class ProxyEndpoints
     }
 
     /**
-     * @postman   Proxy / Proxy - Create
      * @endpoint  POST /v1/proxy
      */
     public static function create(): Endpoint

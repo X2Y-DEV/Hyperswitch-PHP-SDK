@@ -13,7 +13,6 @@ use X2Y\HyperSwitchClient\Internal\DateTimeParser;
  * The deeper session payload (linked payment method, redirect data, etc.)
  * varies per flow; preserved in `extras`.
  *
- * @postman             Payment Method Sessions / Payment Methods Session - Retrieve
  * @endpoint            GET /v1/payment-method-sessions/{id}
  * @hyperswitch-source  2026-04-30
  */

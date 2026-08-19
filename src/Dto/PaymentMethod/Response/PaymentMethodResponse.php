@@ -13,7 +13,6 @@ use X2Y\HyperSwitchClient\Internal\DateTimeParser;
  * Card / wallet / bank-instrument details vary per payment method type and
  * are preserved in `extras`. Top-level scalars are typed.
  *
- * @postman             Payment Methods - Modular Payment / Payment Methods - Retrieve
  * @endpoint            GET /v1/payment-methods/{id}
  * @hyperswitch-source  2026-04-30
  */

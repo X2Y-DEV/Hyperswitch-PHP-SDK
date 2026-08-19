@@ -4,7 +4,6 @@ declare(strict_types=1);
 namespace X2Y\HyperSwitchClient\Enum;
 
 /**
- * @postman             Payouts / Payouts - Create (payout_type)
  * @hyperswitch-source  2026-04-30
  */
 enum PayoutType: string implements LabelledEnum

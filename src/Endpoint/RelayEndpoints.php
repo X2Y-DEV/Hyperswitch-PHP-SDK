@@ -9,15 +9,14 @@ use X2Y\HyperSwitchClient\Dto\Relay\Response\RelayResponse;
 use X2Y\HyperSwitchClient\Transport\Endpoint;
 
 /**
- * HyperSwitch Relay group. Three Postman items (capture / void /
+ * HyperSwitch Relay group. Three operations (capture / void /
  * incremental-auth) all hit POST /relay with different `data` payloads —
  * single Endpoint, one permissive `CreateRelayRequest`.
  *
- * The Postman "Relay - Retrieve" item has an empty URL. Modelled
+ * The "Relay - Retrieve" operation has an unusual shape. Modelled
  * speculatively as `GET /relay/{id}` based on HyperSwitch's conventional
- * shape; verify against an updated Postman / OpenAPI export when available.
+ * shape; verify against an updated v1 OpenAPI spec when available.
  *
- * @postman             Relay
  * @hyperswitch-source  2026-04-30
  */
 final class RelayEndpoints
@@ -27,9 +26,6 @@ final class RelayEndpoints
     }
 
     /**
-     * @postman   Relay / Relay - Create
-     * @postman   Relay / Relay Create Incremental Auth
-     * @postman   Relay / Relay Create Void
      * @endpoint  POST /relay
      */
     public static function create(): Endpoint
@@ -45,7 +41,6 @@ final class RelayEndpoints
     }
 
     /**
-     * @postman   Relay / Relay - Retrieve  (Postman URL was blank)
      * @endpoint  GET /relay/{id}
      */
     public static function retrieve(): Endpoint

@@ -6,7 +6,6 @@ namespace X2Y\HyperSwitchClient\Dto\Payment\Request;
 use X2Y\HyperSwitchClient\Dto\AbstractRequestDto;
 
 /**
- * @postman             Payments / Payments - Capture
  * @endpoint            POST /payments/{id}/capture
  * @hyperswitch-source  2026-04-30
  */

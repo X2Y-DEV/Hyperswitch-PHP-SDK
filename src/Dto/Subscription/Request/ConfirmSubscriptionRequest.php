@@ -8,7 +8,6 @@ use X2Y\HyperSwitchClient\Dto\AbstractRequestDto;
 /**
  * Confirm a previously-created subscription by attaching payment details.
  *
- * @postman             Subscriptions / Subscription - Confirm
  * @endpoint            POST /subscriptions/{id}/confirm
  * @hyperswitch-source  2026-04-30
  */

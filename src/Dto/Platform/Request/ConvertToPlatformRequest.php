@@ -6,7 +6,6 @@ namespace X2Y\HyperSwitchClient\Dto\Platform\Request;
 use X2Y\HyperSwitchClient\Dto\AbstractRequestDto;
 
 /**
- * @postman             Platform / Platform - Conversion
  * @endpoint            POST /api/organization/{organization_id}/convert_to_platform
  * @hyperswitch-source  2026-04-30
  */

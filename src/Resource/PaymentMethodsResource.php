@@ -15,7 +15,6 @@ use X2Y\HyperSwitchClient\Exception\HyperSwitchApiException;
 /**
  * Typed facade over the HyperSwitch V1 Payment Methods group.
  *
- * @postman             Payment Methods - Modular Payment
  * @hyperswitch-source  2026-04-30
  */
 final class PaymentMethodsResource extends AbstractResource

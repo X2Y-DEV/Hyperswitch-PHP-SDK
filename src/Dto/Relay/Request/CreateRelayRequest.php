@@ -14,7 +14,6 @@ use X2Y\HyperSwitchClient\Enum\RelayType;
  * (`capture`, `void`, `incremental_authorization`, `refund`). Per the
  * connector-blob convention, kept as a loose `array<string, mixed>`.
  *
- * @postman             Relay / Relay - Create
  * @endpoint            POST /relay
  * @hyperswitch-source  2026-04-30
  */

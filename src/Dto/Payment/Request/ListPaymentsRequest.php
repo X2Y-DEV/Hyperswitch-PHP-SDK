@@ -10,7 +10,6 @@ use X2Y\HyperSwitchClient\Enum\IntentStatus;
  * List payments with optional filters. Sent as query parameters on a GET
  * request — Resource passes `toArray()` as `queryParams` rather than body.
  *
- * @postman             Payments / Payment-List
  * @endpoint            GET /payments/list
  * @hyperswitch-source  2026-04-30
  */
