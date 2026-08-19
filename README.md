@@ -112,9 +112,12 @@ for a runnable bare-PHP example.
 | Proxy | 1 | `$client->proxy()` |
 | **Webhooks** (inbound) | n/a | `Webhook\EventDecoder` |
 
-Total: **17 of 17 Postman groups, ~83 unique endpoints.** The legacy
-`/payment_methods/*` group (5 endpoints) is intentionally not modelled —
-V1 paths under `/v1/payment-methods` are the supported surface.
+The SDK is being realigned to the HyperSwitch **v1 OpenAPI spec** (150 operations).
+Currently ~65 are modelled; the remaining gaps are enumerated and categorized in
+`OpenApiCoverageTest::EXCLUDED` and are being closed group-by-group (see
+[docs/v1-alignment.md](docs/v1-alignment.md)). The `/v1/payment-methods*` and
+`/v1/payment-method-sessions*` paths are the **v2** modular-payments surface and
+belong to a future, separate v2 SDK.
 
 V1 endpoints (PaymentMethods, PaymentMethodSessions) require an
 `X-Profile-Id` header; consumers attach it via the fluent builder:
@@ -132,32 +135,33 @@ dependencies and could be lifted into any PHP project.
 
 ### Source of truth
 
-`tests/Fixtures/postman.json` (the pinned Postman export). HyperSwitch
-does not publish a public OpenAPI specification, so the Postman export is
-the only mechanical source of truth — drift detection and AI maintenance
-both pivot on it.
+`tests/Fixtures/openapi_spec_v1.json` — the first-party HyperSwitch **v1 OpenAPI
+spec**, pinned to a hyperswitch commit by `tools/update-openapi.sh`. Drift
+detection (`OpenApiCoverageTest`) and AI maintenance both pivot on it: typed
+schemas, declared enums, and per-operation `security` make the maintenance loop
+mechanical. (The Postman export lingers only as a transitional cross-check and
+will be removed once the v1 burndown completes.)
 
 ### Conventions
 
-- Every Postman item → one Endpoint constant in `src/Endpoint/<Group>Endpoints.php`
-- Every request body → one Request DTO in `src/Dto/<Group>/Request/`
-- Every response shape → one Response DTO in `src/Dto/<Group>/Response/`
-- Every closed-set field → an enum in `src/Enum/`
-- File names are PascalCase mirroring Postman item names
-- Every generated file carries `@postman`, `@endpoint`, `@hyperswitch-source` frontmatter
+- Every spec operation → one Endpoint factory in `src/Endpoint/<Group>Endpoints.php`
+- Every request body schema → one Request DTO in `src/Dto/<Group>/Request/`
+- Every response schema → one Response DTO in `src/Dto/<Group>/Response/`
+- Every schema `enum` → an enum in `src/Enum/`
+- The group comes from the operation's `tags[0]`; the method/DTO name from its `operationId`
+- Every generated file carries `@openapi`, `@endpoint`, `@hyperswitch-source` frontmatter
 
 Full rules: [docs/conventions.md](docs/conventions.md).
 
 ### When HyperSwitch ships an API change
 
-1. Replace `tests/Fixtures/postman.json` with the new export
-   (`tools/update-postman.sh`).
+1. Re-pin the spec (`tools/update-openapi.sh`, bumping `HYPERSWITCH_REF`).
 2. Run: `composer test:drift`
-3. The drift test will list missing endpoints / DTOs / enum cases.
-4. Use the prompt in `tools/ai-maintenance-prompt.md` with an AI agent to fill
-   the gaps.
+3. The drift test lists spec operations missing from the SDK (and any SDK-only drift).
+4. Use the prompt in `tools/ai-maintenance-prompt.md` with an AI agent to fill the
+   gaps and remove the closed keys from `OpenApiCoverageTest::EXCLUDED`.
 5. Re-run `composer ci` until green.
-6. Bump CHANGELOG.md with the new `@hyperswitch-source` date in modified files.
+6. Bump CHANGELOG.md with the new spec ref in modified files' `@hyperswitch-source`.
 7. Tag a release.
 
 ### Architectural rules (do not relax)
@@ -180,7 +184,7 @@ Resource → Endpoint → DTO → Transport → Auth.
 
 ```bash
 composer test:unit         # fast, no network
-composer test:drift        # asserts Postman ↔ SDK coverage
+composer test:drift        # asserts v1 OpenAPI spec ↔ SDK coverage
 composer test:integration  # requires HYPERSWITCH_SANDBOX_KEY
 composer stan              # PHPStan at level max
 composer ci                # unit + drift + stan (no network; integration excluded)

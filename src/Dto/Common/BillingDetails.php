@@ -23,13 +23,16 @@ final class BillingDetails extends AbstractRequestDto
 
     public function toArray(): array
     {
+        // v1 spec `Address` wraps contact number as a nested `PhoneDetails`
+        // object { number, country_code } — there is no top-level
+        // `phone_country_code` here (unlike the flat Customer schema).
         return $this->filterNulls([
-            'address'            => $this->address?->toArray(),
-            'email'              => $this->email,
-            'phone'              => null !== $this->phone ?
-                ['number' => $this->phone] :
-                null,
-            'phone_country_code' => $this->phoneCountryCode,
+            'address' => $this->address?->toArray(),
+            'email'   => $this->email,
+            'phone'   => [
+                'number'       => $this->phone,
+                'country_code' => $this->phoneCountryCode,
+            ],
         ]);
     }
 }

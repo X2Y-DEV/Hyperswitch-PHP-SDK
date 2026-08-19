@@ -3,20 +3,35 @@
 Strict rules that AI maintenance and human contributors must follow. The drift
 test and phpstan enforce most of them mechanically; a few are review-only.
 
+The source of truth is the v1 OpenAPI spec (`tests/Fixtures/openapi_spec_v1.json`).
+Map its constructs to SDK artifacts as follows:
+
+| OpenAPI construct | SDK artifact |
+|---|---|
+| operation `tags[0]` | Group → `src/Endpoint/<Group>Endpoints.php`, `src/Dto/<Group>/`, `src/Resource/<Group>Resource.php` |
+| `operationId` | `@openapi "<operationId>"`; PascalCase method / DTO base name |
+| `METHOD` + path | `Endpoint::method` / `pathTemplate` |
+| `security[]` scheme | `AuthTier` (see Auth rules) |
+| `requestBody … schema.$ref` | Request DTO |
+| `responses.2xx … schema.$ref` | Response DTO |
+| component schema with `enum` | `src/Enum/<Name>.php` |
+| `$ref`-shared schema (Address, Amount, …) | `src/Dto/Common/` |
+
 ## Naming
 
-- **Postman group → directory and Endpoint class.**
-  `Payments` group → `src/Endpoint/PaymentsEndpoints.php`,
+- **Spec tag → directory and Endpoint class.**
+  `Payments` tag → `src/Endpoint/PaymentsEndpoints.php`,
   `src/Dto/Payment/{Request,Response}/`, `src/Resource/PaymentsResource.php`.
   Singular DTO directory, plural Endpoint and Resource files. Match the
   existing tree exactly when in doubt.
-- **Postman item → method / DTO name.** "Payments - Create" →
-  `PaymentsEndpoints::create()`, `CreatePaymentRequest`, `PaymentResponse`.
-  Drop hyphens, normalise spaces, PascalCase the verb.
-- **PHP property naming: camelCase.** Map to/from snake_case keys in
+- **operationId → method / DTO name.** The v1 `operationId` is a human-readable
+  phrase, not a slug — "Create a Payment" → `PaymentsEndpoints::create()`,
+  `CreatePaymentRequest`, `PaymentResponse`. Strip stopwords ("a", "an", "the"),
+  PascalCase the verb + noun.
+- **PHP property naming: camelCase.** Map to/from the spec's snake_case keys in
   `toArray()` and `fromArray()`.
-- **Enum cases: SCREAMING_SNAKE_CASE.** Backing values match the literal
-  HyperSwitch string (typically lowercase or snake_case).
+- **Enum cases: SCREAMING_SNAKE_CASE.** Backing values match the literal spec
+  `enum` string (typically lowercase or snake_case).
 
 ## Per-file frontmatter
 
@@ -25,14 +40,19 @@ carry this comment block:
 
 ```php
 /**
- * @postman             <Group> / <Item Name>
- * @endpoint            <METHOD> <path>     (omit for shared DTOs and enums)
- * @hyperswitch-source  YYYY-MM-DD
+ * @openapi             "<operationId>"    (source of truth; omit for shared DTOs and enums)
+ * @endpoint            <METHOD> <path>    (omit for shared DTOs and enums)
+ * @hyperswitch-source  <spec ref / YYYY-MM-DD>
  */
 ```
 
-`@hyperswitch-source` is the date the file was last reconciled against the
-Postman export. Reviewers check this when evaluating drift.
+`@openapi` is the operation's `operationId`, the stable reference back into the
+spec. `@hyperswitch-source` records the spec ref (or date) the file was last
+reconciled against. Reviewers check these when evaluating drift.
+
+A legacy `@postman <Group> / <Item Name>` tag remains on files carried over from
+the Postman era — keep it as a historical cross-reference until the burndown
+completes; new files need only `@openapi`.
 
 ## DTO rules
 
@@ -158,7 +178,7 @@ returns `PaginatedList<T>` from its Resource method.
 
 1. Endpoint definitions live in `src/Endpoint/<Group>Endpoints.php` as a
    `final class` with a private constructor and one static factory method per
-   Postman item.
+   spec operation.
 2. Path templates use `{name}` placeholders, not `:name`.
 3. `idempotent: true` only when HyperSwitch documents safe retries — generally
    `POST /payments`, `POST /refunds`, etc. Idempotency adds a header; don't
@@ -181,9 +201,15 @@ returns `PaginatedList<T>` from its Resource method.
 ## Auth rules
 
 1. Resources don't deal with auth — they declare an `AuthTier` on their
-   Endpoint, and the ApiClient picks the right resolver.
-2. Don't introduce new auth tiers without updating `AuthTier` enum and
-   adding the corresponding resolver implementation.
+   Endpoint, and the ApiClient picks the right resolver. Map the operation's
+   `security` scheme to a tier: `api_key`→`MERCHANT`, `publishable_key`→
+   `PUBLISHABLE`, `admin_api_key`→`ADMIN`, `ephemeral_key`→`EPHEMERAL`,
+   `jwt_key`→`JWT`. When an operation lists several, prefer the merchant-facing
+   one (`api_key`, then `publishable_key`).
+2. Don't introduce new auth tiers without updating the `AuthTier` enum, adding
+   the corresponding resolver, and wiring it into the `ApiClient` resolver map.
+   (The `JWT` tier for `jwt_key` operations is added the first time a group that
+   needs it — Routing, Disputes, Events, Card Issuers — is modelled.)
 3. **V1 endpoints (`/v1/payment-methods/*`, `/v1/payment-method-sessions/*`)
    use `AuthTier::MERCHANT_V1`** — same merchant key value as `MERCHANT`,
    but the wire format is `Authorization: api-key=<key>` rather than the

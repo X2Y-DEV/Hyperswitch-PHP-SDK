@@ -48,13 +48,16 @@ final class PayoutsEndpoints
     }
 
     /**
+     * @openapi   "Update a Payout"
      * @postman   Payouts / Payouts - Update
-     * @endpoint  PUT /payouts/{id}
+     * @endpoint  POST /payouts/{id}
+     *
+     * v1 spec uses POST (not PUT) for payout update — reconciled 2026-08-19.
      */
     public static function update(): Endpoint
     {
         return new Endpoint(
-            method:        'PUT',
+            method:        'POST',
             pathTemplate:  '/payouts/{id}',
             authTier:      AuthTier::MERCHANT,
             idempotent:    false,

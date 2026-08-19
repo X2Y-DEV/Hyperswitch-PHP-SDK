@@ -2,11 +2,11 @@
 
 The SDK is a thin, layered client for the HyperSwitch HTTP API. Every layer is
 replaceable in isolation — Resources don't know about HTTP, the ApiClient
-doesn't know about Postman groups, and DTOs don't know about transport.
+doesn't know about spec groups, and DTOs don't know about transport.
 
 ```
 ┌───────────────────────────────────────────────────────────┐
-│ Resource           Typed facade per Postman group         │
+│ Resource           Typed facade per spec tag / group      │
 │                    (PaymentsResource, RefundsResource, …) │
 ├───────────────────────────────────────────────────────────┤
 │ Endpoint           Value object: method, path, auth tier, │
@@ -61,7 +61,10 @@ doesn't know about Postman groups, and DTOs don't know about transport.
 
 ### Auth
 
-- **AuthTier enum:** ADMIN, MERCHANT, PUBLISHABLE, EPHEMERAL.
+- **AuthTier enum:** ADMIN, MERCHANT, MERCHANT_V1, PUBLISHABLE, EPHEMERAL
+  (+ JWT, added alongside the first `jwt_key` group — Routing/Disputes/Events).
+  `MERCHANT_V1` uses the `Authorization: api-key=<key>` wire format plus a
+  required `X-Profile-Id` header, for the `/v1/…` compat paths.
 - **AuthContextResolverInterface:** returns headers for a given tier.
 - **Wiring:** the consumer instantiates resolvers with their keys and registers
   them with `HyperSwitchClient`. The ApiClient picks the right resolver from
@@ -69,14 +72,15 @@ doesn't know about Postman groups, and DTOs don't know about transport.
 
 ## Why this shape
 
-1. **Each Postman item maps to exactly one Endpoint, one Request DTO,
-   one Response DTO.** AI maintenance is mechanical: read Postman, generate
-   files at predictable paths.
+1. **Each spec operation maps to exactly one Endpoint, one Request DTO,
+   one Response DTO.** AI maintenance is mechanical: read the v1 OpenAPI spec,
+   generate files at predictable paths.
 2. **Resources are thin.** Adding a method is a 5-line patch — bind the
    Endpoint, dispatch, return. No business logic to review.
-3. **Drift detection is feasible.** A test walks Postman and checks every
-   endpoint has a matching Endpoint factory in `src/Endpoint/`. Failure is
-   structured: "these endpoints are missing."
+3. **Drift detection is feasible.** `OpenApiCoverageTest` walks the v1 OpenAPI
+   spec (`paths × methods`) and checks every operation has a matching Endpoint
+   factory in `src/Endpoint/`, plus the reverse (no SDK endpoint absent from the
+   spec). Failure is structured: "these operations are missing / drifted."
 4. **Replaceable transport.** The PSR-18 dependency is a contract, not a
    library — consumers pick `symfony/http-client`, `guzzlehttp/guzzle`, or
    their own.

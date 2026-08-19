@@ -21,11 +21,14 @@ final class BillingDetailsTest extends TestCase
             phone: '5551234567',
             phoneCountryCode: '+1',
         );
+        // v1 spec nests the number + country_code inside a PhoneDetails object.
         self::assertSame(
             [
                 'email' => 'a@b.com',
-                'phone' => '5551234567',
-                'phone_country_code' => '+1',
+                'phone' => [
+                    'number'       => '5551234567',
+                    'country_code' => '+1',
+                ],
             ],
             $b->toArray(),
         );

@@ -42,6 +42,11 @@ final class PostmanCoverageTest extends TestCase
         'GET /account/payment_methods',
         'GET /customers/{id}/payment_methods',
         'DELETE /payment_methods/{id}',
+        // Reconciled to the v1 OpenAPI spec: payout update is POST, not PUT.
+        // The Postman export is stale here; OpenApiCoverageTest is authoritative.
+        // This whole Postman gate is superseded by OpenApiCoverageTest and will
+        // be removed once the v1-alignment burndown completes.
+        'PUT /payouts/{id}',
     ];
 
     public function testPostmanFixtureIsReadable(): void
