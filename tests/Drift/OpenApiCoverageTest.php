@@ -46,8 +46,6 @@ final class OpenApiCoverageTest extends TestCase
      * @var array<string, string>
      */
     private const EXCLUDED = [
-        // --- gap-p1-customers (1) ---
-        'GET /v1/customers/reference/{id}' => 'gap-p1-customers',
         // --- gap-p1-disputes (8) ---
         'DELETE /disputes/evidence' => 'gap-p1-disputes',
         'GET /disputes/aggregate' => 'gap-p1-disputes',
@@ -57,9 +55,6 @@ final class OpenApiCoverageTest extends TestCase
         'GET /disputes/profile/filter' => 'gap-p1-disputes',
         'GET /disputes/profile/list' => 'gap-p1-disputes',
         'PUT /disputes/evidence' => 'gap-p1-disputes',
-        // --- gap-p1-organization (2) ---
-        'GET /organization/{id}' => 'gap-p1-organization',
-        'PUT /organization/{id}' => 'gap-p1-organization',
         // --- gap-p1-payment-methods (9) — the v1 payment-methods surface ---
         'DELETE /payment_methods/{id}' => 'gap-p1-payment-methods',
         'GET /account/payment_methods' => 'gap-p1-payment-methods',

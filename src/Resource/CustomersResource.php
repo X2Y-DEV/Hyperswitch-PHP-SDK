@@ -52,6 +52,21 @@ final class CustomersResource extends AbstractResource
     }
 
     /**
+     * @openapi   "Retrieve a Customer using Merchant Reference ID"
+     */
+    public function retrieveByReference(string $merchantReferenceId): CustomerResponse
+    {
+        $response = $this->execute(
+            CustomersEndpoints::retrieveByReference(),
+            pathParams: ['id' => $merchantReferenceId],
+        );
+        if (!$response instanceof CustomerResponse) {
+            throw new HyperSwitchApiException('Unexpected response type from Customers::retrieveByReference.');
+        }
+        return $response;
+    }
+
+    /**
      * @postman   Customers / Update Customer
      */
     public function update(string $customerId, UpdateCustomerRequest $request): CustomerResponse

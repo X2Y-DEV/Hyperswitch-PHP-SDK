@@ -7,6 +7,8 @@ use X2Y\HyperSwitchClient\Auth\AuthTier;
 use X2Y\HyperSwitchClient\Dto\Platform\Request\ConvertToPlatformRequest;
 use X2Y\HyperSwitchClient\Dto\Platform\Request\CreateOrganizationRequest;
 use X2Y\HyperSwitchClient\Dto\Platform\Request\CreatePlatformUserRequest;
+use X2Y\HyperSwitchClient\Dto\Platform\Request\OrganizationUpdateRequest;
+use X2Y\HyperSwitchClient\Dto\Platform\Response\OrganizationResponse;
 use X2Y\HyperSwitchClient\Dto\Platform\Response\PlatformResponse;
 use X2Y\HyperSwitchClient\Transport\Endpoint;
 
@@ -68,6 +70,38 @@ final class PlatformEndpoints
             idempotent:    true,
             requestClass:  CreatePlatformUserRequest::class,
             responseClass: PlatformResponse::class,
+        );
+    }
+
+    /**
+     * @openapi   "Retrieve an Organization"
+     * @endpoint  GET /organization/{id}
+     */
+    public static function retrieveOrganization(): Endpoint
+    {
+        return new Endpoint(
+            method:        'GET',
+            pathTemplate:  '/organization/{id}',
+            authTier:      AuthTier::ADMIN,
+            idempotent:    false,
+            requestClass:  null,
+            responseClass: OrganizationResponse::class,
+        );
+    }
+
+    /**
+     * @openapi   "Update an Organization"
+     * @endpoint  PUT /organization/{id}
+     */
+    public static function updateOrganization(): Endpoint
+    {
+        return new Endpoint(
+            method:        'PUT',
+            pathTemplate:  '/organization/{id}',
+            authTier:      AuthTier::ADMIN,
+            idempotent:    false,
+            requestClass:  OrganizationUpdateRequest::class,
+            responseClass: OrganizationResponse::class,
         );
     }
 }

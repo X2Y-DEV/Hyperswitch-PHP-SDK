@@ -125,4 +125,23 @@ final class CustomersEndpoints
             responseClass: EphemeralKeyResponse::class,
         );
     }
+
+    /**
+     * @openapi   "Retrieve a Customer using Merchant Reference ID"
+     * @endpoint  GET /v1/customers/reference/{id}
+     *
+     * Standard merchant (api_key) auth despite the /v1 path prefix — this is a
+     * v1-spec lookup by merchant reference id, not the modular v2 surface.
+     */
+    public static function retrieveByReference(): Endpoint
+    {
+        return new Endpoint(
+            method:        'GET',
+            pathTemplate:  '/v1/customers/reference/{id}',
+            authTier:      AuthTier::MERCHANT,
+            idempotent:    false,
+            requestClass:  null,
+            responseClass: CustomerResponse::class,
+        );
+    }
 }
