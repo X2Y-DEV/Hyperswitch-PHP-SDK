@@ -51,4 +51,22 @@ abstract class AbstractResponseDto implements DtoInterface
     {
         return $this->extras[$key] ?? null;
     }
+
+    /**
+     * Decode an optional nested-object field into an associative array, or null
+     * when absent / not an object. Used for spec shapes the SDK keeps loose
+     * (`sdk_next_action`, `next_action`, connector blobs, feature metadata, …).
+     *
+     * @param array<string, mixed> $data
+     * @return array<string, mixed>|null
+     */
+    final protected static function objectField(array $data, string $key): ?array
+    {
+        $value = $data[$key] ?? null;
+        if (!is_array($value)) {
+            return null;
+        }
+        /** @var array<string, mixed> $value */
+        return $value;
+    }
 }

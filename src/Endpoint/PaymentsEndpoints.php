@@ -7,13 +7,24 @@ use X2Y\HyperSwitchClient\Auth\AuthTier;
 use X2Y\HyperSwitchClient\Dto\Payment\Request\CancelPaymentRequest;
 use X2Y\HyperSwitchClient\Dto\Payment\Request\CancelPostCapturePaymentRequest;
 use X2Y\HyperSwitchClient\Dto\Payment\Request\CapturePaymentRequest;
+use X2Y\HyperSwitchClient\Dto\Payment\Request\CompleteAuthorizePaymentRequest;
 use X2Y\HyperSwitchClient\Dto\Payment\Request\ConfirmPaymentRequest;
 use X2Y\HyperSwitchClient\Dto\Payment\Request\CreatePaymentRequest;
+use X2Y\HyperSwitchClient\Dto\Payment\Request\EligibilityCheckRequest;
+use X2Y\HyperSwitchClient\Dto\Payment\Request\EligibilityRequest;
+use X2Y\HyperSwitchClient\Dto\Payment\Request\ExternalAuthenticationRequest;
 use X2Y\HyperSwitchClient\Dto\Payment\Request\IncrementalAuthorizationRequest;
+use X2Y\HyperSwitchClient\Dto\Payment\Request\PostSessionTokensRequest;
 use X2Y\HyperSwitchClient\Dto\Payment\Request\SessionTokensRequest;
+use X2Y\HyperSwitchClient\Dto\Payment\Request\UpdateMetadataPaymentRequest;
 use X2Y\HyperSwitchClient\Dto\Payment\Request\UpdatePaymentRequest;
+use X2Y\HyperSwitchClient\Dto\Payment\Response\EligibilityCheckResponse;
+use X2Y\HyperSwitchClient\Dto\Payment\Response\EligibilityResponse;
+use X2Y\HyperSwitchClient\Dto\Payment\Response\ExternalAuthenticationResponse;
 use X2Y\HyperSwitchClient\Dto\Payment\Response\PaymentResponse;
+use X2Y\HyperSwitchClient\Dto\Payment\Response\PostSessionTokensResponse;
 use X2Y\HyperSwitchClient\Dto\Payment\Response\SessionTokensResponse;
+use X2Y\HyperSwitchClient\Dto\Payment\Response\UpdateMetadataPaymentResponse;
 use X2Y\HyperSwitchClient\Transport\Endpoint;
 
 /**
@@ -220,6 +231,118 @@ final class PaymentsEndpoints
             idempotent:    false,
             requestClass:  null,
             responseClass: PaymentResponse::class,
+        );
+    }
+
+    /**
+     * @openapi   "Cancel a Payment Post Capture Retrieve"
+     * @endpoint  GET /payments/{id}/cancel_post_capture
+     */
+    public static function cancelPostCaptureRetrieve(): Endpoint
+    {
+        return new Endpoint(
+            method:        'GET',
+            pathTemplate:  '/payments/{id}/cancel_post_capture',
+            authTier:      AuthTier::MERCHANT,
+            idempotent:    false,
+            requestClass:  null,
+            responseClass: PaymentResponse::class,
+        );
+    }
+
+    /**
+     * @openapi   "Complete Authorize a Payment"
+     * @endpoint  POST /payments/{id}/complete_authorize
+     */
+    public static function completeAuthorize(): Endpoint
+    {
+        return new Endpoint(
+            method:        'POST',
+            pathTemplate:  '/payments/{id}/complete_authorize',
+            authTier:      AuthTier::PUBLISHABLE,
+            idempotent:    false,
+            requestClass:  CompleteAuthorizePaymentRequest::class,
+            responseClass: PaymentResponse::class,
+        );
+    }
+
+    /**
+     * @openapi   "Initiate external authentication for a Payment"
+     * @endpoint  POST /payments/{id}/3ds/authentication
+     */
+    public static function externalAuthentication(): Endpoint
+    {
+        return new Endpoint(
+            method:        'POST',
+            pathTemplate:  '/payments/{id}/3ds/authentication',
+            authTier:      AuthTier::PUBLISHABLE,
+            idempotent:    false,
+            requestClass:  ExternalAuthenticationRequest::class,
+            responseClass: ExternalAuthenticationResponse::class,
+        );
+    }
+
+    /**
+     * @openapi   "Submit Eligibility data for a Payment"
+     * @endpoint  POST /payments/{id}/eligibility
+     */
+    public static function eligibility(): Endpoint
+    {
+        return new Endpoint(
+            method:        'POST',
+            pathTemplate:  '/payments/{id}/eligibility',
+            authTier:      AuthTier::PUBLISHABLE,
+            idempotent:    false,
+            requestClass:  EligibilityRequest::class,
+            responseClass: EligibilityResponse::class,
+        );
+    }
+
+    /**
+     * @openapi   "Submit Eligibility Check data for a Payment"
+     * @endpoint  POST /payments/{id}/eligibility_check
+     */
+    public static function eligibilityCheck(): Endpoint
+    {
+        return new Endpoint(
+            method:        'POST',
+            pathTemplate:  '/payments/{id}/eligibility_check',
+            authTier:      AuthTier::PUBLISHABLE,
+            idempotent:    false,
+            requestClass:  EligibilityCheckRequest::class,
+            responseClass: EligibilityCheckResponse::class,
+        );
+    }
+
+    /**
+     * @openapi   "Create Post Session Tokens for a Payment"
+     * @endpoint  POST /payments/{id}/post_session_tokens
+     */
+    public static function postSessionTokens(): Endpoint
+    {
+        return new Endpoint(
+            method:        'POST',
+            pathTemplate:  '/payments/{id}/post_session_tokens',
+            authTier:      AuthTier::PUBLISHABLE,
+            idempotent:    false,
+            requestClass:  PostSessionTokensRequest::class,
+            responseClass: PostSessionTokensResponse::class,
+        );
+    }
+
+    /**
+     * @openapi   "Update Metadata for a Payment"
+     * @endpoint  POST /payments/{id}/update_metadata
+     */
+    public static function updateMetadata(): Endpoint
+    {
+        return new Endpoint(
+            method:        'POST',
+            pathTemplate:  '/payments/{id}/update_metadata',
+            authTier:      AuthTier::MERCHANT,
+            idempotent:    false,
+            requestClass:  UpdateMetadataPaymentRequest::class,
+            responseClass: UpdateMetadataPaymentResponse::class,
         );
     }
 }

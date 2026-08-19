@@ -70,14 +70,6 @@ final class OpenApiCoverageTest extends TestCase
         'POST /payment_methods' => 'gap-p1-payment-methods',
         'POST /payment_methods/{id}/update' => 'gap-p1-payment-methods',
         'POST /{id}/payment_methods/{id}/default' => 'gap-p1-payment-methods',
-        // --- gap-p1-payments (7) ---
-        'GET /payments/{id}/cancel_post_capture' => 'gap-p1-payments',
-        'POST /payments/{id}/3ds/authentication' => 'gap-p1-payments',
-        'POST /payments/{id}/complete_authorize' => 'gap-p1-payments',
-        'POST /payments/{id}/eligibility' => 'gap-p1-payments',
-        'POST /payments/{id}/eligibility_check' => 'gap-p1-payments',
-        'POST /payments/{id}/post_session_tokens' => 'gap-p1-payments',
-        'POST /payments/{id}/update_metadata' => 'gap-p1-payments',
         // --- gap-p1-payouts (3) ---
         'GET /payouts/list' => 'gap-p1-payouts',
         'POST /payouts/filter' => 'gap-p1-payouts',

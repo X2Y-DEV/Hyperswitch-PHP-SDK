@@ -7,14 +7,25 @@ use X2Y\HyperSwitchClient\Dto\Common\PaginatedList;
 use X2Y\HyperSwitchClient\Dto\Payment\Request\CancelPaymentRequest;
 use X2Y\HyperSwitchClient\Dto\Payment\Request\CancelPostCapturePaymentRequest;
 use X2Y\HyperSwitchClient\Dto\Payment\Request\CapturePaymentRequest;
+use X2Y\HyperSwitchClient\Dto\Payment\Request\CompleteAuthorizePaymentRequest;
 use X2Y\HyperSwitchClient\Dto\Payment\Request\ConfirmPaymentRequest;
 use X2Y\HyperSwitchClient\Dto\Payment\Request\CreatePaymentRequest;
+use X2Y\HyperSwitchClient\Dto\Payment\Request\EligibilityCheckRequest;
+use X2Y\HyperSwitchClient\Dto\Payment\Request\EligibilityRequest;
+use X2Y\HyperSwitchClient\Dto\Payment\Request\ExternalAuthenticationRequest;
 use X2Y\HyperSwitchClient\Dto\Payment\Request\IncrementalAuthorizationRequest;
 use X2Y\HyperSwitchClient\Dto\Payment\Request\ListPaymentsRequest;
+use X2Y\HyperSwitchClient\Dto\Payment\Request\PostSessionTokensRequest;
 use X2Y\HyperSwitchClient\Dto\Payment\Request\SessionTokensRequest;
+use X2Y\HyperSwitchClient\Dto\Payment\Request\UpdateMetadataPaymentRequest;
 use X2Y\HyperSwitchClient\Dto\Payment\Request\UpdatePaymentRequest;
+use X2Y\HyperSwitchClient\Dto\Payment\Response\EligibilityCheckResponse;
+use X2Y\HyperSwitchClient\Dto\Payment\Response\EligibilityResponse;
+use X2Y\HyperSwitchClient\Dto\Payment\Response\ExternalAuthenticationResponse;
 use X2Y\HyperSwitchClient\Dto\Payment\Response\PaymentResponse;
+use X2Y\HyperSwitchClient\Dto\Payment\Response\PostSessionTokensResponse;
 use X2Y\HyperSwitchClient\Dto\Payment\Response\SessionTokensResponse;
+use X2Y\HyperSwitchClient\Dto\Payment\Response\UpdateMetadataPaymentResponse;
 use X2Y\HyperSwitchClient\Endpoint\PaymentsEndpoints;
 use X2Y\HyperSwitchClient\Exception\HyperSwitchApiException;
 
@@ -214,6 +225,127 @@ final class PaymentsResource extends AbstractResource
         );
         if (!$response instanceof PaymentResponse) {
             throw new HyperSwitchApiException('Unexpected response type from Payments::extendAuthorization.');
+        }
+        return $response;
+    }
+
+    /**
+     * @openapi   "Cancel a Payment Post Capture Retrieve"
+     */
+    public function cancelPostCaptureRetrieve(string $paymentId): PaymentResponse
+    {
+        $response = $this->execute(
+            PaymentsEndpoints::cancelPostCaptureRetrieve(),
+            pathParams: ['id' => $paymentId],
+        );
+        if (!$response instanceof PaymentResponse) {
+            throw new HyperSwitchApiException('Unexpected response type from Payments::cancelPostCaptureRetrieve.');
+        }
+        return $response;
+    }
+
+    /**
+     * @openapi   "Complete Authorize a Payment"
+     */
+    public function completeAuthorize(
+        string $paymentId,
+        ?CompleteAuthorizePaymentRequest $request = null,
+    ): PaymentResponse {
+        $response = $this->execute(
+            PaymentsEndpoints::completeAuthorize(),
+            request:    $request ?? new CompleteAuthorizePaymentRequest(),
+            pathParams: ['id' => $paymentId],
+        );
+        if (!$response instanceof PaymentResponse) {
+            throw new HyperSwitchApiException('Unexpected response type from Payments::completeAuthorize.');
+        }
+        return $response;
+    }
+
+    /**
+     * @openapi   "Initiate external authentication for a Payment"
+     */
+    public function externalAuthentication(
+        string $paymentId,
+        ExternalAuthenticationRequest $request,
+    ): ExternalAuthenticationResponse {
+        $response = $this->execute(
+            PaymentsEndpoints::externalAuthentication(),
+            request:    $request,
+            pathParams: ['id' => $paymentId],
+        );
+        if (!$response instanceof ExternalAuthenticationResponse) {
+            throw new HyperSwitchApiException('Unexpected response type from Payments::externalAuthentication.');
+        }
+        return $response;
+    }
+
+    /**
+     * @openapi   "Submit Eligibility data for a Payment"
+     */
+    public function eligibility(string $paymentId, EligibilityRequest $request): EligibilityResponse
+    {
+        $response = $this->execute(
+            PaymentsEndpoints::eligibility(),
+            request:    $request,
+            pathParams: ['id' => $paymentId],
+        );
+        if (!$response instanceof EligibilityResponse) {
+            throw new HyperSwitchApiException('Unexpected response type from Payments::eligibility.');
+        }
+        return $response;
+    }
+
+    /**
+     * @openapi   "Submit Eligibility Check data for a Payment"
+     */
+    public function eligibilityCheck(
+        string $paymentId,
+        EligibilityCheckRequest $request,
+    ): EligibilityCheckResponse {
+        $response = $this->execute(
+            PaymentsEndpoints::eligibilityCheck(),
+            request:    $request,
+            pathParams: ['id' => $paymentId],
+        );
+        if (!$response instanceof EligibilityCheckResponse) {
+            throw new HyperSwitchApiException('Unexpected response type from Payments::eligibilityCheck.');
+        }
+        return $response;
+    }
+
+    /**
+     * @openapi   "Create Post Session Tokens for a Payment"
+     */
+    public function postSessionTokens(
+        string $paymentId,
+        PostSessionTokensRequest $request,
+    ): PostSessionTokensResponse {
+        $response = $this->execute(
+            PaymentsEndpoints::postSessionTokens(),
+            request:    $request,
+            pathParams: ['id' => $paymentId],
+        );
+        if (!$response instanceof PostSessionTokensResponse) {
+            throw new HyperSwitchApiException('Unexpected response type from Payments::postSessionTokens.');
+        }
+        return $response;
+    }
+
+    /**
+     * @openapi   "Update Metadata for a Payment"
+     */
+    public function updateMetadata(
+        string $paymentId,
+        UpdateMetadataPaymentRequest $request,
+    ): UpdateMetadataPaymentResponse {
+        $response = $this->execute(
+            PaymentsEndpoints::updateMetadata(),
+            request:    $request,
+            pathParams: ['id' => $paymentId],
+        );
+        if (!$response instanceof UpdateMetadataPaymentResponse) {
+            throw new HyperSwitchApiException('Unexpected response type from Payments::updateMetadata.');
         }
         return $response;
     }
