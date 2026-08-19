@@ -66,27 +66,6 @@ final class OpenApiCoverageTest extends TestCase
         // --- gap-p2-misc (2) ---
         'GET /poll/status/{id}' => 'gap-p2-misc',
         'POST /three_ds_decision/execute' => 'gap-p2-misc',
-        // --- gap-p2-routing (20) ---
-        'GET /routing' => 'gap-p2-routing',
-        'GET /routing/active' => 'gap-p2-routing',
-        'GET /routing/default' => 'gap-p2-routing',
-        'GET /routing/default/profile' => 'gap-p2-routing',
-        'GET /routing/{id}' => 'gap-p2-routing',
-        'PATCH /account/{id}/business_profile/{id}/dynamic_routing/contracts/config/{id}' => 'gap-p2-routing',
-        'PATCH /account/{id}/business_profile/{id}/dynamic_routing/success_based/config/{id}' => 'gap-p2-routing',
-        'POST /account/{id}/business_profile/{id}/dynamic_routing/contracts/toggle' => 'gap-p2-routing',
-        'POST /account/{id}/business_profile/{id}/dynamic_routing/elimination/create' => 'gap-p2-routing',
-        'POST /account/{id}/business_profile/{id}/dynamic_routing/elimination/toggle' => 'gap-p2-routing',
-        'POST /account/{id}/business_profile/{id}/dynamic_routing/success_based/create' => 'gap-p2-routing',
-        'POST /account/{id}/business_profile/{id}/dynamic_routing/success_based/toggle' => 'gap-p2-routing',
-        'POST /routing' => 'gap-p2-routing',
-        'POST /routing/deactivate' => 'gap-p2-routing',
-        'POST /routing/default' => 'gap-p2-routing',
-        'POST /routing/default/profile/{id}' => 'gap-p2-routing',
-        'POST /routing/evaluate' => 'gap-p2-routing',
-        'POST /routing/feedback' => 'gap-p2-routing',
-        'POST /routing/rule/evaluate' => 'gap-p2-routing',
-        'POST /routing/{id}/activate' => 'gap-p2-routing',
         // --- gap-p2-subscriptions (1) ---
         'GET /subscriptions/items' => 'gap-p2-subscriptions',
         // --- gap-p3-blocklist (7) ---

@@ -17,7 +17,11 @@ namespace X2Y\HyperSwitchClient\Dto;
 abstract class AbstractRequestDto implements DtoInterface
 {
     /**
-     * @return array<string, mixed>
+     * The request body. Almost always a JSON object (`array<string, mixed>`),
+     * but a few HyperSwitch endpoints take a top-level JSON array (e.g. routing
+     * default-config updates), so the contract is the broader `array-key`.
+     *
+     * @return array<array-key, mixed>
      */
     abstract public function toArray(): array;
 

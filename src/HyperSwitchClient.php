@@ -21,6 +21,7 @@ use X2Y\HyperSwitchClient\Resource\PaymentMethodsV1Resource;
 use X2Y\HyperSwitchClient\Resource\PaymentsResource;
 use X2Y\HyperSwitchClient\Resource\PayoutsResource;
 use X2Y\HyperSwitchClient\Resource\PlatformResource;
+use X2Y\HyperSwitchClient\Resource\RoutingResource;
 use X2Y\HyperSwitchClient\Resource\ProxyResource;
 use X2Y\HyperSwitchClient\Resource\RefundsResource;
 use X2Y\HyperSwitchClient\Resource\RelayResource;
@@ -58,6 +59,7 @@ final class HyperSwitchClient implements HyperSwitchClientInterface
     private ?RelayResource $relay = null;
     private ?ProxyResource $proxy = null;
     private ?PlatformResource $platform = null;
+    private ?RoutingResource $routing = null;
 
     public function __construct(
         private readonly ApiClientInterface $apiClient,
@@ -213,5 +215,10 @@ final class HyperSwitchClient implements HyperSwitchClientInterface
     public function platform(): PlatformResource
     {
         return $this->platform ??= new PlatformResource($this->apiClient);
+    }
+
+    public function routing(): RoutingResource
+    {
+        return $this->routing ??= new RoutingResource($this->apiClient);
     }
 }
