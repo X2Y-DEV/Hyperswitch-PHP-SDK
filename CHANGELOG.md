@@ -5,12 +5,31 @@ All notable changes to `x2y/hyperswitch-client` are documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-Each release records the `@hyperswitch-source` date the SDK was reconciled
-against the upstream Postman collection.
+Each release records the `@hyperswitch-source` ref the SDK was reconciled
+against the upstream HyperSwitch OpenAPI spec.
 
 ## [Unreleased]
 
-_No changes yet._
+### Changed
+
+- **Source of truth pivoted from the Postman export to the first-party
+  `openapi_spec_v1.json`** (pinned to hyperswitch `ada4a1e`), fetched by
+  `tools/update-openapi.sh`. New `OpenApiCoverageTest` enforces 1:1 coverage in
+  both directions; the Postman drift test remains as a transitional cross-check.
+- `BillingDetails` now nests the contact number as a `PhoneDetails`
+  `{number, country_code}` object; payout update is `POST /payouts/{id}` (was PUT).
+- AI-maintenance prompt and docs re-pointed at the OpenAPI spec (`@openapi`
+  frontmatter, tag→group / operationId→method mapping).
+
+### Added
+
+- **Full v1 coverage — all 150 `openapi_spec_v1.json` operations are modelled.**
+  New groups: Routing, Authentication (3DS), Events, Blocklist, GSM, Card Issuers,
+  Profile Acquirers, Poll, 3DS Decision Rule, and the v1 Payment Methods surface
+  (`paymentMethodsV1()`); plus additions across Payments, Payouts, Disputes,
+  Customers, Organization, MerchantAccounts, Connectors and Subscriptions.
+- `AuthTier::JWT` + `JwtKeyAuthResolver` (`Authorization: Bearer <token>`) for
+  event-management endpoints.
 
 ## [0.1.0] — 2026-04-30
 

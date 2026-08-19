@@ -1,6 +1,8 @@
 # Proposal: Rebuild the SDK aligned to `openapi_spec_v1.json` (AI-maintained)
 
-**Status:** Proposal
+**Status:** Implemented — the SDK now models all 150 v1 operations; the source of
+truth is `tests/Fixtures/openapi_spec_v1.json` and `OpenApiCoverageTest` enforces
+it. This document is retained as the design record.
 **Author:** —
 **Target repo:** internal/libraries/hyperswitch-sdk
 

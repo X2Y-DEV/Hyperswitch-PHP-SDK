@@ -91,33 +91,47 @@ for a runnable bare-PHP example.
 
 ## API coverage
 
-| Group | Endpoints | Resource accessor |
-|---|---|---|
-| Payments | 11 | `$client->payments()` |
-| Refunds | 4 | `$client->refunds()` |
-| Customers | 6 | `$client->customers()` |
-| Mandates | 3 | `$client->mandates()` |
-| Subscriptions | 11 | `$client->subscriptions()` |
-| PaymentMethods (V1) | 6 | `$client->paymentMethods()` |
-| PaymentMethodSessions | 6 | `$client->paymentMethodSessions()` |
-| Disputes | 4 | `$client->disputes()` |
-| Payouts | 6 | `$client->payouts()` |
-| PaymentLinks | 1 | `$client->paymentLinks()` |
-| ApiKeys | 5 | `$client->apiKeys()` |
-| BusinessProfile | 5 | `$client->businessProfile()` |
-| MerchantAccounts | 4 | `$client->merchantAccounts()` |
-| Connectors | 5 | `$client->connectors()` |
-| Platform | 3 | `$client->platform()` |
-| Relay | 2 | `$client->relay()` |
-| Proxy | 1 | `$client->proxy()` |
-| **Webhooks** (inbound) | n/a | `Webhook\EventDecoder` |
+The SDK models **all 150 operations** of the HyperSwitch **v1 OpenAPI spec**
+(`OpenApiCoverageTest` enforces 1:1 coverage in both directions). Resource accessors:
 
-The SDK is being realigned to the HyperSwitch **v1 OpenAPI spec** (150 operations).
-Currently ~65 are modelled; the remaining gaps are enumerated and categorized in
-`OpenApiCoverageTest::EXCLUDED` and are being closed group-by-group (see
-[docs/v1-alignment.md](docs/v1-alignment.md)). The `/v1/payment-methods*` and
-`/v1/payment-method-sessions*` paths are the **v2** modular-payments surface and
-belong to a future, separate v2 SDK.
+| Group | Resource accessor |
+|---|---|
+| Payments | `$client->payments()` |
+| Refunds | `$client->refunds()` |
+| Customers | `$client->customers()` |
+| Mandates | `$client->mandates()` |
+| Subscriptions | `$client->subscriptions()` |
+| Payment Methods (v1) | `$client->paymentMethodsV1()` |
+| Payment Methods (v2 compat) | `$client->paymentMethods()` |
+| PaymentMethodSessions (v2 compat) | `$client->paymentMethodSessions()` |
+| Disputes | `$client->disputes()` |
+| Payouts | `$client->payouts()` |
+| PaymentLinks | `$client->paymentLinks()` |
+| ApiKeys | `$client->apiKeys()` |
+| BusinessProfile | `$client->businessProfile()` |
+| MerchantAccounts | `$client->merchantAccounts()` |
+| Connectors | `$client->connectors()` |
+| Platform / Organization | `$client->platform()` |
+| Routing | `$client->routing()` |
+| Authentication (3DS) | `$client->authentication()` |
+| Events (webhook delivery) | `$client->events()` |
+| Blocklist | `$client->blocklist()` |
+| GSM | `$client->gsm()` |
+| Card Issuers | `$client->cardIssuer()` |
+| Profile Acquirers | `$client->profileAcquirer()` |
+| Poll | `$client->poll()` |
+| 3DS Decision Rule | `$client->threeDsDecision()` |
+| Relay | `$client->relay()` |
+| Proxy (v2 compat) | `$client->proxy()` |
+| **Webhooks** (inbound) | `Webhook\EventDecoder` |
+
+The `/v1/payment-methods*`, `/v1/payment-method-sessions*` and `/v1/proxy` paths
+are the **v2** modular-payments surface (present in `openapi_spec_v2`, not v1);
+they are kept as documented `SDK_ONLY_ALLOWED` exceptions and belong to a future,
+separate v2 SDK. See [docs/v1-alignment.md](docs/v1-alignment.md).
+
+Auth tiers: `MERCHANT` (api-key), `PUBLISHABLE`, `ADMIN`, `EPHEMERAL`,
+`MERCHANT_V1` (api-key=… + X-Profile-Id), and `JWT` (Bearer, for event management).
 
 V1 endpoints (PaymentMethods, PaymentMethodSessions) require an
 `X-Profile-Id` header; consumers attach it via the fluent builder:
