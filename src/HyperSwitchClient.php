@@ -17,6 +17,7 @@ use X2Y\HyperSwitchClient\Resource\MerchantAccountsResource;
 use X2Y\HyperSwitchClient\Resource\PaymentLinksResource;
 use X2Y\HyperSwitchClient\Resource\PaymentMethodSessionsResource;
 use X2Y\HyperSwitchClient\Resource\PaymentMethodsResource;
+use X2Y\HyperSwitchClient\Resource\PaymentMethodsV1Resource;
 use X2Y\HyperSwitchClient\Resource\PaymentsResource;
 use X2Y\HyperSwitchClient\Resource\PayoutsResource;
 use X2Y\HyperSwitchClient\Resource\PlatformResource;
@@ -49,6 +50,7 @@ final class HyperSwitchClient implements HyperSwitchClientInterface
     private ?ConnectorsResource $connectors = null;
     private ?SubscriptionsResource $subscriptions = null;
     private ?PaymentMethodsResource $paymentMethods = null;
+    private ?PaymentMethodsV1Resource $paymentMethodsV1 = null;
     private ?PaymentMethodSessionsResource $paymentMethodSessions = null;
     private ?MandatesResource $mandates = null;
     private ?DisputesResource $disputes = null;
@@ -167,6 +169,15 @@ final class HyperSwitchClient implements HyperSwitchClientInterface
     public function paymentMethods(): PaymentMethodsResource
     {
         return $this->paymentMethods ??= new PaymentMethodsResource($this->apiClient);
+    }
+
+    /**
+     * The v1 `/payment_methods` surface (distinct from paymentMethods(), which
+     * wraps the v2-compat modular `/v1/payment-methods` flow).
+     */
+    public function paymentMethodsV1(): PaymentMethodsV1Resource
+    {
+        return $this->paymentMethodsV1 ??= new PaymentMethodsV1Resource($this->apiClient);
     }
 
     public function paymentMethodSessions(): PaymentMethodSessionsResource

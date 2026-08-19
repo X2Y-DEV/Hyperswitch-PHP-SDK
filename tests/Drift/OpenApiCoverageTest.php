@@ -46,16 +46,6 @@ final class OpenApiCoverageTest extends TestCase
      * @var array<string, string>
      */
     private const EXCLUDED = [
-        // --- gap-p1-payment-methods (9) — the v1 payment-methods surface ---
-        'DELETE /payment_methods/{id}' => 'gap-p1-payment-methods',
-        'GET /account/payment_methods' => 'gap-p1-payment-methods',
-        'GET /customers/payment_methods' => 'gap-p1-payment-methods',
-        'GET /customers/{id}/payment_methods' => 'gap-p1-payment-methods',
-        'GET /payment_methods/{id}' => 'gap-p1-payment-methods',
-        'GET /payments/{id}/client' => 'gap-p1-payment-methods',
-        'POST /payment_methods' => 'gap-p1-payment-methods',
-        'POST /payment_methods/{id}/update' => 'gap-p1-payment-methods',
-        'POST /{id}/payment_methods/{id}/default' => 'gap-p1-payment-methods',
         // --- gap-p2-account (2) ---
         'POST /account/{id}/webhooks/{id}' => 'gap-p2-account',
         'POST /accounts/{id}/kv' => 'gap-p2-account',
