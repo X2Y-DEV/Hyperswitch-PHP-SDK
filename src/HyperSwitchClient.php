@@ -20,6 +20,7 @@ use X2Y\HyperSwitchClient\Resource\PaymentMethodsResource;
 use X2Y\HyperSwitchClient\Resource\PaymentMethodsV1Resource;
 use X2Y\HyperSwitchClient\Resource\PaymentsResource;
 use X2Y\HyperSwitchClient\Resource\PayoutsResource;
+use X2Y\HyperSwitchClient\Resource\AuthenticationResource;
 use X2Y\HyperSwitchClient\Resource\PlatformResource;
 use X2Y\HyperSwitchClient\Resource\PollResource;
 use X2Y\HyperSwitchClient\Resource\RoutingResource;
@@ -64,6 +65,7 @@ final class HyperSwitchClient implements HyperSwitchClientInterface
     private ?RoutingResource $routing = null;
     private ?PollResource $poll = null;
     private ?ThreeDsDecisionResource $threeDsDecision = null;
+    private ?AuthenticationResource $authentication = null;
 
     public function __construct(
         private readonly ApiClientInterface $apiClient,
@@ -234,5 +236,10 @@ final class HyperSwitchClient implements HyperSwitchClientInterface
     public function threeDsDecision(): ThreeDsDecisionResource
     {
         return $this->threeDsDecision ??= new ThreeDsDecisionResource($this->apiClient);
+    }
+
+    public function authentication(): AuthenticationResource
+    {
+        return $this->authentication ??= new AuthenticationResource($this->apiClient);
     }
 }

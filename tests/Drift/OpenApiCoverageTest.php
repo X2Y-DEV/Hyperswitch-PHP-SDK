@@ -46,15 +46,6 @@ final class OpenApiCoverageTest extends TestCase
      * @var array<string, string>
      */
     private const EXCLUDED = [
-        // --- gap-p2-authentication (8) ---
-        'GET /authentication/{id}/eligibility-check' => 'gap-p2-authentication',
-        'POST /authentication' => 'gap-p2-authentication',
-        'POST /authentication/{id}/authenticate' => 'gap-p2-authentication',
-        'POST /authentication/{id}/eligibility' => 'gap-p2-authentication',
-        'POST /authentication/{id}/eligibility-check' => 'gap-p2-authentication',
-        'POST /authentication/{id}/enabled_authn_methods_token' => 'gap-p2-authentication',
-        'POST /authentication/{id}/redirect' => 'gap-p2-authentication',
-        'POST /authentication/{id}/sync' => 'gap-p2-authentication',
         // --- gap-p2-events (4) ---
         'GET /events/{id}/{id}/attempts' => 'gap-p2-events',
         'POST /events/profile/list' => 'gap-p2-events',
