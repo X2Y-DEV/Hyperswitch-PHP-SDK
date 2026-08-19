@@ -16,7 +16,6 @@ use X2Y\HyperSwitchClient\Transport\Endpoint;
  * HyperSwitch Platform group — admin-tier endpoints for organization /
  * multi-tenant platform onboarding.
  *
- * @postman             Platform
  * @hyperswitch-source  2026-04-30
  */
 final class PlatformEndpoints
@@ -26,7 +25,6 @@ final class PlatformEndpoints
     }
 
     /**
-     * @postman   Platform / Organization - Create
      * @endpoint  POST /organization
      */
     public static function createOrganization(): Endpoint
@@ -42,14 +40,18 @@ final class PlatformEndpoints
     }
 
     /**
-     * @postman   Platform / Platform - Conversion
-     * @endpoint  POST /api/organization/{organization_id}/convert_to_platform
+     * @openapi   "Convert to platform" (real-but-undocumented; not in v1 spec)
+     * @endpoint  POST /organization/{organization_id}/convert_to_platform
+     *
+     * Path reconciled against the sandbox 2026-08-19: the endpoint is
+     * `/organization/{id}/convert_to_platform` (the earlier `/api/…` prefix 404s);
+     * admin-tier auth confirmed (401 without an admin key).
      */
     public static function convertToPlatform(): Endpoint
     {
         return new Endpoint(
             method:        'POST',
-            pathTemplate:  '/api/organization/{organization_id}/convert_to_platform',
+            pathTemplate:  '/organization/{organization_id}/convert_to_platform',
             authTier:      AuthTier::ADMIN,
             idempotent:    false,
             requestClass:  ConvertToPlatformRequest::class,
@@ -58,7 +60,6 @@ final class PlatformEndpoints
     }
 
     /**
-     * @postman   Platform / Platform - Create
      * @endpoint  POST /user/create_platform
      */
     public static function createPlatformUser(): Endpoint

@@ -9,7 +9,7 @@ use PHPUnit\Framework\TestCase;
  * Drift detection — asserts the SDK still mirrors the pinned HyperSwitch v1
  * OpenAPI spec (tests/Fixtures/openapi_spec_v1.json).
  *
- * This replaces the Postman-based drift gate. The OpenAPI spec is the single
+ * The OpenAPI spec is the single
  * mechanical source of truth: it is first-party, versioned, and pinned to a
  * hyperswitch commit by tools/update-openapi.sh.
  *
@@ -21,8 +21,7 @@ use PHPUnit\Framework\TestCase;
  *      v1 spec or in SDK_ONLY_ALLOWED (v2-compat paths + documented exceptions).
  *      This catches genuine drift (e.g. a wrong HTTP method) mechanically.
  *
- * Plus the architectural framework-import ban, ported here so it survives the
- * eventual removal of PostmanCoverageTest.
+ * Plus the architectural framework-import ban.
  */
 final class OpenApiCoverageTest extends TestCase
 {
@@ -74,11 +73,12 @@ final class OpenApiCoverageTest extends TestCase
         'POST /v1/proxy' => 'v2-compat',
         'PUT /v1/payment-method-sessions/{id}/update-saved-payment-method' => 'v2-compat',
         'PUT /v1/payment-methods/{id}/update-saved-payment-method' => 'v2-compat',
-        // Not in v1 spec — pending sandbox reconciliation (see docs/v1-alignment.md, Group A2)
-        'GET /subscriptions/list' => 'pending-reconciliation: v1 spec has GET /subscriptions/items instead',
-        'GET /subscriptions/plans' => 'pending-reconciliation: not in v1 spec',
-        'POST /api/organization/{id}/convert_to_platform' => 'pending-reconciliation: /api-prefixed, not in v1 spec',
-        'POST /ephemeral_keys' => 'real-but-undocumented: ephemeral_key scheme exists but no documented path',
+        // Real-but-undocumented — absent from the v1 spec but confirmed live on the
+        // HyperSwitch sandbox on 2026-08-19 (each returned a business error, not 404).
+        'GET /subscriptions/list' => 'real-but-undocumented: 400 (needs X-Profile-Id) on sandbox; distinct from /subscriptions/items',
+        'GET /subscriptions/plans' => 'real-but-undocumented: 400 (needs X-Profile-Id) on sandbox',
+        'POST /organization/{id}/convert_to_platform' => 'real-but-undocumented: 401 (admin) on sandbox; the /api-prefixed variant 404s',
+        'POST /ephemeral_keys' => 'real-but-undocumented: route runs on sandbox (IR_43 account-level, not 404)',
     ];
 
     public function testSpecFixtureIsReadable(): void
@@ -215,8 +215,8 @@ final class OpenApiCoverageTest extends TestCase
     }
 
     /**
-     * Canonical "METHOD /path" form for symmetric comparison. Unlike the older
-     * Postman canonicaliser, this collapses EVERY {placeholder} segment to
+     * Canonical "METHOD /path" form for symmetric comparison. This collapses
+     * EVERY {placeholder} segment to
      * {id} — the spec names params ({payout_id}, {profile_id}, {account_id})
      * differently from the SDK ({id}, {customer_id}), so keeping any original
      * name would produce false drift on multi-param paths.
