@@ -69,4 +69,26 @@ abstract class AbstractResponseDto implements DtoInterface
         /** @var array<string, mixed> $value */
         return $value;
     }
+
+    /**
+     * Decode a JSON array of scalars into a list of strings (empty when absent).
+     * Used for "available filter" responses (connectors, currencies, statuses …).
+     *
+     * @param array<string, mixed> $data
+     * @return list<string>
+     */
+    final protected static function stringListField(array $data, string $key): array
+    {
+        $value = $data[$key] ?? null;
+        if (!is_array($value)) {
+            return [];
+        }
+        $out = [];
+        foreach ($value as $item) {
+            if (is_scalar($item)) {
+                $out[] = (string) $item;
+            }
+        }
+        return $out;
+    }
 }

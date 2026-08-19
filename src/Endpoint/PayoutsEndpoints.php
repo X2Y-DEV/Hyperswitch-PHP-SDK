@@ -7,7 +7,10 @@ use X2Y\HyperSwitchClient\Auth\AuthTier;
 use X2Y\HyperSwitchClient\Dto\Payout\Request\CancelPayoutRequest;
 use X2Y\HyperSwitchClient\Dto\Payout\Request\ConfirmPayoutRequest;
 use X2Y\HyperSwitchClient\Dto\Payout\Request\CreatePayoutRequest;
+use X2Y\HyperSwitchClient\Dto\Payout\Request\FilterPayoutsRequest;
+use X2Y\HyperSwitchClient\Dto\Payout\Request\PayoutFiltersRequest;
 use X2Y\HyperSwitchClient\Dto\Payout\Request\UpdatePayoutRequest;
+use X2Y\HyperSwitchClient\Dto\Payout\Response\PayoutListFiltersResponse;
 use X2Y\HyperSwitchClient\Dto\Payout\Response\PayoutResponse;
 use X2Y\HyperSwitchClient\Transport\Endpoint;
 
@@ -130,6 +133,58 @@ final class PayoutsEndpoints
             idempotent:    false,
             requestClass:  null,
             responseClass: PayoutResponse::class,
+        );
+    }
+
+    /**
+     * @openapi   "List payouts using generic constraints"
+     * @endpoint  GET /payouts/list
+     *
+     * Resource wraps in PaginatedList<PayoutResponse>.
+     */
+    public static function list(): Endpoint
+    {
+        return new Endpoint(
+            method:        'GET',
+            pathTemplate:  '/payouts/list',
+            authTier:      AuthTier::MERCHANT,
+            idempotent:    false,
+            requestClass:  null,
+            responseClass: null,
+        );
+    }
+
+    /**
+     * @openapi   "Filter payouts using specific constraints"
+     * @endpoint  POST /payouts/list
+     *
+     * Resource wraps in PaginatedList<PayoutResponse>.
+     */
+    public static function filterList(): Endpoint
+    {
+        return new Endpoint(
+            method:        'POST',
+            pathTemplate:  '/payouts/list',
+            authTier:      AuthTier::MERCHANT,
+            idempotent:    false,
+            requestClass:  FilterPayoutsRequest::class,
+            responseClass: null,
+        );
+    }
+
+    /**
+     * @openapi   "List available payout filters"
+     * @endpoint  POST /payouts/filter
+     */
+    public static function filters(): Endpoint
+    {
+        return new Endpoint(
+            method:        'POST',
+            pathTemplate:  '/payouts/filter',
+            authTier:      AuthTier::MERCHANT,
+            idempotent:    false,
+            requestClass:  PayoutFiltersRequest::class,
+            responseClass: PayoutListFiltersResponse::class,
         );
     }
 }
