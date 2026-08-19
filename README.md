@@ -153,8 +153,8 @@ dependencies and could be lifted into any PHP project.
 spec**, pinned to a hyperswitch commit by `tools/update-openapi.sh`. Drift
 detection (`OpenApiCoverageTest`) and AI maintenance both pivot on it: typed
 schemas, declared enums, and per-operation `security` make the maintenance loop
-mechanical. (The Postman export lingers only as a transitional cross-check and
-will be removed once the v1 burndown completes.)
+mechanical. (The SDK models all 150 v1 operations; the legacy Postman export and
+its drift test have been removed now that the OpenAPI test is authoritative.)
 
 ### Conventions
 

@@ -51,12 +51,12 @@ spec. `@hyperswitch-source` records the spec ref (or date) the file was last
 reconciled against. Reviewers check these when evaluating drift.
 
 A legacy `@postman <Group> / <Item Name>` tag remains on files carried over from
-the Postman era — keep it as a historical cross-reference until the burndown
-completes; new files need only `@openapi`.
+the Postman era — kept as a harmless historical cross-reference; new files need
+only `@openapi`.
 
 ## DTO rules
 
-1. **One DTO per file.** Even if two Postman items share a payload — duplicate
+1. **One DTO per file.** Even if two operations share a payload — duplicate
    the DTO. Easier to evolve them separately later.
 2. **Immutable.** All properties `public readonly`. Constructor takes every
    field. No setters. (Fluent `withFoo()` clone helpers are permitted on
@@ -93,7 +93,7 @@ is intentionally open.
 
 ### Connector-specific blob fields
 
-When a Postman body shows a connector-keyed nested object — such as
+When a request schema shows a connector-keyed nested object — such as
 `split_refunds.stripe_split_refund`, `merchant_connector_details`,
 `payment_method_data.card.connector_specific`, etc. — leave the field as
 `?array<string, mixed>` rather than introducing a typed DTO.
@@ -101,7 +101,7 @@ When a Postman body shows a connector-keyed nested object — such as
 - These shapes branch per connector (Stripe / Adyen / Worldpay / …) and
   HyperSwitch hasn't normalised them in the public API surface.
 - A typed DTO would lock us into one connector's shape and break others.
-- Add a docblock referencing the Postman example so reviewers know where
+- Add a docblock referencing the spec schema so reviewers know where
   the loose typing came from.
 
 ### Datetime fields
