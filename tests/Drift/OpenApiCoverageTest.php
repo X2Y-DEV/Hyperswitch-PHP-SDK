@@ -51,27 +51,6 @@ final class OpenApiCoverageTest extends TestCase
         'POST /events/profile/list' => 'gap-p2-events',
         'POST /events/{id}' => 'gap-p2-events',
         'POST /events/{id}/{id}/retry' => 'gap-p2-events',
-        // --- gap-p3-blocklist (7) ---
-        'DELETE /blocklist' => 'gap-p3-blocklist',
-        'GET /blocklist' => 'gap-p3-blocklist',
-        'GET /blocklist/batch' => 'gap-p3-blocklist',
-        'GET /blocklist/batch/{id}' => 'gap-p3-blocklist',
-        'POST /blocklist' => 'gap-p3-blocklist',
-        'POST /blocklist/batch' => 'gap-p3-blocklist',
-        'POST /blocklist/toggle' => 'gap-p3-blocklist',
-        // --- gap-p3-card-issuers (4) ---
-        'DELETE /card_issuers/{id}' => 'gap-p3-card-issuers',
-        'GET /card_issuers' => 'gap-p3-card-issuers',
-        'POST /card_issuers' => 'gap-p3-card-issuers',
-        'PUT /card_issuers/{id}' => 'gap-p3-card-issuers',
-        // --- gap-p3-gsm (4) ---
-        'POST /gsm' => 'gap-p3-gsm',
-        'POST /gsm/delete' => 'gap-p3-gsm',
-        'POST /gsm/get' => 'gap-p3-gsm',
-        'POST /gsm/update' => 'gap-p3-gsm',
-        // --- gap-p3-profile-acquirers (2) ---
-        'POST /profile_acquirers' => 'gap-p3-profile-acquirers',
-        'POST /profile_acquirers/{id}/{id}' => 'gap-p3-profile-acquirers',
     ];
 
     /**

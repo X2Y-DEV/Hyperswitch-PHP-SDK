@@ -21,8 +21,12 @@ use X2Y\HyperSwitchClient\Resource\PaymentMethodsV1Resource;
 use X2Y\HyperSwitchClient\Resource\PaymentsResource;
 use X2Y\HyperSwitchClient\Resource\PayoutsResource;
 use X2Y\HyperSwitchClient\Resource\AuthenticationResource;
+use X2Y\HyperSwitchClient\Resource\BlocklistResource;
+use X2Y\HyperSwitchClient\Resource\CardIssuerResource;
+use X2Y\HyperSwitchClient\Resource\GsmResource;
 use X2Y\HyperSwitchClient\Resource\PlatformResource;
 use X2Y\HyperSwitchClient\Resource\PollResource;
+use X2Y\HyperSwitchClient\Resource\ProfileAcquirerResource;
 use X2Y\HyperSwitchClient\Resource\RoutingResource;
 use X2Y\HyperSwitchClient\Resource\ThreeDsDecisionResource;
 use X2Y\HyperSwitchClient\Resource\ProxyResource;
@@ -66,6 +70,10 @@ final class HyperSwitchClient implements HyperSwitchClientInterface
     private ?PollResource $poll = null;
     private ?ThreeDsDecisionResource $threeDsDecision = null;
     private ?AuthenticationResource $authentication = null;
+    private ?BlocklistResource $blocklist = null;
+    private ?GsmResource $gsm = null;
+    private ?CardIssuerResource $cardIssuer = null;
+    private ?ProfileAcquirerResource $profileAcquirer = null;
 
     public function __construct(
         private readonly ApiClientInterface $apiClient,
@@ -241,5 +249,25 @@ final class HyperSwitchClient implements HyperSwitchClientInterface
     public function authentication(): AuthenticationResource
     {
         return $this->authentication ??= new AuthenticationResource($this->apiClient);
+    }
+
+    public function blocklist(): BlocklistResource
+    {
+        return $this->blocklist ??= new BlocklistResource($this->apiClient);
+    }
+
+    public function gsm(): GsmResource
+    {
+        return $this->gsm ??= new GsmResource($this->apiClient);
+    }
+
+    public function cardIssuer(): CardIssuerResource
+    {
+        return $this->cardIssuer ??= new CardIssuerResource($this->apiClient);
+    }
+
+    public function profileAcquirer(): ProfileAcquirerResource
+    {
+        return $this->profileAcquirer ??= new ProfileAcquirerResource($this->apiClient);
     }
 }
