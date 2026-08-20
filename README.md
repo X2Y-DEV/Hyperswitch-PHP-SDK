@@ -213,8 +213,15 @@ environment variables. Each test skips cleanly when its variable is unset, so
 | Variable | Required | Purpose |
 |---|---|---|
 | `HYPERSWITCH_SANDBOX_KEY` | yes | Merchant `snd_…` key; without it the whole suite skips. |
+| `HYPERSWITCH_SANDBOX_PUBLISHABLE_KEY` | no | A `pk_snd_…` key for publishable-tier calls in the new-groups smoke test (falls back to the merchant key). |
 | `HYPERSWITCH_SANDBOX_PROFILE_ID` | no | A `pro_…` id to exercise profile-scoped V1 paths. |
 | `HYPERSWITCH_WEBHOOK_KEY` | no | Payment Response Hash Key; enables the webhook test. |
+
+`NewGroupsSmokeIntegrationTest` is a wiring smoke test for the endpoints added in the
+v1 alignment: it asserts each one *reaches* HyperSwitch (no route-not-found / no
+transport crash) rather than a business outcome, so it passes on any sandbox account —
+including restricted platform accounts. Endpoints present in the pinned spec but not yet
+deployed on the public sandbox are allow-listed there.
 
 ```bash
 HYPERSWITCH_SANDBOX_KEY='snd_yourKeyHere' composer test:integration
