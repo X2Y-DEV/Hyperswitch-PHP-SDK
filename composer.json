@@ -4,7 +4,11 @@
     "type": "library",
     "license": "MIT",
     "keywords": ["hyperswitch", "payments", "api", "sdk", "psr-18"],
-    "homepage": "https://github.com/X2Y-DEV/hyperswitch-client-php",
+    "homepage": "https://github.com/X2Y-DEV/hyperswitch-php-sdk",
+    "support": {
+        "issues": "https://github.com/X2Y-DEV/hyperswitch-php-sdk/issues",
+        "source": "https://github.com/X2Y-DEV/hyperswitch-php-sdk"
+    },
     "require": {
         "php": "^8.1",
         "psr/http-client": "^1.0",
