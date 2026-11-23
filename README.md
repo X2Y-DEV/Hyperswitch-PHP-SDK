@@ -1,7 +1,6 @@
 # HyperSwitch PHP Client
 
-[![CI](https://github.com/X2Y-DEV/hyperswitch-php-sdk/actions/workflows/ci.yml/badge.svg)](https://github.com/X2Y-DEV/hyperswitch-php-sdk/actions)
-[![Packagist](https://img.shields.io/packagist/v/x2y/hyperswitch-client.svg)](https://packagist.org/packages/x2y/hyperswitch-client)
+[![CI](https://github.com/X2Y-DEV/Hyperswitch-PHP-SDK/actions/workflows/ci.yml/badge.svg)](https://github.com/X2Y-DEV/Hyperswitch-PHP-SDK/actions)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
 A pure-PHP SDK for the [HyperSwitch](https://hyperswitch.io) payment orchestration API.
@@ -10,8 +9,25 @@ API surface.
 
 ## Installation
 
+The package is not on Packagist. Composer installs it straight from this GitHub
+repository: add the repository once, then require a tagged release.
+
 ```bash
-composer require x2y/hyperswitch-client
+composer config repositories.hyperswitch-client vcs https://github.com/X2Y-DEV/Hyperswitch-PHP-SDK
+composer require x2y/hyperswitch-client:^0.2
+```
+
+Or add the same thing to `composer.json` by hand:
+
+```json
+{
+    "repositories": [
+        { "type": "vcs", "url": "https://github.com/X2Y-DEV/Hyperswitch-PHP-SDK" }
+    ],
+    "require": {
+        "x2y/hyperswitch-client": "^0.2"
+    }
+}
 ```
 
 Requires PHP 8.1 or newer (CI covers 8.1 to 8.4). The client talks to HyperSwitch
