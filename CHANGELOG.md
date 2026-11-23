@@ -10,6 +10,8 @@ against the upstream HyperSwitch OpenAPI spec.
 
 ## [Unreleased]
 
+## [0.2.0] — 2026-11-23
+
 ### Changed
 
 - **Single mechanical source of truth is now the first-party HyperSwitch v1
@@ -32,6 +34,10 @@ against the upstream HyperSwitch OpenAPI spec.
   Customers, Organization, MerchantAccounts, Connectors and Subscriptions.
 - `AuthTier::JWT` + `JwtKeyAuthResolver` (`Authorization: Bearer <token>`) for
   event-management endpoints.
+
+### Source
+
+- `@hyperswitch-source: ada4a1e` — hyperswitch's `api-reference/v1/openapi_spec_v1.json` at that commit.
 
 ## [0.1.0] — 2026-04-30
 
