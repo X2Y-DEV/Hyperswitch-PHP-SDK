@@ -14,27 +14,28 @@ API surface.
 composer require x2y/hyperswitch-client
 ```
 
-Requires PHP 8.1+ and a PSR-18 HTTP client (e.g. `symfony/http-client`,
-`guzzlehttp/guzzle`).
+Requires PHP 8.1 or newer (CI covers 8.1 to 8.4). The client talks to HyperSwitch
+through any PSR-18 HTTP client and PSR-17 factories; Guzzle and Laminas Diactoros
+are installed with the package, and you can pass your own instead (for example
+`symfony/http-client` with `nyholm/psr7`).
 
 ## Quick start
 
 ```php
-use Symfony\Component\HttpClient\Psr18Client;
-use Nyholm\Psr7\Factory\Psr17Factory;
+use GuzzleHttp\Client as GuzzleClient;
+use Laminas\Diactoros\RequestFactory;
+use Laminas\Diactoros\StreamFactory;
 
 use X2Y\HyperSwitchClient\HyperSwitchClient;
 use X2Y\HyperSwitchClient\Auth\MerchantKeyAuthResolver;
 use X2Y\HyperSwitchClient\Dto\Payment\Request\CreatePaymentRequest;
 use X2Y\HyperSwitchClient\Enum\Currency;
 
-$psr17 = new Psr17Factory();
-
 $client = HyperSwitchClient::sandbox(
-    httpClient:     new Psr18Client(),
-    requestFactory: $psr17,
-    streamFactory:  $psr17,
-    auth:           new MerchantKeyAuthResolver('snd_…'),
+    httpClient:     new GuzzleClient(),
+    requestFactory: new RequestFactory(),
+    streamFactory:  new StreamFactory(),
+    auth:           [new MerchantKeyAuthResolver('snd_…')],
 );
 
 $response = $client->payments()->create(new CreatePaymentRequest(
@@ -181,7 +182,7 @@ Full rules: [docs/conventions.md](docs/conventions.md).
 ### Architectural rules (do not relax)
 
 - No `use Magento\…`, `Laravel\…`, `Symfony\…` (other than PSR interfaces) anywhere
-  under `src/`. Enforced by phpstan rule and the drift test.
+  under `src/`. Enforced by the drift test.
 - DTOs are immutable. Constructor takes everything; no setters.
 - DTOs implement `toArray()` (request) and `fromArray()` (response).
 - Unknown response fields are preserved in `extras` to survive non-breaking
@@ -200,7 +201,7 @@ Resource → Endpoint → DTO → Transport → Auth.
 composer test:unit         # fast, no network
 composer test:drift        # asserts v1 OpenAPI spec ↔ SDK coverage
 composer test:integration  # requires HYPERSWITCH_SANDBOX_KEY
-composer stan              # PHPStan at level max
+composer stan              # PHPStan at level 8 with strict rules
 composer ci                # unit + drift + stan (no network; integration excluded)
 ```
 
@@ -232,7 +233,7 @@ With the optional variables, and running a single file directly:
 ```bash
 HYPERSWITCH_SANDBOX_KEY='snd_…' \
 HYPERSWITCH_SANDBOX_PROFILE_ID='pro_…' \
-HYPERSWITCH_WEBHOOK_KEY='whsec_…' \
+HYPERSWITCH_WEBHOOK_KEY='your-payment-response-hash-key' \
 vendor/bin/phpunit tests/Integration/CustomersIntegrationTest.php
 ```
 
