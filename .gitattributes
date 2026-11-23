@@ -1,0 +1,9 @@
+# Keep tests, tooling and CI config out of the Composer dist archive.
+/.gitattributes   export-ignore
+/.github          export-ignore
+/.gitignore       export-ignore
+/.gitlab-ci.yml   export-ignore
+/phpstan.neon     export-ignore
+/phpunit.xml      export-ignore
+/tests            export-ignore
+/tools            export-ignore
