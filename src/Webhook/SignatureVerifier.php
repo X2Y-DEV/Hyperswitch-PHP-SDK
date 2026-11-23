@@ -75,7 +75,7 @@ final class SignatureVerifier
 
     /**
      * Compute the signature for a body — useful for tests and for
-     * outbound webhook fan-out (e.g. relaying events from X2Y Cloud
+     * outbound webhook fan-out (e.g. relaying events from your platform
      * to merchants).
      */
     public function sign(string $body): string
